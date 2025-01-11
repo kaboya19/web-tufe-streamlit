@@ -16,7 +16,7 @@ social_media_links = {
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
-tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel TÜFE Göstergeler","Metodoloji Notu"]
+tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı Göstergeler","Metodoloji Notu"]
 tabs = option_menu(
     menu_title=None,
     options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı Göstergeler" ,"Metodoloji Notu"],
@@ -948,7 +948,7 @@ if page=="Harcama Grupları":
     st.markdown(f"<h2 style='text-align:left; color:black;'>Web-TÜFE Harcama Grupları Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
 
-if page=="Özel Kapsamlı TÜFE Göstergeleri":
+if page=="Özel Kapsamlı Göstergeler":
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
     gösterge=özelgöstergeler.columns.values

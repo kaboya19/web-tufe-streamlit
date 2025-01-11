@@ -16,10 +16,10 @@ social_media_links = {
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
-tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Metodoloji Notu"]
+tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı TÜFE Göstergeleri","Metodoloji Notu"]
 tabs = option_menu(
     menu_title=None,
-    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları" ,"Metodoloji Notu"],
+    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı TÜFE Göstergeleri" ,"Metodoloji Notu"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
@@ -947,6 +947,76 @@ if page=="Harcama Grupları":
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>Web-TÜFE Harcama Grupları Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
+
+if page=="Özel Kapsamlı TÜFE Göstergeleri":
+    özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
+    özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
+    gösterge=özelgöstergeler.columns.values
+
+    selected_group = st.sidebar.selectbox("Özel Kapsamlı Gösterge Seçin:", gösterge)
+
+    selected_group_data=özelgöstergeler[selected_group]
+
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Endeksi</h2>", unsafe_allow_html=True)
+
+    first_date = selected_group_data.index[0].strftime("%d.%m.%Y")  # İlk tarihi formatlama
+    last_date = selected_group_data.index[-1].strftime("%d.%m.%Y")  # Son tarihi formatlama
+  
+
+        # Değişim yüzdesini hesaplama
+    first_value = selected_group_data.iloc[0]  # İlk değer
+    last_value = selected_group_data.iloc[-1] # Son değer
+    change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
+    change_percent = round(change_percent, 2)
+
+    
+
+    st.markdown(f"""
+            <h3 style='text-align:left; color:black;'>
+                {first_date} - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                
+
+            </h3>
+            """, unsafe_allow_html=True)
+    
+
+
+    figgösterge=go.Figure()
+    
+    figgösterge.add_trace(go.Scatter(
+                x=selected_group_data.index,
+                y=selected_group_data.values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+        
+        
+
+
+
+    
+   
+   
+
+        # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
+    figgösterge.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.plotly_chart(figgösterge)
+
+
 
 
 

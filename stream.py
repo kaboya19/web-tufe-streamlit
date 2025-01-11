@@ -332,7 +332,6 @@ if page=="Tüketici Fiyat Endeksi":
         <span style='color:red;'>%{change_percent}</span>
         <br>
         <span style='font-size:15px;'>
-            *Aylık değişim ay içindeki ortalamalara göre hesaplanmaktadır.
         </span>
     </h3>
     """,

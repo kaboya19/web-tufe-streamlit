@@ -72,6 +72,13 @@ if page=="Metodoloji Notu":
     Bu çerçevede, 6 Ocak 2025 endeksi baz olarak "100" seçilmiştir.
 
     """)
+    ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
+    ağırlıklar=ağırlıklar["Ağırlık"]*100
+    ağırlıklar=ağırlıklar.sort_values(by="Ağırlık",ascending=False)
+    st.subheader("Madde Ağırlıkları")
+    st.dataframe(ağırlıklar["Ağırlık"])
+
+
 
     # Hesaplama Kuralları
     st.subheader("Hesaplama Kuralları")

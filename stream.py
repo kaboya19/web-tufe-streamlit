@@ -454,6 +454,8 @@ if page=="Tüketici Fiyat Endeksi":
         st.plotly_chart(figartıs)
 
         def to_excel(df):
+            df.index=pd.to_datetime(df.index)
+            df.index=df.index.strftime("%Y-%m-%d")
             output = BytesIO()
             # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:

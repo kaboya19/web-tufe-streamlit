@@ -478,6 +478,26 @@ if page=="Tüketici Fiyat Endeksi":
             file_name='webtüfe.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+        
+        gruplar=pd.read_csv("anagruplar.csv",index_col=0)
+        gruplar.index=pd.to_datetime(gruplar.index)
+        gruplar_excel=to_excel(gruplar)
+        maddeler_excel=to_excel(endeksler)
+
+        st.download_button(
+            label="📊 Ana Grup Endeksleri",
+            data=gruplar_excel,
+            file_name='anagruplar.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        st.download_button(
+            label="📊 Madde Endeksleri",
+            data=maddeler_excel,
+            file_name='maddeler.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
 
 
         

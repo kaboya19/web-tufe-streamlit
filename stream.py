@@ -484,6 +484,14 @@ if page=="Tüketici Fiyat Endeksi":
         gruplar_excel=to_excel(gruplar)
         maddeler_excel=to_excel(endeksler)
 
+        harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
+        harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
+        harcama_grupları_excel=to_excel(harcama_grupları)
+
+        özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
+        özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
+        özelgöstergeler_excel=to_excel(özelgöstergeler)
+
         st.download_button(
             label="📊 Ana Grup Endeksleri",
             data=gruplar_excel,
@@ -495,6 +503,20 @@ if page=="Tüketici Fiyat Endeksi":
             label="📊 Madde Endeksleri",
             data=maddeler_excel,
             file_name='maddeler.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        st.download_button(
+            label="📊 Harcama Grupları",
+            data=harcama_grupları_excel,
+            file_name='harcamagrupları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        st.download_button(
+            label="📊 Özel Kapsamlı TÜFE Göstergeleri",
+            data=özelgöstergeler_excel,
+            file_name='özelkapsamlıgöstergeler.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 

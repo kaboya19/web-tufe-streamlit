@@ -74,7 +74,7 @@ if page=="Metodoloji Notu":
     """)
     ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
     ağırlıklar=ağırlıklar["Ağırlık"]*100
-    ağırlıklar=ağırlıklar.sort_values(by="Ağırlık",ascending=False)
+    ağırlıklar=ağırlıklar.sort_values(ascending=False)
     st.subheader("Madde Ağırlıkları")
     st.dataframe(ağırlıklar["Ağırlık"])
 

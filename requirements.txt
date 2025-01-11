@@ -1,0 +1,11 @@
+plotly==5.18.0
+streamlit
+ipywidgets>=7.0.0
+matplotlib==3.9.0
+quantstats==0.0.62
+pandas
+XlsxWriter
+statsmodels
+openpyxl
+streamlit-option-menu
+st-social-media-links

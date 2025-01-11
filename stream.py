@@ -453,6 +453,30 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>Web-TÜFE Ana Gruplar Artış Oranları</h2>", unsafe_allow_html=True)
         st.plotly_chart(figartıs)
 
+        def to_excel(df):
+            output = BytesIO()
+            # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                df.to_excel(writer, index=False, sheet_name='Sheet1')  # index=False ile index'i dahil etmiyoruz
+                
+                # Writer'dan Workbook ve Worksheet nesnelerine erişim
+                workbook = writer.book
+                worksheet = writer.sheets['Sheet1']
+                
+                # Sütun genişliklerini ayarla
+                for i, col in enumerate(df.columns):
+                    max_length = max(df[col].astype(str).map(len).max(), len(col))  # En uzun değer veya sütun adı uzunluğu
+                    worksheet.set_column(i, i, max_length + 2)  # +2 biraz boşluk ekler
+            processed_data = output.getvalue()  # Bellekteki dosya verisini al
+            return processed_data
+        tüfe_excel=to_excel(tüfe)
+        st.download_button(
+            label="📊 Web-Tüketici Fiyat Endeksi",
+            data=tüfe_excel,
+            file_name='webtüfe.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
 
         
              

@@ -1018,7 +1018,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
 
 
-
+    özelgöstergeler["TÜFE"]=tüfe["TÜFE"].values
     gösterge_artıs=((özelgöstergeler.iloc[-1]/özelgöstergeler.iloc[0])-1)*100
     gösterge_artıs=gösterge_artıs.sort_values()
 

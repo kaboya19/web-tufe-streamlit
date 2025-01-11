@@ -33,7 +33,7 @@ tabs = option_menu(
             "--hover-color": "#444", 
             "padding-left": "20px",  # Add padding for consistent spacing
             "padding-right": "20px",  # Add padding for consistent spacing
-            "height": "50px",  # Set a fixed height for all buttons
+            "height": "70px",  # Set a fixed height for all buttons
             "min-width": "150px",  # Ensure buttons do not shrink too small
             "white-space": "normal",  # Allow text to wrap if necessary
             "display": "inline-flex",  # Use inline-flex to adjust width to text content

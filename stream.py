@@ -76,7 +76,7 @@ if page=="Metodoloji Notu":
     ağırlıklar=ağırlıklar["Ağırlık"]*100
     ağırlıklar=ağırlıklar.sort_values(ascending=False)
     st.subheader("Madde Ağırlıkları")
-    st.dataframe(ağırlıklar["Ağırlık"])
+    st.dataframe(ağırlıklar)
 
 
 

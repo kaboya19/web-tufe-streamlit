@@ -16,10 +16,10 @@ social_media_links = {
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
-tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Metodoloji Notu"]
+tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Metodoloji Notu"]
 tabs = option_menu(
     menu_title=None,
-    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri", "Metodoloji Notu"],
+    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları" "Metodoloji Notu"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
@@ -61,15 +61,16 @@ if page=="Metodoloji Notu":
      
 
     # Başlık
-    st.title("Web Gıda Fiyat Endeksi (W-GFE) Metodoloji Açıklaması")
+    st.title("Web Tüketici Fiyat Endeksi (Web-TÜFE) Metodoloji Açıklaması")
 
     # Analitik Çerçeve ve Kapsam
     st.subheader("Analitik Çerçeve ve Kapsam")
     st.write("""
-    Web Gıda Fiyat Endeksinin amacı, TÜFE’deki Gıda ve Alkolsüz İçecekler grubunda yer alan gıda ürünlerinin günlük değişimini ölçerek enflasyon oranını hesaplamaktır. 
-    Bu çerçevede, 11 Ekim 2024 endeksi baz olarak "100" seçilmiştir.
+    Web Tüketici Fiyat Endeksinin amacı, TÜFE'de yer alan Alkollü içecekler ve Sağlık grubu dışında kalan ürünlerin günlük değişimini ölçerek enflasyon oranını hesaplamaktır. 
+    Alkollü içecekler ve Sağlık grubunun ölçümü web üzerinden yapılamamaktadır.Bu bağlamda bu gruplar dışında yer alan 385 maddenin 318 adedi derlenmektedir.
+    TÜİK sepetinin ağırlık bazında %81,7'si ölçülebilmiştir.
+    Bu çerçevede, 6 Ocak 2025 endeksi baz olarak "100" seçilmiştir.
 
-    Endeksin kapsamı, TÜİK’in yayınlamış olduğu Aralık 2022 tarihli madde sepetinde yer alan 128 gıda ürünü ile sınırlıdır. Madde ağırlıkları ise bu tarihteki madde ağırlıklarının 2023 ve 2024'te yayınlanan değişikliklerle güncellenmiş halidir.
     """)
 
     # Hesaplama Kuralları
@@ -90,23 +91,22 @@ if page=="Metodoloji Notu":
     # Veri Derleme
     st.subheader("Veri Derleme")
     st.write("""
-    Toplanan veriler web scraping yöntemiyle Python üzerinden derlenmektedir. Şu an itibariyle her gün 7000'e yakın fiyat toplanmaktadır. 
-    Kullanılan kaynaklar, Türkiye genelinde şubeleri bulunan ve online sipariş imkânı olan süpermarket zincirlerinin internet siteleridir.
+    Toplanan veriler web scraping yöntemiyle Python üzerinden derlenmektedir. Şu an itibariyle her gün 37.000'den fazla fiyat toplanmaktadır. 
+
     """)
 
     # Sonuçların Açıklanması
     st.subheader("Sonuçların Açıklanması")
     st.write("""
-    Her gün toplanan verilerle hesaplanan W-GFE ve madde endeksleri günlük olarak internet sitemizde yayınlanmaktadır. 
-    Her ayın 1'inde ise aylık enflasyon oranları duyurulacaktır. Aynı zamanda her bir ürün için kullanılan fiyatlar tablo olarak yayınlanmaktadır. 
+    Her ayın 24'inde aylık enflasyon oranları duyurulacaktır. Aynı zamanda her bir ürün için kullanılan fiyatlar tablo olarak yayınlanmaktadır. 
     Bu sayede şeffaf bir şekilde yaşanan fiyat değişimleri izlenebilmektedir.
     """)
 
     # İmza
     st.write("""
     ---
+    Hazırlayan
     Bora Kaya  
-    HSBC Asset Management Intern
     """)
 
 

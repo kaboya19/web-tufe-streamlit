@@ -457,7 +457,7 @@ if page=="Tüketici Fiyat Endeksi":
             output = BytesIO()
             # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df.to_excel(writer, index=False, sheet_name='Sheet1')  # index=False ile index'i dahil etmiyoruz
+                df.to_excel(writer, index=True, sheet_name='Sheet1')  # index=False ile index'i dahil etmiyoruz
                 
                 # Writer'dan Workbook ve Worksheet nesnelerine erişim
                 workbook = writer.book

@@ -468,7 +468,7 @@ if page=="Tüketici Fiyat Endeksi":
                 # Sütun genişliklerini ayarla
                 for i, col in enumerate(df.columns):
                     max_length = max(df[col].astype(str).map(len).max(), len(col))  # En uzun değer veya sütun adı uzunluğu
-                    worksheet.set_column(i, i, max_length + 2)  # +2 biraz boşluk ekler
+                    worksheet.set_column(i, i, max_length + 10)  # +2 biraz boşluk ekler
             processed_data = output.getvalue()  # Bellekteki dosya verisini al
             return processed_data
         tüfe_excel=to_excel(tüfe)

@@ -1094,7 +1094,7 @@ if page=="Özel Kapsamlı Göstergeler":
                 y=özelgöstergeler["Hizmet"].values,
                 mode='lines+markers',
                 name="Hizmet",
-                line=dict(color='blue', width=4),
+                line=dict(color='red', width=4),
                 marker=dict(size=8, color="black"),
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
@@ -1120,8 +1120,8 @@ if page=="Özel Kapsamlı Göstergeler":
         # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
     figgösterge1.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index,  # Original datetime index
-                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickvals=özelgöstergeler.index,  # Original datetime index
+                ticktext=özelgöstergeler.index.strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black")
             ),
             yaxis=dict(

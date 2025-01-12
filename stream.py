@@ -1114,8 +1114,8 @@ if page=="Özel Kapsamlı Göstergeler":
                 y=özelgöstergeler["TÜFE B"].values,
                 mode='lines+markers',
                 name="B Endeksi",
-                line=dict(color='blue', width=4),
-                marker=dict(size=8, color="orange"),
+                line=dict(color='orange', width=4),
+                marker=dict(size=8, color="black"),
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
     

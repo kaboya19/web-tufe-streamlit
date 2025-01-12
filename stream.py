@@ -328,7 +328,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(
     f"""
     <h3 style='text-align:left; color:black;'>
-        {first_date} - {last_date} Değişimi: 
+        06.01.2025 - {last_date} Değişimi: 
         <span style='color:red;'>%{change_percent}</span>
         <br>
         <span style='font-size:15px;'>
@@ -364,7 +364,7 @@ if page=="Tüketici Fiyat Endeksi":
    
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                {first_date} - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
                 
 
             </h3>
@@ -699,7 +699,7 @@ if page=="Ana Gruplar":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                {first_date} - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>
@@ -894,7 +894,7 @@ if page=="Harcama Grupları":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                {first_date} - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>
@@ -1043,7 +1043,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                {first_date} - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>

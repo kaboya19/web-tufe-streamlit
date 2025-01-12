@@ -1128,6 +1128,27 @@ if page=="Özel Kapsamlı Göstergeler":
                 marker=dict(size=8, color="black"),
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
+    
+    figgösterge1.add_trace(go.Scatter(
+                x=özelgöstergeler["Enerji"].index,
+                y=özelgöstergeler["Enerji"].values,
+                mode='lines+markers',
+                name="Enerji",
+                line=dict(color='magenta', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+        
+
+    figgösterge1.add_trace(go.Scatter(
+                x=özelgöstergeler["Kira"].index,
+                y=özelgöstergeler["Kira"].values,
+                mode='lines+markers',
+                name="Kira",
+                line=dict(color='yellow', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
         
         
 

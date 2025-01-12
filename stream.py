@@ -1087,6 +1087,42 @@ if page=="Özel Kapsamlı Göstergeler":
     st.plotly_chart(figgösterge)
 
 
+    figgösterge1=go.Figure()
+    
+    figgösterge1.add_trace(go.Scatter(
+                x=özelgöstergeler["Hizmet"].index,
+                y=özelgöstergeler["Hizmet"].values,
+                mode='lines+markers',
+                name="Hizmet",
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+        
+        
+
+
+
+    
+   
+   
+
+        # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
+    figgösterge1.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.plotly_chart(figgösterge1)
+
+
 
     özelgöstergeler["TÜFE"]=tüfe["TÜFE"].values
     gösterge_artıs=((özelgöstergeler.iloc[-1]/özelgöstergeler.iloc[0])-1)*100

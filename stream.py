@@ -85,8 +85,7 @@ if page=="Metodoloji Notu":
     st.image("1.png")
     st.image("2.png")
     st.image("3.png")
-    st.image("4.png")
-    st.image("5.png")
+
 
     # Mevsimsel Düzeltme
     st.subheader("Mevsimsel Düzeltme")

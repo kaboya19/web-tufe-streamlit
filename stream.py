@@ -745,7 +745,7 @@ if page=="Ana Gruplar":
 
     
 
-    ürüngrupları=pd.read_csv("harcamaürünleri.csv",index_col=0)
+    ürüngrupları=pd.read_csv("harcamaürünleri1.csv",index_col=0)
     ürüngrupları=ürüngrupları[ürüngrupları["Ana Grup"]==selected_group]
 
     harcama = ürüngrupları["Grup"].unique()

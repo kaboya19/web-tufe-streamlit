@@ -16,10 +16,10 @@ social_media_links = {
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
-tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı Göstergeler","Metodoloji Notu"]
+tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler","Metodoloji Notu"]
 tabs = option_menu(
     menu_title=None,
-    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Özel Kapsamlı Göstergeler" ,"Metodoloji Notu"],
+    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler" ,"Metodoloji Notu"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
@@ -1219,6 +1219,134 @@ if page=="Özel Kapsamlı Göstergeler":
 
     # Etiket ekleme
     for i, value in enumerate(gösterge_artıs.values):
+        if value >= 0:
+            # Pozitif değerler sol tarafta
+            figartıs.add_annotation(
+                x=value, 
+                y=shortened_index[i], 
+                text=f"{value:.2f}%", 
+                showarrow=False, 
+                font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
+                align='left', 
+                xanchor='left', 
+                yanchor='middle'
+            )
+        else:
+            # Negatif değerler sağ tarafta
+            figartıs.add_annotation(
+                x=value, 
+                y=shortened_index[i], 
+                text=f"{value:.2f}%", 
+                showarrow=False, 
+                font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
+                align='right', 
+                xanchor='right', 
+                yanchor='middle'
+            )
+
+
+
+
+    st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
+    st.plotly_chart(figartıs)
+
+if page=="Madde Endeksleri":
+
+
+    ürüngrupları=pd.read_csv("harcamaürünleri1.csv",index_col=0)
+
+    endeksler=pd.read_csv("endeksler.csv",index_col=0)
+
+    harcamagrupları=pd.read_csv("harcama_grupları.csv",index_col=0)
+
+
+    
+
+    selected_anagrup=st.sidebar.selectbox("Ana Grup Seçin:", ürüngrupları["Ana Grup"].unique())
+
+
+
+    filtered_anagrup=ürüngrupları[ürüngrupları["Ana Grup"]==selected_anagrup]
+
+    maddeler=filtered_anagrup["Ürün"].values
+
+    
+
+
+
+    maddeartıslar=((endeksler[maddeler].T.iloc[:,-1]/endeksler[maddeler].T.iloc[:,0])-1)*100
+
+    #maddeartıslar.loc[harcamagrubu]=((harcamagrupları[harcamagrubu].iloc[:,-1]/harcamagrupları[harcamagrubu].iloc[:,-1])-1)*100
+
+
+    maddeartıslar=maddeartıslar.sort_values()
+
+    colors = ['red' if label == 'TÜFE' else 'blue' for label in maddeartıslar.index]
+
+    # İlk 42 karakteri almak için index etiketlerini kısaltma
+    shortened_index = [label[:42] for label in maddeartıslar.index]
+
+    # Grafik oluşturma
+    figartıs = go.Figure()
+
+    # Verileri ekleme
+    figartıs.add_trace(go.Bar(
+        y=shortened_index,  # Kısaltılmış index etiketleri
+        x=maddeartıslar.values,
+        orientation='h', 
+        marker=dict(color=colors),
+        name=f'Artış Oranı',
+    ))
+
+    if selected_anagrup=="Gıda ve alkolsüz içecekler":
+
+ 
+        figartıs.update_layout(
+            title={
+            'text': "Web-TÜFE Artış Oranları",  # Başlık metni
+            'x': 0.5,  # Ortalamak için 0.5
+            'xanchor': 'center',  # Yatay hizalama
+            'yanchor': 'top'  # Dikey hizalama
+        },
+            xaxis_title='Artış Oranı (%)',
+            yaxis_title='Grup',
+            xaxis=dict(tickformat='.2f'),
+            bargap=0.5,  # Çubuklar arasındaki boşluk
+            height=max(600,len(filtered_anagrup)*20),  # Grafik boyutunu artırma
+            font=dict(family="Arial Black", size=14, color="black"),  # Yazı tipi ve kalınlık
+            yaxis=dict(
+                tickfont=dict(family="Arial Black", size=14, color="black"),  # Y eksenindeki etiketlerin rengi
+                tickmode='array',  # Manuel olarak etiketleri belirlemek için
+                tickvals=list(range(len(maddeartıslar.index))),  # Her bir index için bir yer belirle
+                ticktext=shortened_index  # Kısaltılmış index etiketleri
+            )
+        )
+    else:
+
+        figartıs.update_layout(
+            title={
+            'text': "Web-TÜFE Artış Oranları",  # Başlık metni
+            'x': 0.5,  # Ortalamak için 0.5
+            'xanchor': 'center',  # Yatay hizalama
+            'yanchor': 'top'  # Dikey hizalama
+        },
+            xaxis_title='Artış Oranı (%)',
+            yaxis_title='Grup',
+            xaxis=dict(tickformat='.2f'),
+            bargap=0.5,  # Çubuklar arasındaki boşluk
+            height=max(600,len(filtered_anagrup)*20),  # Grafik boyutunu artırma
+            font=dict(family="Arial Black", size=14, color="black"),  # Yazı tipi ve kalınlık
+            yaxis=dict(
+                tickfont=dict(family="Arial Black", size=14, color="black"),  # Y eksenindeki etiketlerin rengi
+                tickmode='array',  # Manuel olarak etiketleri belirlemek için
+                tickvals=list(range(len(maddeartıslar.index))),  # Her bir index için bir yer belirle
+                ticktext=shortened_index  # Kısaltılmış index etiketleri
+            )
+        )
+        
+
+    # Etiket ekleme
+    for i, value in enumerate(maddeartıslar.values):
         if value >= 0:
             # Pozitif değerler sol tarafta
             figartıs.add_annotation(

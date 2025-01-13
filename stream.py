@@ -1317,7 +1317,7 @@ if page=="Madde Endeksleri":
         xaxis=dict(tickformat='.2f'),
         bargap=0.4,  # Adjust bar spacing
         height=max(600, len(maddeartıslar) * 50),  # Adjust chart height dynamically
-        font=dict(family="Arial Black", size=14, color="black"),
+        font=dict(family="Arial Black", color="black"),
         yaxis=dict(
             tickfont=dict(
                 family="Arial Black",

@@ -1277,7 +1277,7 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=((endeksler[maddeler].T.iloc[:,-1]/endeksler[maddeler].T.iloc[:,0])-1)*100
 
-    maddeartıslar.loc[selected_anagrup]=((anagruplar[selected_anagrup].iloc[:,-1]/anagruplar[selected_anagrup].iloc[:,-1])-1)*100
+    maddeartıslar.loc[selected_anagrup]=((anagruplar[selected_anagrup].iloc[-1]/anagruplar[selected_anagrup].iloc[0])-1)*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

@@ -1284,10 +1284,10 @@ if page=="Madde Endeksleri":
 
     colors = ['red' if label == selected_anagrup else 'blue' for label in maddeartıslar.index]
 
-    # Calculate bar heights and font sizes for the y-axis labels
+    # Calculate bar widths and text sizes
     highlighted_index = maddeartıslar.index.get_loc(selected_anagrup)  # Get index of the selected group
-    bar_heights = [1.2 if i == highlighted_index else 0.8 for i in range(len(maddeartıslar))]  # Bar heights
-    y_label_sizes = [18 if i == highlighted_index else 14 for i in range(len(maddeartıslar))]  # Text sizes for y-axis labels
+    bar_widths = [0.5 if i == highlighted_index else 0.4 for i in range(len(maddeartıslar))]  # Bar widths
+    text_sizes = [16 if i == highlighted_index else 12 for i in range(len(maddeartıslar))]  # Text sizes
 
     # Shorten index labels if necessary
     shortened_index = [label[:42] for label in maddeartıslar.index]
@@ -1295,14 +1295,33 @@ if page=="Madde Endeksleri":
     # Create the bar chart
     figartıs = go.Figure()
 
-    # Add individual bars with dynamic height
-    figartıs.add_trace(go.Bar(
-        y=shortened_index,  # Kısaltılmış index etiketleri
-        x=maddeartıslar.values,  # Values for the bars
-        orientation='h',
-        marker=dict(color=colors),
-        width=bar_heights,  # Dynamic bar height
-    ))
+    # Add individual bars with dynamic width and color
+    for i, (value, label) in enumerate(zip(maddeartıslar.values, shortened_index)):
+        figartıs.add_trace(go.Bar(
+            y=[label],  # Bar label
+            x=[value],  # Bar value
+            orientation='h',
+            marker=dict(
+                color='red' if i == highlighted_index else 'blue',
+            ),
+            width=bar_widths[i],  # Dynamic bar width
+        ))
+
+    # Add annotations with dynamic text size
+    for i, (value, label) in enumerate(zip(maddeartıslar.values, shortened_index)):
+        figartıs.add_annotation(
+            x=value,
+            y=label,
+            text=f"{value:.2f}%",
+            showarrow=False,
+            font=dict(
+                size=text_sizes[i],  # Dynamic text size
+                family="Arial Black"
+            ),
+            align='center',
+            xanchor='right' if value < 0 else 'left',
+            yanchor='middle',
+        )
 
     # Customize the layout
     figartıs.update_layout(
@@ -1315,28 +1334,21 @@ if page=="Madde Endeksleri":
         xaxis_title='Artış Oranı (%)',
         yaxis_title='Grup',
         xaxis=dict(tickformat='.2f'),
-        bargap=0.4,  # Adjust bar spacing
-        height=max(600, len(maddeartıslar) * 50),  # Adjust chart height dynamically
-        font=dict(family="Arial Black", color="black"),
+        bargap=0.5,
+        height=max(600, len(maddeartıslar) * 20),
+        font=dict(family="Arial Black", size=14, color="black"),
         yaxis=dict(
-            tickfont=dict(
-                family="Arial Black",
-                size=y_label_sizes,  # Dynamic size for y-axis labels
-                color="black"
-            ),
+            tickfont=dict(family="Arial Black", size=14, color="black"),
             tickmode='array',
             tickvals=list(range(len(maddeartıslar.index))),
-            ticktext=shortened_index,  # Shortened index for y-axis
-        ),
-        showlegend=False  # Hide the legend
+            ticktext=shortened_index,
+        )
     )
-
-    # Remove labels on the bars (annotations)
-    figartıs.update_traces(texttemplate=None)
 
     # Display the chart in Streamlit
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_anagrup} Maddeleri Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
+
 
 
 

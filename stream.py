@@ -1282,7 +1282,7 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=maddeartıslar.sort_values()
 
-    colors = ['red' if label == 'TÜFE' else 'blue' for label in maddeartıslar.index]
+    colors = ['red' if label == selected_anagrup else 'blue' for label in maddeartıslar.index]
 
     # İlk 42 karakteri almak için index etiketlerini kısaltma
     shortened_index = [label[:42] for label in maddeartıslar.index]
@@ -1326,7 +1326,7 @@ if page=="Madde Endeksleri":
 
         figartıs.update_layout(
             title={
-            'text': "Web-TÜFE Artış Oranları",  # Başlık metni
+            'text': f"{selected_anagrup} Maddeleri Artış Oranları",  # Başlık metni
             'x': 0.5,  # Ortalamak için 0.5
             'xanchor': 'center',  # Yatay hizalama
             'yanchor': 'top'  # Dikey hizalama
@@ -1376,7 +1376,7 @@ if page=="Madde Endeksleri":
 
 
 
-    st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_anagrup} Maddeleri Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
 
 

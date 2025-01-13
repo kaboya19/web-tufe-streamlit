@@ -1284,98 +1284,68 @@ if page=="Madde Endeksleri":
 
     colors = ['red' if label == selected_anagrup else 'blue' for label in maddeartıslar.index]
 
-    # İlk 42 karakteri almak için index etiketlerini kısaltma
+    # Calculate bar widths and text sizes
+    highlighted_index = maddeartıslar.index.get_loc(selected_anagrup)  # Get index of the selected group
+    bar_widths = [0.5 if i == highlighted_index else 0.4 for i in range(len(maddeartıslar))]  # Bar widths
+    text_sizes = [16 if i == highlighted_index else 12 for i in range(len(maddeartıslar))]  # Text sizes
+
+    # Shorten index labels if necessary
     shortened_index = [label[:42] for label in maddeartıslar.index]
 
-    # Grafik oluşturma
+    # Create the bar chart
     figartıs = go.Figure()
 
-    # Verileri ekleme
-    figartıs.add_trace(go.Bar(
-        y=shortened_index,  # Kısaltılmış index etiketleri
-        x=maddeartıslar.values,
-        orientation='h', 
-        marker=dict(color=colors),
-        name=f'Artış Oranı',
-    ))
+    # Add individual bars with dynamic width and color
+    for i, (value, label) in enumerate(zip(maddeartıslar.values, shortened_index)):
+        figartıs.add_trace(go.Bar(
+            y=[label],  # Bar label
+            x=[value],  # Bar value
+            orientation='h',
+            marker=dict(
+                color='red' if i == highlighted_index else 'blue',
+            ),
+            width=bar_widths[i],  # Dynamic bar width
+        ))
 
-    if selected_anagrup=="Gıda ve alkolsüz içecekler":
-
- 
-        figartıs.update_layout(
-            title={
-            'text': "Web-TÜFE Artış Oranları",  # Başlık metni
-            'x': 0.5,  # Ortalamak için 0.5
-            'xanchor': 'center',  # Yatay hizalama
-            'yanchor': 'top'  # Dikey hizalama
-        },
-            xaxis_title='Artış Oranı (%)',
-            yaxis_title='Grup',
-            xaxis=dict(tickformat='.2f'),
-            bargap=0.5,  # Çubuklar arasındaki boşluk
-            height=max(600,len(filtered_anagrup)*20),  # Grafik boyutunu artırma
-            font=dict(family="Arial Black", size=14, color="black"),  # Yazı tipi ve kalınlık
-            yaxis=dict(
-                tickfont=dict(family="Arial Black", size=14, color="black"),  # Y eksenindeki etiketlerin rengi
-                tickmode='array',  # Manuel olarak etiketleri belirlemek için
-                tickvals=list(range(len(maddeartıslar.index))),  # Her bir index için bir yer belirle
-                ticktext=shortened_index  # Kısaltılmış index etiketleri
-            )
+    # Add annotations with dynamic text size
+    for i, (value, label) in enumerate(zip(maddeartıslar.values, shortened_index)):
+        figartıs.add_annotation(
+            x=value,
+            y=label,
+            text=f"{value:.2f}%",
+            showarrow=False,
+            font=dict(
+                size=text_sizes[i],  # Dynamic text size
+                family="Arial Black"
+            ),
+            align='center',
+            xanchor='right' if value < 0 else 'left',
+            yanchor='middle',
         )
-    else:
 
-        figartıs.update_layout(
-            title={
-            'text': f"{selected_anagrup} Maddeleri Artış Oranları",  # Başlık metni
-            'x': 0.5,  # Ortalamak için 0.5
-            'xanchor': 'center',  # Yatay hizalama
-            'yanchor': 'top'  # Dikey hizalama
+    # Customize the layout
+    figartıs.update_layout(
+        title={
+            'text': f"{selected_anagrup} Maddeleri Artış Oranları",
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top',
         },
-            xaxis_title='Artış Oranı (%)',
-            yaxis_title='Grup',
-            xaxis=dict(tickformat='.2f'),
-            bargap=0.5,  # Çubuklar arasındaki boşluk
-            height=max(600,len(filtered_anagrup)*20),  # Grafik boyutunu artırma
-            font=dict(family="Arial Black", size=14, color="black"),  # Yazı tipi ve kalınlık
-            yaxis=dict(
-                tickfont=dict(family="Arial Black", size=14, color="black"),  # Y eksenindeki etiketlerin rengi
-                tickmode='array',  # Manuel olarak etiketleri belirlemek için
-                tickvals=list(range(len(maddeartıslar.index))),  # Her bir index için bir yer belirle
-                ticktext=shortened_index  # Kısaltılmış index etiketleri
-            )
+        xaxis_title='Artış Oranı (%)',
+        yaxis_title='Grup',
+        xaxis=dict(tickformat='.2f'),
+        bargap=0.5,
+        height=max(600, len(maddeartıslar) * 20),
+        font=dict(family="Arial Black", size=14, color="black"),
+        yaxis=dict(
+            tickfont=dict(family="Arial Black", size=14, color="black"),
+            tickmode='array',
+            tickvals=list(range(len(maddeartıslar.index))),
+            ticktext=shortened_index,
         )
-        
+    )
 
-    # Etiket ekleme
-    for i, value in enumerate(maddeartıslar.values):
-        if value >= 0:
-            # Pozitif değerler sol tarafta
-            figartıs.add_annotation(
-                x=value, 
-                y=shortened_index[i], 
-                text=f"{value:.2f}%", 
-                showarrow=False, 
-                font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
-                align='left', 
-                xanchor='left', 
-                yanchor='middle'
-            )
-        else:
-            # Negatif değerler sağ tarafta
-            figartıs.add_annotation(
-                x=value, 
-                y=shortened_index[i], 
-                text=f"{value:.2f}%", 
-                showarrow=False, 
-                font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
-                align='right', 
-                xanchor='right', 
-                yanchor='middle'
-            )
-
-
-
-
+    # Display the chart in Streamlit
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_anagrup} Maddeleri Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
 

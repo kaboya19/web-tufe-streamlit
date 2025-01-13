@@ -69,7 +69,7 @@ if page=="Metodoloji Notu":
     Web Tüketici Fiyat Endeksinin amacı, TÜFE'de yer alan Alkollü içecekler ve Sağlık grubu dışında kalan ürünlerin günlük değişimini ölçerek enflasyon oranını hesaplamaktır. 
     Alkollü içecekler ve Sağlık grubunun ölçümü web üzerinden yapılamamaktadır.Bu bağlamda bu gruplar dışında yer alan 385 maddenin 318 adedi derlenmektedir.
     TÜİK sepetinin ağırlık bazında %81,7'si ölçülebilmiştir.
-    Bu çerçevede, 6 Ocak 2025 endeksi baz olarak "100" seçilmiştir.
+    Bu çerçevede, 31 Aralık 2024 endeksi baz olarak "100" seçilmiştir.Fiyat ölçümü ise 6 Ocak 2025 tarihinde başlamıştır.
 
     """)
     ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)

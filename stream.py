@@ -1259,6 +1259,7 @@ if page=="Madde Endeksleri":
 
     harcamagrupları=pd.read_csv("harcama_grupları.csv",index_col=0)
 
+    anagruplar=pd.read_csv("anagruplar.csv",index_col=0)
 
     
 
@@ -1276,7 +1277,7 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=((endeksler[maddeler].T.iloc[:,-1]/endeksler[maddeler].T.iloc[:,0])-1)*100
 
-    #maddeartıslar.loc[harcamagrubu]=((harcamagrupları[harcamagrubu].iloc[:,-1]/harcamagrupları[harcamagrubu].iloc[:,-1])-1)*100
+    maddeartıslar.loc[selected_anagrup]=((anagruplar[selected_anagrup].iloc[:,-1]/anagruplar[selected_anagrup].iloc[:,-1])-1)*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

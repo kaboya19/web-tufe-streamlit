@@ -1210,7 +1210,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Mevsimsellikten Arındırılmış",
             marker=dict(color='blue'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
-            font=dict(size=14, family="Arial Black")
+            font=dict(size=14, family="Arial Black"),
             textposition='outside'
         ))
 

@@ -1208,7 +1208,10 @@ if page=="Özel Kapsamlı Göstergeler":
             x=gösterge_artıs_ma,
             orientation='h',
             name="Mevsimsellikten Arındırılmış",
-
+            marker=dict(color='blue'),
+            text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
+            textfont=dict(size=14, family="Arial Black"),
+            textposition='outside'
         ))
 
         # Ham Veriler
@@ -1218,34 +1221,10 @@ if page=="Özel Kapsamlı Göstergeler":
             orientation='h',
             name="Ham Veriler",
             marker=dict(color='orange'),
+            text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
+            textfont=dict(size=14, family="Arial Black"),
+            textposition='outside'
         ))
-
-
-        for i, value in enumerate(gösterge_artıs_ham.values):
-            if value >= 0:
-                # Pozitif değerler sol tarafta
-                fig.add_annotation(
-                    x=value, 
-                    y=shortened_index[i], 
-                    text=f"{value:.2f}%", 
-                    showarrow=False, 
-                    font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
-                    align='left', 
-                    xanchor='left', 
-                    yanchor='middle'
-                )
-            else:
-                # Negatif değerler sağ tarafta
-                fig.add_annotation(
-                    x=value, 
-                    y=shortened_index[i], 
-                    text=f"{value:.2f}%", 
-                    showarrow=False, 
-                    font=dict(size=14, family="Arial Black"),  # Etiketler için yazı tipi
-                    align='right', 
-                    xanchor='right', 
-                    yanchor='middle'
-            )
 
         # Grafik düzenlemeleri
         fig.update_layout(

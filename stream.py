@@ -1244,7 +1244,7 @@ if page=="Özel Kapsamlı Göstergeler":
         tickfont=dict(size=14, family="Arial Black", color="black")   # Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
-    height=600,
+    height=1200,
     margin=dict(l=150, r=20, t=80, b=40),
     legend=dict(
         title=dict(

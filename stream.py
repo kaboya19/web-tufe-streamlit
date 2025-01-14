@@ -1238,8 +1238,8 @@ if page=="Özel Kapsamlı Göstergeler":
     ),
     yaxis=dict(
         title="Gruplar",
-        titlefont=dict(size=16, family="Arial", color="black"),  # Y eksen etiketi
-        tickfont=dict(size=14, family="Arial", color="black")   # Y ekseni değerleri
+        titlefont=dict(size=16, family="Arial Black", color="black"),  # Y eksen etiketi
+        tickfont=dict(size=14, family="Arial Black", color="black")   # Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
     height=600,

@@ -1177,11 +1177,16 @@ if page=="Özel Kapsamlı Göstergeler":
 
 
     if ma:
+
         ma_gösterge=pd.read_csv("göstergeler.csv",index_col=0)
         tüfe=pd.read_csv("tüfe.csv",index_col=0)
         tüik=pd.read_csv("mevsimselliktenarındırılmışgöstergeler.csv",index_col=0)
+
+
         gösterge_artıs_ma=((tüik.iloc[-1]/tüik.iloc[-2])-1)*100
         gösterge_artıs_ma=gösterge_artıs_ma.sort_index()
+
+        st.dataframe(ma_gösterge)
 
         gösterge_artıs_ham=((ma_gösterge[gösterge_artıs.drop("TÜFE").index].iloc[-1]/ma_gösterge[gösterge_artıs.drop("TÜFE").index].iloc[0])-1)*100
         gösterge_artıs_ham["TÜFE"]=((tüfe.iloc[-1,0]/tüfe.iloc[0,0])-1)*100

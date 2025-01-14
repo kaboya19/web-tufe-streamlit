@@ -1186,11 +1186,13 @@ if page=="Özel Kapsamlı Göstergeler":
         gösterge_artıs_ma=((tüik.iloc[-1]/tüik.iloc[-2])-1)*100
         gösterge_artıs_ma=gösterge_artıs_ma.sort_index()
 
-        st.dataframe(ma_gösterge)
+        
 
         gösterge_artıs_ham=((ma_gösterge[gösterge_artıs_ma.drop("TÜFE").index.values].iloc[-1]/ma_gösterge[gösterge_artıs_ma.drop("TÜFE").index.values].iloc[0])-1)*100
         gösterge_artıs_ham["TÜFE"]=((tüfe.iloc[-1,0]/tüfe.iloc[0,0])-1)*100
         gösterge_artıs_ham=gösterge_artıs_ham.sort_index()
+
+        st.dataframe(gösterge_artıs_ham)
 
                 
         index_labels = [f"{i}" for i in gösterge_artıs.index]  # Örnek index etiketleri

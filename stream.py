@@ -1226,24 +1226,36 @@ if page=="Özel Kapsamlı Göstergeler":
 
         # Grafik düzenlemeleri
         fig.update_layout(
-            title=dict(
-                text=f"Mevsimsellikten Arındırılmış ve Ham Veriler Karşılaştırması",
-                x=0.5,
-                font=dict(size=18, family="Arial")
-            ),
-            xaxis_title="Artış Oranı (%)",
-            yaxis_title="Gruplar",
-            barmode='group',  # Çubukları yan yana yerleştir
-            height=600,
-            margin=dict(l=100, r=20, t=60, b=40),
-            legend=dict(
-                title="Veri Türü",
-                orientation="h",
-                y=-0.2,
-                x=0.5,
-                xanchor="center"
-            )
-        )
+    title=dict(
+        text=f"Mevsimsellikten Arındırılmış ve Ham Veriler Karşılaştırması",
+        x=0.5,
+        font=dict(size=20, family="Arial", color="black", bold=True)  # Başlık metin ayarı
+    ),
+    xaxis=dict(
+        title="Artış Oranı (%)",
+        titlefont=dict(size=16, family="Arial", color="black", bold=True),  # X eksen etiketi
+        tickfont=dict(size=14, family="Arial", color="black", bold=True)   # X ekseni değerleri
+    ),
+    yaxis=dict(
+        title="Gruplar",
+        titlefont=dict(size=16, family="Arial", color="black", bold=True),  # Y eksen etiketi
+        tickfont=dict(size=14, family="Arial", color="black", bold=True)   # Y ekseni değerleri
+    ),
+    barmode='group',  # Çubukları yan yana yerleştir
+    height=600,
+    margin=dict(l=150, r=20, t=80, b=40),
+    legend=dict(
+        title=dict(
+            text="Veri Türü",
+            font=dict(size=16, family="Arial", color="black", bold=True)  # Efsane başlığı
+        ),
+        font=dict(size=14, family="Arial", color="black", bold=True),  # Efsane metinleri
+        orientation="h",
+        y=-0.2,
+        x=0.5,
+        xanchor="center"
+    )
+)
 
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)

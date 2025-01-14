@@ -1192,7 +1192,6 @@ if page=="Özel Kapsamlı Göstergeler":
         gösterge_artıs_ham["TÜFE"]=((tüfe.iloc[-1,0]/tüfe.iloc[0,0])-1)*100
         gösterge_artıs_ham=gösterge_artıs_ham.sort_index()
 
-        st.dataframe(gösterge_artıs_ham)
 
                 
         index_labels = [f"{i}" for i in gösterge_artıs_ham.index]  # Örnek index etiketleri
@@ -1227,7 +1226,7 @@ if page=="Özel Kapsamlı Göstergeler":
             y=index_labels,
             x=gösterge_artıs_ham,
             orientation='h',
-            name="Ham Veriler",
+            name="Ham",
             marker=dict(color='orange'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
             textfont=dict(size=14, family="Arial Black", color=text_colors_ham),
@@ -1237,7 +1236,7 @@ if page=="Özel Kapsamlı Göstergeler":
         # Grafik düzenlemeleri
         fig.update_layout(
     title=dict(
-        text=f"Mevsimsellikten Arındırılmış ve Ham Veriler Karşılaştırması",
+        text=f"Mevsimsellikten Arındırılmış ve Ham Özel Kapsamlı Göstergeler",
         x=0.5,
         font=dict(size=20, family="Arial", color="black")  # Başlık font ayarı
     ),

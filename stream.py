@@ -1017,7 +1017,7 @@ if page=="Harcama Grupları":
 
 if page=="Özel Kapsamlı Göstergeler":
 
-    ma = st.checkbox("Mevsimsellikten Arındır")
+    
 
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
@@ -1168,6 +1168,9 @@ if page=="Özel Kapsamlı Göstergeler":
                 xanchor='right', 
                 yanchor='middle'
             )
+
+
+    ma = st.checkbox("Mevsimsellikten Arındır")
 
 
 

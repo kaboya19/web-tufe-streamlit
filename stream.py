@@ -1233,8 +1233,8 @@ if page=="Özel Kapsamlı Göstergeler":
     ),
     xaxis=dict(
         title="Artış Oranı (%)",
-        titlefont=dict(size=16, family="Arial", color="black"),  # X eksen etiketi
-        tickfont=dict(size=14, family="Arial", color="black")   # X ekseni değerleri
+        titlefont=dict(size=16, family="Arial Black", color="black"),  # X eksen etiketi
+        tickfont=dict(size=14, family="Arial Black", color="black")   # X ekseni değerleri
     ),
     yaxis=dict(
         title="Gruplar",

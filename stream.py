@@ -1222,7 +1222,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Ham Veriler",
             marker=dict(color='orange'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
-            font=dict(size=14, family="Arial Black")
+            font=dict(size=14, family="Arial Black"),
             textposition='outside'
         ))
 

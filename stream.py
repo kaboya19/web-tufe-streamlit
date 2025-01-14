@@ -16,10 +16,10 @@ social_media_links = {
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
-tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler","Metodoloji Notu"]
+tabs=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler","Mevsimsellikten Arındırılmış Göstergeler","Metodoloji Notu"]
 tabs = option_menu(
     menu_title=None,
-    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler" ,"Metodoloji Notu"],
+    options=["Tüketici Fiyat Endeksi","Ana Gruplar","Harcama Grupları","Madde Endeksleri","Özel Kapsamlı Göstergeler","Mevsimsellikten Arındırılmış Göstergeler" ,"Metodoloji Notu"],
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
@@ -1170,41 +1170,13 @@ if page=="Özel Kapsamlı Göstergeler":
             )
 
 
-    import streamlit as st
+    st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
+    st.plotly_chart(figartıs)
+if page=="Mevsimsellikten Arındırılmış Göstergeler":
 
-    # CSS ile stil ayarları
-    st.markdown(
-        """
-        <style>
-        .custom-checkbox-container {
-            display: flex;  /* Yan yana hizalama */
-            align-items: center;  /* Dikey hizalama */
-            gap: 10px;  /* Checkbox ile metin arasındaki boşluk */
-        }
-        .custom-checkbox-label {
-            font-size: 20px;  /* Yazı boyutu */
-            font-weight: bold;  /* Kalın yazı */
-            font-family: Arial, sans-serif;  /* Yazı tipi */
-            color: black;  /* Yazı rengi */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    
 
-    # Checkbox ve metni aynı satıra koyma
-    st.markdown(
-        """
-        <div class="custom-checkbox-container">
-            <input type="checkbox" id="custom_checkbox" onclick="document.getElementById('custom_checkbox_streamlit').click();">
-            <label class="custom-checkbox-label" for="custom_checkbox">Mevsimsellikten Arındır</label>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    # Checkbox durumunu almak için Streamlit checkbox'ını kullanma
-    ma = st.checkbox(" ", key="custom_checkbox_key")
-
+   
    
 
 
@@ -1214,7 +1186,7 @@ if page=="Özel Kapsamlı Göstergeler":
     
 
 
-    if ma:
+    
         st.markdown(f"<h2 style='text-align:left; color:black;'>Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
 
         ma_gösterge=pd.read_csv("göstergeler.csv",index_col=0)
@@ -1310,9 +1282,8 @@ if page=="Özel Kapsamlı Göstergeler":
 
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)
-    else:
-        st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
-        st.plotly_chart(figartıs)
+    
+        
 
 if page=="Madde Endeksleri":
 

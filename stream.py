@@ -1248,10 +1248,10 @@ if page=="Özel Kapsamlı Göstergeler":
     ),
     yaxis=dict(
         title="Gruplar",
-        titlefont=dict(size=16, family="Arial", color="black"),  # Y eksen etiketi
+        titlefont=dict(size=16, family="Arial Black", color="black"),  # Y eksen etiketi
         ticktext=y_tick_text,  # Renkli Y ekseni etiketleri
         tickvals=index_labels,  # Etiket pozisyonları
-        tickfont=dict(size=14, family="Arial", color="black")   # Varsayılan Y ekseni değerleri
+        tickfont=dict(size=14, family="Arial Black", color="black")   # Varsayılan Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
     height=1200,

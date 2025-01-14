@@ -1204,14 +1204,9 @@ if page=="Özel Kapsamlı Göstergeler":
     )
 
     # Checkbox durumunu almak için Streamlit checkbox'ını kullanma
-    is_checked = st.checkbox(" ", key="custom_checkbox_key")
+    ma = st.checkbox(" ", key="custom_checkbox_key")
 
-    # Checkbox durumunu gösterme
-    if is_checked:
-        st.write("Checkbox işaretlendi.")
-    else:
-        st.write("Checkbox işaretlenmedi.")
-
+   
 
 
 

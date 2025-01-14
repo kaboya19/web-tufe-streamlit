@@ -1016,6 +1016,7 @@ if page=="Harcama Grupları":
     st.plotly_chart(figartıs)
 
 if page=="Özel Kapsamlı Göstergeler":
+
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
@@ -1086,92 +1087,14 @@ if page=="Özel Kapsamlı Göstergeler":
     st.plotly_chart(figgösterge)
 
 
-    figgösterge1=go.Figure()
     
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["Hizmet"].index,
-                y=özelgöstergeler["Hizmet"].values,
-                mode='lines+markers',
-                name="Hizmet",
-                line=dict(color='red', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
-    
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["Mallar"].index,
-                y=özelgöstergeler["Mallar"].values,
-                mode='lines+markers',
-                name="Mallar",
-                line=dict(color='blue', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
-    
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["TÜFE B"].index,
-                y=özelgöstergeler["TÜFE B"].values,
-                mode='lines+markers',
-                name="B Endeksi",
-                line=dict(color='orange', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
-    
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["TÜFE C"].index,
-                y=özelgöstergeler["TÜFE C"].values,
-                mode='lines+markers',
-                name="C Endeksi",
-                line=dict(color='brown', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
-    
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["Enerji"].index,
-                y=özelgöstergeler["Enerji"].values,
-                mode='lines+markers',
-                name="Enerji",
-                line=dict(color='magenta', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
         
 
-    figgösterge1.add_trace(go.Scatter(
-                x=özelgöstergeler["Kira"].index,
-                y=özelgöstergeler["Kira"].values,
-                mode='lines+markers',
-                name="Kira",
-                line=dict(color='yellow', width=4),
-                marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
-            ))
-        
-        
-
-
+    ma = st.checkbox("Mevsimsellikten Arındır")
 
     
    
    
-
-        # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
-    figgösterge1.update_layout(
-            xaxis=dict(
-                tickvals=özelgöstergeler.index,  # Original datetime index
-                ticktext=özelgöstergeler.index.strftime("%d.%m.%Y"),  # Custom formatted labels
-                tickfont=dict(size=14, family="Arial Black", color="black")
-            ),
-            yaxis=dict(
-                tickfont=dict(size=14, family="Arial Black", color="black")
-            ),
-            font=dict(family="Arial", size=14, color="black")
-        )
-    
-    st.plotly_chart(figgösterge1)
-
 
 
     özelgöstergeler["TÜFE"]=tüfe["TÜFE"].values
@@ -1249,6 +1172,66 @@ if page=="Özel Kapsamlı Göstergeler":
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
     st.plotly_chart(figartıs)
+
+
+    if ma:
+        tüik=pd.read_csv("mevsimselliktenarındırılmışgöstergeler.csv",index_col=0)
+        gösterge_artıs_ma=((tüik.iloc[-1]/tüik.iloc[-2])-1)*100
+        gösterge_artıs_ma=gösterge_artıs_ma.sort_index()
+
+                
+        index_labels = [f"{i}" for i in gösterge_artıs.index]  # Örnek index etiketleri
+
+        colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs.index]
+
+
+        fig = go.Figure()
+
+        # Mevsimsellikten Arındırılmış Veriler
+        fig.add_trace(go.Bar(
+            y=index_labels,
+            x=gösterge_artıs_ma,
+            orientation='h',
+            name="Mevsimsellikten Arındırılmış",
+            marker=dict(color='blue'),
+            text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
+            textposition='outside'
+        ))
+
+        # Ham Veriler
+        fig.add_trace(go.Bar(
+            y=index_labels,
+            x=gösterge_artıs,
+            orientation='h',
+            name="Ham Veriler",
+            marker=dict(color='orange'),
+            text=[f"{val:.2f}%" for val in gösterge_artıs],  # Çubuğun üstüne değer ekleme
+            textposition='outside'
+        ))
+
+        # Grafik düzenlemeleri
+        fig.update_layout(
+            title=dict(
+                text=f"Mevsimsellikten Arındırılmış ve Ham Veriler Karşılaştırması",
+                x=0.5,
+                font=dict(size=18, family="Arial")
+            ),
+            xaxis_title="Artış Oranı (%)",
+            yaxis_title="Gruplar",
+            barmode='group',  # Çubukları yan yana yerleştir
+            height=600,
+            margin=dict(l=100, r=20, t=60, b=40),
+            legend=dict(
+                title="Veri Türü",
+                orientation="h",
+                y=-0.2,
+                x=0.5,
+                xanchor="center"
+            )
+        )
+
+        # Streamlit'te grafiği görüntüleme
+        st.plotly_chart(fig)
 
 if page=="Madde Endeksleri":
 

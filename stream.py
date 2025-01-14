@@ -1017,6 +1017,8 @@ if page=="Harcama Grupları":
 
 if page=="Özel Kapsamlı Göstergeler":
 
+    ma = st.checkbox("Mevsimsellikten Arındır")
+
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
@@ -1090,7 +1092,7 @@ if page=="Özel Kapsamlı Göstergeler":
     
         
 
-    ma = st.checkbox("Mevsimsellikten Arındır")
+    
 
     
    
@@ -1171,7 +1173,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
-    st.plotly_chart(figartıs)
+    
 
 
     if ma:
@@ -1179,10 +1181,13 @@ if page=="Özel Kapsamlı Göstergeler":
         gösterge_artıs_ma=((tüik.iloc[-1]/tüik.iloc[-2])-1)*100
         gösterge_artıs_ma=gösterge_artıs_ma.sort_index()
 
+        gösterge_artıs_ham=gösterge_artıs.loc[gösterge_artıs_ma.index]
+        gösterge_artıs_ham=gösterge_artıs_ham.sort_index()
+
                 
         index_labels = [f"{i}" for i in gösterge_artıs.index]  # Örnek index etiketleri
 
-        colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs.index]
+        colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs_ham.index]
 
 
         fig = go.Figure()
@@ -1201,11 +1206,11 @@ if page=="Özel Kapsamlı Göstergeler":
         # Ham Veriler
         fig.add_trace(go.Bar(
             y=index_labels,
-            x=gösterge_artıs,
+            x=gösterge_artıs_ham,
             orientation='h',
             name="Ham Veriler",
             marker=dict(color='orange'),
-            text=[f"{val:.2f}%" for val in gösterge_artıs],  # Çubuğun üstüne değer ekleme
+            text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
             textposition='outside'
         ))
 
@@ -1232,6 +1237,8 @@ if page=="Özel Kapsamlı Göstergeler":
 
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)
+    else:
+        st.plotly_chart(figartıs)
 
 if page=="Madde Endeksleri":
 

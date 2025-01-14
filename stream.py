@@ -1188,7 +1188,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
         st.dataframe(ma_gösterge)
 
-        gösterge_artıs_ham=((ma_gösterge[gösterge_artıs.drop("TÜFE").index].iloc[-1]/ma_gösterge[gösterge_artıs.drop("TÜFE").index].iloc[0])-1)*100
+        gösterge_artıs_ham=((ma_gösterge[gösterge_artıs.drop("TÜFE").index.values].iloc[-1]/ma_gösterge[gösterge_artıs.drop("TÜFE").index.values].iloc[0])-1)*100
         gösterge_artıs_ham["TÜFE"]=((tüfe.iloc[-1,0]/tüfe.iloc[0,0])-1)*100
         gösterge_artıs_ham=gösterge_artıs_ham.sort_index()
 

@@ -1246,11 +1246,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 
         # Grafik düzenlemeleri
         fig.update_layout(
-    title=dict(
-        text=f"Mevsimsellikten Arındırılmış ve Ham Özel Kapsamlı Göstergeler",
-        x=0.5,
-        font=dict(size=20, family="Arial", color="black")  # Başlık font ayarı
-    ),
+  
     xaxis=dict(
         title="Artış Oranı (%)",
         titlefont=dict(size=16, family="Arial Black", color="black"),  # X eksen etiketi

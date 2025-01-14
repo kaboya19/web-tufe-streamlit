@@ -1190,10 +1190,10 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         st.markdown(
         """
         <h2 style='text-align:left; color:black;'>
-            Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri Artış Oranları
+            Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri 6-13 Ocak Dönemi Artış Oranları
         </h2>
-        <p style='text-align:left; color:black; font-size:16px;'>
-            6-13 Ocak Dönemi
+        <p style='text-align:left; color:black; font-size:16px; font:Arial Black'>
+            **Kira artışı 31 Aralık-13 Ocak dönemini kapsamaktadır.
         </p>
         """,
         unsafe_allow_html=True

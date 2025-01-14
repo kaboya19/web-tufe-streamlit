@@ -1196,13 +1196,12 @@ if page=="Özel Kapsamlı Göstergeler":
     st.markdown(
         """
         <div class="custom-checkbox-container">
-            <input type="checkbox" id="custom_checkbox">
+            <input type="checkbox" id="custom_checkbox" onclick="document.getElementById('custom_checkbox_streamlit').click();">
             <label class="custom-checkbox-label" for="custom_checkbox">Mevsimsellikten Arındır</label>
         </div>
         """,
         unsafe_allow_html=True
     )
-
     # Checkbox durumunu almak için Streamlit checkbox'ını kullanma
     ma = st.checkbox(" ", key="custom_checkbox_key")
 

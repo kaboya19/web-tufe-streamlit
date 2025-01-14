@@ -1211,7 +1211,7 @@ if page=="Özel Kapsamlı Göstergeler":
             marker=dict(color='blue'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
             textposition='outside',
-            textfont=dict(size=16, family="Arial, Bold", color="black")  # Metin büyütüldü ve kalınlaştırıldı
+            textfont=dict(size=20, family="Arial Black, Bold", color="black")  # Metin büyütüldü ve kalınlaştırıldı
         ))
 
         # Ham Veriler

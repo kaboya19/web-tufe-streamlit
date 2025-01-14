@@ -1170,27 +1170,48 @@ if page=="Özel Kapsamlı Göstergeler":
             )
 
 
-    st.markdown(
-    """
-    <style>
-    .custom-checkbox-label {
-        font-size: 20px;  /* Yazı boyutu */
-        font-weight: bold;  /* Kalın yazı */
-        font-family: Arial, sans-serif;  /* Yazı tipi */
-        color: black;  /* Yazı rengi */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+    import streamlit as st
 
-# Checkbox ve özel stil
-    
+    # CSS ile stil ayarları
     st.markdown(
-    f'<label class="custom-checkbox-label" for="custom_checkbox">Mevsimsellikten Arındır</label>',
-    unsafe_allow_html=True
-)
-    ma = st.checkbox("", key="custom_checkbox")
+        """
+        <style>
+        .custom-checkbox-container {
+            display: flex;  /* Yan yana hizalama */
+            align-items: center;  /* Dikey hizalama */
+            gap: 10px;  /* Checkbox ile metin arasındaki boşluk */
+        }
+        .custom-checkbox-label {
+            font-size: 20px;  /* Yazı boyutu */
+            font-weight: bold;  /* Kalın yazı */
+            font-family: Arial, sans-serif;  /* Yazı tipi */
+            color: black;  /* Yazı rengi */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Checkbox ve metni aynı satıra koyma
+    st.markdown(
+        """
+        <div class="custom-checkbox-container">
+            <input type="checkbox" id="custom_checkbox">
+            <label class="custom-checkbox-label" for="custom_checkbox">Mevsimsellikten Arındır</label>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Checkbox durumunu almak için Streamlit checkbox'ını kullanma
+    is_checked = st.checkbox(" ", key="custom_checkbox_key")
+
+    # Checkbox durumunu gösterme
+    if is_checked:
+        st.write("Checkbox işaretlendi.")
+    else:
+        st.write("Checkbox işaretlenmedi.")
+
 
 
 

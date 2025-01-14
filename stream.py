@@ -1195,7 +1195,7 @@ if page=="Özel Kapsamlı Göstergeler":
         st.dataframe(gösterge_artıs_ham)
 
                 
-        index_labels = [f"{i}" for i in gösterge_artıs.index]  # Örnek index etiketleri
+        index_labels = [f"{i}" for i in gösterge_artıs_ham.index]  # Örnek index etiketleri
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs_ham.index]
 

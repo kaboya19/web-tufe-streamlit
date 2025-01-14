@@ -1185,11 +1185,12 @@ if page=="Özel Kapsamlı Göstergeler":
 )
 
 # Checkbox ve özel stil
-    ma = st.checkbox("", key="custom_checkbox")
+    
     st.markdown(
     f'<label class="custom-checkbox-label" for="custom_checkbox">Mevsimsellikten Arındır</label>',
     unsafe_allow_html=True
 )
+    ma = st.checkbox("", key="custom_checkbox")
 
 
 

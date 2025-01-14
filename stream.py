@@ -1199,6 +1199,9 @@ if page=="Özel Kapsamlı Göstergeler":
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs_ham.index]
 
+        text_colors_mevsim = ["red" if label == "TÜFE" else "black" for label in index_labels]
+        text_colors_ham = ["red" if label == "TÜFE" else "black" for label in index_labels]
+
 
         fig = go.Figure()
 
@@ -1210,7 +1213,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Mevsimsellikten Arındırılmış",
             marker=dict(color='blue'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=14, family="Arial Black", color="black"),
+            textfont=dict(size=14, family="Arial Black", color=text_colors_mevsim),
             textposition='outside',
         ))
 
@@ -1222,7 +1225,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Ham Veriler",
             marker=dict(color='orange'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=14, family="Arial Black", color="black"),
+            textfont=dict(size=14, family="Arial Black", color=text_colors_ham),
             textposition='outside'
         ))
 

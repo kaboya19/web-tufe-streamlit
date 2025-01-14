@@ -1170,7 +1170,22 @@ if page=="Özel Kapsamlı Göstergeler":
             )
 
 
-    ma = st.checkbox("Mevsimsellikten Arındır")
+    st.markdown(
+    """
+    <style>
+    .custom-checkbox-label {
+        font-size: 20px;  /* Yazı boyutu */
+        font-weight: bold;  /* Kalın yazı */
+        font-family: Arial, sans-serif;  /* Yazı tipi */
+        color: black;  /* Yazı rengi */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Checkbox ve özel stil
+    ma = st.checkbox("Mevsimsellikten Arındır", key="custom_checkbox")
 
 
 

@@ -1224,7 +1224,7 @@ if page=="Özel Kapsamlı Göstergeler":
         for i, value in enumerate(gösterge_artıs_ham.values):
             if value >= 0:
                 # Pozitif değerler sol tarafta
-                figartıs.add_annotation(
+                fig.add_annotation(
                     x=value, 
                     y=shortened_index[i], 
                     text=f"{value:.2f}%", 
@@ -1236,7 +1236,7 @@ if page=="Özel Kapsamlı Göstergeler":
                 )
             else:
                 # Negatif değerler sağ tarafta
-                figartıs.add_annotation(
+                fig.add_annotation(
                     x=value, 
                     y=shortened_index[i], 
                     text=f"{value:.2f}%", 

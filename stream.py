@@ -1202,6 +1202,11 @@ if page=="Özel Kapsamlı Göstergeler":
         text_colors_mevsim = ["red" if label == "TÜFE" else "black" for label in index_labels]
         text_colors_ham = ["red" if label == "TÜFE" else "black" for label in index_labels]
 
+        y_tick_text = [
+    f"<span style='color:red;'>{label}</span>" if label == "TÜFE" else label
+    for label in index_labels
+]
+
 
         fig = go.Figure()
 
@@ -1244,7 +1249,8 @@ if page=="Özel Kapsamlı Göstergeler":
     yaxis=dict(
         title="Gruplar",
         titlefont=dict(size=16, family="Arial Black", color="black"),  # Y eksen etiketi
-        tickfont=dict(size=14, family="Arial Black", color="black")   # Y ekseni değerleri
+        tickfont=dict(size=14, family="Arial Black", color="black"),   # Y ekseni değerleri
+        ticktext=y_tick_text,
     ),
     barmode='group',  # Çubukları yan yana yerleştir
     height=1200,

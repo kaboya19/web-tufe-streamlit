@@ -1229,17 +1229,17 @@ if page=="Özel Kapsamlı Göstergeler":
     title=dict(
         text=f"Mevsimsellikten Arındırılmış ve Ham Veriler Karşılaştırması",
         x=0.5,
-        font=dict(size=20, family="Arial", color="black", bold=True)  # Başlık metin ayarı
+        font=dict(size=20, family="Arial Black", color="black")  # Başlık metin ayarı
     ),
     xaxis=dict(
         title="Artış Oranı (%)",
-        titlefont=dict(size=16, family="Arial", color="black", bold=True),  # X eksen etiketi
-        tickfont=dict(size=14, family="Arial", color="black", bold=True)   # X ekseni değerleri
+        titlefont=dict(size=16, family="Arial Black", color="black"),  # X eksen etiketi
+        tickfont=dict(size=14, family="Arial Black", color="black")   # X ekseni değerleri
     ),
     yaxis=dict(
         title="Gruplar",
-        titlefont=dict(size=16, family="Arial", color="black", bold=True),  # Y eksen etiketi
-        tickfont=dict(size=14, family="Arial", color="black", bold=True)   # Y ekseni değerleri
+        titlefont=dict(size=16, family="Arial Black", color="black"),  # Y eksen etiketi
+        tickfont=dict(size=14, family="Arial Black", color="black")   # Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
     height=600,
@@ -1247,9 +1247,9 @@ if page=="Özel Kapsamlı Göstergeler":
     legend=dict(
         title=dict(
             text="Veri Türü",
-            font=dict(size=16, family="Arial", color="black", bold=True)  # Efsane başlığı
+            font=dict(size=16, family="Arial Black", color="black")  # Efsane başlığı
         ),
-        font=dict(size=14, family="Arial", color="black", bold=True),  # Efsane metinleri
+        font=dict(size=14, family="Arial Black", color="black"),  # Efsane metinleri
         orientation="h",
         y=-0.2,
         x=0.5,

@@ -1187,7 +1187,18 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 
 
     
-        st.markdown(f"<h2 style='text-align:left; color:black;'>Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
+        st.markdown(
+    """
+    <h2 style='text-align:left; color:black;'>
+        Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri Artış Oranları
+    </h2>
+    <p style='text-align:left; color:gray; font-size:16px;'>
+        6-13 Ocak Dönemi
+    </p>
+    """,
+    unsafe_allow_html=True
+)
+
 
         ma_gösterge=pd.read_csv("göstergeler.csv",index_col=0)
         tüfe=pd.read_csv("tüfe.csv",index_col=0)

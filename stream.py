@@ -1210,6 +1210,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Mevsimsellikten Arındırılmış",
             marker=dict(color='blue'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
+            textfont=dict(size=20, family="Arial", color="black"),
             textposition='outside',
         ))
 
@@ -1221,6 +1222,7 @@ if page=="Özel Kapsamlı Göstergeler":
             name="Ham Veriler",
             marker=dict(color='orange'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
+            textfont=dict(size=20, family="Arial", color="black"),
             textposition='outside'
         ))
 

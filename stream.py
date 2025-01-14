@@ -1259,9 +1259,9 @@ if page=="Özel Kapsamlı Göstergeler":
     legend=dict(
         title=dict(
             text="Veri Türü",
-            font=dict(size=16, family="Arial", color="black")  # Efsane başlığı
+            font=dict(size=16, family="Arial Black", color="black")  # Efsane başlığı
         ),
-        font=dict(size=14, family="Arial", color="black"),  # Efsane metinleri
+        font=dict(size=14, family="Arial Black", color="black"),  # Efsane metinleri
         orientation="v",  # Legend dikey olarak yerleştirilir
         x=1.02,  # Sağ kenara yakın
         y=1,  # Üst kenara yakın

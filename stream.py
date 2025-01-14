@@ -1172,11 +1172,12 @@ if page=="Özel Kapsamlı Göstergeler":
 
 
 
-    st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
+    
     
 
 
     if ma:
+        st.markdown(f"<h2 style='text-align:left; color:black;'>Mevsimsellikten Arındırılmış Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
 
         ma_gösterge=pd.read_csv("göstergeler.csv",index_col=0)
         tüfe=pd.read_csv("tüfe.csv",index_col=0)
@@ -1275,6 +1276,7 @@ if page=="Özel Kapsamlı Göstergeler":
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)
     else:
+        st.markdown(f"<h2 style='text-align:left; color:black;'>Özel Kapsamlı TÜFE Göstergeleri Artış Oranları</h2>", unsafe_allow_html=True)
         st.plotly_chart(figartıs)
 
 if page=="Madde Endeksleri":

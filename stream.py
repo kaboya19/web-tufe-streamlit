@@ -569,9 +569,9 @@ if page=="Tüketici Fiyat Endeksi":
 
 
     
-    if selected_group!="TÜFE":
+    
    
-        fiyat = fiyatlar.loc[selected_group]
+        
         
 
 
@@ -661,13 +661,7 @@ if page=="Tüketici Fiyat Endeksi":
 
 
         
-    else:
-        if selected_group!="TÜFE":
-            st.markdown(f"<h2 style='text-align:left; color:black;'>Fiyat Listesi</h2>", unsafe_allow_html=True)
-        try:
-            st.dataframe(fiyat)
-        except:
-             pass
+    
         
 if page=="Ana Gruplar":
 

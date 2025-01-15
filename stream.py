@@ -559,12 +559,7 @@ if page=="Tüketici Fiyat Endeksi":
     data=data.sort_index()
 
 
-    fiyatlar=pd.read_csv("gıdalı.csv",index_col=0)
-    fiyatlar=fiyatlar.sort_index()
-   
-    fiyatlar=fiyatlar.sort_index()
-   
-    excel_data = to_excel(fiyatlar)
+    
     
 
 

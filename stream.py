@@ -1294,7 +1294,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
     )
 )
         fig.update_layout(
-    uniformtext=dict(mode="hide", minsize=10)
+    uniformtext=dict(mode="hide", minsize=13)
 )
 
         # Streamlit'te grafiği görüntüleme

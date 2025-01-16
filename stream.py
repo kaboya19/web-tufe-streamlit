@@ -1262,6 +1262,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
     ),
     barmode='group',  # Çubukları yan yana yerleştir
     height=1200,
+    width=1000,
     margin=dict(l=150, r=20, t=80, b=40),
     legend=dict(
         title=dict(

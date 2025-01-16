@@ -1274,7 +1274,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         tickfont=dict(size=14, family="Arial Black", color="black")   # Varsayılan Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
-    height=1200,
+    height=1500,
     width=2000,
     margin=dict(l=150, r=20, t=80, b=40),
     legend=dict(

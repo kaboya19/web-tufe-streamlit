@@ -1218,8 +1218,11 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 ]
 
 
-        max_value = max(max(gösterge_artıs_ma), max(gösterge_artıs_ham))
-        min_value = min(min(gösterge_artıs_ma), min(gösterge_artıs_ham))
+        max_ham=max(gösterge_artıs_ma)
+        min_ham=min(gösterge_artıs_ham)
+
+        max_ma=max(gösterge_artıs_ma)
+        min_ma=min(gösterge_artıs_ma)
 
         # Grafik oluşturma
         fig = go.Figure()
@@ -1235,7 +1238,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             f"{val:.2f}%" for val in gösterge_artıs_ma
         ],
         textposition=[
-            "outside" if val> (max_value-1) or val <( min_value+1) else "inside"
+            "outside" if val> (max_ma-1) or val <( min_ma+1) else "inside"
             for val in gösterge_artıs_ma.values
         ],
         textfont=dict(size=14, family="Arial Black", color="black")
@@ -1252,7 +1255,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 f"{val:.2f}%" for val in gösterge_artıs_ham
             ],
             textposition=[
-                "outside" if val> (max_value-1) or val <( min_value+1)  else "inside"
+                "outside" if val> (max_ham-1) or val <( min_ham+1)  else "inside"
                 for val in gösterge_artıs_ham.values
             ],
             textfont=dict(size=14, family="Arial Black", color="black")

@@ -1255,11 +1255,17 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 f"{val:.2f}%" for val in gösterge_artıs_ham
             ],
             textposition=[
-                "inside" if val>(max_ma-2) or val <( min_ma+2) else "outside"
+                "inside" if val > (max_ma - 2) or val < (min_ma + 2) else "outside"
                 for val in gösterge_artıs_ham.values
             ],
-            textfont=dict(size=14, family="Arial Black", color="black")
+            textfont=dict(size=14, family="Arial Black", color="black"),
+            insidetextfont=dict(size=14, family="Arial Black", color="white")
         ))
+
+        fig.update_layout(
+            uniformtext=dict(mode="hide", minsize=14),
+            cliponaxis=False
+        )
 
         # Grafik düzenlemeleri
         fig.update_layout(
@@ -1294,7 +1300,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
     )
 )
   
-        fig.update_traces(cliponaxis=False)
+        
 
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)

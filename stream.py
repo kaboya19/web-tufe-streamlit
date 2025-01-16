@@ -1255,7 +1255,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 f"{val:.2f}%" for val in gösterge_artıs_ham
             ],
             textposition=[
-                "outside" if val== (max_ham) or val ==( min_ham)  else "inside"
+                "inside" if val== (max_ham) or val ==( min_ham)  else "outside"
                 for val in gösterge_artıs_ham.values
             ],
             textfont=dict(size=14, family="Arial Black", color="black")

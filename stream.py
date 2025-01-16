@@ -1241,8 +1241,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             "inside" if val>(max_ma-2) or val <( min_ma+2) else "outside"
             for val in gösterge_artıs_ma.values
         ],
-        textfont=dict(size=20, family="Arial Black", color="black"),
-        insidetextfont=dict(size=20, family="Arial Black", color="black")
+        textfont=dict(size=14, family="Arial Black", color="black")
     ))
 
     # Ham Veriler
@@ -1256,11 +1255,10 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 f"{val:.2f}%" for val in gösterge_artıs_ham
             ],
             textposition=[
-                "inside" if val > (max_ma - 2) or val < (min_ma + 2) else "outside"
+                "inside" if val>(max_ma-2) or val <( min_ma+2) else "outside"
                 for val in gösterge_artıs_ham.values
             ],
-            textfont=dict(size=20, family="Arial Black", color="black"),
-            insidetextfont=dict(size=20, family="Arial Black", color="black")  # İç metinler için büyüklüğü ayarla
+            textfont=dict(size=14, family="Arial Black", color="black")
         ))
 
         # Grafik düzenlemeleri
@@ -1294,6 +1292,9 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         xanchor="left",  # X ekseninde sol hizalama
         yanchor="top"    # Y ekseninde üst hizalama
     )
+)
+        fig.update_layout(
+    uniformtext=dict(mode="hide", minsize=14)
 )
 
         # Streamlit'te grafiği görüntüleme

@@ -1296,6 +1296,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         fig.update_layout(
     uniformtext=dict(mode="hide", minsize=13)
 )
+        fig.update_traces(cliponaxis=False)
 
         # Streamlit'te grafiği görüntüleme
         st.plotly_chart(fig)

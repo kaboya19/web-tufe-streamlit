@@ -1236,7 +1236,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         ],
         textposition=[
             "outside" if val> (max_value-1) or val <( min_value+1) else "inside"
-            for val in gösterge_artıs_ma
+            for val in gösterge_artıs_ma.values
         ],
         textfont=dict(size=14, family="Arial Black", color="black")
     ))
@@ -1253,7 +1253,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             ],
             textposition=[
                 "outside" if val> (max_value-1) or val <( min_value+1)  else "inside"
-                for val in gösterge_artıs_ham
+                for val in gösterge_artıs_ham.values
             ],
             textfont=dict(size=14, family="Arial Black", color="black")
         ))
@@ -1274,7 +1274,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         tickfont=dict(size=14, family="Arial Black", color="black")   # Varsayılan Y ekseni değerleri
     ),
     barmode='group',  # Çubukları yan yana yerleştir
-    height=1500,
+    height=1200,
     width=2000,
     margin=dict(l=150, r=20, t=80, b=40),
     legend=dict(

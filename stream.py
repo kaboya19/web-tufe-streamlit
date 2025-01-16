@@ -1235,7 +1235,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             f"{val:.2f}%" for val in gösterge_artıs_ma
         ],
         textposition=[
-            "outside" if val == max_value or val == min_value else "inside"
+            "outside" if val> (max_value-1) or val <( min_value+1) else "inside"
             for val in gösterge_artıs_ma
         ],
         textfont=dict(size=14, family="Arial Black", color="black")
@@ -1252,7 +1252,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 f"{val:.2f}%" for val in gösterge_artıs_ham
             ],
             textposition=[
-                "outside" if val == max_value or val == min_value else "inside"
+                "outside" if val> (max_value-1) or val <( min_value+1)  else "inside"
                 for val in gösterge_artıs_ham
             ],
             textfont=dict(size=14, family="Arial Black", color="black")

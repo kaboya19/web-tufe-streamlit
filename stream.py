@@ -1219,6 +1219,10 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 ]
 
 
+        max_value = max(max(gösterge_artıs_ma), max(gösterge_artıs_ham))
+        min_value = min(min(gösterge_artıs_ma), min(gösterge_artıs_ham))
+
+        # Grafik oluşturma
         fig = go.Figure()
 
         # Mevsimsellikten Arındırılmış Veriler
@@ -1228,22 +1232,27 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             orientation='h',
             name="Mevsimsellikten Arındırılmış",
             marker=dict(color='blue'),
-            text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=12, family="Arial Black", color=text_colors_mevsim),
+            text=[
+                f"{val:.2f}%" if val == max_value or val == min_value else ""
+                for val in gösterge_artıs_ma
+            ],  # Maks ve min değerleri göster
+            textfont=dict(size=14, family="Arial Black", color="black"),
             textposition='outside',
         ))
 
-        # Ham Veriler
         fig.add_trace(go.Bar(
-            y=index_labels,
-            x=gösterge_artıs_ham,
-            orientation='h',
-            name="Ham",
-            marker=dict(color='orange'),
-            text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=12, family="Arial Black", color=text_colors_ham),
-            textposition='outside'
-        ))
+    y=index_labels,
+    x=gösterge_artıs_ham,
+    orientation='h',
+    name="Ham",
+    marker=dict(color='orange'),
+    text=[
+        f"{val:.2f}%" if val == max_value or val == min_value else ""
+        for val in gösterge_artıs_ham
+    ],  # Maks ve min değerleri göster
+    textfont=dict(size=14, family="Arial Black", color="black"),
+    textposition='outside'
+))
 
         # Grafik düzenlemeleri
         fig.update_layout(

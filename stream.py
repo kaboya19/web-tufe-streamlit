@@ -1229,7 +1229,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             name="Mevsimsellikten Arındırılmış",
             marker=dict(color='blue'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ma],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=14, family="Arial Black", color=text_colors_mevsim),
+            textfont=dict(size=12, family="Arial Black", color=text_colors_mevsim),
             textposition='outside',
         ))
 
@@ -1241,7 +1241,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             name="Ham",
             marker=dict(color='orange'),
             text=[f"{val:.2f}%" for val in gösterge_artıs_ham],  # Çubuğun üstüne değer ekleme
-            textfont=dict(size=14, family="Arial Black", color=text_colors_ham),
+            textfont=dict(size=12, family="Arial Black", color=text_colors_ham),
             textposition='outside'
         ))
 

@@ -349,8 +349,8 @@ if page=="Tüketici Fiyat Endeksi":
 
 
         figgalt.add_trace(go.Scatter(
-                x=tüfe.index,
-                y=tüfe["TÜFE"].values,
+                x=tüfe.index[1:],
+                y=tüfe["TÜFE"].values[1:],
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),

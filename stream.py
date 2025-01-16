@@ -1227,32 +1227,43 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 
         # Mevsimsellikten Arındırılmış Veriler
         fig.add_trace(go.Bar(
-            y=index_labels,
-            x=gösterge_artıs_ma,
-            orientation='h',
-            name="Mevsimsellikten Arındırılmış",
-            marker=dict(color='blue'),
-            text=[
-                f"{val:.2f}%" if val == max_value or val == min_value else ""
-                for val in gösterge_artıs_ma
-            ],  # Maks ve min değerleri göster
-            textfont=dict(size=14, family="Arial Black", color="black"),
-            textposition='outside',
-        ))
+        y=index_labels,
+        x=gösterge_artıs_ma,
+        orientation='h',
+        name="Mevsimsellikten Arındırılmış",
+        marker=dict(color='blue'),
+        text=[
+            # Maks ve min değerler üstte, diğerleri yan tarafta
+            f"{val:.2f}%" if val == max_value or val == min_value else f"{val:.2f}%"
+            for val in gösterge_artıs_ma
+        ],
+        textposition=[
+            # Maks ve min değerlerin konumu "outside", diğerleri "middle right"
+            "outside" if val == max_value or val == min_value else "middle right"
+            for val in gösterge_artıs_ma
+        ],
+        textfont=dict(size=14, family="Arial Black", color="black")
+    ))
 
+    # Ham Veriler
         fig.add_trace(go.Bar(
-    y=index_labels,
-    x=gösterge_artıs_ham,
-    orientation='h',
-    name="Ham",
-    marker=dict(color='orange'),
-    text=[
-        f"{val:.2f}%" if val == max_value or val == min_value else ""
-        for val in gösterge_artıs_ham
-    ],  # Maks ve min değerleri göster
-    textfont=dict(size=14, family="Arial Black", color="black"),
-    textposition='outside'
-))
+            y=index_labels,
+            x=gösterge_artıs_ham,
+            orientation='h',
+            name="Ham",
+            marker=dict(color='orange'),
+            text=[
+                # Maks ve min değerler üstte, diğerleri yan tarafta
+                f"{val:.2f}%" if val == max_value or val == min_value else f"{val:.2f}%"
+                for val in gösterge_artıs_ham
+            ],
+            textposition=[
+                # Maks ve min değerlerin konumu "outside", diğerleri "middle right"
+                "outside" if val == max_value or val == min_value else "middle right"
+                for val in gösterge_artıs_ham
+            ],
+            textfont=dict(size=14, family="Arial Black", color="black")
+        ))
 
         # Grafik düzenlemeleri
         fig.update_layout(

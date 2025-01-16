@@ -1262,10 +1262,10 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             insidetextfont=dict(size=14, family="Arial Black", color="white")
         ))
 
-        fig.update_layout(
-            uniformtext=dict(mode="hide", minsize=14),
-            cliponaxis=False
-        )
+        fig.update_traces(cliponaxis=False)
+
+        # Keep all text size consistent
+        fig.update_layout(uniformtext=dict(mode="show", minsize=16))
 
         # Grafik düzenlemeleri
         fig.update_layout(

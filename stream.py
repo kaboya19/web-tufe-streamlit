@@ -1241,7 +1241,8 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             "inside" if val>(max_ma-2) or val <( min_ma+2) else "outside"
             for val in gösterge_artıs_ma.values
         ],
-        textfont=dict(size=14, family="Arial Black", color="black")
+        textfont=dict(size=14, family="Arial Black", color="black"),
+        insidetextfont=dict(size=14, family="Arial Black", color="black")
     ))
 
     # Ham Veriler

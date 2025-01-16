@@ -1259,7 +1259,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
                 for val in gösterge_artıs_ham.values
             ],
             textfont=dict(size=14, family="Arial Black", color="black"),
-            insidetextfont=dict(size=14, family="Arial Black", color="white")
+            insidetextfont=dict(size=14, family="Arial Black", color="black")
         ))
 
         fig.update_traces(cliponaxis=False)

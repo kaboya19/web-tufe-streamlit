@@ -555,8 +555,7 @@ if page=="Tüketici Fiyat Endeksi":
         processed_data = output.getvalue()  # Bellekteki dosya verisini al
         return processed_data
 
-    data=pd.read_csv("gıdalı.csv",index_col=0)
-    data=data.sort_index()
+    
 
 
     

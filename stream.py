@@ -1242,21 +1242,21 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
     ))
 
     # Ham Veriler
-    fig.add_trace(go.Bar(
-        y=index_labels,
-        x=gösterge_artıs_ham,
-        orientation='h',
-        name="Ham",
-        marker=dict(color='orange'),
-        text=[
-            f"{val:.2f}%" for val in gösterge_artıs_ham
-        ],
-        textposition=[
-            "outside" if val == max_value or val == min_value else "inside"
-            for val in gösterge_artıs_ham
-        ],
-        textfont=dict(size=14, family="Arial Black", color="black")
-    ))
+        fig.add_trace(go.Bar(
+            y=index_labels,
+            x=gösterge_artıs_ham,
+            orientation='h',
+            name="Ham",
+            marker=dict(color='orange'),
+            text=[
+                f"{val:.2f}%" for val in gösterge_artıs_ham
+            ],
+            textposition=[
+                "outside" if val == max_value or val == min_value else "inside"
+                for val in gösterge_artıs_ham
+            ],
+            textfont=dict(size=14, family="Arial Black", color="black")
+        ))
 
         # Grafik düzenlemeleri
         fig.update_layout(

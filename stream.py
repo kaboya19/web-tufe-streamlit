@@ -1238,7 +1238,7 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
             f"{val:.2f}%" for val in gösterge_artıs_ma
         ],
         textposition=[
-            "inside" if val==(max_ma) or val ==( min_ma) else "outside"
+            "inside" if val>(max_ma-2) or val <( min_ma+2) else "outside"
             for val in gösterge_artıs_ma.values
         ],
         textfont=dict(size=14, family="Arial Black", color="black")

@@ -772,7 +772,7 @@ if page=="Ana Gruplar":
 
     
     selected_harcamagruplarıartıs=pd.DataFrame(columns=harcama_grupları.columns)
-    for col in harcama_grupları.index:
+    for col in harcama_grupları.columns:
         selected_harcamagruplarıartıs[col]=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
 

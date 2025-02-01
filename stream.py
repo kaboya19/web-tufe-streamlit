@@ -1053,13 +1053,13 @@ if page=="Özel Kapsamlı Göstergeler":
     last_value = selected_group_data.iloc[-1] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
-
-    
+    aylık=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").pct_change().iloc[-1]*100
+    aylık=aylık.round(2)
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                
+                Şubat Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)

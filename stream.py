@@ -1032,9 +1032,9 @@ if page=="Özel Kapsamlı Göstergeler":
 
     
 
-    tüfe=pd.read_csv("tüfe.csv",index_col=0)
+    tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
-    özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
+    özelgöstergeler=pd.read_csv("özelgöstergeler_int.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
     gösterge=özelgöstergeler.columns.values
 
@@ -1049,7 +1049,7 @@ if page=="Özel Kapsamlı Göstergeler":
   
 
         # Değişim yüzdesini hesaplama
-    first_value = selected_group_data.iloc[0]  # İlk değer
+    first_value = 100
     last_value = selected_group_data.iloc[-1] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
@@ -1058,7 +1058,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>

@@ -360,7 +360,7 @@ if page=="Tüketici Fiyat Endeksi":
             ))
 
         
-        aylikdegisim=hareketlima.pct_change().iloc[-1]*100
+        aylikdegisim=hareketlima["Aylık Ortalama"].pct_change().iloc[-1]*100
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>

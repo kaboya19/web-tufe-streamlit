@@ -740,13 +740,13 @@ if page=="Ana Gruplar":
 
  
 
-    harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
+    harcama_grupları=pd.read_csv("harcamagrupları_int.csv",index_col=0)
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
 
     selected_harcamagrupları=harcama_grupları[harcama]
-    anagruplar=pd.read_csv("anagruplar.csv",index_col=0)
+    anagruplar=pd.read_csv("gruplar_int.csv",index_col=0)
 
-    selected_harcamagrupları[selected_group]=anagruplar[selected_group].values
+    selected_harcamagrupları[selected_group]=anagruplar[selected_group]
 
     
 
@@ -754,8 +754,9 @@ if page=="Ana Gruplar":
 
 
     
-
-    selected_harcamagruplarıartıs=((selected_harcamagrupları.iloc[-1]/selected_harcamagrupları.iloc[0])-1)*100
+    selected_harcamagruplarıartıs=pd.DataFrame(columns=harcama_grupları.columns)
+    for col in harcama_grupları.index:
+        selected_harcamagruplarıartıs[col]=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
 
     colors = ['red' if label == f"{selected_group}" else 'blue' for label in selected_harcamagruplarıartıs.index]

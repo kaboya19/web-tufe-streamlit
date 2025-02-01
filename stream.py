@@ -773,7 +773,7 @@ if page=="Ana Gruplar":
     
     selected_harcamagruplarıartıs=pd.read_csv("harcama_grupları24.csv",index_col=0).pct_change().iloc[-1]*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[harcama]
-    selected_harcamagruplarıartıs.loc[selected_group]=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_group]*100
+    selected_harcamagruplarıartıs.loc[selected_group]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_group]*100
     
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
 

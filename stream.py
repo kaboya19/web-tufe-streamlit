@@ -687,7 +687,7 @@ if page=="Ana Gruplar":
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Endeksi</h2>", unsafe_allow_html=True)
 
-    first_date = selected_group_data.index[5].strftime("%d.%m.%Y")  # İlk tarihi formatlama
+    first_date = selected_group_data.index[0].strftime("%d.%m.%Y")  # İlk tarihi formatlama
     last_date = selected_group_data.index[-1].strftime("%d.%m.%Y")  # Son tarihi formatlama
   
 
@@ -701,7 +701,7 @@ if page=="Ana Gruplar":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 Şubat Değişimi: <span style='color:red;'>% {aylık}</span><br>
                 
 
@@ -713,8 +713,8 @@ if page=="Ana Gruplar":
     figgana= go.Figure()
     
     figgana.add_trace(go.Scatter(
-                x=selected_group_data.index[5:],
-                y=selected_group_data.values[5:],
+                x=selected_group_data.index,
+                y=selected_group_data.values,
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),
@@ -733,8 +733,8 @@ if page=="Ana Gruplar":
         # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
     figgana.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index[5:],  # Original datetime index
-                ticktext=selected_group_data.index[5:].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black")
             ),
             yaxis=dict(

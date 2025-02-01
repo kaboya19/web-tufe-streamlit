@@ -1206,18 +1206,17 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         st.markdown(
         f"""
         <h2 style='text-align:left; color:black;'>
-            Mevsimsellikten Arındırılmış Özel Kapsamlı Göstergeler 6-{bugün} Ocak Dönemi Artış Oranları
+            Mevsimsellikten Arındırılmış Özel Kapsamlı Göstergeler Şubat Ayı Artış Oranları
         </h2>
         <p style='text-align:left; color:black; font-size:16px; font:Arial Black'>
-            **Kira artışı 31 Aralık-{bugün} Ocak dönemini kapsamaktadır.
         </p>
         """,
         unsafe_allow_html=True
     )
 
 
-        ma_gösterge=pd.read_csv("göstergeler.csv",index_col=0)
-        tüfe=pd.read_csv("tüfe.csv",index_col=0)
+        ma_gösterge=pd.read_csv("özelgöstergeler_int.csv",index_col=0)
+        tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
         tüik=pd.read_csv("mevsimselliktenarındırılmışgöstergeler.csv",index_col=0)
 
 

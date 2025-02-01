@@ -251,8 +251,8 @@ if page=="Tüketici Fiyat Endeksi":
 
 # Hareketli aylık ortalama hesaplama
     hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])
-    hareketlima["Aylık Ortalama"]=hareketlima["Aylık Ortalama"].fillna(method="ffill")
-    hareketlima1 = hareketli_aylik_ortalama1(selected_group_data.iloc[:,0])
+    hareketlima["Aylık Ortalama"]=hareketlima["Aylık Ortalama"].fillna(method="ffill").resample('M').last()
+    
     
 
 
@@ -360,11 +360,18 @@ if page=="Tüketici Fiyat Endeksi":
             ))
 
         
-
-   
+        aylikdegisim=hareketlima.pct_change().iloc[-1]*100
+        aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 06.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+                
+
+            </h3>
+            """, unsafe_allow_html=True)
+        st.markdown(f"""
+            <h3 style='text-align:left; color:black;'>
+                Şubat Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
                 
 
             </h3>

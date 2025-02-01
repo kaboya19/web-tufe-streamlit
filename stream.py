@@ -878,8 +878,10 @@ if page=="Ana Gruplar":
 
 
 if page=="Harcama Grupları":
-    harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
+    harcama_grupları=pd.read_csv("harcamagrupları_int.csv",index_col=0)
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
+    harcama_grupları.loc[pd.to_datetime("2024-12-31")]=100
+    harcama_grupları=harcama_grupları.sort_index()
     ana = harcama_grupları.columns
     selected_group = st.sidebar.selectbox("Harcama Grubu Seçin:", ana)
 

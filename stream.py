@@ -324,18 +324,16 @@ if page=="Tüketici Fiyat Endeksi":
    
     if selected_group!="TÜFE":
 
-        st.markdown(
-    f"""
-    <h3 style='text-align:left; color:black;'>
-        06.01.2025 - {last_date} Değişimi: 
-        <span style='color:red;'>%{change_percent}</span>
-        <br>
-        <span style='font-size:15px;'>
-        </span>
-    </h3>
-    """,
-    unsafe_allow_html=True
-)
+        aylikdegisim=hareketlima.resample('M').last().pct_change().iloc[-1]*100
+        aylikdegisim=aylikdegisim.round(2)
+        st.markdown(f"""
+            <h3 style='text-align:left; color:black;'>
+                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+                Şubat Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+            </h3>
+            """, unsafe_allow_html=True)
+
+  
 
         
         st.plotly_chart(figgalt)

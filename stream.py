@@ -773,8 +773,8 @@ if page=="Ana Gruplar":
     
     selected_harcamagruplarıartıs=pd.read_csv("harcama_grupları24.csv",index_col=0).pct_change().iloc[-1]*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[harcama]
-    selected_harcamagruplarıartıs.loc[selected_group]=anagruplar[selected_group].pct_change().iloc[-1]*100
-    #selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
+    selected_harcamagruplarıartıs.loc[selected_group]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1]*100
+    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
 
     colors = ['red' if label == f"{selected_group}" else 'blue' for label in selected_harcamagruplarıartıs.index]
 

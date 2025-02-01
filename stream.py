@@ -213,7 +213,7 @@ if page=="Tüketici Fiyat Endeksi":
     son=ay_data.index[-1].strftime("%d.%m.%Y")
 
         # Değişim yüzdesini hesaplama
-    first_value = selected_group_data.iloc[0,0]  # İlk değer
+    first_value = 100
     last_value = selected_group_data.iloc[-1,0] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)

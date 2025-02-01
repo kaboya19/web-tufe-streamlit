@@ -946,12 +946,15 @@ if page=="Harcama Grupları":
     
     st.plotly_chart(figgharcama)
 
-    tüfe=pd.read_csv("tüfe.csv",index_col=0)
+    tüfe=pd.read_csv("gruplar_int.csv",index_col=0)["TÜFE"]
     tüfe.index=pd.to_datetime(tüfe.index)
-    harcama_grupları["TÜFE"]=tüfe["TÜFE"]
+    harcama_grupları["TÜFE"]=tüfe["TÜFE"].values
 
-    harcama_artıs=((harcama_grupları.iloc[-1]/harcama_grupları.iloc[0])-1)*100
+    harcama_artıs=pd.read_csv("harcama_grupları24.csv",index_col=0).pct_change().iloc[-1]*100
+    
     harcama_artıs=harcama_artıs.sort_values()
+
+
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]
 

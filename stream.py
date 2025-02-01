@@ -659,12 +659,14 @@ if page=="Ana Gruplar":
     
     
     ana = gruplar.columns
-    aylık=gruplar24[ana].pct_change().iloc[-1]*100
-    aylık=aylık.round(2)
+    
 
     selected_group = st.sidebar.selectbox("Ana Grup Seçin:", ana)
 
     selected_group_data=gruplar[selected_group]
+
+    aylık=gruplar24[selected_group].pct_change().iloc[-1]*100
+    aylık=aylık.round(2)
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Endeksi</h2>", unsafe_allow_html=True)
 

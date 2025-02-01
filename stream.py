@@ -894,7 +894,7 @@ if page=="Harcama Grupları":
   
 
         # Değişim yüzdesini hesaplama
-    first_value = selected_group_data.iloc[0]  # İlk değer
+    first_value = 100
     last_value = selected_group_data.iloc[-1] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)

@@ -652,7 +652,7 @@ if page=="Tüketici Fiyat Endeksi":
 if page=="Ana Gruplar":
 
 
-    gruplar=pd.read_csv("anagruplar.csv",index_col=0)
+    gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
     
     ana = gruplar.columns
@@ -678,7 +678,7 @@ if page=="Ana Gruplar":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>

@@ -677,7 +677,7 @@ if page=="Ana Gruplar":
     gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
     
     
-    ana = gruplar.columns
+    ana = gruplar.columns[:-1]
     
 
     selected_group = st.sidebar.selectbox("Ana Grup Seçin:", ana)

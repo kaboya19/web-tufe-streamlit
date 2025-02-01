@@ -54,7 +54,13 @@ social_media_icons = SocialMediaIcons(
     )
 social_media_icons.render(sidebar=True)
 
-
+def hareketli_aylik_ortalama1(df):
+            değer=df.name
+            df=pd.DataFrame(df)
+            df["Tarih"]=pd.to_datetime(df.index)
+            df['Aylık Ortalama'] = df.groupby(df['Tarih'].dt.to_period('M'))[değer].expanding().mean().reset_index(level=0, drop=True)
+            df.index=pd.to_datetime(df.index)
+            return df
 
 if page=="Metodoloji Notu":
     

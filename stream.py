@@ -140,7 +140,8 @@ if page=="Tüketici Fiyat Endeksi":
 
 
     
-    tüfe = pd.read_csv("gruplar_int.csv",index_col=0)["TÜFE"]
+    tüfe = pd.read_csv("gruplar_int.csv",index_col=0)
+    tüfe=pd.DataFrame(tüfe["TÜFE"])
     tüfe.index=pd.to_datetime(tüfe.index)
 
     endeksler=pd.read_csv("endeksler_int.csv",index_col=0)

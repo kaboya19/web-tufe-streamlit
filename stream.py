@@ -143,7 +143,7 @@ if page=="Tüketici Fiyat Endeksi":
     tüfe = pd.read_csv("tüfe.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
 
-    endeksler=pd.read_csv("endeksler.csv",index_col=0)
+    endeksler=pd.read_csv("endeksler_int.csv",index_col=0)
     endeksler.index=pd.to_datetime(endeksler.index)
     sira=np.sort(endeksler.columns.values)
     endeksler=endeksler[sira]

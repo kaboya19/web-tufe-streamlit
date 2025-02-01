@@ -364,17 +364,10 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 06.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                
-
-            </h3>
-            """, unsafe_allow_html=True)
-        st.markdown(f"""
-            <h3 style='text-align:left; color:black;'>
                 Şubat Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
-                
-
             </h3>
             """, unsafe_allow_html=True)
+   
         
       
         st.plotly_chart(figgalt)

@@ -946,7 +946,7 @@ if page=="Harcama Grupları":
     
     st.plotly_chart(figgharcama)
 
-    tüfe=pd.read_csv("gruplar_int.csv",index_col=0)["TÜFE"]
+    tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
     harcama_grupları["TÜFE"]=tüfe["TÜFE"].values
 

@@ -1338,11 +1338,11 @@ if page=="Madde Endeksleri":
 
     ürüngrupları=pd.read_csv("harcamaürünleri1.csv",index_col=0)
 
-    endeksler=pd.read_csv("endeksler.csv",index_col=0)
+    endeksler=pd.read_csv("endeksler_int.csv",index_col=0)
 
-    harcamagrupları=pd.read_csv("harcama_grupları.csv",index_col=0)
+    harcamagrupları=pd.read_csv("harcamagrupları_int.csv",index_col=0)
 
-    anagruplar=pd.read_csv("anagruplar.csv",index_col=0)
+    anagruplar=pd.read_csv("gruplar_int.csv",index_col=0)
 
     
 
@@ -1358,9 +1358,9 @@ if page=="Madde Endeksleri":
 
 
 
-    maddeartıslar=((endeksler[maddeler].T.iloc[:,-1]/endeksler[maddeler].T.iloc[:,0])-1)*100
-
-    maddeartıslar.loc[selected_anagrup]=((anagruplar[selected_anagrup].iloc[-1]/anagruplar[selected_anagrup].iloc[0])-1)*100
+    maddeartıslar=pd.read_csv("endeksler24.csv",index_col=0).pct_change().iloc[-1]*100
+    maddeartıslar=maddeartıslar[harcama]
+    maddeartıslar.loc[selected_group]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_group]*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

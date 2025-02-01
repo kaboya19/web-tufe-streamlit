@@ -251,8 +251,7 @@ if page=="Tüketici Fiyat Endeksi":
 
 
     
-    hareketlima = hareketli_aylik_ortalama(endeksler["TÜFE"])
-    hareketlima["Aylık Ortalama"]=hareketlima["Aylık Ortalama"].fillna(method="ffill").resample('M').last()
+    hareketlima = hareketli_aylik_ortalama(endeksler["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").resample('M').last()
     st.dataframe(hareketlima)
     
 

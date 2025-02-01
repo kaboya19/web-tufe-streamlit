@@ -251,8 +251,7 @@ if page=="Tüketici Fiyat Endeksi":
 
 
     
-    hareketlima = hareketli_aylik_ortalama(endeksler["TÜFE"])["Aylık Ortalama"].fillna(method="ffill")
-    st.dataframe(hareketlima)
+    hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
     
 
 
@@ -360,7 +359,7 @@ if page=="Tüketici Fiyat Endeksi":
             ))
 
         
-        aylikdegisim=hareketlima["Aylık Ortalama"].pct_change().iloc[-1]*100
+        aylikdegisim=hareketlima.resample('M').last().pct_change().iloc[-1]*100
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>

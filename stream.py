@@ -250,9 +250,9 @@ if page=="Tüketici Fiyat Endeksi":
 
 
 # Hareketli aylık ortalama hesaplama
-    hareketlima = hareketli_aylik_ortalama(selected_group_data)
+    hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])
     hareketlima["Aylık Ortalama"]=hareketlima["Aylık Ortalama"].fillna(method="ffill").resample('M').last()
-    
+    st.dataframe(hareketlima)
     
 
 

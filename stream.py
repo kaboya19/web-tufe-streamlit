@@ -164,7 +164,8 @@ if page=="Tüketici Fiyat Endeksi":
 
     endeksler = endeksler[sira]
 
-
+    for col in endeksler.columns:
+        endeksler[col]=endeksler[col].astype(float)
     
 
     
@@ -249,7 +250,7 @@ if page=="Tüketici Fiyat Endeksi":
             return df
 
 
-# Hareketli aylık ortalama hesaplama
+    
     hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])
     hareketlima["Aylık Ortalama"]=hareketlima["Aylık Ortalama"].fillna(method="ffill").resample('M').last()
     st.dataframe(selected_group_data)

@@ -349,8 +349,8 @@ if page=="Tüketici Fiyat Endeksi":
 
 
         figgalt.add_trace(go.Scatter(
-                x=tüfe.index[1:],
-                y=tüfe["TÜFE"].values[1:],
+                x=tüfe.index,
+                y=tüfe["TÜFE"].values,
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),
@@ -363,7 +363,7 @@ if page=="Tüketici Fiyat Endeksi":
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
                 Şubat Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)

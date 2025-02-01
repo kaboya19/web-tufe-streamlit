@@ -951,7 +951,7 @@ if page=="Harcama Grupları":
     harcama_grupları["TÜFE"]=tüfe["TÜFE"].values
 
     harcama_artıs=pd.read_csv("harcama_grupları24.csv",index_col=0).pct_change().iloc[-1]*100
-    
+    harcama_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
     harcama_artıs=harcama_artıs.sort_values()
 
 

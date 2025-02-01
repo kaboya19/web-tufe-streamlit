@@ -899,12 +899,12 @@ if page=="Harcama Grupları":
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
 
-    
-
+    aylık=hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
+    aylık=aylık.round(2)
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                
+                Şubat Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)

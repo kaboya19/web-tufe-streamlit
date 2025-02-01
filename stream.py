@@ -899,7 +899,7 @@ if page=="Harcama Grupları":
 
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
-                06.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
+                31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
                 
 
             </h3>

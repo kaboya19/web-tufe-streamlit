@@ -370,14 +370,8 @@ if page=="Tüketici Fiyat Endeksi":
       
         st.plotly_chart(figgalt)
 
-        gruplar=pd.read_csv("anagruplar.csv",index_col=0)
-        gruplar.index=pd.to_datetime(gruplar.index)
-        
-        tüfe=pd.read_csv("tüfe.csv",index_col=0)
-        tüfe.index=pd.to_datetime(tüfe.index)
-        gruplar["TÜFE"]=tüfe["TÜFE"]
-
-        harcama_artıs=((gruplar.iloc[-1]/gruplar.iloc[0])-1)*100
+        gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
+        harcama_artıs=((gruplar24.iloc[-1]/gruplar24.iloc[0])-1)*100
         harcama_artıs=harcama_artıs.sort_values()
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]

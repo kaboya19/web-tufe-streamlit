@@ -1360,7 +1360,7 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=pd.read_csv("endeksler24.csv",index_col=0).pct_change().iloc[-1]*100
     maddeartıslar=maddeartıslar[maddeler]
-    maddeartıslar.loc[selected_group]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_group]*100
+    maddeartıslar.loc[selected_anagrup]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_anagrup]*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

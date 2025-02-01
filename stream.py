@@ -1112,8 +1112,9 @@ if page=="Özel Kapsamlı Göstergeler":
    
 
 
-    özelgöstergeler["TÜFE"]=tüfe["TÜFE"].values
-    gösterge_artıs=((özelgöstergeler.iloc[-1]/özelgöstergeler.iloc[0])-1)*100
+   
+    gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
+    gösterge_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
     gösterge_artıs=gösterge_artıs.sort_values()
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs.index]

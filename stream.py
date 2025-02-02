@@ -710,6 +710,35 @@ if page=="Ana Gruplar":
     aylık=gruplar24[selected_group].pct_change().iloc[-1]*100
     aylık=aylık.round(2)
 
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+    hareketliartıs=(hareketliartıs-1)*100
+
+    figgartıs = go.Figure()
+    figgartıs.add_trace(go.Scatter(
+                x=hareketliartıs.index,
+                y=hareketliartıs.values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+    
+    figgartıs.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Endeksi</h2>", unsafe_allow_html=True)
 
     first_date = selected_group_data.index[0].strftime("%d.%m.%Y")  # İlk tarihi formatlama
@@ -769,7 +798,7 @@ if page=="Ana Gruplar":
         )
     
     st.plotly_chart(figgana)
-
+    st.plotly_chart(figgartıs)
 
 
     

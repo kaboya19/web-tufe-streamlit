@@ -273,7 +273,7 @@ if page=="Tüketici Fiyat Endeksi":
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
     hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
-
+    hareketliartıs=(hareketliartıs-1)*100
 
 
 
@@ -283,7 +283,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>Web Tüketici Fiyat Endeksi</h2>", unsafe_allow_html=True)
     else:
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Fiyat Endeksi</h2>", unsafe_allow_html=True)
-    
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
     figgartıs = go.Figure()
     figgartıs.add_trace(go.Scatter(
                 x=hareketliartıs.index,
@@ -295,7 +295,17 @@ if page=="Tüketici Fiyat Endeksi":
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
     
-  
+    figgartıs.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
     
 
     

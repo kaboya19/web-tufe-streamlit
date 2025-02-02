@@ -283,7 +283,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>Web Tüketici Fiyat Endeksi</h2>", unsafe_allow_html=True)
     else:
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Fiyat Endeksi</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
+    
     figgartıs = go.Figure()
     figgartıs.add_trace(go.Scatter(
                 x=hareketliartıs.index,
@@ -408,6 +408,7 @@ if page=="Tüketici Fiyat Endeksi":
         
       
         st.plotly_chart(figgalt)
+        st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
         gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
         harcama_artıs=((gruplar24.iloc[-1]/gruplar24.iloc[0])-1)*100

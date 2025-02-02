@@ -269,7 +269,10 @@ if page=="Tüketici Fiyat Endeksi":
 
     
     hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
-    
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
 
 
 
@@ -281,7 +284,16 @@ if page=="Tüketici Fiyat Endeksi":
     else:
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Fiyat Endeksi</h2>", unsafe_allow_html=True)
     
-    
+    figgartıs = go.Figure()
+    figgartıs.add_trace(go.Scatter(
+                x=hareketliartıs.index[:],
+                y=hareketliartıs.iloc[:,0].values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
     
   
     
@@ -386,7 +398,7 @@ if page=="Tüketici Fiyat Endeksi":
         
       
         st.plotly_chart(figgalt)
-
+        st.plotly_chart(figgartıs)
         gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
         harcama_artıs=((gruplar24.iloc[-1]/gruplar24.iloc[0])-1)*100
         harcama_artıs=harcama_artıs.sort_values()

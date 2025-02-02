@@ -1053,7 +1053,7 @@ if page=="Özel Kapsamlı Göstergeler":
     last_value = selected_group_data.iloc[-1] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
-    aylık=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").pct_change().iloc[-1]*100
+    aylık=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
     aylık=aylık.round(2)
 
     st.markdown(f"""

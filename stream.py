@@ -286,8 +286,8 @@ if page=="Tüketici Fiyat Endeksi":
     
     figgartıs = go.Figure()
     figgartıs.add_trace(go.Scatter(
-                x=hareketliartıs.index[:],
-                y=hareketliartıs.iloc[:,0].values,
+                x=hareketliartıs.index,
+                y=hareketliartıs.values,
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),

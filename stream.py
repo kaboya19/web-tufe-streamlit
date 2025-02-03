@@ -1086,7 +1086,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
     tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
-    özelgöstergeler=pd.read_csv("özelgöstergeler_int.csv",index_col=0)
+    özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
     gösterge=özelgöstergeler.columns.values
 

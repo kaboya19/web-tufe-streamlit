@@ -930,7 +930,7 @@ if page=="Ana Gruplar":
 
 
 if page=="Harcama Grupları":
-    harcama_grupları=pd.read_csv("harcamagrupları.csv",index_col=0)
+    harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
 
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
     harcama_grupları=harcama_grupları.drop("2024-12-31",axis=0)

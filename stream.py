@@ -394,6 +394,19 @@ if page=="Tüketici Fiyat Endeksi":
                 marker=dict(size=8, color="black"),
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
+        
+        tüik=pd.read_csv("tüik.csv",index_col=0)
+        figgalt.add_trace(
+    go.Scatter(
+        x=tüik.index,
+        y=tüik["TÜİK"].values,
+        mode="lines",
+        line=dict(shape="hv",color="red", width=4),  # 'hv' yatay-dikey step grafiği
+        name="TÜİK Gıda",
+        marker=dict(size=8, color="black"),
+        hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+    )
+)
 
         
         aylikdegisim=hareketlima.resample('M').last().pct_change().iloc[-1]*100

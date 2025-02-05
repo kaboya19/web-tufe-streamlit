@@ -383,11 +383,13 @@ if page=="Tüketici Fiyat Endeksi":
 
         
 
-
+        tüfem=tüfe.copy()
+        tüfem.loc[pd.to_datetime("2024-12-31")]=100
+        tüfem=tüfem.sort_index()
 
         figgalt.add_trace(go.Scatter(
-                x=tüfe.index,
-                y=tüfe["TÜFE"].values,
+                x=tüfem.index,
+                y=tüfem["TÜFE"].values,
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),

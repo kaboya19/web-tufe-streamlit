@@ -1168,9 +1168,10 @@ if page=="Özel Kapsamlı Göstergeler":
 
    
     gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
-    gösterge_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
+    
     for col in gösterge_artıs.columns:
         gösterge_artıs[col]=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
+    gösterge_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
     gösterge_artıs=gösterge_artıs.sort_values()
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs.index]

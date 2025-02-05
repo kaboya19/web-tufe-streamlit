@@ -1168,16 +1168,16 @@ if page=="Özel Kapsamlı Göstergeler":
 
    
     gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
-    
+    gösterge_artıs1=pd.DataFrame(index=gösterge_artıs.columns.values)
     for col in gösterge_artıs.columns:
-        gösterge_artıs[col]=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
-    gösterge_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
-    gösterge_artıs=gösterge_artıs.sort_values()
+        gösterge_artıs1.loc[col]=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
+    gösterge_artıs1.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
+    gösterge_artıs1=gösterge_artıs1.sort_values()
 
-    colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs.index]
+    colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs1.index]
 
     # İlk 42 karakteri almak için index etiketlerini kısaltma
-    shortened_index = [label[:42] for label in gösterge_artıs.index]
+    shortened_index = [label[:42] for label in gösterge_artıs1.index]
 
     # Grafik oluşturma
     figartıs = go.Figure()
@@ -1185,7 +1185,7 @@ if page=="Özel Kapsamlı Göstergeler":
     # Verileri ekleme
     figartıs.add_trace(go.Bar(
         y=shortened_index,  # Kısaltılmış index etiketleri
-        x=gösterge_artıs.values,
+        x=gösterge_artıs1.values,
         orientation='h', 
         marker=dict(color=colors),
         name=f'Artış Oranı',
@@ -1208,13 +1208,13 @@ if page=="Özel Kapsamlı Göstergeler":
         yaxis=dict(
             tickfont=dict(family="Arial Black", size=14, color="black"),  # Y eksenindeki etiketlerin rengi
             tickmode='array',  # Manuel olarak etiketleri belirlemek için
-            tickvals=list(range(len(gösterge_artıs.index))),  # Her bir index için bir yer belirle
+            tickvals=list(range(len(gösterge_artıs1.index))),  # Her bir index için bir yer belirle
             ticktext=shortened_index  # Kısaltılmış index etiketleri
         )
     )
 
     # Etiket ekleme
-    for i, value in enumerate(gösterge_artıs.values):
+    for i, value in enumerate(gösterge_artıs1.values):
         if value >= 0:
             # Pozitif değerler sol tarafta
             figartıs.add_annotation(

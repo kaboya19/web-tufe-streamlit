@@ -1168,6 +1168,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
    
     gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
+    del gösterge_artıs["TÜFE"]
     gösterge_artıs1=pd.DataFrame(index=gösterge_artıs.columns.values)
     for col in gösterge_artıs.columns:
         gösterge_artıs1.loc[col]=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100

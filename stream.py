@@ -402,7 +402,7 @@ if page=="Tüketici Fiyat Endeksi":
         y=tüik["TÜİK"].values,
         mode="lines",
         line=dict(shape="hv",color="red", width=4),  # 'hv' yatay-dikey step grafiği
-        name="TÜİK Gıda",
+        name="TÜİK TÜFE",
         marker=dict(size=8, color="black"),
         hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
     )

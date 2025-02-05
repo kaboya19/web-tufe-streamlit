@@ -1167,8 +1167,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
 
    
-    gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
-    gösterge_artıs=gösterge_artıs.pct_change().iloc[-1]*100
+    gösterge_artıs=aylık.copy()
     gösterge_artıs.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
     gösterge_artıs=gösterge_artıs.sort_values()
 

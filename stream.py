@@ -391,7 +391,7 @@ if page=="Tüketici Fiyat Endeksi":
                 x=tüfem.index,
                 y=tüfem["TÜFE"].values,
                 mode='lines+markers',
-                name=selected_group,
+                name="Web-TÜFE",
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'

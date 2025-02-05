@@ -1169,12 +1169,11 @@ if page=="Özel Kapsamlı Göstergeler":
    
     gösterge_artıs=pd.read_csv("özelgöstergeler24.csv",index_col=0)
     
-    gösterge_artıs1=pd.DataFrame(index=gösterge_artıs.columns.values)
+    gösterge_artıs1=pd.Series(index=gösterge_artıs.columns.values)
     del gösterge_artıs["TÜFE"]
     for col in gösterge_artıs.columns:
         gösterge_artıs1.loc[col]=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
     gösterge_artıs1.loc["TÜFE"]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc["TÜFE"]*100
-    gösterge_artıs1=pd.Series(gösterge_artıs1)
     gösterge_artıs1=gösterge_artıs1.sort_values()
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs1.index]

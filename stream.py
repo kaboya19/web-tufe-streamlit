@@ -1205,7 +1205,7 @@ if page=="Özel Kapsamlı Göstergeler":
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
     
-    aylık=((hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarih}"])-1)*100
+    aylık=((hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     aylık=aylık.round(2)
 
     st.markdown(f"""

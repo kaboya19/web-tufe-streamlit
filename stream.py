@@ -737,7 +737,9 @@ if page=="Ana Gruplar":
     if tarihim<10:
         tarihim="0"+str(tarihim)
 
-
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
     gruplar.loc[pd.to_datetime("2024-12-31")]=100

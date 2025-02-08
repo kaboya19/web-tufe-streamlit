@@ -740,6 +740,11 @@ if page=="Ana Gruplar":
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+
+    
+
+
+
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
     gruplar.loc[pd.to_datetime("2024-12-31")]=100
@@ -760,9 +765,7 @@ if page=="Ana Gruplar":
 
    
 
-    from datetime import datetime,timedelta
-    tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    
     hareketliartıs=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].loc[tarih:]/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
     hareketliartıs=(hareketliartıs-1)*100
 
@@ -983,6 +986,26 @@ if page=="Ana Gruplar":
 
 
 if page=="Harcama Grupları":
+    from datetime import datetime,timedelta
+    import pytz
+    tüfe=pd.read_csv("tüfe.csv",index_col=0)
+    tüfe.index=pd.to_datetime(tüfe.index)
+    gfe1=tüfe.copy()
+    gfe1["Date"]=pd.to_datetime(gfe1.index)
+    gfe1["Ay"]=gfe1["Date"].dt.month
+    gfe1["Yıl"]=gfe1["Date"].dt.year    
+    month = gfe1["Ay"].iloc[-1]
+    year=gfe1["Yıl"].iloc[-1] 
+    oncekiyear=gfe1["Yıl"].iloc[-1] 
+    tarihim=pd.to_datetime(gfe1.index[-1]).day
+    if tarihim>24:
+        tarihim=24
+    if tarihim<10:
+        tarihim="0"+str(tarihim)
+
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
     harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
 
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
@@ -1006,7 +1029,7 @@ if page=="Harcama Grupları":
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
 
-    aylık=hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
+    aylık=((hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
     aylık=aylık.round(2)
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>

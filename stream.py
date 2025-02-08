@@ -1162,7 +1162,26 @@ if page=="Harcama Grupları":
 
 if page=="Özel Kapsamlı Göstergeler":
 
-    
+    from datetime import datetime,timedelta
+    import pytz
+    tüfe=pd.read_csv("tüfe.csv",index_col=0)
+    tüfe.index=pd.to_datetime(tüfe.index)
+    gfe1=tüfe.copy()
+    gfe1["Date"]=pd.to_datetime(gfe1.index)
+    gfe1["Ay"]=gfe1["Date"].dt.month
+    gfe1["Yıl"]=gfe1["Date"].dt.year    
+    month = gfe1["Ay"].iloc[-1]
+    year=gfe1["Yıl"].iloc[-1] 
+    oncekiyear=gfe1["Yıl"].iloc[-1] 
+    tarihim=pd.to_datetime(gfe1.index[-1]).day
+    if tarihim>24:
+        tarihim=24
+    if tarihim<10:
+        tarihim="0"+str(tarihim)
+
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
 
     tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
@@ -1185,7 +1204,8 @@ if page=="Özel Kapsamlı Göstergeler":
     last_value = selected_group_data.iloc[-1] # Son değer
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
-    aylık=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change().iloc[-1]*100
+    
+    aylık=((hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarih}"])-1)*100
     aylık=aylık.round(2)
 
     st.markdown(f"""

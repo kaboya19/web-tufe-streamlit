@@ -1472,7 +1472,26 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
 
 if page=="Madde Endeksleri":
 
+    from datetime import datetime,timedelta
+    import pytz
+    tüfe=pd.read_csv("tüfe.csv",index_col=0)
+    tüfe.index=pd.to_datetime(tüfe.index)
+    gfe1=tüfe.copy()
+    gfe1["Date"]=pd.to_datetime(gfe1.index)
+    gfe1["Ay"]=gfe1["Date"].dt.month
+    gfe1["Yıl"]=gfe1["Date"].dt.year    
+    month = gfe1["Ay"].iloc[-1]
+    year=gfe1["Yıl"].iloc[-1] 
+    oncekiyear=gfe1["Yıl"].iloc[-1] 
+    tarihim=pd.to_datetime(gfe1.index[-1]).day
+    if tarihim>24:
+        tarihim=24
+    if tarihim<10:
+        tarihim="0"+str(tarihim)
 
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
     ürüngrupları=pd.read_csv("harcamaürünleri1.csv",index_col=0)
 
     endeksler=pd.read_csv("endeksler_int.csv",index_col=0)
@@ -1493,11 +1512,17 @@ if page=="Madde Endeksleri":
 
     
 
+    endeksler=pd.read_csv("endeksler_int.csv",index_col=0)
+    endeksler.index=pd.to_datetime(endeksler.index)
+    endeksler=endeksler.sort_index()
 
-
-    maddeartıslar=pd.read_csv("endeksler24.csv",index_col=0).pct_change().iloc[-1]*100
+    maddeartıslar=pd.Series(index=endeksler.columns)
+    for col in maddeartıslar.index:
+        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col]).iloc[-1]/hareketli_aylik_ortalama(endeksler[col]).loc[f"{onceki}-{tarihim}"])-1)*100
     maddeartıslar=maddeartıslar[maddeler]
-    maddeartıslar.loc[selected_anagrup]=pd.read_csv("gruplar24.csv",index_col=0).pct_change().iloc[-1].loc[selected_anagrup]*100
+    gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
+    gruplar.index=pd.to_datetime(gruplar.index)
+    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup]).iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup]).loc[f"{onceki}-{tarihim}"])-1)*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

@@ -1270,6 +1270,7 @@ if page=="Özel Kapsamlı Göstergeler":
     gösterge_artıs1=pd.Series(index=gösterge_artıs.columns.values)
     for col in gösterge_artıs.columns:
         gösterge_artıs1.loc[col]=((hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
+    gösterge_artıs1.loc[col]=((hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     gösterge_artıs1=gösterge_artıs1.sort_values()
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in gösterge_artıs1.index]

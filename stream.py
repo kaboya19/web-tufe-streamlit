@@ -372,7 +372,7 @@ if page=="Tüketici Fiyat Endeksi":
    
     if selected_group!="TÜFE":
 
-        aylikdegisim=hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"]
+        aylikdegisim=((hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"])-1)*100
         
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
@@ -421,7 +421,7 @@ if page=="Tüketici Fiyat Endeksi":
 )
 
         
-        aylikdegisim=hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"]
+        aylikdegisim=((hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"])-1)*100
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
@@ -438,7 +438,7 @@ if page=="Tüketici Fiyat Endeksi":
         gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
         harcama_artıs=pd.DataFrame(columns=gruplar.columns)
         for col in gruplar.columns:
-            harcama_artıs[col]=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"]
+            harcama_artıs[col]=((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
 
         harcama_artıs=harcama_artıs.sort_values()
 

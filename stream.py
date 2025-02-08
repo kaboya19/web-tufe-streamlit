@@ -258,6 +258,15 @@ if page=="Tüketici Fiyat Endeksi":
         return df
     
 
+   
+     
+    tarihim=datetime.now().day
+    if tarihim>24:
+        tarihim=24
+    if tarihim<10:
+        tarihim="0"+str(tarihim)
+    
+
     def hareketli_aylik_ortalama1(df):
             değer=df.name
             df=pd.DataFrame(df)
@@ -272,7 +281,7 @@ if page=="Tüketici Fiyat Endeksi":
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
-    hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+    hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
     hareketliartıs=(hareketliartıs-1)*100
 
 
@@ -363,7 +372,8 @@ if page=="Tüketici Fiyat Endeksi":
    
     if selected_group!="TÜFE":
 
-        aylikdegisim=hareketlima.resample('M').last().pct_change().iloc[-1]*100
+        aylikdegisim=hareketlima.resample('M').last()/hareketlima.loc[f"{onceki}-{tarihim}"]
+        
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
@@ -411,7 +421,7 @@ if page=="Tüketici Fiyat Endeksi":
 )
 
         
-        aylikdegisim=hareketlima.resample('M').last().pct_change().iloc[-1]*100
+        aylikdegisim=hareketlima.resample('M').last()/hareketlima.loc[f"{onceki}-{tarihim}"]
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
@@ -426,7 +436,10 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
         gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
-        harcama_artıs=((gruplar24.iloc[-1]/gruplar24.iloc[0])-1)*100
+        harcama_artıs=pd.DataFrame(columns=gruplar.columns)
+        for col in gruplar.columns:
+            harcama_artıs[col]=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"]
+
         harcama_artıs=harcama_artıs.sort_values()
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]

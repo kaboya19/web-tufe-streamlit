@@ -1518,11 +1518,11 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=pd.Series(index=endeksler.columns)
     for col in maddeartıslar.index:
-        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col]).iloc[-1]/hareketli_aylik_ortalama(endeksler[col]).loc[f"{onceki}-{tarihim}"])-1)*100
+        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
     maddeartıslar=maddeartıslar[maddeler]
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
-    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup]).iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup]).loc[f"{onceki}-{tarihim}"])-1)*100
+    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

@@ -863,7 +863,7 @@ if page=="Ana Gruplar":
 
     harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
-
+    harcama_grupları=harcama_grupları.sort_index()
     selected_harcamagrupları=harcama_grupları[harcama]
     anagruplar=pd.read_csv("gruplar_int.csv",index_col=0)
 

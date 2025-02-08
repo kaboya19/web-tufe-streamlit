@@ -1081,10 +1081,9 @@ if page=="Harcama Grupları":
     harcama_grupları["TÜFE"]=tüfe["TÜFE"].values
 
     harcama_artıs=pd.Series(index=harcama_grupları.columns)
-    for col in harcama_artıs:
+    for col in harcama_artıs.index:
         harcama_artıs.loc[col]=((hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
 
-    harcama_artıs.loc["TÜFE"]=((hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(tüfe["TÜFE"])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
     harcama_artıs=harcama_artıs.sort_values()
 
 

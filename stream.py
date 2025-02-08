@@ -260,7 +260,7 @@ if page=="Tüketici Fiyat Endeksi":
 
    
      
-    tarihim=datetime.now().day
+    tarihim=pd.to_datetime(gfe.index[-1]).dt.day
     if tarihim>24:
         tarihim=24
     if tarihim<10:

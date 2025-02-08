@@ -442,7 +442,7 @@ if page=="Tüketici Fiyat Endeksi":
         for col in gruplar.columns:
             harcama_artıs[col]=((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
 
-        harcama_artıs=harcama_artıs.sort_values()
+        harcama_artıs=harcama_artıs.iloc[-1].sort_values()
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]
 

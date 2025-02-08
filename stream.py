@@ -441,7 +441,7 @@ if page=="Tüketici Fiyat Endeksi":
         gruplar["TÜFE"]=tüfe["TÜFE"]
         harcama_artıs=pd.Series(index=gruplar.columns)
         for col in gruplar.columns:
-            harcama_artıs.loc[col]=((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+            harcama_artıs.loc[col]=((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
         harcama_artıs=harcama_artıs.sort_values()
 
         colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]
@@ -759,7 +759,7 @@ if page=="Ana Gruplar":
 
     selected_group_data=gruplar[selected_group]
 
-    aylık=(((hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100)
+    aylık=(((hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100)
     aylık=aylık.round(2)
 
 
@@ -875,7 +875,7 @@ if page=="Ana Gruplar":
     
     selected_harcamagruplarıartıs=pd.Series(index=selected_harcamagrupları.columns)
     for col in selected_harcamagrupları.columns:
-        selected_harcamagruplarıartıs.loc[col]=((hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+        selected_harcamagruplarıartıs.loc[col]=((hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
    
 
@@ -883,7 +883,7 @@ if page=="Ana Gruplar":
     
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[harcama]
     grubum=pd.read_csv("gruplar_int.csv",index_col=0)[selected_group]
-    selected_harcamagruplarıartıs.loc[selected_group]=((hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+    selected_harcamagruplarıartıs.loc[selected_group]=((hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
 
@@ -1029,7 +1029,7 @@ if page=="Harcama Grupları":
     change_percent = ((last_value - first_value) / first_value) * 100  # Yüzde değişim
     change_percent = round(change_percent, 2)
 
-    aylık=((hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+    aylık=((hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[selected_group])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     aylık=aylık.round(2)
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
@@ -1082,7 +1082,7 @@ if page=="Harcama Grupları":
 
     harcama_artıs=pd.Series(index=harcama_grupları.columns)
     for col in harcama_artıs.index:
-        harcama_artıs.loc[col]=((hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+        harcama_artıs.loc[col]=((hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
 
     harcama_artıs=harcama_artıs.sort_values()
 
@@ -1537,11 +1537,11 @@ if page=="Madde Endeksleri":
 
     maddeartıslar=pd.Series(index=endeksler.columns)
     for col in maddeartıslar.index:
-        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
     maddeartıslar=maddeartıslar[maddeler]
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
-    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
+    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100
 
 
     maddeartıslar=maddeartıslar.sort_values()

@@ -752,7 +752,7 @@ if page=="Ana Gruplar":
 
     selected_group_data=gruplar[selected_group]
 
-    aylık=(((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100)
+    aylık=(((hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_group])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100)
     aylık=aylık.round(2)
 
 

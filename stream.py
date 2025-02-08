@@ -879,7 +879,7 @@ if page=="Ana Gruplar":
 
     
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[harcama]
-    grubum=pd.read_csv("gruplar24.csv",index_col=0)[selected_group]
+    grubum=pd.read_csv("gruplar_int.csv",index_col=0)[selected_group]
     selected_harcamagruplarıartıs.loc[selected_group]=((hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
     
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()

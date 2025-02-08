@@ -372,7 +372,7 @@ if page=="Tüketici Fiyat Endeksi":
    
     if selected_group!="TÜFE":
 
-        aylikdegisim=hareketlima.resample('M').last()/hareketlima.loc[f"{onceki}-{tarihim}"]
+        aylikdegisim=hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"]
         
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
@@ -421,7 +421,7 @@ if page=="Tüketici Fiyat Endeksi":
 )
 
         
-        aylikdegisim=hareketlima.resample('M').last()/hareketlima.loc[f"{onceki}-{tarihim}"]
+        aylikdegisim=hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-{tarihim}"]
         aylikdegisim=aylikdegisim.round(2)
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>

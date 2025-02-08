@@ -436,6 +436,8 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
         gruplar24=pd.read_csv("gruplar24.csv",index_col=0)
+        gruplar=pd.read_csv("anagruplar.csv",index_col=0)
+        gruplar.index=pd.to_datetime(gruplar.index)
         harcama_artıs=pd.DataFrame(columns=gruplar.columns)
         for col in gruplar.columns:
             harcama_artıs[col]=((hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100

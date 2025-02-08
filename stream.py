@@ -871,7 +871,7 @@ if page=="Ana Gruplar":
 
     
     selected_harcamagruplarıartıs=pd.Series(index=harcama_grupları.columns)
-    for col in gruplar.columns:
+    for col in harcama_grupları.columns:
         selected_harcamagruplarıartıs.loc[col]=((hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].loc[f"{onceki}-{tarihim}"])-1)*100
     selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
    

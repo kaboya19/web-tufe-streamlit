@@ -283,7 +283,7 @@ if page=="Tüketici Fiyat Endeksi":
     onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
     hareketliartıs=cari.values/hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-1":f"{onceki}-24"].iloc[:len(cari)].values
-    hareketliartıs.index=cari.index
+    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
     hareketliartıs=(hareketliartıs-1)*100
 
 

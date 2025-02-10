@@ -281,7 +281,8 @@ if page=="Tüketici Fiyat Endeksi":
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
-    hareketliartıs=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]/hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
+    cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+    hareketliartıs=cari.values/hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-1":f"{onceki}-24"].iloc[:len(cari)].values
     hareketliartıs=(hareketliartıs-1)*100
 
 

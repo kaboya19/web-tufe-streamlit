@@ -174,7 +174,7 @@ if page=="Tüketici Fiyat Endeksi":
     ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
     
     
-    endeksler["TÜFE"]=tüfe["TÜFE"].values
+    endeksler["TÜFE"]=tüfe["TÜFE"]
 
     sira = ['TÜFE'] + [col for col in endeksler.columns if col != 'TÜFE']
 

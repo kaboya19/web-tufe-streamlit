@@ -13,16 +13,7 @@ from streamlit_option_menu import option_menu
 import streamlit as st
 
 # HTML etiketini başlık kısmında çalıştırmaya zorlamak
-st.markdown("""
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'AW-16886391202');
-    </script>
-""", unsafe_allow_html=True)
 
 st.set_page_config(page_title="Web-Tüketici Fiyat Endeksi",layout="wide")
 social_media_links = {
@@ -67,6 +58,17 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
+
+st.markdown("""
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16886391202');
+    </script>
+""", unsafe_allow_html=True)
 
 def hareketli_aylik_ortalama(df):
         değer = df.name  # Kolon ismi

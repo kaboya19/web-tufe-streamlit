@@ -556,7 +556,7 @@ if page=="Tüketici Fiyat Endeksi":
         özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
         özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
         özelgöstergeler_excel=to_excel(özelgöstergeler)
-        özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler,tütün ve altın":"Altın"})
+        özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
 
         st.download_button(
             label="📊 Ana Grup Endeksleri",
@@ -1192,7 +1192,7 @@ if page=="Özel Kapsamlı Göstergeler":
     tüfe.index=pd.to_datetime(tüfe.index)
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
-    özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler,tütün ve altın":"Altın"})
+    özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
     gösterge=özelgöstergeler.columns.values
 
     selected_group = st.sidebar.selectbox("Özel Kapsamlı Gösterge Seçin:", gösterge)
@@ -1273,7 +1273,7 @@ if page=="Özel Kapsamlı Göstergeler":
    
     gösterge_artıs=pd.read_csv("özelgöstergeler.csv",index_col=0)
     gösterge_artıs.index=pd.to_datetime(gösterge_artıs.index)
-    gösterge_artıs=gösterge_artıs.rename(columns={"Alkollü içecekler,tütün ve altın":"Altın"})
+    gösterge_artıs=gösterge_artıs.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
     gösterge_artıs1=pd.Series(index=gösterge_artıs.columns.values)
     for col in gösterge_artıs.columns:
         gösterge_artıs1.loc[col]=((hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"])-1)*100

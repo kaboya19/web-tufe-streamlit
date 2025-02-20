@@ -74,6 +74,21 @@ def hareketli_aylik_ortalama(df):
         return df
 
 if page=="Metodoloji Notu":
+    import streamlit as st
+
+    # Google Ads tag kodunu HTML olarak ekleyin
+    st.markdown("""
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16886391202');
+        </script>
+    """, unsafe_allow_html=True)
+
     
      
 

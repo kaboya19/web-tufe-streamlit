@@ -10,6 +10,20 @@ from datetime import datetime
 from st_social_media_links import SocialMediaIcons
 import base64
 from streamlit_option_menu import option_menu
+import streamlit as st
+
+# HTML etiketini başlık kısmında çalıştırmaya zorlamak
+st.markdown("""
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16886391202');
+    </script>
+""", unsafe_allow_html=True)
+
 st.set_page_config(page_title="Web-Tüketici Fiyat Endeksi",layout="wide")
 social_media_links = {
     "X": {"url": "https://x.com/mborathe", "color": "#000000"},
@@ -153,17 +167,20 @@ if page=="Metodoloji Notu":
 
 if page=="Tüketici Fiyat Endeksi":
 
-    st.markdown("""
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    import streamlit as st
 
-      gtag('config', 'AW-16886391202');
-    </script>
-""", unsafe_allow_html=True)
+    # HTML etiketini başlık kısmında çalıştırmaya zorlamak
+    st.markdown("""
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16886391202');
+        </script>
+    """, unsafe_allow_html=True)
+
 
     st.markdown(
     """

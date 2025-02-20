@@ -556,6 +556,7 @@ if page=="Tüketici Fiyat Endeksi":
         özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
         özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
         özelgöstergeler_excel=to_excel(özelgöstergeler)
+        özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler,tütün ve altın":"Altın"})
 
         st.download_button(
             label="📊 Ana Grup Endeksleri",
@@ -1191,6 +1192,7 @@ if page=="Özel Kapsamlı Göstergeler":
     tüfe.index=pd.to_datetime(tüfe.index)
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
+    özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler,tütün ve altın":"Altın"})
     gösterge=özelgöstergeler.columns.values
 
     selected_group = st.sidebar.selectbox("Özel Kapsamlı Gösterge Seçin:", gösterge)

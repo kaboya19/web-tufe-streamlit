@@ -612,6 +612,7 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata.columns=["Aylık Artış"]
         tüfeaylıkdata.index.name="Tarih"
         tüfeaylıkdata["Tarih"]=(tüfeaylıkdata.index.strftime("%Y-%m"))
+        tüfeaylıkdata=tüfeaylıkdata.reset_index()
         tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
         
         

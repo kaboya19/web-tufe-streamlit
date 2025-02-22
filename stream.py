@@ -730,7 +730,7 @@ if page=="Tüketici Fiyat Endeksi":
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
-        #gruplar_aylık=np.round(gruplar_aylık,2)
+        gruplar_aylık=np.round(gruplar_aylık.drop("Tarih",axis=1),2)
         gruplar_aylık1=to_excel(gruplar_aylık)
         st.download_button(
             label="📊 Ana Gruplar Aylık Artış Oranları",

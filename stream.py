@@ -646,6 +646,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
         harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
+        harcama_grupları=harcama_grupları.sort_index()
         harcama_grupları_aylık=pd.DataFrame(columns=harcama_grupları.columns)
         for col in harcama_grupları.columns:
             cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")

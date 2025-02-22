@@ -615,6 +615,38 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata=tüfeaylıkdata.reset_index()
         tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
 
+        cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
+        tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
+        tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
+        tüfeaylıkdata.columns=["Aylık Artış"]
+        tüfeaylıkdata["Tarih"]=pd.to_datetime(tüfeaylıkdata.index)
+        tüfeaylıkdata["Tarih"]=tüfeaylıkdata["Tarih"].dt.strftime("%Y-%m")
+        tüfeaylıkdata=tüfeaylıkdata.reset_index()
+        tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
+
+
+        endeksler=pd.read_csv("endeksler.csv",index_col=0)
+        endeksler.index=pd.to_datetime(endeksler.index)
+        endeksler_aylık=pd.DataFrame(columns=endeksler.columns)
+        for col in endeksler.columns:
+            cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
+            endeksler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+            carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+            hareketliartıs=carim.values/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-1":f"{onceki}-24"].iloc[:len(carim)].values
+            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+            hareketliartıs=(hareketliartıs-1)*100
+            endeksler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+            endeksler_aylık=pd.DataFrame(endeksler_aylık)
+        endeksler_aylık["Tarih"]=(endeksler_aylık.index.strftime("%Y-%m"))
+        cols=["Tarih"]
+        cols.extend(endeksler.columns[:-1])
+        endeksler_aylık=endeksler_aylık[cols]
+        endeksler_aylık=endeksler_aylık.reset_index()
+
+
+
+
         def to_excel(df):
             output = BytesIO()
             # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
@@ -641,6 +673,16 @@ if page=="Tüketici Fiyat Endeksi":
             file_name='Web-TÜFE Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+
+        endeksler_aylık=np.round(endeksler_aylık,2)
+        endeksler_aylık1=to_excel(endeksler_aylık)
+        st.download_button(
+            label="📊 Maddeler Aylık Artış Oranları",
+            data=endeksler_aylık1,
+            file_name='Maddeler Aylık Değişim Oranları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
 
         st.download_button(
             label="📊 Ana Grup Endeksleri",

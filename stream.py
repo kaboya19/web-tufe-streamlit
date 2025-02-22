@@ -610,6 +610,9 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
         tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
         tüfeaylıkdata.columns=["Aylık Artış"]
+        tüfeaylıkdata.index=tüfeaylıkdata.index.strftime("%Y-%m")
+        tüfeaylıkdata.index.name="Tarih"
+        tüfeaylıkdata=np.round(tüfeaylıkdata,2)
         tüfeaylıkdata=to_excel(tüfeaylıkdata)
         st.download_button(
             label="📊 Web-TÜFE Aylık Artış Oranları",

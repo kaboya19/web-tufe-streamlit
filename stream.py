@@ -704,7 +704,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         özelgöstergeler_aylık["Tarih"]=(özelgöstergeler_aylık.index.strftime("%Y-%m"))
         cols=["Tarih"]
-        cols.extend(gruplar.columns)
+        cols.extend(özelgöstergeler.columns)
         özelgöstergeler_aylık=özelgöstergeler_aylık[cols]
         özelgöstergeler_aylık=özelgöstergeler_aylık.reset_index(drop=True)
 

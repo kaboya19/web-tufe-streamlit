@@ -663,7 +663,7 @@ if page=="Tüketici Fiyat Endeksi":
         harcama_grupları_aylık=harcama_grupları_aylık[cols]
         harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
 
-        gruplar=pd.read_csv("gruplar.csv",index_col=0)
+        gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
         gruplar.index=pd.to_datetime(gruplar.index)
         gruplar=gruplar.sort_index()
         gruplar_aylık=pd.DataFrame(columns=gruplar.columns)

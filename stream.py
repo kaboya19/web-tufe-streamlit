@@ -642,7 +642,7 @@ if page=="Tüketici Fiyat Endeksi":
         cols=["Tarih"]
         cols.extend(endeksler.columns[:-1])
         endeksler_aylık=endeksler_aylık[cols]
-        endeksler_aylık=endeksler_aylık.reset_index()
+        endeksler_aylık=endeksler_aylık.reset_index(drop=True)
 
 
 

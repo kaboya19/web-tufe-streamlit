@@ -604,6 +604,20 @@ if page=="Tüketici Fiyat Endeksi":
         özelgöstergeler_excel=to_excel(özelgöstergeler)
         özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
 
+
+        cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
+        tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
+        tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
+        tüfeaylıkdata.columns=["Aylık Artış"]
+        tüfeaylıkdata=to_excel(tüfeaylıkdata)
+        st.download_button(
+            label="📊 Web-TÜFE Aylık Artış Oranları",
+            data=tüfeaylıkdata,
+            file_name='Web-TÜFE Aylık Değişim.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
         st.download_button(
             label="📊 Ana Grup Endeksleri",
             data=gruplar_excel,

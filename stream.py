@@ -663,6 +663,25 @@ if page=="Tüketici Fiyat Endeksi":
         harcama_grupları_aylık=harcama_grupları_aylık[cols]
         harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
 
+        gruplar=pd.read_csv("gruplar.csv",index_col=0)
+        gruplar.index=pd.to_datetime(gruplar.index)
+        gruplar=gruplar.sort_index()
+        gruplar_aylık=pd.DataFrame(columns=gruplar.columns)
+        for col in gruplar.columns:
+            cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
+            gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+            carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+            hareketliartıs=carim.values/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-1":f"{onceki}-24"].iloc[:len(carim)].values
+            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+            hareketliartıs=(hareketliartıs-1)*100
+            gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+            gruplar_aylık=pd.DataFrame(gruplar_aylık)
+        gruplar_aylık["Tarih"]=(gruplar_aylık.index.strftime("%Y-%m"))
+        cols=["Tarih"]
+        cols.extend(gruplar_aylık.columns)
+        gruplar_aylık=gruplar_aylık[cols]
+        gruplar_aylık=gruplar_aylık.reset_index(drop=True)
+
 
 
 
@@ -708,6 +727,15 @@ if page=="Tüketici Fiyat Endeksi":
             label="📊 Temel Başlıklar Aylık Artış Oranları",
             data=harcama_grupları_aylık1,
             file_name='Temel Başlıklar Aylık Değişim Oranları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        gruplar_aylık=np.round(gruplar_aylık,2)
+        gruplar_aylık1=to_excel(gruplar_aylık)
+        st.download_button(
+            label="📊 Ana Gruplar Aylık Artış Oranları",
+            data=gruplar_aylık1,
+            file_name='Ana Gruplar Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 

@@ -687,6 +687,30 @@ if page=="Tüketici Fiyat Endeksi":
 
 
 
+        özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
+        özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
+        özelgöstergeler=özelgöstergeler.sort_index()
+        özelgöstergeler_aylık=pd.DataFrame(columns=özelgöstergeler.columns)
+        for col in özelgöstergeler.columns:
+            cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
+            özelgöstergeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+            carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+            hareketliartıs=carim.values/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-1":f"{onceki}-24"].iloc[:len(carim)].values
+            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+            hareketliartıs=(hareketliartıs-1)*100
+            özelgöstergeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+            özelgöstergeler_aylık=pd.DataFrame(özelgöstergeler_aylık)
+        özelgöstergeler_aylık=np.round(özelgöstergeler_aylık,2)
+
+        özelgöstergeler_aylık["Tarih"]=(özelgöstergeler_aylık.index.strftime("%Y-%m"))
+        cols=["Tarih"]
+        cols.extend(gruplar.columns)
+        özelgöstergeler_aylık=özelgöstergeler_aylık[cols]
+        özelgöstergeler_aylık=özelgöstergeler_aylık.reset_index(drop=True)
+
+
+
+
         def to_excel(df):
             output = BytesIO()
             # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
@@ -729,6 +753,14 @@ if page=="Tüketici Fiyat Endeksi":
             label="📊 Temel Başlıklar Aylık Artış Oranları",
             data=harcama_grupları_aylık1,
             file_name='Temel Başlıklar Aylık Değişim Oranları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        özelgöstergeler_aylık1=to_excel(özelgöstergeler_aylık)
+        st.download_button(
+            label="📊 Özel Kapsamlı Göstergeler Aylık Artış Oranları",
+            data=özelgöstergeler_aylık1,
+            file_name='Özel Kapsamlı Göstergeler Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 

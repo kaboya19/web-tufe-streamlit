@@ -707,7 +707,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.download_button(
             label="📊 Temel Başlıklar Aylık Artış Oranları",
             data=harcama_grupları_aylık1,
-            file_name='Maddeler Aylık Değişim Oranları.xlsx',
+            file_name='Temel Başlıklar Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 

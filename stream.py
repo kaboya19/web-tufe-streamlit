@@ -611,6 +611,7 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
         tüfeaylıkdata.columns=["Aylık Artış"]
         tüfeaylıkdata["Tarih"]=(tüfeaylıkdata.index.strftime("%Y-%m"))
+        tüfeaylıkdata["Tarih"]=tüfeaylıkdata["Tarih"].dt.strftime("%Y-%m")
         tüfeaylıkdata=tüfeaylıkdata.reset_index()
         tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
         

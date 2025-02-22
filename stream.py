@@ -676,6 +676,8 @@ if page=="Tüketici Fiyat Endeksi":
             hareketliartıs=(hareketliartıs-1)*100
             gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             gruplar_aylık=pd.DataFrame(gruplar_aylık)
+        gruplar_aylık=np.round(gruplar_aylık,2)
+
         gruplar_aylık["Tarih"]=(gruplar_aylık.index.strftime("%Y-%m"))
         cols=["Tarih"]
         cols.extend(gruplar.columns)
@@ -730,7 +732,6 @@ if page=="Tüketici Fiyat Endeksi":
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
-        gruplar_aylık=np.round(gruplar_aylık.drop("Tarih",axis=1),2)
         gruplar_aylık1=to_excel(gruplar_aylık)
         st.download_button(
             label="📊 Ana Gruplar Aylık Artış Oranları",

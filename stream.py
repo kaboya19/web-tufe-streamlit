@@ -736,7 +736,7 @@ if page=="Tüketici Fiyat Endeksi":
         ağırlıklar=ağırlıklar.sort_values(by="Ağırlık",ascending=False)
         ağırlıklar=pd.DataFrame(ağırlıklar)
 
-        ağırlıklar=np.round(ağırlıklar,2)
+        ağırlıklar=np.round(ağırlıklar,4)
         ağırlıklar1=to_excel(ağırlıklar)
 
         

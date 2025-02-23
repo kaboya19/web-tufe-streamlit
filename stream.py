@@ -739,12 +739,31 @@ if page=="Tüketici Fiyat Endeksi":
         ağırlıklar=np.round(ağırlıklar,4)
         ağırlıklar1=to_excel(ağırlıklar)
 
+
+        ağırlıklar=pd.read_csv("ağırlıklartüfe.csv")
+        ağırlıklar["Ağırlık"]=ağırlıklar["Ağırlık"]*100
+        ağırlıklar=ağırlıklar[["Ürün","Ağırlık","Ana Grup"]]
+        ağırlıklar["Ağırlık"]=ağırlıklar.groupby("Ana Grup")["Ağırlık"].transform("sum")
+        ağırlıklar=ağırlıklar.sort_values(by="Ağırlık",ascending=False)
+        ağırlıklar=pd.DataFrame(ağırlıklar)
+        del ağırlıklar["Ürün"]
+        ağırlıklar=ağırlıklar.drop_duplicates()
+        ağırlıklar=ağırlıklar[["Ana Grup","Ağırlık"]]
+        ağırlıklar2=to_excel(ağırlıklar)
+
         
 
         st.download_button(
             label="📊 Madde Ağırlıkları",
             data=ağırlıklar1,
             file_name='Madde Ağırlıkları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
+        st.download_button(
+            label="📊 Ana Grup Ağırlıkları",
+            data=ağırlıklar2,
+            file_name='Ana Grup Ağırlıkları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
         

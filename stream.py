@@ -625,6 +625,11 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata=tüfeaylıkdata.reset_index()
         tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
 
+        import time
+        with st.spinner("İçerik yükleniyor..."):
+            
+            time.sleep(15)  # Yükleme işlemini simüle etmek için bekleme
+
 
         endeksler=pd.read_csv("endeksler.csv",index_col=0)
         endeksler.index=pd.to_datetime(endeksler.index)
@@ -731,9 +736,13 @@ if page=="Tüketici Fiyat Endeksi":
         ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
         ağırlıklar=ağırlıklar["Ağırlık"]*100
         ağırlıklar=ağırlıklar.sort_values(ascending=False)
+        ağırlıklar=pd.DataFrame(ağırlıklar)
+        ağırlıklar.columns=["Ağırlık"]
 
         ağırlıklar=np.round(ağırlıklar,2)
         ağırlıklar1=to_excel(ağırlıklar)
+
+        
 
         st.download_button(
             label="📊 Madde Ağırlıkları",

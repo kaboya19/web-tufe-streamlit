@@ -728,6 +728,20 @@ if page=="Tüketici Fiyat Endeksi":
             processed_data = output.getvalue()  # Bellekteki dosya verisini al
             return processed_data
         
+        ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
+        ağırlıklar=ağırlıklar["Ağırlık"]*100
+        ağırlıklar=ağırlıklar.sort_values(ascending=False)
+
+        ağırlıklar=np.round(ağırlıklar,2)
+        ağırlıklar1=to_excel(ağırlıklar)
+
+        st.download_button(
+            label="📊 Madde Ağırlıkları",
+            data=ağırlıklar1,
+            file_name='Madde Ağırlıkları.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+        
         
         tüfeaylıkdata=np.round(tüfeaylıkdata,2)
         tüfeaylıkdata1=to_excel(tüfeaylıkdata)

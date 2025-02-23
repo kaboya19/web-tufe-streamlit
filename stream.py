@@ -628,7 +628,7 @@ if page=="Tüketici Fiyat Endeksi":
         import time
         with st.spinner("İçerik yükleniyor..."):
             
-            time.sleep(15)  # Yükleme işlemini simüle etmek için bekleme
+            time.sleep(60)  # Yükleme işlemini simüle etmek için bekleme
 
 
         endeksler=pd.read_csv("endeksler.csv",index_col=0)
@@ -733,11 +733,11 @@ if page=="Tüketici Fiyat Endeksi":
             processed_data = output.getvalue()  # Bellekteki dosya verisini al
             return processed_data
         
-        ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
-        ağırlıklar=ağırlıklar["Ağırlık"]*100
-        ağırlıklar=ağırlıklar.sort_values(ascending=False)
+        ağırlıklar=pd.read_csv("ağırlıklartüfe.csv")
+        ağırlıklar["Ağırlık"]=ağırlıklar["Ağırlık"]*100
+        ağırlıklar=ağırlıklar[["Ürün","Ağırlık"]]
+        ağırlıklar=ağırlıklar.sort_values(by="Ağırlık",ascending=False)
         ağırlıklar=pd.DataFrame(ağırlıklar)
-        ağırlıklar.columns=["Ağırlık"]
 
         ağırlıklar=np.round(ağırlıklar,2)
         ağırlıklar1=to_excel(ağırlıklar)

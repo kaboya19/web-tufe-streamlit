@@ -625,10 +625,7 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata=tüfeaylıkdata.reset_index()
         tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
 
-        import time
-        with st.spinner("İçerik yükleniyor..."):
-            
-            time.sleep(60)  # Yükleme işlemini simüle etmek için bekleme
+ 
 
 
         endeksler=pd.read_csv("endeksler.csv",index_col=0)

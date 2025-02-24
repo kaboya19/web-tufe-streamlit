@@ -125,7 +125,6 @@ if page=="Bültenler":
         image18 = Image.open("eğilim.png")
         st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim")
 
-        st.markdown("<a href='https://web-tufe.streamlit.app/'>Web-Tüketici Fiyat Endeksi ile ilgili tüm verilere buradan ulaşabilirsiniz.</a>", unsafe_allow_html=True)
 
         # Footer
         st.markdown("<hr>", unsafe_allow_html=True)

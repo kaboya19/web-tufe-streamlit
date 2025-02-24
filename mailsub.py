@@ -16,7 +16,7 @@ SENDER_EMAIL = "borakaya8@gmail.com"
 SENDER_PASSWORD = "dqpp vgar wujr vhei"
 
 # Abone listesi
-SUBSCRIBERS_FILE = "subscribers1.csv"
+SUBSCRIBERS_FILE = "subscribers.csv"
 
 # E-Posta Gönderim Fonksiyonu
 def send_email_with_images(to_email, subject, body, images):
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     </small>
     <br>
     <p><strong>Hazırlayan:Bora Kaya</strong><br>
-    <p>Twitter: <a href='https://x.com/mborathe'>https://x.com/mborathe</a></p>
+    <p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>
     <p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>
    
 

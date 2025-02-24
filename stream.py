@@ -17,7 +17,6 @@ import streamlit as st
 
 st.set_page_config(page_title="Web-Tüketici Fiyat Endeksi",layout="wide")
 social_media_links = {
-    "X": {"url": "https://x.com/mborathe", "color": "#000000"},
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }
@@ -136,7 +135,7 @@ if page=="Bültenler":
         """, unsafe_allow_html=True)
 
         st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)
-        st.markdown("<p>Twitter: <a href='https://x.com/mborathe'>https://x.com/mborathe</a></p>", unsafe_allow_html=True)
+        st.markdown("<p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>", unsafe_allow_html=True)
         st.markdown("<p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>", unsafe_allow_html=True)
 
 

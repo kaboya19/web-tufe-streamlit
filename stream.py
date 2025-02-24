@@ -75,25 +75,25 @@ if page=="Bültenler":
 
         # First image
         image1 = Image.open("anagruplar.png")
-        st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler", use_column_width=True)
+        st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler")
 
         # Paragraphs and next images
         st.write("Web-Tüketici Fiyat Endeksi Şubatta %3,56 artış kaydederken mevsimsellikten arındırılmış artış %2,91 oldu.")
         st.write("En çok artış ve düşüş yaşanan maddeler:")
         image2 = Image.open("maddeler.png")
-        st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar", use_column_width=True)
+        st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar")
 
         st.write("En çok artış ve düşüş yaşanan temel başlıklar:")
         image3 = Image.open("temelbaşlıklar.png")
-        st.image(image3, caption="Özel Kapsamlı TÜFE Göstergeleri", use_column_width=True)
+        st.image(image3, caption="Özel Kapsamlı TÜFE Göstergeleri")
 
         st.write("Özel Kapsamlı TÜFE Göstergeleri:")
         image4 = Image.open("özelgöstergeler.png")
-        st.image(image4, caption="Özel Kapsamlı Göstergeler aylık artış oranları", use_column_width=True)
+        st.image(image4, caption="Özel Kapsamlı Göstergeler aylık artış oranları")
 
         st.write("Özel Kapsamlı Göstergeler aylık artış oranları:")
         image5 = Image.open("özelgöstergelerartış.png")
-        st.image(image5, caption="Ana gruplara ait artış oranları", use_column_width=True)
+        st.image(image5, caption="Ana gruplara ait artış oranları")
 
         # Display remaining images
         images = [
@@ -112,18 +112,18 @@ if page=="Bültenler":
 
         for image_path, caption in images:
             image = Image.open(image_path)
-            st.image(image, caption=caption, use_column_width=True)
+            st.image(image, caption=caption)
 
         # Seçilmiş maddelere ait ortalama fiyatlar
         st.write("Seçilmiş maddelere ait ortalama fiyatlar:")
         image17 = Image.open("fiyatlar.png")
-        st.image(image17, caption="Seçilmiş maddelere ait ortalama fiyatlar", use_column_width=True)
+        st.image(image17, caption="Seçilmiş maddelere ait ortalama fiyatlar")
 
         # Final section with trend and link
         st.write("Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,20 olmuştur.")
         st.write("SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,29 artmıştır.")
         image18 = Image.open("eğilim.png")
-        st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim", use_column_width=True)
+        st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim")
 
         st.markdown("<a href='https://web-tufe.streamlit.app/'>Web-Tüketici Fiyat Endeksi ile ilgili tüm verilere buradan ulaşabilirsiniz.</a>", unsafe_allow_html=True)
 

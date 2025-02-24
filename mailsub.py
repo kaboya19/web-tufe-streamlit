@@ -69,10 +69,10 @@ if __name__ == "__main__":
     subject = f"Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni"
     body = f"""
     <h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni</h2>
-    <h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubat'ta %3,41 arttı</h3>
+    <h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubatta %3,56 arttı</h3>
     <br>
     <img src="cid:image1" style="max-width:600px; margin: 10px 0;"/>
-    <p>Web-Şubat Fiyat Endeksi Şubat'ta %3,41 artış kaydederken mevsimsellikten arındırılmış artış %2,85 oldu.</p>
+    <p>Web-Tüketici Fiyat Endeksi Şubatta %3,56 artış kaydederken mevsimsellikten arındırılmış artış %2,91 oldu.</p>
     <br>
     <p>En çok artış ve düşüş yaşanan maddeler:</p>
     <img src="cid:image2" style="max-width:600px; margin: 10px 0;"/>
@@ -98,8 +98,8 @@ if __name__ == "__main__":
     <p>Seçilmiş maddelere ait ortalama fiyatlar:</p>
     <img src="cid:image17" style="max-width:600px; margin: 10px 0;"/>
     <br>
-    <p>Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,21 olmuştur.</p>
-    <p>SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,27 artmıştır.</p>
+    <p>Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,20 olmuştur.</p>
+    <p>SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,29 artmıştır.</p>
     <br>
     <img src="cid:image18" style="max-width:600px; margin: 10px 0;"/>
     <p><a href='https://web-tufe.streamlit.app/'>Web-Tüketici Fiyat Endeksi ile ilgili tüm verilere buradan ulaşabilirsiniz.</a></p>

@@ -17,6 +17,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Web-Tüketici Fiyat Endeksi",layout="wide")
 social_media_links = {
+    "X": {"url": "https://x.com/webtufe", "color": "#000000"},
     "GitHub": {"url": "https://github.com/kaboya19", "color": "#000000"},
     "LinkedIn": {"url": "https://www.linkedin.com/in/bora-kaya/", "color": "#000000"}
 }

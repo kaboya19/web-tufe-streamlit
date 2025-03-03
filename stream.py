@@ -567,7 +567,7 @@ if page=="Tüketici Fiyat Endeksi":
         tüfeaylıkdata.columns=["Aylık Artış"]
 
        
-        tüfeaylıkdata["TÜİK"]=tüik_aylık["TÜİK"]
+        tüfeaylıkdata["TÜİK"]=tüik_aylık
         
 
 

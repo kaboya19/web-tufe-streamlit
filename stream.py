@@ -584,7 +584,7 @@ if page=="Tüketici Fiyat Endeksi":
             hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
             textfont=dict(
                 color='black',
-                size=12,
+                size=13,
                 family='Arial Black'  # Font Arial Black
             )
         ))
@@ -599,7 +599,7 @@ if page=="Tüketici Fiyat Endeksi":
             hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
             textfont=dict(
                 color='black',
-                size=12,
+                size=13,
                 family='Arial Black'  # Font Arial Black
             )
         ))
@@ -615,7 +615,7 @@ if page=="Tüketici Fiyat Endeksi":
                 tickmode='array',
                 tickvals=tüfeaylıkdata.index.strftime("%Y-%m"),
                 ticktext=ticktext,
-                tickangle=-45,
+                tickangle=-0,
                 tickfont=dict(size=15, color="black", family="Arial Black")
             ),
             yaxis=dict(

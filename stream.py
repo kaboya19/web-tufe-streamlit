@@ -615,7 +615,7 @@ if page=="Tüketici Fiyat Endeksi":
             margin=dict(t=50, b=50, l=50, r=50)  # Kenar boşlukları
         )
        
-        st.plotly_chart(figcomp)
+        #st.plotly_chart(figcomp)
         
 
 

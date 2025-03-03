@@ -578,7 +578,7 @@ if page=="Tüketici Fiyat Endeksi":
             x=tüfeaylıkdata.index.strftime("%Y-%m"),
             y=tüfeaylıkdata["Aylık Artış"],
             name="Web-TÜFE",
-            marker=dict(color='red'),
+            marker=dict(color='blue'),
             text=tüfeaylıkdata["Aylık Artış"],  # Değerleri göster
             textposition='outside',
             hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
@@ -593,7 +593,7 @@ if page=="Tüketici Fiyat Endeksi":
             x=tüfeaylıkdata.index.strftime("%Y-%m"),
             y=tüfeaylıkdata["TÜİK"],
             name="TÜİK",
-            marker=dict(color='blue'),
+            marker=dict(color='red'),
             text=tüfeaylıkdata["TÜİK"],  # Değerleri göster
             textposition='outside',
             hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak

@@ -557,7 +557,12 @@ if page=="Tüketici Fiyat Endeksi":
         st.plotly_chart(figgartıs)
 
         figcomp=go.Figure()
+        tüik=pd.read_csv("tüik.csv",index_col=0)
+        tüik.index=pd.to_datetime(tüik.index)
+        tüik=tüik.resample('M').last()
+       
         tüik_aylık=tüik["TÜİK"].pct_change().dropna().iloc[1:]*100
+        tüik_aylık=tüik_aylık.round(2)
         tüik_aylık.index=pd.to_datetime(tüik_aylık.index)
 
         cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
@@ -568,6 +573,21 @@ if page=="Tüketici Fiyat Endeksi":
 
        
         tüfeaylıkdata["TÜİK"]=tüik_aylık
+        tüfeaylıkdata=tüfeaylıkdata.round(2)
+        figcomp.add_trace(go.Bar(
+            x=tüfeaylıkdata.index.strftime("%Y-%m"),
+            y=tüfeaylıkdata["Aylık Artış"],
+            name="Web-TÜFE",
+            marker=dict(color='red'),
+            text=tüfeaylıkdata["Aylık Artış"],  # Değerleri göster
+            textposition='outside',
+            hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+            textfont=dict(
+                color='black',
+                size=12,
+                family='Arial Black'  # Font Arial Black
+            )
+        ))
 
         figcomp.add_trace(go.Bar(
             x=tüfeaylıkdata.index.strftime("%Y-%m"),
@@ -584,16 +604,17 @@ if page=="Tüketici Fiyat Endeksi":
             )
         ))
         tickvals = tüfeaylıkdata.index
-        ticktext = tickvals.strftime("%d.%m.%Y")
+        ticktext = tickvals.strftime("%Y-%m")
         figcomp.update_layout(
             barmode='group',  # Barlar gruplanmış şekilde gösterilir
             title=dict(
-                text=f"{selected_group} TÜİK ve Web-TÜFE Aylık Değişim Karşılaştırması",
+                text=f"TÜİK ve Web-TÜFE Aylık Değişim Karşılaştırması",
                 font=dict(size=18, color="black", family="Arial Black")
             ),
             xaxis=dict(
                 tickmode='array',
                 tickvals=tüfeaylıkdata.index.strftime("%Y-%m"),
+                ticktext=ticktext,
                 tickangle=-45,
                 tickfont=dict(size=15, color="black", family="Arial Black")
             ),
@@ -615,7 +636,7 @@ if page=="Tüketici Fiyat Endeksi":
             margin=dict(t=50, b=50, l=50, r=50)  # Kenar boşlukları
         )
        
-        #st.plotly_chart(figcomp)
+        st.plotly_chart(figcomp)
         
 
 

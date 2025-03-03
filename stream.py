@@ -568,6 +568,54 @@ if page=="Tüketici Fiyat Endeksi":
 
        
         tüfeaylıkdata["TÜİK"]=tüik_aylık
+
+        figcomp.add_trace(go.Bar(
+            x=tüfeaylıkdata.index.strftime("%Y-%m"),
+            y=tüfeaylıkdata["TÜİK"],
+            name="TÜİK",
+            marker=dict(color='blue'),
+            text=tüfeaylıkdata["TÜİK"],  # Değerleri göster
+            textposition='outside',
+            hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+            textfont=dict(
+                color='black',
+                size=12,
+                family='Arial Black'  # Font Arial Black
+            )
+        ))
+        tickvals = tüfeaylıkdata.index
+        ticktext = tickvals.strftime("%d.%m.%Y")
+        figcomp.update_layout(
+            barmode='group',  # Barlar gruplanmış şekilde gösterilir
+            title=dict(
+                text=f"{selected_group} TÜİK ve Web-TÜFE Aylık Değişim Karşılaştırması",
+                font=dict(size=18, color="black", family="Arial Black")
+            ),
+            xaxis=dict(
+                tickmode='array',
+                tickvals=tüfeaylıkdata.index.strftime("%Y-%m"),
+                tickangle=-45,
+                tickfont=dict(size=15, color="black", family="Arial Black")
+            ),
+            yaxis=dict(
+                title='Aylık Değişim (%)',
+                tickfont=dict(size=15, color="black", family="Arial Black")            ),
+            legend=dict(
+                x=1,
+                y=1,
+                xanchor='right',
+                yanchor='top',
+                font=dict(size=12, color="black", family="Arial Black"),
+                bgcolor='rgba(255,255,255,0.8)',  # Arka plan rengi (şeffaf beyaz)
+                bordercolor='black',
+                borderwidth=1
+            ),
+            bargap=0.2,  # Barlar arası boşluk
+            bargroupgap=0.1,  # Gruplar arası boşluk
+            margin=dict(t=50, b=50, l=50, r=50)  # Kenar boşlukları
+        )
+       
+        st.plotly_chart(figcomp)
         
 
 

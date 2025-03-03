@@ -559,15 +559,14 @@ if page=="Tüketici Fiyat Endeksi":
         figcomp=go.Figure()
         tüik_aylık=tüik["TÜİK"].pct_change().dropna().iloc[1:]*100
         tüik_aylık.index=pd.to_datetime(tüik_aylık.index)
-        tüik_aylık.index=tüik_aylık.index.strftime("%Y-%m")
+
         cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
         tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
         tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
         tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
         tüfeaylıkdata.columns=["Aylık Artış"]
-        tüfeaylıkdata["Tarih"]=pd.to_datetime(tüfeaylıkdata.index)
-        tüfeaylıkdata["Tarih"]=tüfeaylıkdata["Tarih"].dt.strftime("%Y-%m")
-        tüfeaylıkdata=tüfeaylıkdata.set_index("Tarih")
+
+       
         tüfeaylıkdata["TÜİK"]=tüik_aylık["TÜİK"]
         
 

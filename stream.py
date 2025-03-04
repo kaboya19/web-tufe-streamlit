@@ -893,6 +893,20 @@ if page=="Tüketici Fiyat Endeksi":
             processed_data = output.getvalue()  # Bellekteki dosya verisini al
             return processed_data
         
+        def to_excel1(df):
+            output = BytesIO()
+            # Pandas'ın ExcelWriter fonksiyonunu kullanarak Excel dosyasını oluştur
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                df.to_excel(writer, index=False, sheet_name='Sheet1')  # index=False ile index'i dahil etmiyoruz
+                
+                # Writer'dan Workbook ve Worksheet nesnelerine erişim
+                workbook = writer.book
+                worksheet = writer.sheets['Sheet1']
+                
+                
+            processed_data = output.getvalue()  # Bellekteki dosya verisini al
+            return processed_data
+        
         ağırlıklar=pd.read_csv("ağırlıklartüfe.csv")
         ağırlıklar["Ağırlık"]=ağırlıklar["Ağırlık"]*100
         ağırlıklar=ağırlıklar[["Ürün","Ağırlık"]]
@@ -941,6 +955,11 @@ if page=="Tüketici Fiyat Endeksi":
         )
 
         endeksler_aylık=np.round(endeksler_aylık,2)
+        endeksler_aylık=endeksler_aylık.T
+        endeksler_aylık.columns=endeksler_aylık.iloc[0,:]
+        endeksler_aylık=endeksler_aylık.iloc[1:]
+        endeksler_aylık=endeksler_aylık.reset_index()
+        endeksler_aylık=endeksler_aylık.rename(columns={"index":"Madde"})
         endeksler_aylık1=to_excel(endeksler_aylık)
         st.download_button(
             label="📊 Maddeler Aylık Artış Oranları",
@@ -950,6 +969,11 @@ if page=="Tüketici Fiyat Endeksi":
         )
 
         harcama_grupları_aylık=np.round(harcama_grupları_aylık,2)
+        harcama_grupları_aylık=harcama_grupları_aylık.T
+        harcama_grupları_aylık.columns=harcama_grupları_aylık.iloc[0,:]
+        harcama_grupları_aylık=harcama_grupları_aylık.iloc[1:]
+        harcama_grupları_aylık=harcama_grupları_aylık.reset_index()
+        harcama_grupları_aylık=harcama_grupları_aylık.rename(columns={"index":"Grup"})
         harcama_grupları_aylık1=to_excel(harcama_grupları_aylık)
         st.download_button(
             label="📊 Temel Başlıklar Aylık Artış Oranları",
@@ -957,6 +981,12 @@ if page=="Tüketici Fiyat Endeksi":
             file_name='Temel Başlıklar Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+        özelgöstergeler_aylık=özelgöstergeler_aylık.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
+        özelgöstergeler_aylık=özelgöstergeler_aylık.T
+        özelgöstergeler_aylık.columns=özelgöstergeler_aylık.iloc[0,:]
+        özelgöstergeler_aylık=özelgöstergeler_aylık.iloc[1:]
+        özelgöstergeler_aylık=özelgöstergeler_aylık.reset_index()
+        özelgöstergeler_aylık=özelgöstergeler_aylık.rename(columns={"index":"Grup"})
 
         özelgöstergeler_aylık1=to_excel(özelgöstergeler_aylık)
         st.download_button(
@@ -965,7 +995,11 @@ if page=="Tüketici Fiyat Endeksi":
             file_name='Özel Kapsamlı Göstergeler Aylık Değişim Oranları.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
-
+        gruplar_aylık=gruplar_aylık.T
+        gruplar_aylık.columns=gruplar_aylık.iloc[0,:]
+        gruplar_aylık=gruplar_aylık.iloc[1:]
+        gruplar_aylık=gruplar_aylık.reset_index()
+        gruplar_aylık=gruplar_aylık.rename(columns={"index":"Grup"})
         gruplar_aylık1=to_excel(gruplar_aylık)
         st.download_button(
             label="📊 Ana Gruplar Aylık Artış Oranları",
@@ -1251,7 +1285,8 @@ if page=="Ana Gruplar":
                 hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
             ))
         
-        
+    
+
 
 
 
@@ -1273,7 +1308,123 @@ if page=="Ana Gruplar":
         )
     
     st.plotly_chart(figgana)
+    
+
+    data=pd.read_excel("harcama gruplarina gore endeks sonuclari.xlsx")
+    data=data.iloc[1:,:]
+    data.columns=data.iloc[1,:]
+
+    data=data.drop(1,axis=0)
+    data=data.drop(2,axis=0)
+    data=data.iloc[1:,3:]
+    data=data.set_index(pd.date_range(start="2005-01-31",freq="M",periods=len(data)))
+
+    data=data.iloc[:,1:13]
+    data=data.rename(columns={"Konut, su, elektrik, gaz ve diğer yakıtlar":"Konut","Mobilya, ev aletleri ve ev bakım hizmetleri":"Ev eşyası"})
+    data=data.drop(["Sağlık","Alkollü içecekler ve tütün"],axis=1)
+    data=data[[selected_group]]
+    data=data.pct_change().dropna().loc["2025-02":]*100
+    
+
+    gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
+    gruplar.index=pd.to_datetime(gruplar.index)
+    gruplar=gruplar.sort_index()
+    gruplar_aylık=pd.DataFrame(columns=gruplar.columns)
+    for col in gruplar.columns:
+        cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
+        gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+        hareketliartıs=carim.values/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+        hareketliartıs=(hareketliartıs-1)*100
+        gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+        gruplar_aylık=pd.DataFrame(gruplar_aylık)
+    gruplar_aylık=np.round(gruplar_aylık,2)
+
+    gruplar_aylık["Tarih"]=(gruplar_aylık.index)
+    cols=["Tarih"]
+    cols.extend(gruplar.columns)
+    gruplar_aylık=gruplar_aylık[cols]
+    gruplar_aylık=gruplar_aylık.reset_index(drop=True)
+    gruplar_aylık=gruplar_aylık.set_index("Tarih")
+    tüikdata=pd.DataFrame(index=gruplar_aylık.index)
+
+
+
+
+    tüikdata["Web-TÜFE"]=gruplar_aylık[selected_group]
+    tüikdata["TÜİK"]=data
+    tüikdata=tüikdata.round(2)
+
+    figcompana=go.Figure()
+    figcompana.add_trace(go.Bar(
+            x=tüikdata.index.strftime("%Y-%m"),
+            y=tüikdata["Web-TÜFE"],
+            name="Web-TÜFE",
+            marker=dict(color='blue'),
+            text=tüikdata["Web-TÜFE"],  # Değerleri göster
+            textposition='outside',
+            hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+            textfont=dict(
+                color='black',
+                size=13,
+                family='Arial Black'  # Font Arial Black
+            )
+        ))
+
+    figcompana.add_trace(go.Bar(
+        x=tüikdata.index.strftime("%Y-%m"),
+        y=tüikdata["TÜİK"],
+        name="TÜİK",
+        marker=dict(color='red'),
+        text=tüikdata["TÜİK"],  # Değerleri göster
+        textposition='outside',
+        hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+        textfont=dict(
+            color='black',
+            size=13,
+            family='Arial Black'  # Font Arial Black
+        )
+    ))
+    tickvals = tüikdata.index
+    ticktext = tickvals.strftime("%Y-%m")
+    figcompana.update_layout(
+        barmode='group',  # Barlar gruplanmış şekilde gösterilir
+        title=dict(
+            text=f"{selected_group} TÜİK ve Web-TÜFE Aylık Değişim Karşılaştırması",
+            font=dict(size=18, color="black", family="Arial Black")
+        ),
+        xaxis=dict(
+            tickmode='array',
+            tickvals=tüikdata.index.strftime("%Y-%m"),
+            ticktext=ticktext,
+            tickangle=-0,
+            tickfont=dict(size=15, color="black", family="Arial Black")
+        ),
+        yaxis=dict(
+            title='Aylık Değişim (%)',
+            tickfont=dict(size=15, color="black", family="Arial Black")            ),
+        legend=dict(
+            x=1,
+            y=1,
+            xanchor='right',
+            yanchor='top',
+            font=dict(size=12, color="black", family="Arial Black"),
+            bgcolor='rgba(255,255,255,0.8)',  # Arka plan rengi (şeffaf beyaz)
+            bordercolor='black',
+            borderwidth=1
+        ),
+        bargap=0.2,  # Barlar arası boşluk
+        bargroupgap=0.1,  # Gruplar arası boşluk
+        margin=dict(t=50, b=50, l=50, r=50)  # Kenar boşlukları
+    )
+    
+    st.plotly_chart(figcompana)
+
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Grubu Aylık Artışı</h2>", unsafe_allow_html=True)
+
     st.plotly_chart(figgartıs)
+    
 
 
     
@@ -1675,6 +1826,123 @@ if page=="Özel Kapsamlı Göstergeler":
         )
     
     st.plotly_chart(figgösterge)
+
+
+    data=pd.read_csv("tüiközelgöstergeler.csv",index_col=0)
+    data.index=pd.to_datetime(data.index)
+
+    data2=pd.read_excel("harcama gruplarina gore endeks sonuclari.xlsx")
+    data2=data2.iloc[1:,:]
+    data2.columns=data2.iloc[1,:]
+
+    data2=data2.drop(1,axis=0)
+    data2=data2.drop(2,axis=0)
+    data2=data2.iloc[1:,3:]
+    data2=data2.set_index(pd.date_range(start="2005-01-31",freq="M",periods=len(data2)))
+    data2=data2.pct_change().dropna().loc["2025-02"]*100
+    
+    
+    özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
+    özelgöstergeler=özelgöstergeler.sort_index()
+    gruplar_aylık=pd.DataFrame(columns=özelgöstergeler.columns)
+    for col in özelgöstergeler.columns:
+        cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
+        gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+        hareketliartıs=carim.values/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+        hareketliartıs=(hareketliartıs-1)*100
+        gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+        gruplar_aylık=pd.DataFrame(gruplar_aylık)
+    gruplar_aylık=np.round(gruplar_aylık,2)
+
+    gruplar_aylık["Tarih"]=(gruplar_aylık.index)
+    cols=["Tarih"]
+    cols.extend(özelgöstergeler.columns)
+    gruplar_aylık=gruplar_aylık[cols]
+    gruplar_aylık=gruplar_aylık.reset_index(drop=True)
+    gruplar_aylık=gruplar_aylık.set_index("Tarih")
+    tüikdata=pd.DataFrame(index=gruplar_aylık.index)
+
+
+
+
+    tüikdata["Web-TÜFE"]=gruplar_aylık[selected_group]
+    tüikdata["TÜİK"]=data[selected_group]
+    tüikdata=tüikdata.round(2)
+    if selected_group=="Altın":
+        st.markdown("""
+    <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+        Not: Altın endeksi Web-TÜFE'de sadece altını kapsarken TÜİK verisi Mücevherler, saat ve kol saatleri endeksi olarak verilmektedir.
+    </div>
+""", unsafe_allow_html=True)
+        tüikdata["TÜİK"]=data2["Mücevherler, saat ve kol saatleri"]
+        tüikdata=tüikdata.round(2)
+
+    figcompana=go.Figure()
+    figcompana.add_trace(go.Bar(
+            x=tüikdata.index.strftime("%Y-%m"),
+            y=tüikdata["Web-TÜFE"],
+            name="Web-TÜFE",
+            marker=dict(color='blue'),
+            text=tüikdata["Web-TÜFE"],  # Değerleri göster
+            textposition='outside',
+            hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+            textfont=dict(
+                color='black',
+                size=13,
+                family='Arial Black'  # Font Arial Black
+            )
+        ))
+
+    figcompana.add_trace(go.Bar(
+        x=tüikdata.index.strftime("%Y-%m"),
+        y=tüikdata["TÜİK"],
+        name="TÜİK",
+        marker=dict(color='red'),
+        text=tüikdata["TÜİK"],  # Değerleri göster
+        textposition='outside',
+        hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>',  # Tüm değerler barların üstünde olacak
+        textfont=dict(
+            color='black',
+            size=13,
+            family='Arial Black'  # Font Arial Black
+        )
+    ))
+    tickvals = tüikdata.index
+    ticktext = tickvals.strftime("%Y-%m")
+    figcompana.update_layout(
+        barmode='group',  # Barlar gruplanmış şekilde gösterilir
+        title=dict(
+            text=f"{selected_group} TÜİK ve Web-TÜFE Aylık Değişim Karşılaştırması",
+            font=dict(size=18, color="black", family="Arial Black")
+        ),
+        xaxis=dict(
+            tickmode='array',
+            tickvals=tüikdata.index.strftime("%Y-%m"),
+            ticktext=ticktext,
+            tickangle=-0,
+            tickfont=dict(size=15, color="black", family="Arial Black")
+        ),
+        yaxis=dict(
+            title='Aylık Değişim (%)',
+            tickfont=dict(size=15, color="black", family="Arial Black")            ),
+        legend=dict(
+            x=1,
+            y=1,
+            xanchor='right',
+            yanchor='top',
+            font=dict(size=12, color="black", family="Arial Black"),
+            bgcolor='rgba(255,255,255,0.8)',  # Arka plan rengi (şeffaf beyaz)
+            bordercolor='black',
+            borderwidth=1
+        ),
+        bargap=0.2,  # Barlar arası boşluk
+        bargroupgap=0.1,  # Gruplar arası boşluk
+        margin=dict(t=50, b=50, l=50, r=50)  # Kenar boşlukları
+    )
+    
+    st.plotly_chart(figcompana)
 
 
     

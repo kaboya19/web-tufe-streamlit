@@ -549,6 +549,7 @@ if page=="Tüketici Fiyat Endeksi":
                 Mart Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
+        st.plotly_chart(figgalt)
         degisim=endeksler.pct_change().iloc[-1]*100
         gainers = degisim.sort_values(ascending=False).head(5)
         losers = degisim.sort_values(ascending=True).head(5)
@@ -580,7 +581,7 @@ if page=="Tüketici Fiyat Endeksi":
    
         
       
-        st.plotly_chart(figgalt)
+        
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
 

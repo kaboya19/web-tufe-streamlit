@@ -507,6 +507,33 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
 
+        fig30 = go.Figure()
+        fig30.add_trace(go.Scatter(
+                    x=selected_group_data.iloc[:,0].pct_change(30).dropna().index,
+                    y=(selected_group_data.iloc[:,0].pct_change(30).dropna()*100).values,
+                    mode='lines+markers',
+                    name=selected_group,
+                    line=dict(color='blue', width=4),
+                    marker=dict(size=8, color="black"),
+                    hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+                ))
+        
+        fig30.update_layout(
+                xaxis=dict(
+                    tickvals=selected_group_data.index[::5],  # Original datetime index
+                    ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                    tickfont=dict(size=14, family="Arial Black", color="black"),
+                ),
+                yaxis=dict(
+                    tickfont=dict(size=14, family="Arial Black", color="black")
+                ),
+                font=dict(family="Arial", size=14, color="black")
+            )
+        
+        st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+    
+        st.plotly_chart(fig30)
+
 
         
     elif selected_group=="TÜFE":
@@ -583,7 +610,40 @@ if page=="Tüketici Fiyat Endeksi":
       
         
         st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
+        st.markdown("""
+    <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+        Not: Aylık artış oranı mevcut ayın ortalamasının önceki ayın 24 günlük ortalamasına göre değişimi ile hazırlanmıştır.
+    </div>
+""", unsafe_allow_html=True)
         st.plotly_chart(figgartıs)
+
+
+        fig30 = go.Figure()
+        fig30.add_trace(go.Scatter(
+                    x=selected_group_data.iloc[:,0].pct_change(30).dropna().index,
+                    y=(selected_group_data.iloc[:,0].pct_change(30).dropna()*100).values,
+                    mode='lines+markers',
+                    name=selected_group,
+                    line=dict(color='blue', width=4),
+                    marker=dict(size=8, color="black"),
+                    hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+                ))
+        
+        fig30.update_layout(
+                xaxis=dict(
+                    tickvals=selected_group_data.index[::5],  # Original datetime index
+                    ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                    tickfont=dict(size=14, family="Arial Black", color="black"),
+                ),
+                yaxis=dict(
+                    tickfont=dict(size=14, family="Arial Black", color="black")
+                ),
+                font=dict(family="Arial", size=14, color="black")
+            )
+        
+        st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+    
+        st.plotly_chart(fig30)
 
         figcomp=go.Figure()
         tüik=pd.read_csv("tüik.csv",index_col=0)
@@ -1453,6 +1513,33 @@ if page=="Ana Gruplar":
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Grubu Aylık Artışı</h2>", unsafe_allow_html=True)
 
     st.plotly_chart(figgartıs)
+
+    fig30 = go.Figure()
+    fig30.add_trace(go.Scatter(
+                x=selected_group_data.pct_change(30).dropna().index,
+                y=(selected_group_data.pct_change(30).dropna()*100).values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+    
+    fig30.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index[::5],  # Original datetime index
+                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+
+    st.plotly_chart(fig30)
     
 
 
@@ -1471,23 +1558,60 @@ if page=="Ana Gruplar":
     harcama_grupları=harcama_grupları.sort_index()
     selected_harcamagrupları=harcama_grupları[harcama]
     anagruplar=pd.read_csv("gruplar_int.csv",index_col=0)
+    anagruplar.index=pd.to_datetime(anagruplar.index)
 
     selected_harcamagrupları[selected_group]=anagruplar[selected_group]
 
-    
-    selected_harcamagruplarıartıs=pd.Series(index=selected_harcamagrupları.columns)
+
+    selected_harcamagruplarıartıs=pd.DataFrame(columns=selected_harcamagrupları.columns)
     for col in selected_harcamagrupları.columns:
-        selected_harcamagruplarıartıs.loc[col]=((hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"])-1)*100
-    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
+        cari=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill")
+        selected_harcamagruplarıartıs[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        carim=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+        hareketliartıs=carim.values/hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+        hareketliartıs=(hareketliartıs-1)*100
+        selected_harcamagruplarıartıs[col].iloc[-1]=hareketliartıs.iloc[-1]
+        selected_harcamagruplarıartıs=pd.DataFrame(selected_harcamagruplarıartıs)
+    selected_harcamagruplarıartıs["Tarih"]=(selected_harcamagruplarıartıs.index.strftime("%Y-%m"))
+
+   
+
+    # Başlığın font büyüklüğünü artırma
+    st.markdown(
+        """
+        <style>
+        label[for="Tarih Seçin:"] {
+            font-size: 20px !important;
+            font-weight: bold;
+        }
+        div[data-baseweb="select"] > div {
+            font-size: 18px !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Selectbox başlığını ayrı bir markdown ile büyütme
+    st.markdown('<p style="font-size:20px; font-weight:bold;">Tarih Seçin:</p>', unsafe_allow_html=True)
+
+    # Selectbox
+    selected_tarih = st.selectbox("", selected_harcamagruplarıartıs["Tarih"].values[::-1])
+    
    
 
 
     
-    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[harcama]
-    grubum=pd.read_csv("gruplar_int.csv",index_col=0)[selected_group]
-    selected_harcamagruplarıartıs.loc[selected_group]=((hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(grubum)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"])-1)*100
     
-    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.sort_values()
+
+    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs[selected_harcamagruplarıartıs["Tarih"]==selected_tarih].iloc[0]
+
+
+
+
+
+    selected_harcamagruplarıartıs=selected_harcamagruplarıartıs.drop("Tarih",axis=0).sort_values()
 
     colors = ['red' if label == f"{selected_group}" else 'blue' for label in selected_harcamagruplarıartıs.index]
 
@@ -1683,6 +1807,33 @@ if page=="Harcama Grupları":
     tüfe=tüfe.sort_index()
     harcama_grupları["TÜFE"]=tüfe["TÜFE"]
 
+    fig30 = go.Figure()
+    fig30.add_trace(go.Scatter(
+                x=selected_group_data.pct_change(30).dropna().index,
+                y=(selected_group_data.pct_change(30).dropna()*100).values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+    
+    fig30.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index[::5],  # Original datetime index
+                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+
+    st.plotly_chart(fig30)
+
     
 
     
@@ -1868,6 +2019,8 @@ if page=="Özel Kapsamlı Göstergeler":
             """, unsafe_allow_html=True)
     
 
+    
+
 
     figgösterge=go.Figure()
     
@@ -1903,6 +2056,77 @@ if page=="Özel Kapsamlı Göstergeler":
         )
     
     st.plotly_chart(figgösterge)
+
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=28)).strftime("%Y-%m")
+    cari=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+    hareketliartıs=cari.values/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
+    hareketliartıs=(hareketliartıs-1)*100
+
+    figgartıs = go.Figure()
+    figgartıs.add_trace(go.Scatter(
+                x=hareketliartıs.index,
+                y=hareketliartıs.values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+    
+    figgartıs.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+        Not: Aylık artış oranı mevcut ayın ortalamasının önceki ayın 24 günlük ortalamasına göre değişimi ile hazırlanmıştır.
+    </div>
+""", unsafe_allow_html=True)
+    st.plotly_chart(figgartıs)
+
+
+
+
+    fig30 = go.Figure()
+    fig30.add_trace(go.Scatter(
+                x=selected_group_data.pct_change(30).dropna().index,
+                y=(selected_group_data.pct_change(30).dropna()*100).values,
+                mode='lines+markers',
+                name=selected_group,
+                line=dict(color='blue', width=4),
+                marker=dict(size=8, color="black"),
+                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+            ))
+    
+    fig30.update_layout(
+            xaxis=dict(
+                tickvals=selected_group_data.index[::5],  # Original datetime index
+                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+            ),
+            yaxis=dict(
+                tickfont=dict(size=14, family="Arial Black", color="black")
+            ),
+            font=dict(family="Arial", size=14, color="black")
+        )
+    
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+  
+    st.plotly_chart(fig30)
+
+
 
 
     data=pd.read_csv("tüiközelgöstergeler.csv",index_col=0)
@@ -2304,16 +2528,54 @@ if page=="Madde Endeksleri":
     endeksler.index=pd.to_datetime(endeksler.index)
     endeksler=endeksler.sort_index()
 
-    maddeartıslar=pd.Series(index=endeksler.columns)
-    for col in maddeartıslar.index:
-        maddeartıslar.loc[col]=((hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"])-1)*100
-    maddeartıslar=maddeartıslar[maddeler]
+    
+    endeksler=endeksler[ürüngrupları[ürüngrupları["Ana Grup"]==selected_anagrup]["Ürün"].values]
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
-    maddeartıslar.loc[selected_anagrup]=((hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(gruplar[selected_anagrup])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"])-1)*100
+    endeksler[selected_anagrup]=gruplar[selected_anagrup]
+
+    
+    maddeler_aylık=pd.DataFrame(columns=endeksler.columns)
+    for col in endeksler.columns:
+        cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
+        maddeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+        hareketliartıs=carim.values/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+        hareketliartıs=(hareketliartıs-1)*100
+        maddeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+        maddeler_aylık=pd.DataFrame(maddeler_aylık)
+    maddeler_aylık["Tarih"]=(maddeler_aylık.index.strftime("%Y-%m"))
+
+    import streamlit as st
+
+    # Başlığın font büyüklüğünü artırma
+    st.markdown(
+        """
+        <style>
+        label[for="Tarih Seçin:"] {
+            font-size: 20px !important;
+            font-weight: bold;
+        }
+        div[data-baseweb="select"] > div {
+            font-size: 18px !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Selectbox başlığını ayrı bir markdown ile büyütme
+    st.markdown('<p style="font-size:20px; font-weight:bold;">Tarih Seçin:</p>', unsafe_allow_html=True)
+
+    # Selectbox
+    selected_tarih = st.selectbox("", maddeler_aylık["Tarih"].values[::-1])
 
 
-    maddeartıslar=maddeartıslar.sort_values()
+
+    maddeartıslar=maddeler_aylık[maddeler_aylık["Tarih"]==selected_tarih].iloc[0]
+
+    maddeartıslar=maddeartıslar.drop("Tarih",axis=0).sort_values()
 
     colors = ['red' if label == selected_anagrup else 'blue' for label in maddeartıslar.index]
 

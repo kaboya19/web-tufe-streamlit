@@ -1708,7 +1708,7 @@ if page=="Harcama Grupları":
 
     selected_tarih = st.sidebar.selectbox("Tarih Seçin:", (harcama_grupları_aylık["Tarih"]).values)
 
-
+    harcama_artıs=harcama_grupları_aylık[harcama_grupları_aylık["Tarih"]==selected_tarih].iloc[0][1:]
 
 
 

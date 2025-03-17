@@ -1680,13 +1680,12 @@ if page=="Harcama Grupları":
 
     tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
-    harcama_grupları["TÜFE"]=tüfe["TÜFE"].values
+    tüfe=tüfe.sort_index()
+    harcama_grupları["TÜFE"]=tüfe["TÜFE"]
 
-    harcama_artıs=pd.Series(index=harcama_grupları.columns)
-    for col in harcama_artıs.index:
-        harcama_artıs.loc[col]=((hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").iloc[-1]/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"])-1)*100
+    
 
-    harcama_artıs=harcama_artıs.sort_values()
+    
 
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
     harcama_grupları=harcama_grupları.sort_index()
@@ -1701,40 +1700,42 @@ if page=="Harcama Grupları":
         harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
     harcama_grupları_aylık["Tarih"]=(harcama_grupları_aylık.index.strftime("%Y-%m"))
-    cols=["Tarih"]
-    cols.extend(harcama_grupları.columns)
-    harcama_grupları_aylık=harcama_grupları_aylık[cols]
-    harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
+  
 
-    from datetime import datetime,timedelta
-    tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=28)).strftime("%Y-%m")
-    cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-    hareketliartıs=cari.values/hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
-    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
-    hareketliartıs=(hareketliartıs-1)*100
+    
+    import streamlit as st
 
-    cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
-    tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
-    tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
-    tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
-    tüfeaylıkdata.columns=["Aylık Artış"]
-    tüfeaylıkdata["Tarih"]=pd.to_datetime(tüfeaylıkdata.index)
-    tüfeaylıkdata["Tarih"]=tüfeaylıkdata["Tarih"].dt.strftime("%Y-%m")
-    tüfeaylıkdata=tüfeaylıkdata.reset_index()
-    tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
+    # Başlığın font büyüklüğünü artırma
+    st.markdown(
+        """
+        <style>
+        label[for="Tarih Seçin:"] {
+            font-size: 20px !important;
+            font-weight: bold;
+        }
+        div[data-baseweb="select"] > div {
+            font-size: 18px !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    harcama_grupları_aylık["TÜFE"]=tüfeaylıkdata["Aylık Artış"].values
+    # Selectbox başlığını ayrı bir markdown ile büyütme
+    st.markdown('<p style="font-size:20px; font-weight:bold;">Tarih Seçin:</p>', unsafe_allow_html=True)
 
-    selected_tarih = st.sidebar.selectbox("Tarih Seçin:", (harcama_grupları_aylık["Tarih"]).values)
-
-    harcama_artıs=harcama_grupları_aylık[harcama_grupları_aylık["Tarih"]==selected_tarih].iloc[0][1:]
+    # Selectbox
+    selected_tarih = st.selectbox("", harcama_grupları_aylık["Tarih"].values[::-1])
 
 
 
+    harcama_artıs=harcama_grupları_aylık[harcama_grupları_aylık["Tarih"]==selected_tarih].iloc[0]
 
 
-    harcama_artıs=harcama_artıs.sort_values()
+
+
+
+    harcama_artıs=harcama_artıs.drop("Tarih",axis=0).sort_values()
 
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]

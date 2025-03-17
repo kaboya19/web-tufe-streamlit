@@ -1706,6 +1706,14 @@ if page=="Harcama Grupları":
     harcama_grupları_aylık=harcama_grupları_aylık[cols]
     harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
 
+    from datetime import datetime,timedelta
+    tarih=datetime.now().strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=28)).strftime("%Y-%m")
+    cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+    hareketliartıs=cari.values/hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
+    hareketliartıs=(hareketliartıs-1)*100
+
     cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
     tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
     tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]

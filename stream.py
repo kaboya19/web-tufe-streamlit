@@ -1706,7 +1706,7 @@ if page=="Harcama Grupları":
     harcama_grupları_aylık=harcama_grupları_aylık[cols]
     harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
 
-    selected_tarih = st.sidebar.selectbox("Tarih Seçin:", pd.to_datetime(harcama_grupları_aylık["Tarih"]).strftime("%Y-%m"))
+    selected_tarih = st.sidebar.selectbox("Tarih Seçin:", (harcama_grupları_aylık["Tarih"]).values)
 
 
 

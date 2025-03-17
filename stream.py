@@ -1688,6 +1688,28 @@ if page=="Harcama Grupları":
 
     harcama_artıs=harcama_artıs.sort_values()
 
+    harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
+    harcama_grupları=harcama_grupları.sort_index()
+    harcama_grupları_aylık=pd.DataFrame(columns=harcama_grupları.columns)
+    for col in harcama_grupları.columns:
+        cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
+        harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
+        carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
+        hareketliartıs=carim.values/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
+        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
+        hareketliartıs=(hareketliartıs-1)*100
+        harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
+        harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
+    harcama_grupları_aylık["Tarih"]=(harcama_grupları_aylık.index.strftime("%Y-%m"))
+    cols=["Tarih"]
+    cols.extend(harcama_grupları.columns)
+    harcama_grupları_aylık=harcama_grupları_aylık[cols]
+    harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
+
+    selected_tarih = st.sidebar.selectbox("Tarih Seçin:", harcama_grupları_aylık.index.strftime("%Y-%m"))
+    
+
+
 
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]

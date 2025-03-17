@@ -1706,10 +1706,27 @@ if page=="Harcama Grupları":
     harcama_grupları_aylık=harcama_grupları_aylık[cols]
     harcama_grupları_aylık=harcama_grupları_aylık.reset_index(drop=True)
 
+    cari=hareketli_aylik_ortalama(tüfe.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
+    tüfeaylıkdata=cari.resample('M').last().pct_change().loc["2025-02":]*100
+    tüfeaylıkdata.iloc[-1]=hareketliartıs.iloc[-1]
+    tüfeaylıkdata=pd.DataFrame(tüfeaylıkdata)
+    tüfeaylıkdata.columns=["Aylık Artış"]
+    tüfeaylıkdata["Tarih"]=pd.to_datetime(tüfeaylıkdata.index)
+    tüfeaylıkdata["Tarih"]=tüfeaylıkdata["Tarih"].dt.strftime("%Y-%m")
+    tüfeaylıkdata=tüfeaylıkdata.reset_index()
+    tüfeaylıkdata=tüfeaylıkdata[["Tarih","Aylık Artış"]]
+
+    harcama_grupları_aylık["TÜFE"]=tüfeaylıkdata["Aylık Artış"].values
+
     selected_tarih = st.sidebar.selectbox("Tarih Seçin:", (harcama_grupları_aylık["Tarih"]).values)
 
     harcama_artıs=harcama_grupları_aylık[harcama_grupları_aylık["Tarih"]==selected_tarih].iloc[0][1:]
 
+
+
+
+
+    harcama_artıs=harcama_artıs.sort_values()
 
 
     colors = ['red' if label == 'TÜFE' else 'blue' for label in harcama_artıs.index]

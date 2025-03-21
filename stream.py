@@ -1104,10 +1104,15 @@ if page=="Tüketici Fiyat Endeksi":
             file_name='anagruplar.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+        endekslerr=pd.read_csv("endeksler.csv",index_col=0)
+        maddelerim=endekslerr.T
+        maddelerim=maddelerim.reset_index()
+        maddelerim=maddelerim.rename(columns={"index":"Madde"})
+        maddelerimm=to_excel(maddelerim)
 
         st.download_button(
             label="📊 Madde Endeksleri",
-            data=maddeler_excel,
+            data=maddelerimm,
             file_name='maddeler.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )

@@ -1194,7 +1194,7 @@ if page=="Tüketici Fiyat Endeksi":
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
-        ma=pd.read_excel("ma.xlsx")
+        ma=pd.read_excel("ma.xlsx",index_col=0)
 
         st.download_button(
             label="📊 Özel Kapsamlı TÜFE Göstergeleri",

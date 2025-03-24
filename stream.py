@@ -65,9 +65,79 @@ if page=="Bültenler":
 
 
     # Tab for selecting the bulletin
-    tab = st.selectbox("Bülten Seçin", ["Şubat 2025"])
+    tab = st.selectbox("Bülten Seçin", ["Mart 2025","Şubat 2025"])
 
     # Check if the user selects February 2025
+    if tab == "Mart 2025":
+        # Title
+        st.markdown("<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Mart 2025 Bülteni</h2>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Martta %4,12 arttı</h3>", unsafe_allow_html=True)
+
+        # First image
+        image1 = Image.open("anagruplar.png")
+        st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler")
+
+        # Paragraphs and next images
+        st.write("Web-Tüketici Fiyat Endeksi Martta %4,12 artış kaydederken mevsimsellikten arındırılmış artış %4,34 oldu.")
+        st.write("En çok artış ve düşüş yaşanan maddeler:")
+        image2 = Image.open("maddeler.png")
+        st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar")
+
+        st.write("En çok artış ve düşüş yaşanan temel başlıklar:")
+        image3 = Image.open("temelbaşlıklar.png")
+        st.image(image3, caption="Özel Kapsamlı TÜFE Göstergeleri")
+
+        st.write("Özel Kapsamlı TÜFE Göstergeleri:")
+        image4 = Image.open("özelgöstergeler.png")
+        st.image(image4, caption="Özel Kapsamlı Göstergeler aylık artış oranları")
+
+        st.write("Özel Kapsamlı Göstergeler aylık artış oranları:")
+        image5 = Image.open("özelgöstergelerartış.png")
+        st.image(image5, caption="Ana gruplara ait artış oranları")
+
+        # Display remaining images
+        images = [
+            ("eveşyası.png", "Ev Eşyası"),
+            ("eğitim.png", "Eğitim"),
+            ("eğlence.png", "Eğlence"),
+            ("Giyim ve ayakkabı.png", "Giyim ve Ayakkabı"),
+            ("Gıda ve alkolsüz içecekler.png", "Gıda ve Alkolsüz İçecekler"),
+            ("Haberleşme.png", "Haberleşme"),
+            ("Konut.png", "Konut"),
+            ("Lokanta ve oteller.png", "Lokanta ve Oteller"),
+            ("Ulaştırma.png", "Ulaştırma"),
+            ("Çeşitli mal ve hizmetler.png", "Çeşitli Mal ve Hizmetler"),
+            ("Giyim ve ayakkabı.png", "Giyim ve Ayakkabı")
+        ]
+
+        for image_path, caption in images:
+            image = Image.open(image_path)
+            st.image(image, caption=caption)
+
+        # Seçilmiş maddelere ait ortalama fiyatlar
+        st.write("Seçilmiş maddelere ait ortalama fiyatlar:")
+        image17 = Image.open("fiyatlar.png")
+        
+
+        # Final section with trend and link
+        st.write("Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,12 olmuştur.")
+        st.write("SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,36 artmıştır.")
+        image18 = Image.open("eğilim.png")
+        st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim")
+
+
+        # Footer
+        st.markdown("<hr>", unsafe_allow_html=True)
+        st.markdown("""
+            <small>
+                *Bu bültenin bir sonraki yayınlanma tarihi 24 Nisan 2025'tir. Burada yer alan bilgi ve analizler tamamen kişisel çalışma olup kesin bir doğruluk içermemekte ve yatırım tavsiyesi içermemektedir.*<br>
+                *TÜİK’in hesaplamasıyla uyumlu olması açısından ayın ilk 24 günündeki veriler dikkate alınmıştır.*
+            </small>
+        """, unsafe_allow_html=True)
+
+        st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)
+        st.markdown("<p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>", unsafe_allow_html=True)
+        st.markdown("<p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>", unsafe_allow_html=True)
     if tab == "Şubat 2025":
         # Title
         st.markdown("<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni</h2>", unsafe_allow_html=True)

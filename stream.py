@@ -1194,12 +1194,22 @@ if page=="Tüketici Fiyat Endeksi":
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
+        ma=pd.read_excel("ma.xlsx")
+
         st.download_button(
             label="📊 Özel Kapsamlı TÜFE Göstergeleri",
             data=özelgöstergeler_excel,
             file_name='özelkapsamlıgöstergeler.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+        ma_excel=to_excel(ma)
+        st.download_button(
+            label="📊 Mevsimsellikten Arındırılmış Göstergeler (Aylık Artış)",
+            data=ma_excel,
+            file_name='ma_göstergeler.xlsx',
+            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+
 
 
 

@@ -249,18 +249,16 @@ if page=="Metodoloji Notu":
 
     """)
 
-    st.write("""
-    Web-TÜFE 20'den fazla veri kaynağından günlük 1 milyonun üzerinde fiyat toplayarak hesaplanmaktadır.
-    Verilerin oluşturulma aşaması şu şekildedir;
-             1-Sepetin ve madde ağırlıklarının oluşturulması
-             2-Sepetteki tüm ürünler için fiyat verilerinin toplanmaso
-             3-Her bir ürün için günlük ortalama fiyat değişiminin hesaplanması
-             4-Ürünlerin endeks verilerinin oluşturulması ve endekslerin normalize edilmesi
-             5-Endeks verilerinden bir üst kırılım olan harcama gruplarının oluşturulması
-             6-Ağırlıklandırma yapılarak Web-TÜFE verisinin oluşturulması
-             7-Özel Kapsamlı Gösterge endekslerinin oluşturulması
-
-    """)
+    st.write(
+    "Web-TÜFE 20'den fazla veri kaynağından günlük 1 milyonun üzerinde fiyat toplayarak hesaplanmaktadır."
+    "Verilerin oluşturulma aşaması şu şekildedir;"
+             "1-Sepetin ve madde ağırlıklarının oluşturulması"
+             "2-Sepetteki tüm ürünler için fiyat verilerinin toplanması"
+             "3-Her bir ürün için günlük ortalama fiyat değişiminin hesaplanması"
+             "4-Ürünlerin endeks verilerinin oluşturulması ve endekslerin normalize edilmesi"
+             "5-Endeks verilerinden bir üst kırılım olan harcama gruplarının oluşturulması"
+             "6-Ağırlıklandırma yapılarak Web-TÜFE verisinin oluşturulması"
+             "7-Özel Kapsamlı Gösterge endekslerinin oluşturulması")
 
     st.write("Endeksin veri kaynakları seçilirken mal fiyatları için online sipariş özelliğinin bulunması,seçilen sitenin Türkiye'nin tamamına hizmetinin bulunması,pazar payının yüksek olması ve örneklem"
     "gücünün yüksek olması gibi kriterler dikkate alınmıştır.")

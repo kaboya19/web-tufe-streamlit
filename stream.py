@@ -266,7 +266,8 @@ if page=="Metodoloji Notu":
     "gücünün yüksek olması gibi kriterler dikkate alınmıştır.")
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>Ana Grup Ağırlıkları</h2>", unsafe_allow_html=True)
-    st.image("C:/Users/Bora/Documents/GitHub/web-tufe/ağırlıklar.png")
+    st.image("ağırlıklar.png")
+
     ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
     ağırlıklar=ağırlıklar["Ağırlık"]*100
     ağırlıklar=ağırlıklar.sort_values(ascending=False)

@@ -232,19 +232,7 @@ def hareketli_aylik_ortalama(df):
 if page=="Metodoloji Notu":
     import streamlit as st
 
-    # Google Ads tag kodunu HTML olarak ekleyin
-    st.markdown("""
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886391202"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'AW-16886391202');
-        </script>
-    """, unsafe_allow_html=True)
-
+    
     
      
 
@@ -260,6 +248,25 @@ if page=="Metodoloji Notu":
     Bu çerçevede, 31 Aralık 2024 endeksi baz olarak "100" seçilmiştir.Fiyat ölçümü ise 6 Ocak 2025 tarihinde başlamıştır.
 
     """)
+
+    st.write("""
+    Web-TÜFE 20'den fazla veri kaynağından günlük 1 milyonun üzerinde fiyat toplayarak hesaplanmaktadır.
+    Verilerin oluşturulma aşaması şu şekildedir;
+             1-Sepetin ve madde ağırlıklarının oluşturulması
+             2-Sepetteki tüm ürünler için fiyat verilerinin toplanmaso
+             3-Her bir ürün için günlük ortalama fiyat değişiminin hesaplanması
+             4-Ürünlerin endeks verilerinin oluşturulması ve endekslerin normalize edilmesi
+             5-Endeks verilerinden bir üst kırılım olan harcama gruplarının oluşturulması
+             6-Ağırlıklandırma yapılarak Web-TÜFE verisinin oluşturulması
+             7-Özel Kapsamlı Gösterge endekslerinin oluşturulması
+
+    """)
+
+    st.write("Endeksin veri kaynakları seçilirken mal fiyatları için online sipariş özelliğinin bulunması,seçilen sitenin Türkiye'nin tamamına hizmetinin bulunması,pazar payının yüksek olması ve örneklem"
+    "gücünün yüksek olması gibi kriterler dikkate alınmıştır.")
+
+    st.markdown(f"<h2 style='text-align:left; color:black;'>Ana Grup Ağırlıkları</h2>", unsafe_allow_html=True)
+    st.image("C:/Users/Bora/Documents/GitHub/web-tufe/ağırlıklar.png")
     ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
     ağırlıklar=ağırlıklar["Ağırlık"]*100
     ağırlıklar=ağırlıklar.sort_values(ascending=False)

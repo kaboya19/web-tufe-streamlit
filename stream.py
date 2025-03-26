@@ -78,7 +78,7 @@ if page=="Bültenler":
         st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler")
 
         # Paragraphs and next images
-        st.write("Web-Tüketici Fiyat Endeksi Martta %4,12 artış kaydederken mevsimsellikten arındırılmış artış %3,64 oldu.")
+        st.write("Web-Tüketici Fiyat Endeksi Martta %4,12 artış kaydederken mevsimsellikten arındırılmış artış %4,46 oldu.")
         st.write("En çok artış ve düşüş yaşanan maddeler:")
         image2 = Image.open("maddeler.png")
         st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar")

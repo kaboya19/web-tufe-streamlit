@@ -571,7 +571,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                Mart Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+                Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
 
@@ -649,7 +649,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                Mart Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+                Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
         st.plotly_chart(figgalt)
@@ -1445,7 +1445,7 @@ if page=="Ana Gruplar":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Mart Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
                 
 
             </h3>
@@ -1851,7 +1851,7 @@ if page=="Harcama Grupları":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Mart Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)
@@ -2104,7 +2104,7 @@ if page=="Özel Kapsamlı Göstergeler":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Mart Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)

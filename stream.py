@@ -2231,7 +2231,7 @@ if page=="Özel Kapsamlı Göstergeler":
     data2=data2.drop(2,axis=0)
     data2=data2.iloc[1:,3:]
     data2=data2.set_index(pd.date_range(start="2005-01-31",freq="M",periods=len(data2)))
-    data2=data2.pct_change().dropna().loc["2025-02"]*100
+    data2=data2.pct_change().dropna().loc["2025-02:"]*100
     
     
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)

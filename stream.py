@@ -60,39 +60,20 @@ social_media_icons = SocialMediaIcons(
 social_media_icons.render(sidebar=True)
 import uuid
 import time
-# Temel session state'leri ayarla
-if "secim" not in st.session_state:
-    st.session_state.secim = "Madde"
-if "reset_key" not in st.session_state:
-    st.session_state.reset_key = 0
 
-# Yenileme fonksiyonu - tamamen sayfayı yeniler
-def reset_marquee():
-    st.session_state.reset_key += 1
-    # Streamlit'i tamamen yeniden başlatır
-    st.rerun()
 
-# Kullanıcı arayüzü
-col1, col2 = st.columns([4, 1])
 
-with col1:
+
     # Değişiklik olduğunda callback ile durumu güncelleyelim
-    secim_temp = st.selectbox(
+secim_temp = st.selectbox(
         "Veri türünü seçin:", 
-        ["Madde", "Harcama Grubu"],
+        ["Madde", "Harcama Grubu","Özel Göstergeler"],
         index=0 if st.session_state.secim == "Madde" else 1,
         key=f"secim_box_{st.session_state.reset_key}"
     )
     
-    # Seçim değiştiyse sayfayı yenileyelim
-    if secim_temp != st.session_state.secim:
-        st.session_state.secim = secim_temp
-        reset_marquee()
+ 
 
-with col2:
-    # Yenileme butonu - tıklandığında sayfayı tamamen yeniler
-    if st.button("🔄 Yazıyı Yenile", key=f"reset_button_{st.session_state.reset_key}"):
-        reset_marquee()
 
 # Veri türünü session state'den al
 secim = st.session_state.secim
@@ -100,8 +81,10 @@ secim = st.session_state.secim
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
-else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0)
+elif secim == "Harcama Grubu":
+    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+elif secim == "Özel Göstergeler":
+    df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100

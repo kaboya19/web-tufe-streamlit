@@ -119,27 +119,19 @@ def hareketli_aylik_ortalama(df):
 
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
-    if periyot=="Günlük":
-# ---------------- Günlük Değişim Hesapla ----------------
-        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-    else:
-        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
+    
 elif secim == "Harcama Grubu":
     df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
-    if periyot=="Günlük":
-# ---------------- Günlük Değişim Hesapla ----------------
-        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-    else:
-        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
 elif secim == "Özel Göstergeler":
     df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
-    if periyot=="Günlük":
-# ---------------- Günlük Değişim Hesapla ----------------
-        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-    else:
-        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
 
 
+
+degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+
+degisimler2 = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
+degisimler=degisimler.round(2)
+degisimler2=degisimler2.round(2)
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():
@@ -165,6 +157,34 @@ st.markdown(f"""
         </marquee>
     </div>
 """, unsafe_allow_html=True)
+
+
+
+parcalar1 = []
+for madde, degisim in degisimler2.items():
+    renk = "red" if degisim > 0 else "green" if degisimler2 < 0 else "gray"
+    if degisimler2!=0:
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisimler2:+.2f}</span>"
+    else:
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisimler2:.2f}</span>"
+    parcalar.append(madde_html)
+
+bosluk = "&nbsp;" * 10
+kayan_metin = f"<b>Aylık Değişimler</b>{bosluk}" + bosluk.join(parcalar)
+
+# İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
+# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
+tekrarli_metin2 = 100*(kayan_metin + bosluk * 2 + kayan_metin)
+
+# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
+st.markdown(f"""
+    <div style="background-color:#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
+            {tekrarli_metin2}
+        </marquee>
+    </div>
+""", unsafe_allow_html=True)
+
 
 
 if page=="Bültenler":

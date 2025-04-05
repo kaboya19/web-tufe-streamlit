@@ -50,7 +50,7 @@ tabs = option_menu(
 )
 
 
-
+import time
 page=st.sidebar.radio("Sekmeler",tabs)
 
 social_media_icons = SocialMediaIcons(

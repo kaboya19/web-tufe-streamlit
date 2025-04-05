@@ -75,7 +75,6 @@ secim = st.selectbox(
 
 
 
-# ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 elif secim == "Harcama Grubu":
@@ -96,17 +95,18 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# Yeni bir bileşen key'i oluştur, böylece her yenileme tamamen yeni bir HTML oluşturur
+# İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
+# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
+tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
 
-# Kayan yazıyı göster
+# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
         <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
-            {kayan_metin}
+            {tekrarli_metin}
         </marquee>
     </div>
 """, unsafe_allow_html=True)
-
 
 
 if page=="Bültenler":

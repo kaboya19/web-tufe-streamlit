@@ -164,10 +164,10 @@ for madde, degisim in degisimler2.items():
         madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
     else:
         madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
-    parcalar.append(madde_html)
+    parcalar1.append(madde_html)
 
 bosluk = "&nbsp;" * 10
-kayan_metin = f"<b>Aylık Değişimler</b>{bosluk}" + bosluk.join(parcalar)
+kayan_metin = f"<b>Aylık Değişimler</b>{bosluk}" + bosluk.join(parcalar1)
 
 # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
 # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar

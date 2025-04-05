@@ -102,7 +102,7 @@ tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
 # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
+        <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
             {tekrarli_metin}
         </marquee>
     </div>

@@ -112,88 +112,45 @@ def hareketli_aylik_ortalama(df):
         df.index = pd.to_datetime(df.index)
         return df
 
-option1 = st.checkbox("Günlük", value=True)
-option2 = st.checkbox("Aylık", value=False)
-if option1 and option2:
-    st.warning("Lütfen yalnızca bir seçenek seçin.")
-    option1 = False  # Birinin seçilmesini engelle
-    option2 = False  # Diğerini de devre dışı bırak
-if option1:
-    if secim == "Madde":
-        df = pd.read_csv("endeksler.csv", index_col=0)
-        
-    elif secim == "Harcama Grubu":
-        df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
 
-
+if secim == "Madde":
+    df = pd.read_csv("endeksler.csv", index_col=0)
     
-    degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-    degisimler=degisimler.round(2)
-
-    parcalar = []
-    for madde, degisim in degisimler.items():
-        renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
-        if degisim!=0:
-            madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
-        else:
-            madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
-        parcalar.append(madde_html)
-
-    bosluk = "&nbsp;" * 10
-    kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
-
-    # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
-    # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-    tekrarli_metin = 100*(kayan_metin + bosluk * 2 + kayan_metin)
-
-    # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
-    st.markdown(f"""
-        <div style="background-color:#f0f0f0;padding:10px;">
-            <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
-                {tekrarli_metin}
-            </marquee>
-        </div>
-    """, unsafe_allow_html=True)
-
-
-if option2:
-    if secim == "Madde":
-        df = pd.read_csv("endeksler.csv", index_col=0)
-        
-    elif secim == "Harcama Grubu":
-        df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
-
-    degisimler2 = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
-    degisimler2=degisimler2.round(2)
-    # ---------------- Kayan Yazıyı Oluştur ----------------
+elif secim == "Harcama Grubu":
+    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
 
 
 
+degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+degisimler=degisimler.round(2)
 
-    parcalar1 = []
-    for madde, degisim in degisimler2.items():
-        renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
-        if degisim!=0:
-            madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
-        else:
-            madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
-        parcalar1.append(madde_html)
+parcalar = []
+for madde, degisim in degisimler.items():
+    renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
+    if degisim!=0:
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
+    else:
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
+    parcalar.append(madde_html)
 
-    bosluk = "&nbsp;" * 10
-    kayan_metin = f"<b>Aylık Değişimler</b>{bosluk}" + bosluk.join(parcalar1)
+bosluk = "&nbsp;" * 10
+kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-    # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
-    # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-    tekrarli_metin2 = 100*(kayan_metin + bosluk * 2 + kayan_metin)
+# İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
+# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
+tekrarli_metin = 100*(kayan_metin + bosluk * 2 + kayan_metin)
 
-    # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
-    st.markdown(f"""
-        <div style="background-color:#f0f0f0;padding:10px;">
-            <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
-                {tekrarli_metin2}
-            </marquee>
-        </div>
-    """, unsafe_allow_html=True)
+# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
+st.markdown(f"""
+    <div style="background-color:#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
+            {tekrarli_metin}
+        </marquee>
+    </div>
+""", unsafe_allow_html=True)
+
+
+
 
 
 

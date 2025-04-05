@@ -67,8 +67,8 @@ for madde, degisim in degisimler.items():
     madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.1f}</span>"
     parcalar.append(madde_html)
 
-# Metni birleştir
-kayan_metin = "  <b>Günlük Değişimler</b>  " + "  ".join(parcalar)
+bosluk = "&nbsp;" * 10  # 10 boşluk karakteri
+kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}{bosluk}" + bosluk.join(parcalar)
 
 # Kayan yazıyı HTML ile göster
 st.markdown(f"""

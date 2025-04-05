@@ -703,34 +703,7 @@ if page=="Tüketici Fiyat Endeksi":
             </h3>
             """, unsafe_allow_html=True)
         st.plotly_chart(figgalt)
-        degisim=endeksler.pct_change().iloc[-1]*100
-        gainers = degisim.sort_values(ascending=False).head(5)
-        losers = degisim.sort_values(ascending=True).head(5)
-        aylıkdegisim=pd.DataFrame(columns=endeksler.columns)
-        for col in endeksler.columns:
-            aylıkdegisim[col]=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").resample('M').last().pct_change()*100
-        aylıkdegisim=aylıkdegisim.iloc[-1]
-
-        gainersaylık = aylıkdegisim.sort_values(ascending=False).head(5)
-        losersaylık = aylıkdegisim.sort_values(ascending=True).head(5)
-
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown('### **Günün En Çok Artan Ürünleri**')
-            for stock, change in gainers.items():
-                st.markdown(f"<span style='color:green; font-weight:bold'>{stock} : {change:.2f}%</span>", unsafe_allow_html=True)
-            st.markdown('### **Ayın En Çok Artan Ürünleri**')
-            for stock, change in gainersaylık.items():
-                    st.markdown(f"<span style='color:green; font-weight:bold'>{stock} : {change:.2f}%</span>", unsafe_allow_html=True)
-
-        # En çok düşenler
-        with col2:
-            st.markdown('### **Günün En Çok Düşen Maddeleri(Veya en az artan)**')
-            for stock, change in losers.items():
-                st.markdown(f"<span style='color:red; font-weight:bold'>{stock} : {change:.2f}%</span>", unsafe_allow_html=True)
-            st.markdown('### **Ayın En Çok Düşen Ürünleri**')
-            for stock, change in losersaylık.items():
-                    st.markdown(f"<span style='color:red; font-weight:bold'>{stock} : {change:.2f}%</span>", unsafe_allow_html=True)
+        
    
         
       

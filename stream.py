@@ -65,7 +65,7 @@ import time
 
 
     # Değişiklik olduğunda callback ile durumu güncelleyelim
-secim_temp = st.selectbox(
+secim = st.selectbox(
         "Veri türünü seçin:", 
         ["Madde", "Harcama Grubu","Özel Göstergeler"]
     )
@@ -73,8 +73,7 @@ secim_temp = st.selectbox(
  
 
 
-# Veri türünü session state'den al
-secim = st.session_state.secim
+
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":

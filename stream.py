@@ -64,7 +64,7 @@ secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"], key="
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index().drop("2024-12-31",axis=0)
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100

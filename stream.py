@@ -81,7 +81,10 @@ kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # ---------------- Kayan Yazıyı Göster (CSS ile animasyon) ----------------
 kayan_yazi_key = f"marquee_{secim}_{time.time()}"  # zamanla eşsiz key -> yeniden başlatır
-st.markdown(f"""
+kayan_yazi_box = st.empty()  # dinamik içeriği sıfırlamak için boş kutu
+
+# İçeriği her seçimde güncelle
+kayan_yazi_box.markdown(f"""
     <style>
         .kayan_yazi {{
             display: inline-block;
@@ -96,8 +99,7 @@ st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
         <span class="kayan_yazi">{kayan_metin}</span>
     </div>
-""", unsafe_allow_html=True, key=kayan_yazi_key)
-
+""", unsafe_allow_html=True)
 
 
 

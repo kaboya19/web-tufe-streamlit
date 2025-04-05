@@ -97,7 +97,7 @@ kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
 # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
+tekrarli_metin = kayan_metin + bosluk * 10 + kayan_metin
 
 # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""

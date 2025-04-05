@@ -59,31 +59,49 @@ social_media_icons = SocialMediaIcons(
     )
 social_media_icons.render(sidebar=True)
 import uuid
+import time
+# Temel session state'leri ayarla
+if "secim" not in st.session_state:
+    st.session_state.secim = "Madde"
+if "reset_key" not in st.session_state:
+    st.session_state.reset_key = 0
 
-# Her oturum için benzersiz bir ID oluştur
-if 'marquee_id' not in st.session_state:
-    st.session_state['marquee_id'] = f"marquee_{str(uuid.uuid4())[:8]}"
+# Yenileme fonksiyonu - tamamen sayfayı yeniler
+def reset_marquee():
+    st.session_state.reset_key += 1
+    # Streamlit'i tamamen yeniden başlatır
+    st.rerun()
 
-# Yenileme sayacı
-if 'refresh_counter' not in st.session_state:
-    st.session_state['refresh_counter'] = 0
-
-# ---------------- Üst bölüm ----------------
+# Kullanıcı arayüzü
 col1, col2 = st.columns([4, 1])
 
 with col1:
-    secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
+    # Değişiklik olduğunda callback ile durumu güncelleyelim
+    secim_temp = st.selectbox(
+        "Veri türünü seçin:", 
+        ["Madde", "Harcama Grubu"],
+        index=0 if st.session_state.secim == "Madde" else 1,
+        key=f"secim_box_{st.session_state.reset_key}"
+    )
+    
+    # Seçim değiştiyse sayfayı yenileyelim
+    if secim_temp != st.session_state.secim:
+        st.session_state.secim = secim_temp
+        reset_marquee()
 
 with col2:
-    # Yenileme butonu - tıklandığında JavaScript'i tetikleyecek
-    if st.button("🔄 Yazıyı Yenile", key="refresh_button"):
-        st.session_state['refresh_counter'] += 1
+    # Yenileme butonu - tıklandığında sayfayı tamamen yeniler
+    if st.button("🔄 Yazıyı Yenile", key=f"reset_button_{st.session_state.reset_key}"):
+        reset_marquee()
+
+# Veri türünü session state'den al
+secim = st.session_state.secim
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+    df = pd.read_csv("harcama_grupları.csv", index_col=0)
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
@@ -98,58 +116,25 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# Sabit marquee_id kullanarak elemanı tanımlayalım
-marquee_id = st.session_state['marquee_id']
+# Yeni bir bileşen key'i oluştur, böylece her yenileme tamamen yeni bir HTML oluşturur
+marquee_key = f"marquee_{st.session_state.reset_key}_{int(time.time())}"
 
-# JavaScript işlevini ekleyelim
-# Bu kod sayfa yüklendiğinde ve refresh_counter değiştiğinde çalışacak
-js_code = f"""
-<script>
-    function resetMarquee() {{
-        const marquee = document.getElementById('{marquee_id}');
-        if (marquee) {{
-            const parent = marquee.parentNode;
-            const clone = marquee.cloneNode(true);
-            parent.removeChild(marquee);
-            parent.appendChild(clone);
-        }}
-    }}
-    
-    // Sayfa yüklendiğinde çalıştır
-    document.addEventListener('DOMContentLoaded', function() {{
-        resetMarquee();
-    }});
-    
-    // Streamlit'in yeniden yükleme olayını izle
-    if (window.parent) {{
-        const observer = new MutationObserver(function(mutations) {{
-            resetMarquee();
-        }});
-        
-        observer.observe(window.parent.document.body, {{ 
-            childList: true, 
-            subtree: true 
-        }});
-    }}
-</script>
-"""
-
-# HTML ve JavaScript kodunu birleştirerek göster
-# refresh_counter değeri JavaScript'e geçirildi, böylece değiştiğinde JavaScript kodu tetiklenecek
+# Kayan yazıyı göster
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;" data-refresh="{st.session_state['refresh_counter']}">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;" id="{marquee_id}">
+    <div style="background-color:#f0f0f0;padding:10px;" key="{marquee_key}">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>
-    {js_code}
 """, unsafe_allow_html=True)
 
-# Debug bilgisi (geliştirme sırasında yardımcı olabilir)
-with st.expander("Debug Bilgisi", expanded=False):
-    st.write(f"Marquee ID: {marquee_id}")
-    st.write(f"Refresh Sayacı: {st.session_state['refresh_counter']}")
-    if st.button("Sayfayı Tamamen Yenile"):
+# Durum bilgisi
+with st.expander("Uygulama Durumu", expanded=False):
+    st.write(f"Seçim: {secim}")
+    st.write(f"Yenileme Sayısı: {st.session_state.reset_key}")
+    if st.button("Uygulama Durumunu Temizle"):
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
         st.rerun()
 
 

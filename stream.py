@@ -61,12 +61,20 @@ social_media_icons.render(sidebar=True)
 import uuid
 import time
 
-secim = st.selectbox(
-    "Veri türünü seçin:", 
-    ["Madde", "Harcama Grubu", "Özel Göstergeler"]
-)
 
-# ---------------- Veri Yükleme ----------------
+
+
+    # Değişiklik olduğunda callback ile durumu güncelleyelim
+secim = st.selectbox(
+        "Veri türünü seçin:", 
+        ["Madde", "Harcama Grubu","Özel Göstergeler"]
+    )
+    
+ 
+
+
+
+
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 elif secim == "Harcama Grubu":
@@ -87,52 +95,17 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# CSS animasyonu kullanan kayan yazı
-st.markdown("""
-<style>
-@keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
+# İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
+# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
+tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
 
-.scrolling-wrapper {
-    background-color: #f0f0f0;
-    padding: 10px;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-}
-
-.scrolling-text {
-    display: inline-block;
-    animation: scroll 120s linear infinite;
-    padding-right: 100%;
-    font-size: 18px;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Kayan yazıyı CSS animasyonu ile göster
+# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""
-<div class="scrolling-wrapper">
-    <div class="scrolling-text">
-        {kayan_metin}
+    <div style="background-color:#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
+            {tekrarli_metin}
+        </marquee>
     </div>
-</div>
-""", unsafe_allow_html=True)
-
-
-
-# JavaScript ile animasyon süresini güncelle
-st.markdown(f"""
-<script>
-    document.addEventListener('DOMContentLoaded', function() {{
-        const scrollingText = document.querySelector('.scrolling-text');
-        if (scrollingText) {{
-            scrollingText.style.animationDuration = '120s';
-        }}
-    }});
-</script>
 """, unsafe_allow_html=True)
 
 

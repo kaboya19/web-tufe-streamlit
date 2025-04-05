@@ -105,7 +105,7 @@ st.markdown("""
 
 .scrolling-text {
     display: inline-block;
-    animation: scroll 1s linear infinite;
+    animation: scroll 120s linear infinite;
     padding-right: 100%;
     font-size: 18px;
 }
@@ -129,7 +129,7 @@ st.markdown(f"""
     document.addEventListener('DOMContentLoaded', function() {{
         const scrollingText = document.querySelector('.scrolling-text');
         if (scrollingText) {{
-            scrollingText.style.animationDuration = '120';
+            scrollingText.style.animationDuration = '120s';
         }}
     }});
 </script>

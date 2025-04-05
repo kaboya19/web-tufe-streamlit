@@ -90,7 +90,7 @@ kayan_yazi_box.markdown(f"""
             display: inline-block;
             white-space: nowrap;  /* Tek satırda göster */
             position: relative;
-            animation: scroll-left 120s linear infinite;  /* Animasyon süresi burada 120s */
+            animation: scroll-left 20s linear infinite;  /* Animasyon süresi burada 120s */
             animation-timing-function: linear;
             left: 100%;  /* Başlangıçta sağda */
         }}

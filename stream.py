@@ -58,13 +58,13 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
+secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"], key="secim_box")
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0)
+    df = pd.read_csv("harcamagruplari.csv", index_col=0)
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
@@ -73,21 +73,21 @@ degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 10
 parcalar = []
 for madde, degisim in degisimler.items():
     renk = "red" if degisim > 0 else "green"
-    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
+    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.1f}</span>"
     parcalar.append(madde_html)
 
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# ---------------- Kayan Yazıyı Göster ----------------
+# ---------------- Kayan Yazıyı Göster (her seçimde key değişiyor) ----------------
+kayan_yazi_key = f"marquee_{secim}_{time.time()}"  # zamanla eşsiz key -> yeniden başlatır
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
         <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>
-""", unsafe_allow_html=True)
-
+""", unsafe_allow_html=True, key=kayan_yazi_key)
 
 if page=="Bültenler":
     import streamlit as st

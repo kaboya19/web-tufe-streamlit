@@ -70,8 +70,51 @@ secim = st.selectbox(
         ["Madde", "Harcama Grubu","Özel Göstergeler"]
     )
     
- 
+periyot = st.selectbox(
+        "Periyot seçin:", 
+        ["Günlük","Aylık"]
+    )
+from datetime import datetime,timedelta
+import pytz
+tüfe=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/tüfe.csv",index_col=0)
+tüfe.index=pd.to_datetime(tüfe.index)
 
+gruplar=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/gruplar_int.csv",index_col=0)
+gruplar.index=pd.to_datetime(gruplar.index)
+gfe1=tüfe.copy()
+gfe1["Date"]=pd.to_datetime(gfe1.index)
+gfe1["Ay"]=gfe1["Date"].dt.month
+gfe1["Yıl"]=gfe1["Date"].dt.year    
+month = gfe1["Ay"].iloc[-1]
+year=gfe1["Yıl"].iloc[-1] 
+oncekiyear=gfe1["Yıl"].iloc[-1] 
+tarihim=pd.to_datetime(gfe1.index[-1]).day
+if tarihim>24:
+    tarihim=24
+if tarihim<10:
+    tarihim="0"+str(tarihim)
+
+from datetime import datetime,timedelta
+tarih=datetime.now().strftime("%Y-%m")
+onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+def hareketli_aylik_ortalama(df):
+        değer = df.name  # Kolon ismi
+        df = pd.DataFrame(df)
+        df["Tarih"] = pd.to_datetime(df.index)  # Tarih sütununu datetime formatına çevir
+        df["Gün Sırası"] = df.groupby(df["Tarih"].dt.to_period("M")).cumcount() + 1  # Her ay için gün sırasını oluştur
+        
+        # Her ay için ilk 24 günü sınırla ve hareketli ortalama hesapla
+        df["Aylık Ortalama"] = (
+            df[df["Gün Sırası"] <= 24]
+            .groupby(df["Tarih"].dt.to_period("M"))[değer]
+            .expanding()
+            .mean()
+            .reset_index(level=0, drop=True)
+        )
+        
+        # Orijinal indeksi geri yükle
+        df.index = pd.to_datetime(df.index)
+        return df
 
 
 
@@ -82,8 +125,11 @@ elif secim == "Harcama Grubu":
 elif secim == "Özel Göstergeler":
     df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
 
+if periyot=="Günlük":
 # ---------------- Günlük Değişim Hesapla ----------------
-degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+    degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+else:
+    degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
 degisimler=degisimler.round(2)
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
@@ -100,8 +146,7 @@ kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
 # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
-tekrarli_metin=10*tekrarli_metin
+tekrarli_metin = 100*(kayan_metin + bosluk * 2 + kayan_metin)
 
 # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""

@@ -88,6 +88,7 @@ kayan_yazi_box.markdown(f"""
     <style>
         .kayan_yazi {{
             display: inline-block;
+            white-space: nowrap;  /* Tek satırda göster */
             animation: scroll-left 20s linear infinite;
         }}
         
@@ -96,11 +97,10 @@ kayan_yazi_box.markdown(f"""
             to {{ transform: translateX(-100%); }}
         }}
     </style>
-    <div style="background-color:#f0f0f0;padding:10px;">
+    <div style="background-color:#f0f0f0;padding:10px; overflow: hidden;">
         <span class="kayan_yazi">{kayan_metin}</span>
     </div>
 """, unsafe_allow_html=True)
-
 
 
 if page=="Bültenler":

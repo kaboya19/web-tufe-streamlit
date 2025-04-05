@@ -159,11 +159,11 @@ st.markdown(f"""
 
 parcalar1 = []
 for madde, degisim in degisimler2.items():
-    renk = "red" if degisim > 0 else "green" if degisimler2 < 0 else "gray"
-    if degisimler2!=0:
-        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisimler2:+.2f}</span>"
+    renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
+    if degisim!=0:
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
     else:
-        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisimler2:.2f}</span>"
+        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
     parcalar.append(madde_html)
 
 bosluk = "&nbsp;" * 10

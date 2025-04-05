@@ -67,9 +67,7 @@ import time
     # Değişiklik olduğunda callback ile durumu güncelleyelim
 secim_temp = st.selectbox(
         "Veri türünü seçin:", 
-        ["Madde", "Harcama Grubu","Özel Göstergeler"],
-        index=0 if st.session_state.secim == "Madde" else 1,
-        key=f"secim_box_{st.session_state.reset_key}"
+        ["Madde", "Harcama Grubu","Özel Göstergeler"]
     )
     
  
@@ -100,11 +98,10 @@ bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # Yeni bir bileşen key'i oluştur, böylece her yenileme tamamen yeni bir HTML oluşturur
-marquee_key = f"marquee_{st.session_state.reset_key}_{int(time.time())}"
 
 # Kayan yazıyı göster
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;" key="{marquee_key}">
+    <div style="background-color:#f0f0f0;padding:10px;">
         <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>

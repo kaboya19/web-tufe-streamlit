@@ -58,27 +58,18 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-
 df = pd.read_csv("endeksler.csv",index_col=0)
-degisimler = []
-for col in df.columns:
-    if col != "Tarih":
-        try:
-            d1 = df[col].iloc[-1].values[0]
-            d2 = df[col].iloc[-2].values[0]
-            fark = ((d1 - d2) / d2) * 100
-            degisimler.append(f"{col}:%{fark:+.1f}")
-        except:
-            pass  # eksik veri varsa atla
+degisimler=df.pct_change().dropna().iloc[-1].sort_values(ascending=False)*100
 
-# Kayan yazı oluştur
-kayan_yazi = "  Günlük Değişimler  " + "  ".join(degisimler)
+kayan_metin = "  Günlük Değişimler  "
+for madde, degisim in degisimler.items():
+    kayan_metin += f"{madde}:%{degisim:+.1f}  "
 
-# HTML + CSS ile marquee efekti
+# Kayan yazıyı HTML ile yerleştir
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
         <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite" style="font-size:18px; color:darkblue;">
-            {kayan_yazi}
+            {kayan_metin}
         </marquee>
     </div>
 """, unsafe_allow_html=True)

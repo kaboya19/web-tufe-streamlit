@@ -59,6 +59,30 @@ social_media_icons = SocialMediaIcons(
     )
 social_media_icons.render(sidebar=True)
 
+df = pd.read_csv("endeksler.csv",index_col=0)
+degisimler = []
+for col in df.columns:
+    if col != "Tarih":
+        try:
+            d1 = df[col].iloc[-1].values[0]
+            d2 = df[col].iloc[-2].values[0]
+            fark = ((d1 - d2) / d2) * 100
+            degisimler.append(f"{col}:%{fark:+.1f}")
+        except:
+            pass  # eksik veri varsa atla
+
+# Kayan yazı oluştur
+kayan_yazi = "  Günlük Değişimler  " + "  ".join(degisimler)
+
+# HTML + CSS ile marquee efekti
+st.markdown(f"""
+    <div style="background-color:#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite" style="font-size:18px; color:darkblue;">
+            {kayan_yazi}
+        </marquee>
+    </div>
+""", unsafe_allow_html=True)
+
 if page=="Bültenler":
     import streamlit as st
     from PIL import Image

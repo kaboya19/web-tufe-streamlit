@@ -89,14 +89,15 @@ kayan_yazi_box.markdown(f"""
         .kayan_yazi {{
             display: inline-block;
             white-space: nowrap;  /* Tek satırda göster */
-            animation: scroll-left 240s linear infinite;
+            position: relative;
+            animation: scroll-left 120s linear infinite;  /* Animasyon süresi burada 120s */
             animation-timing-function: linear;
-            animation-delay: 0s;  /* Hemen başlasın */
+            left: 100%;  /* Başlangıçta sağda */
         }}
         
         @keyframes scroll-left {{
-            from {{ transform: translateX(100%); }}
-            to {{ transform: translateX(-100%); }}
+            from {{ left: 100%; }}  /* Başlangıç: sağda */
+            to {{ left: -100%; }}  /* Bitiş: solda */
         }}
     </style>
     <div style="background-color:#f0f0f0;padding:10px; overflow: hidden; white-space: nowrap;">

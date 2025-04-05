@@ -76,11 +76,10 @@ periyot = st.selectbox(
     )
 from datetime import datetime,timedelta
 import pytz
-tüfe=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/tüfe.csv",index_col=0)
+tüfe=pd.read_csv("tüfe.csv",index_col=0)
 tüfe.index=pd.to_datetime(tüfe.index)
 
-gruplar=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/gruplar_int.csv",index_col=0)
-gruplar.index=pd.to_datetime(gruplar.index)
+
 gfe1=tüfe.copy()
 gfe1["Date"]=pd.to_datetime(gfe1.index)
 gfe1["Ay"]=gfe1["Date"].dt.month

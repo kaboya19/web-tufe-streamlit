@@ -58,10 +58,7 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-secim = st.selectbox(
-    "Veri türünü seçin:", 
-    ["Madde", "Harcama Grubu", "Özel Göstergeler"]
-)
+secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu", "Özel Göstergeler"])
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
@@ -85,18 +82,29 @@ bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
-# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-tekrarli_metin = 10*(kayan_metin + bosluk * 2 + kayan_metin)
+tekrarli_metin = 10 * (kayan_metin + bosluk * 2 + kayan_metin)
 
-# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
+# ---------------- Kayan Yazıyı CSS ile Göster ----------------
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
-            {tekrarli_metin}
-        </marquee>
+    <style>
+        .kayan-yazi {{
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }}
+        .kayan-yazi span {{
+            display: inline-block;
+            animation: kayma 20s linear infinite;
+        }}
+        @keyframes kayma {{
+            0% {{ left: 100%; }}
+            100% {{ left: -100%; }}
+        }}
+    </style>
+    <div class="kayan-yazi">
+        <span>{tekrarli_metin}</span>
     </div>
 """, unsafe_allow_html=True)
-
 
 
 

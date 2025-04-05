@@ -58,7 +58,20 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
+import time
+
+# Seçim değiştiğinde yeniden hesaplamayı zorlamak için key parametresi kullanıyoruz
+secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"], key="veri_turu_secim")
+
+# Seçim değiştiğinde yeniden başlatmak için session state kullanıyoruz
+if 'last_selection' not in st.session_state:
+    st.session_state['last_selection'] = secim
+    st.session_state['reset_time'] = time.time()
+elif st.session_state['last_selection'] != secim:
+    st.session_state['last_selection'] = secim
+    st.session_state['reset_time'] = time.time()
+    # Sayfayı yeniden yükle
+    st.rerun()
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
@@ -79,34 +92,17 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# ---------------- Kayan Yazıyı Göster ----------------
-# Seçim değiştiğinde yenilenmesi için benzersiz bir anahtar kullanıyoruz
-marquee_key = f"marquee_{secim}"  # Seçime bağlı olarak değişen benzersiz bir anahtar
+# Seçime ve zaman damgasına bağlı benzersiz bir key oluştur
+# Bu, HTML içeriğinin tamamen yenilenmesini zorlar
+unique_key = f"{secim}_{st.session_state['reset_time']}"
 
+# ---------------- Kayan Yazıyı Göster ----------------
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;" id="{marquee_key}">
+    <div style="background-color:#f0f0f0;padding:10px;" key="{unique_key}">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>
-""", unsafe_allow_html=True)
-
-# Seçim değiştiğinde yeniden yüklemeyi tetikleyen bir JavaScript ekleyelim
-st.markdown(f"""
-    <script>
-        // Bu script, seçim değişikliğinde kayan yazıyı yeniden başlatır
-        document.addEventListener('DOMContentLoaded', function() {{
-            const observer = new MutationObserver(function() {{
-                const marquee = document.getElementById('{marquee_key}');
-                if (marquee) {{
-                    marquee.stop();
-                    marquee.start();
-                }}
-            }});
-            
-            observer.observe(document.body, {{ childList: true, subtree: true }});
-        }});
-    </script>
 """, unsafe_allow_html=True)
 
 

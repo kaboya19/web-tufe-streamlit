@@ -64,7 +64,7 @@ secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"], key="
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0)
+    df = pd.read_csv("harcamagruplari.csv", index_col=0)
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
@@ -89,7 +89,7 @@ kayan_yazi_box.markdown(f"""
         .kayan_yazi {{
             display: inline-block;
             white-space: nowrap;  /* Tek satırda göster */
-            animation: scroll-left 120s linear infinite;
+            animation: scroll-left 20s linear infinite;
         }}
         
         @keyframes scroll-left {{
@@ -97,7 +97,7 @@ kayan_yazi_box.markdown(f"""
             to {{ transform: translateX(-100%); }}
         }}
     </style>
-    <div style="background-color:#f0f0f0;padding:10px; overflow: hidden;">
+    <div style="background-color:#f0f0f0;padding:10px; overflow: hidden; white-space: nowrap;">
         <span class="kayan_yazi">{kayan_metin}</span>
     </div>
 """, unsafe_allow_html=True)

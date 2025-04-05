@@ -70,10 +70,7 @@ secim = st.selectbox(
         ["Madde", "Harcama Grubu","Özel Göstergeler"]
     )
     
-periyot = st.selectbox(
-        "Periyot seçin:", 
-        ["Günlük","Aylık"]
-    )
+
 from datetime import datetime,timedelta
 import pytz
 tüfe=pd.read_csv("tüfe.csv",index_col=0)

@@ -61,20 +61,12 @@ social_media_icons.render(sidebar=True)
 import uuid
 import time
 
-
-
-
-    # Değişiklik olduğunda callback ile durumu güncelleyelim
 secim = st.selectbox(
-        "Veri türünü seçin:", 
-        ["Madde", "Harcama Grubu","Özel Göstergeler"]
-    )
-    
- 
+    "Veri türünü seçin:", 
+    ["Madde", "Harcama Grubu", "Özel Göstergeler"]
+)
 
-
-
-
+# ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 elif secim == "Harcama Grubu":
@@ -95,17 +87,54 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
-# İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-tekrarli_metin = kayan_metin + bosluk * 2 + kayan_metin
+# CSS animasyonu kullanan kayan yazı
+st.markdown("""
+<style>
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
 
-# Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
+.scrolling-wrapper {
+    background-color: #f0f0f0;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scrolling-text {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+    padding-right: 100%;
+    font-size: 18px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Kayan yazıyı CSS animasyonu ile göster
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
-            {tekrarli_metin}
-        </marquee>
+<div class="scrolling-wrapper">
+    <div class="scrolling-text">
+        {kayan_metin}
     </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Animasyon süresini ayarlamak için bir ayar ekleyelim
+st.sidebar.subheader("Kayan Yazı Ayarları")
+animation_speed = st.sidebar.slider("Animasyon Hızı", 10, 60, 30, help="Animasyon süresi (saniye cinsinden). Daha düşük değer daha hızlı animasyon anlamına gelir.")
+
+# JavaScript ile animasyon süresini güncelle
+st.markdown(f"""
+<script>
+    document.addEventListener('DOMContentLoaded', function() {{
+        const scrollingText = document.querySelector('.scrolling-text');
+        if (scrollingText) {{
+            scrollingText.style.animationDuration = '{animation_speed}s';
+        }}
+    }});
+</script>
 """, unsafe_allow_html=True)
 
 

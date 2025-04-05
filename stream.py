@@ -112,7 +112,7 @@ def hareketli_aylik_ortalama(df):
         df.index = pd.to_datetime(df.index)
         return df
 
-option1 = st.checkbox("Günlük", value=False)
+option1 = st.checkbox("Günlük", value=True)
 option2 = st.checkbox("Aylık", value=False)
 if option1 and option2:
     st.warning("Lütfen yalnızca bir seçenek seçin.")
@@ -124,8 +124,7 @@ if option1:
         
     elif secim == "Harcama Grubu":
         df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
-    elif secim == "Özel Göstergeler":
-        df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
+
 
     
     degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
@@ -163,8 +162,7 @@ if option2:
         
     elif secim == "Harcama Grubu":
         df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
-    elif secim == "Özel Göstergeler":
-        df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
+
     degisimler2 = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
     degisimler2=degisimler2.round(2)
     # ---------------- Kayan Yazıyı Oluştur ----------------

@@ -58,79 +58,27 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-import uuid
-import time
-
-
-
-
-    # Değişiklik olduğunda callback ile durumu güncelleyelim
 secim = st.selectbox(
-        "Veri türünü seçin:", 
-        ["Madde", "Harcama Grubu","Özel Göstergeler"]
-    )
-    
+    "Veri türünü seçin:", 
+    ["Madde", "Harcama Grubu", "Özel Göstergeler"]
+)
 
-from datetime import datetime,timedelta
-import pytz
-tüfe=pd.read_csv("tüfe.csv",index_col=0)
-tüfe.index=pd.to_datetime(tüfe.index)
-
-
-gfe1=tüfe.copy()
-gfe1["Date"]=pd.to_datetime(gfe1.index)
-gfe1["Ay"]=gfe1["Date"].dt.month
-gfe1["Yıl"]=gfe1["Date"].dt.year    
-month = gfe1["Ay"].iloc[-1]
-year=gfe1["Yıl"].iloc[-1] 
-oncekiyear=gfe1["Yıl"].iloc[-1] 
-tarihim=pd.to_datetime(gfe1.index[-1]).day
-if tarihim>24:
-    tarihim=24
-if tarihim<10:
-    tarihim="0"+str(tarihim)
-
-from datetime import datetime,timedelta
-tarih=datetime.now().strftime("%Y-%m")
-onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
-def hareketli_aylik_ortalama(df):
-        değer = df.name  # Kolon ismi
-        df = pd.DataFrame(df)
-        df["Tarih"] = pd.to_datetime(df.index)  # Tarih sütununu datetime formatına çevir
-        df["Gün Sırası"] = df.groupby(df["Tarih"].dt.to_period("M")).cumcount() + 1  # Her ay için gün sırasını oluştur
-        
-        # Her ay için ilk 24 günü sınırla ve hareketli ortalama hesapla
-        df["Aylık Ortalama"] = (
-            df[df["Gün Sırası"] <= 24]
-            .groupby(df["Tarih"].dt.to_period("M"))[değer]
-            .expanding()
-            .mean()
-            .reset_index(level=0, drop=True)
-        )
-        
-        # Orijinal indeksi geri yükle
-        df.index = pd.to_datetime(df.index)
-        return df
-
-
+# ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
-    
 elif secim == "Harcama Grubu":
     df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+elif secim == "Özel Göstergeler":
+    df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
 
-
-
+# ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-degisimler=degisimler.round(2)
 
+# ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():
-    renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
-    if degisim!=0:
-        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
-    else:
-        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:.2f}</span>"
+    renk = "red" if degisim > 0 else "green"
+    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
     parcalar.append(madde_html)
 
 bosluk = "&nbsp;" * 10
@@ -138,17 +86,16 @@ kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
 # İçeriği tekrarlayarak sonsuz döngü etkisini güçlendirelim
 # İçeriği iki kez göstererek uçtan uca daha akıcı döngü sağlar
-tekrarli_metin = 100*(kayan_metin + bosluk * 2 + kayan_metin)
+tekrarli_metin = 10*(kayan_metin + bosluk * 2 + kayan_metin)
 
 # Kayan yazıyı göster - loop="infinite" ve behavior="scroll" özellikleri önemli
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="24" loop="infinite" style="font-size:18px;">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {tekrarli_metin}
         </marquee>
     </div>
 """, unsafe_allow_html=True)
-
 
 
 

@@ -121,9 +121,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Animasyon süresini ayarlamak için bir ayar ekleyelim
-st.sidebar.subheader("Kayan Yazı Ayarları")
-animation_speed = st.sidebar.slider("Animasyon Hızı", 10, 60, 30, help="Animasyon süresi (saniye cinsinden). Daha düşük değer daha hızlı animasyon anlamına gelir.")
+
 
 # JavaScript ile animasyon süresini güncelle
 st.markdown(f"""
@@ -131,7 +129,7 @@ st.markdown(f"""
     document.addEventListener('DOMContentLoaded', function() {{
         const scrollingText = document.querySelector('.scrolling-text');
         if (scrollingText) {{
-            scrollingText.style.animationDuration = '{animation_speed}s';
+            scrollingText.style.animationDuration = '60s';
         }}
     }});
 </script>

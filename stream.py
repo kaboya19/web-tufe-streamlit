@@ -73,7 +73,7 @@ kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}{bosluk}" + bosluk.join(parc
 # Kayan yazıyı HTML ile göster
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite" style="font-size:18px;">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>

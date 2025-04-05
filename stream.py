@@ -89,7 +89,7 @@ kayan_yazi_box.markdown(f"""
         .kayan_yazi {{
             display: inline-block;
             white-space: nowrap;  /* Tek satırda göster */
-            animation: scroll-left 240s linear infinite;
+            animation: scroll-left 120s linear infinite;
         }}
         
         @keyframes scroll-left {{

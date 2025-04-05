@@ -119,17 +119,27 @@ def hareketli_aylik_ortalama(df):
 
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
+    if periyot=="Günlük":
+# ---------------- Günlük Değişim Hesapla ----------------
+        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+    else:
+        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
 elif secim == "Harcama Grubu":
     df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+    if periyot=="Günlük":
+# ---------------- Günlük Değişim Hesapla ----------------
+        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+    else:
+        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
 elif secim == "Özel Göstergeler":
     df = pd.read_csv("özelgöstergeler.csv", index_col=0).sort_index()
-
-if periyot=="Günlük":
+    if periyot=="Günlük":
 # ---------------- Günlük Değişim Hesapla ----------------
-    degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-else:
-    degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
-degisimler=degisimler.round(2)
+        degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+    else:
+        degisimler = ((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean())-1).sort_values(ascending=False)*100
+
+
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():

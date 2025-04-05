@@ -61,18 +61,24 @@ social_media_icons.render(sidebar=True)
 df = pd.read_csv("endeksler.csv",index_col=0)
 degisimler=df.pct_change().dropna().iloc[-1].sort_values(ascending=False)*100
 
-kayan_metin = "  Günlük Değişimler  "
+parcalar = []
 for madde, degisim in degisimler.items():
-    kayan_metin += f"{madde}:%{degisim:+.1f}  "
+    renk = "red" if degisim > 0 else "green"
+    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.1f}</span>"
+    parcalar.append(madde_html)
 
-# Kayan yazıyı HTML ile yerleştir
+# Metni birleştir
+kayan_metin = "  <b>Günlük Değişimler</b>  " + "  ".join(parcalar)
+
+# Kayan yazıyı HTML ile göster
 st.markdown(f"""
     <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite" style="font-size:18px; color:darkblue;">
+        <marquee behavior="scroll" direction="left" scrollamount="6" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>
 """, unsafe_allow_html=True)
+
 
 if page=="Bültenler":
     import streamlit as st

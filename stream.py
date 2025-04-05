@@ -84,7 +84,7 @@ elif secim == "Özel Göstergeler":
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-
+degisimler=degisimler.round(2)
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():

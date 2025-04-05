@@ -107,14 +107,6 @@ st.markdown(f"""
     </div>
 """, unsafe_allow_html=True)
 
-# Durum bilgisi
-with st.expander("Uygulama Durumu", expanded=False):
-    st.write(f"Seçim: {secim}")
-    st.write(f"Yenileme Sayısı: {st.session_state.reset_key}")
-    if st.button("Uygulama Durumunu Temizle"):
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.rerun()
 
 
 if page=="Bültenler":

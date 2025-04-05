@@ -88,7 +88,8 @@ degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 10
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():
-    renk = "red" if degisim > 0 else "green"
+    renk = "red" if degisim > 0 else "green" if degisim < 0 else "gray"
+
     madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
     parcalar.append(madde_html)
 

@@ -58,8 +58,13 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-import time
+import uuid
 
+# Her oturum için benzersiz bir ID oluştur
+if 'marquee_id' not in st.session_state:
+    st.session_state['marquee_id'] = f"marquee_{str(uuid.uuid4())[:8]}"
+
+# Yenileme sayacı
 if 'refresh_counter' not in st.session_state:
     st.session_state['refresh_counter'] = 0
 
@@ -70,8 +75,8 @@ with col1:
     secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
 
 with col2:
-    # Yenileme butonu
-    if st.button("🔄 Yazıyı Yenile", use_container_width=True):
+    # Yenileme butonu - tıklandığında JavaScript'i tetikleyecek
+    if st.button("🔄 Yazıyı Yenile", key="refresh_button"):
         st.session_state['refresh_counter'] += 1
 
 # ---------------- Veri Yükleme ----------------
@@ -93,18 +98,59 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# Unique key - refresh_counter kullanarak her yenilemeyi farklı yapar
-# Bu sayede DOM yeniden oluşturulur ve kayan yazı sıfırlanır
-unique_key = f"marquee_{secim}_{st.session_state['refresh_counter']}"
+# Sabit marquee_id kullanarak elemanı tanımlayalım
+marquee_id = st.session_state['marquee_id']
 
-# ---------------- Kayan Yazıyı Göster ----------------
+# JavaScript işlevini ekleyelim
+# Bu kod sayfa yüklendiğinde ve refresh_counter değiştiğinde çalışacak
+js_code = f"""
+<script>
+    function resetMarquee() {{
+        const marquee = document.getElementById('{marquee_id}');
+        if (marquee) {{
+            const parent = marquee.parentNode;
+            const clone = marquee.cloneNode(true);
+            parent.removeChild(marquee);
+            parent.appendChild(clone);
+        }}
+    }}
+    
+    // Sayfa yüklendiğinde çalıştır
+    document.addEventListener('DOMContentLoaded', function() {{
+        resetMarquee();
+    }});
+    
+    // Streamlit'in yeniden yükleme olayını izle
+    if (window.parent) {{
+        const observer = new MutationObserver(function(mutations) {{
+            resetMarquee();
+        }});
+        
+        observer.observe(window.parent.document.body, {{ 
+            childList: true, 
+            subtree: true 
+        }});
+    }}
+</script>
+"""
+
+# HTML ve JavaScript kodunu birleştirerek göster
+# refresh_counter değeri JavaScript'e geçirildi, böylece değiştiğinde JavaScript kodu tetiklenecek
 st.markdown(f"""
-    <div style="background-color:#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;" id="{unique_key}">
+    <div style="background-color:#f0f0f0;padding:10px;" data-refresh="{st.session_state['refresh_counter']}">
+        <marquee behavior="scroll" direction="left" scrollamount="12" loop="infinite" style="font-size:18px;" id="{marquee_id}">
             {kayan_metin}
         </marquee>
     </div>
+    {js_code}
 """, unsafe_allow_html=True)
+
+# Debug bilgisi (geliştirme sırasında yardımcı olabilir)
+with st.expander("Debug Bilgisi", expanded=False):
+    st.write(f"Marquee ID: {marquee_id}")
+    st.write(f"Refresh Sayacı: {st.session_state['refresh_counter']}")
+    if st.button("Sayfayı Tamamen Yenile"):
+        st.rerun()
 
 
 if page=="Bültenler":

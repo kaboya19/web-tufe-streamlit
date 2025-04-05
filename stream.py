@@ -90,6 +90,8 @@ kayan_yazi_box.markdown(f"""
             display: inline-block;
             white-space: nowrap;  /* Tek satırda göster */
             animation: scroll-left 20s linear infinite;
+            animation-timing-function: linear;
+            animation-delay: 0s;  /* Hemen başlasın */
         }}
         
         @keyframes scroll-left {{

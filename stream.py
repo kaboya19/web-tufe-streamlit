@@ -58,57 +58,58 @@ social_media_icons = SocialMediaIcons(
         colors=[link["color"] for link in social_media_links.values()]
     )
 social_media_icons.render(sidebar=True)
-secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"], key="secim_box")
+import streamlit as st
+import pandas as pd
 
-# ---------------- Veri Yükleme ----------------
+# Örnek veri
+secim = st.radio("Veri Tipi Seçin", ["Madde", "Harcama Grubu"], horizontal=True)
+
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index().drop("2024-12-31",axis=0)
+    df = pd.read_csv("harcamagrupları.csv", index_col=0)
 
-# ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
 
-# ---------------- Kayan Yazıyı Oluştur ----------------
-parcalar = []
-for madde, degisim in degisimler.items():
+# Yazıyı hazırla
+metinler = []
+for urun, degisim in degisimler.items():
     renk = "red" if degisim > 0 else "green"
-    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.1f}</span>"
-    parcalar.append(madde_html)
+    isaret = "+" if degisim > 0 else ""
+    metinler.append(f"<b style='color:black;font-weight:bold'>{urun}</b>: <span style='color:{renk}'>{isaret}%{degisim:.1f}</span>")
 
-bosluk = "&nbsp;" * 10
-kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
+kayan_metin = "&nbsp;&nbsp;&nbsp;&nbsp;".join(metinler)
 
-# ---------------- Kayan Yazıyı Göster (CSS ile animasyon) ----------------
-kayan_yazi_key = f"marquee_{secim}_{time.time()}"  # zamanla eşsiz key -> yeniden başlatır
-kayan_yazi_box = st.empty()  # dinamik içeriği sıfırlamak için boş kutu
+# Animasyon süresini karakter sayısına göre ayarla (yaklaşık olarak)
+karakter_sayisi = len(kayan_metin)
+saniye = karakter_sayisi * 0.08  # karakter başı 0.08s (hız ayarı)
 
-# İçeriği her seçimde güncelle
-kayan_yazi_box.markdown(f"""
+# CSS + HTML
+st.markdown(f"""
     <style>
-        .scroll-container {{
-            width: 100%;
+        .kayan-kutu {{
             overflow: hidden;
-            background-color: #f0f0f0;
-            box-sizing: border-box;
-            padding: 10px 0;
-        }}
-        .scroll-text {{
-            display: inline-block;
             white-space: nowrap;
-            animation: scroll-left 60s linear infinite;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            background-color: #f7f7f7;
+            padding: 10px;
         }}
-        @keyframes scroll-left {{
+        .kayan-yazi {{
+            display: inline-block;
+            padding-left: 100%;
+            animation: kay  {saniye:.1f}s linear infinite;
+        }}
+        @keyframes kay {{
             0% {{ transform: translateX(0%); }}
-            100% {{ transform: translateX(-50%); }}
+            100% {{ transform: translateX(-100%); }}
         }}
     </style>
-    <div class="scroll-container">
-        <div class="scroll-text">
-            {kayan_metin}&nbsp;&nbsp;&nbsp;&nbsp;{kayan_metin}
-        </div>
+    <div class="kayan-kutu">
+        <div class="kayan-yazi">{kayan_metin}</div>
     </div>
 """, unsafe_allow_html=True)
+
 
 
 

@@ -86,28 +86,27 @@ kayan_yazi_box = st.empty()  # dinamik içeriği sıfırlamak için boş kutu
 # İçeriği her seçimde güncelle
 kayan_yazi_box.markdown(f"""
     <style>
-        .kayan_yazi_wrapper {{
+        .scroll-container {{
+            width: 100%;
             overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
             background-color: #f0f0f0;
-            padding: 10px;
+            box-sizing: border-box;
+            padding: 10px 0;
         }}
-
-        .kayan_yazi {{
+        .scroll-text {{
             display: inline-block;
-            padding-left: 100%;  /* yazı başlangıçta görünmesin */
-            animation: marquee 30s linear infinite;
+            white-space: nowrap;
+            animation: scroll-left 60s linear infinite;
         }}
-
-        @keyframes marquee {{
-            0%   {{ transform: translate(0, 0); }}
-            100% {{ transform: translate(-100%, 0); }}
+        @keyframes scroll-left {{
+            0% {{ transform: translateX(0%); }}
+            100% {{ transform: translateX(-50%); }}
         }}
     </style>
-
-    <div class="kayan_yazi_wrapper">
-        <div class="kayan_yazi">{kayan_metin}</div>
+    <div class="scroll-container">
+        <div class="scroll-text">
+            {kayan_metin}&nbsp;&nbsp;&nbsp;&nbsp;{kayan_metin}
+        </div>
     </div>
 """, unsafe_allow_html=True)
 

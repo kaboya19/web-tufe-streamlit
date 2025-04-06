@@ -67,58 +67,37 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-# Kullanıcı seçimi
 secim = st.radio("Veri Tipi Seçin", ["Madde", "Harcama Grubu"], horizontal=True)
 
-# Veriyi oku
+# Dosyayı seçime göre oku
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
     df = pd.read_csv("harcamagrupları.csv", index_col=0)
 
-# Değişimleri hesapla
+# Günlük değişimi hesapla
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
 
-# Yazıyı hazırla
-metinler = []
-for urun, degisim in degisimler.items():
+# Yazıyı oluştur
+parcalar = []
+for madde, degisim in degisimler.items():
     renk = "red" if degisim > 0 else "green"
     isaret = "+" if degisim > 0 else ""
-    metinler.append(f"<b style='color:black;font-weight:bold'>{urun}</b>: <span style='color:{renk}'>{isaret}%{degisim:.1f}</span>")
+    parca = f"<b style='color:black'>{madde}</b>: <span style='color:{renk}'>{isaret}%{degisim:.1f}</span>"
+    parcalar.append(parca)
 
-kayan_metin = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".join(metinler)
+kayan_yazi = "&nbsp;&nbsp;&nbsp;&nbsp;".join(parcalar)
 
-# HTML ve CSS kodu
-st.markdown(f"""
-    <style>
-        .scroll-container {{
-            width: 100%;
-            overflow: hidden;
-            background-color: #f7f7f7;
-            border: 1px solid #ddd;
-            padding: 8px 0;
-            white-space: nowrap;
-            box-sizing: border-box;
-        }}
-
-        .scroll-text {{
-            display: inline-block;
-            padding-left: 100%;
-            animation: scroll-left 80s linear infinite;
-            font-size: 18px;
-        }}
-
-        @keyframes scroll-left {{
-            0% {{ transform: translateX(0%); }}
-            100% {{ transform: translateX(-100%); }}
-        }}
-    </style>
-
-    <div class="scroll-container">
-        <div class="scroll-text">{kayan_metin}</div>
-    </div>
-""", unsafe_allow_html=True)
-
+# Kayan yazıyı göster
+streamlit_marquee(
+    content=kayan_yazi,
+    fontSize="18px",
+    background="#ffffff",
+    color="#000000",
+    animationDuration=60,
+    lineHeight="30px",
+    width="100%"
+)
 
 
 

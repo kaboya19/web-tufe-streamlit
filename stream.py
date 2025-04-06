@@ -86,24 +86,31 @@ kayan_yazi_box = st.empty()  # dinamik içeriği sıfırlamak için boş kutu
 # İçeriği her seçimde güncelle
 kayan_yazi_box.markdown(f"""
     <style>
+        .kayan_yazi_wrapper {{
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }}
+
         .kayan_yazi {{
             display: inline-block;
-            white-space: nowrap;  /* Tek satırda göster */
-            position: relative;
-            animation: scroll-left 10s linear infinite;  /* Animasyon süresi burada 120s */
-            animation-timing-function: linear;
-            left: 100%;  /* Başlangıçta sağda */
+            padding-left: 100%;  /* yazı başlangıçta görünmesin */
+            animation: marquee 30s linear infinite;
         }}
-        
-        @keyframes scroll-left {{
-            from {{ left: 100%; }}  /* Başlangıç: sağda */
-            to {{ left: -100%; }}  /* Bitiş: solda */
+
+        @keyframes marquee {{
+            0%   {{ transform: translate(0, 0); }}
+            100% {{ transform: translate(-100%, 0); }}
         }}
     </style>
-    <div style="background-color:#f0f0f0;padding:10px; overflow: hidden; white-space: nowrap;">
-        <span class="kayan_yazi">{kayan_metin}</span>
+
+    <div class="kayan_yazi_wrapper">
+        <div class="kayan_yazi">{kayan_metin}</div>
     </div>
 """, unsafe_allow_html=True)
+
 
 
 if page=="Bültenler":

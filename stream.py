@@ -93,7 +93,7 @@ streamlit_marquee(
     fontSize="18px",
     background="#ffffff",
     color="#000000",
-    animationDuration=180,
+    animationDuration=300,
     lineHeight="30px",
     width="100%"
 )

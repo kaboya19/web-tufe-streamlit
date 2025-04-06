@@ -62,13 +62,21 @@ import streamlit as st
 import pandas as pd
 
 # Örnek veri
+import streamlit as st
+import pandas as pd
+
+st.set_page_config(layout="wide")
+
+# Kullanıcı seçimi
 secim = st.radio("Veri Tipi Seçin", ["Madde", "Harcama Grubu"], horizontal=True)
 
+# Veriyi oku
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
     df = pd.read_csv("harcamagrupları.csv", index_col=0)
 
+# Değişimleri hesapla
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
 
 # Yazıyı hazırla
@@ -78,35 +86,36 @@ for urun, degisim in degisimler.items():
     isaret = "+" if degisim > 0 else ""
     metinler.append(f"<b style='color:black;font-weight:bold'>{urun}</b>: <span style='color:{renk}'>{isaret}%{degisim:.1f}</span>")
 
-kayan_metin = "&nbsp;&nbsp;&nbsp;&nbsp;".join(metinler)
+kayan_metin = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".join(metinler)
 
-# Animasyon süresini karakter sayısına göre ayarla (yaklaşık olarak)
-karakter_sayisi = len(kayan_metin)
-saniye = karakter_sayisi * 0.08  # karakter başı 0.08s (hız ayarı)
-
-# CSS + HTML
+# HTML ve CSS kodu
 st.markdown(f"""
     <style>
-        .kayan-kutu {{
+        .scroll-container {{
+            width: 100%;
             overflow: hidden;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 8px 0;
             white-space: nowrap;
             box-sizing: border-box;
-            border: 1px solid #ddd;
-            background-color: #f7f7f7;
-            padding: 10px;
         }}
-        .kayan-yazi {{
+
+        .scroll-text {{
             display: inline-block;
             padding-left: 100%;
-            animation: kay  {saniye:.1f}s linear infinite;
+            animation: scroll-left 80s linear infinite;
+            font-size: 18px;
         }}
-        @keyframes kay {{
+
+        @keyframes scroll-left {{
             0% {{ transform: translateX(0%); }}
             100% {{ transform: translateX(-100%); }}
         }}
     </style>
-    <div class="kayan-kutu">
-        <div class="kayan-yazi">{kayan_metin}</div>
+
+    <div class="scroll-container">
+        <div class="scroll-text">{kayan_metin}</div>
     </div>
 """, unsafe_allow_html=True)
 

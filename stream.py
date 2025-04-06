@@ -65,7 +65,6 @@ import pandas as pd
 import streamlit as st
 import pandas as pd
 from streamlit_marquee import streamlit_marquee
-st.set_page_config(layout="wide")
 
 secim = st.radio("Veri Tipi Seçin", ["Madde", "Harcama Grubu"], horizontal=True)
 

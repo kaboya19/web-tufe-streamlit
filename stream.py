@@ -66,38 +66,86 @@ import streamlit as st
 import pandas as pd
 from streamlit_marquee import streamlit_marquee
 
-secim = st.radio("Veri Tipi Seçin", ["Madde", "Harcama Grubu"], horizontal=True)
+secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
 
-# Dosyayı seçime göre oku
+# ---------------- Veri Yükleme ----------------
 if secim == "Madde":
     df = pd.read_csv("endeksler.csv", index_col=0)
 else:
-    df = pd.read_csv("harcamagrupları.csv", index_col=0)
+    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+    df.index=pd.to_datetime(df.index)
 
-# Günlük değişimi hesapla
+# ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
 
-# Yazıyı oluştur
+
+# ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []
 for madde, degisim in degisimler.items():
     renk = "red" if degisim > 0 else "green"
-    isaret = "+" if degisim > 0 else ""
-    parca = f"<b style='color:black'>{madde}</b>: <span style='color:{renk}'>{isaret}%{degisim:.1f}</span>"
-    parcalar.append(parca)
+    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
+    parcalar.append(madde_html)
 
-kayan_yazi = "&nbsp;&nbsp;&nbsp;&nbsp;".join(parcalar)
+bosluk = "&nbsp;" * 10
+parcalar=10*parcalar
+kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
 
-# Kayan yazıyı göster
-streamlit_marquee(
-    content=kayan_yazi,
-    fontSize="18px",
-    background="#ffffff",
-    color="#000000",
-    animationDuration=30000,
-    lineHeight="30px",
-    width="100%"
-)
+# ---------------- Kayan Yazıyı Göster ----------------
+st.markdown(f"""
+    <div style="background-color:
+#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="30" loop="infinite" style="font-size:18px;">
+            {kayan_metin}
+        </marquee>
+    </div>
+""", unsafe_allow_html=True)
 
+from datetime import datetime,timedelta
+import pytz
+tüfe=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/tüfe.csv",index_col=0)
+tüfe.index=pd.to_datetime(tüfe.index)
+
+gruplar=pd.read_csv("C:/Users/Bora/Documents/GitHub/web-tufe-streamlit/gruplar_int.csv",index_col=0)
+gruplar.index=pd.to_datetime(gruplar.index)
+gfe1=tüfe.copy()
+gfe1["Date"]=pd.to_datetime(gfe1.index)
+gfe1["Ay"]=gfe1["Date"].dt.month
+gfe1["Yıl"]=gfe1["Date"].dt.year    
+month = gfe1["Ay"].iloc[-1]
+year=gfe1["Yıl"].iloc[-1] 
+oncekiyear=gfe1["Yıl"].iloc[-1] 
+tarihim=pd.to_datetime(gfe1.index[-1]).day
+if tarihim>24:
+    tarihim=24
+if tarihim<10:
+    tarihim="0"+str(tarihim)
+
+from datetime import datetime,timedelta
+tarih=datetime.now().strftime("%Y-%m")
+onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+
+degisimler2 = (((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean()).sort_values(ascending=False))-1)*100
+
+
+# ---------------- Kayan Yazıyı Oluştur ----------------
+parcalar2 = []
+for madde, degisim in degisimler2.items():
+    renk = "red" if degisim > 0 else "green"
+    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
+    parcalar2.append(madde_html)
+
+bosluk2 = "&nbsp;" * 10
+kayan_metin2 = f"<b>Aylık Değişimler</b>{bosluk2}" + bosluk2.join(parcalar2)
+parcalar2=10*parcalar2
+# ---------------- Kayan Yazıyı Göster ----------------
+st.markdown(f"""
+    <div style="background-color:
+#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="20" loop="infinite" style="font-size:18px;">
+            {kayan_metin2}
+        </marquee>
+    </div>
+""", unsafe_allow_html=True)
 
 
 if page=="Bültenler":

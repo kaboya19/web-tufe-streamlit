@@ -2661,7 +2661,7 @@ if page=="Madde Endeksleri":
 
     endeksler=pd.read_csv("endeksler_int.csv",index_col=0)
 
-    harcamagrupları=pd.read_csv("harcamagrupları_int.csv",index_col=0)
+    harcamagrupları=pd.read_csv("harcama_grupları.csv",index_col=0)
 
     anagruplar=pd.read_csv("gruplar_int.csv",index_col=0)
 

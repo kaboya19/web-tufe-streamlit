@@ -184,9 +184,9 @@ if page=="Bültenler":
 
         # Display remaining images
         images = [
-            ("eveşyasımart.png", "Ev Eşyası"),
-            ("eğitimmart.png", "Eğitim"),
-            ("eğlencemart.png", "Eğlence"),
+            ("Ev eşyasımart.png", "Ev Eşyası"),
+            ("Eğitimmart.png", "Eğitim"),
+            ("Eğlence ve kültürmart.png", "Eğlence"),
             ("Giyim ve ayakkabımart.png", "Giyim ve Ayakkabı"),
             ("Gıda ve alkolsüz içeceklermart.png", "Gıda ve Alkolsüz İçecekler"),
             ("Haberleşmemart.png", "Haberleşme"),

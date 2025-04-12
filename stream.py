@@ -193,8 +193,7 @@ if page=="Bültenler":
             ("Konutmart.png", "Konut"),
             ("Lokanta ve otellermart.png", "Lokanta ve Oteller"),
             ("Ulaştırmamart.png", "Ulaştırma"),
-            ("Çeşitli mal ve hizmetlermart.png", "Çeşitli Mal ve Hizmetler"),
-            ("Giyim ve ayakkabımart.png", "Giyim ve Ayakkabı")
+            ("Çeşitli mal ve hizmetlermart.png", "Çeşitli Mal ve Hizmetler")
         ]
 
         for image_path, caption in images:

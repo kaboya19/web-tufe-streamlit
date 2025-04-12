@@ -233,17 +233,17 @@ if page=="Bültenler":
         st.markdown("<h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubatta %3,83 arttı</h3>", unsafe_allow_html=True)
 
         # First image
-        image1 = Image.open("anagruplar.png")
+        image1 = Image.open("anagruplar_şubat.png")
         st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler")
 
         # Paragraphs and next images
         st.write("Web-Tüketici Fiyat Endeksi Şubatta %3,83 artış kaydederken mevsimsellikten arındırılmış artış %3,38 oldu.")
         st.write("En çok artış ve düşüş yaşanan maddeler:")
-        image2 = Image.open("maddelerşubat.png")
+        image2 = Image.open("maddeler_şubat.png")
         st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar")
 
         st.write("En çok artış ve düşüş yaşanan temel başlıklar:")
-        image3 = Image.open("temelbaşlıklarşubat.png")
+        image3 = Image.open("temelbaşlıklar_şubat.png")
 
 
         st.write("Özel Kapsamlı Göstergeler aylık artış oranları:")

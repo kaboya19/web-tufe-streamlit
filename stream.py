@@ -275,7 +275,7 @@ if page=="Bültenler":
         # Final section with trend and link
         st.write("Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,64 olmuştur.")
         st.write("SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,86 artmıştır.")
-        image18 = Image.open("eğilim.png")
+        image18 = Image.open("eğilimşubat.png")
         st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim")
 
 

@@ -416,10 +416,9 @@ if page=="Tüketici Fiyat Endeksi":
 
     with st.expander("📌 Yapılan Revizyonlar"):
         st.markdown("""
-        - **13 Nisan 2025**: Revizyon kutucuğu eklendi ✅  
-        - **10 Nisan 2025**: Grafiklere filtre özelliği eklendi 📊  
-        - **2 Nisan 2025**: TÜFE veri kaynağı güncellendi 🛠️  
-        - **28 Mart 2025**: Ana sayfa tasarımı değiştirildi 🎨  
+        - **Şubat ayında elektrikte yapılan sübvansiyon düzenlemesi sebebiyle 
+            TÜİK tarafından ortalama fiyatların yayınlanmasının ardından endeksin Şubat verisi revize olmuştur. (%3,5>>%3,83)
+        - **: Gündelikçi ücretinde veri kaynağından kaynaklı geriye dönük fiyat güncellemesi yapılmış ve endeksin Mart verisi revize olmuştur. (%4,1>>%3,23) 🛠️  
         """)
         
     

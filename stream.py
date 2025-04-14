@@ -163,7 +163,7 @@ if page=="Bültenler":
 
     # Tab for selecting the bulletin
     tab = st.selectbox("Bülten Seçin", ["Mart 2025","Şubat 2025"])
-
+    import requests
     # Check if the user selects February 2025
     if tab == "Mart 2025":
         pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfemart25.pdf"

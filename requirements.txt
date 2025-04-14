@@ -12,3 +12,4 @@ st-social-media-links
 streamlit_marquee
 gspread
 oauth2client
+requests

@@ -77,7 +77,7 @@ else:
 
 # ---------------- Günlük Değişim Hesapla ----------------
 degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-
+degisimler=degisimler[degisimler!=0]
 
 # ---------------- Kayan Yazıyı Oluştur ----------------
 parcalar = []

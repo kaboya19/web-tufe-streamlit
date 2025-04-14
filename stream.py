@@ -180,7 +180,7 @@ if page=="Bültenler":
         viewer_url = f"https://mozilla.github.io/pdf.js/web/viewer.html?file={pdf_url}"
 
         st.markdown(
-            f'<iframe src="{viewer_url}" width="80%" height="900px" style="border:none;"></iframe>',
+            f'<iframe src="{viewer_url}" width="90%" height="800px" style="border:none;"></iframe>',
             unsafe_allow_html=True
         )
                 

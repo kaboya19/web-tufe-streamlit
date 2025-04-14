@@ -420,6 +420,33 @@ if page=="Tüketici Fiyat Endeksi":
             TÜİK tarafından ortalama fiyatların yayınlanmasının ardından endeksin Şubat verisi revize olmuştur. (%3,5>>%3,83)
         - **: Gündelikçi ücretinde veri kaynağından kaynaklı geriye dönük fiyat güncellemesi yapılmış ve endeksin Mart verisi revize olmuştur. (%4,1>>%3,23) 🛠️  
         """)
+
+
+    import streamlit as st
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
+    import json
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+
+    # secrets'ten JSON'u oku
+    json_data = st.secrets["gspread"]
+    creds_dict = json.loads(json.dumps(json_data))  # nested Dict'i düz JSON haline getir
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+
+    client = gspread.authorize(creds)
+    sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1Y3SpFSsASfCzrM7iM-j_x5XR5pYv__8etC4ptaA9dio/edit#gid=0")
+    worksheet = sheet.sheet1
+
+    # Streamlit arayüzü
+    st.title("📬 Bülten Aboneliği")
+    email = st.text_input("E-posta adresinizi girin:")
+    if st.button("Abone Ol"):
+        if email:
+            worksheet.append_row([email])
+            st.success("Aboneliğiniz alınmıştır. Teşekkürler!")
+        else:
+            st.warning("Lütfen geçerli bir e-posta adresi girin.")
+
         
     
 

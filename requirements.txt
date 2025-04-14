@@ -10,3 +10,5 @@ openpyxl
 streamlit-option-menu
 st-social-media-links
 streamlit_marquee
+gspread
+oauth2client

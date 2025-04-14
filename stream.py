@@ -167,6 +167,16 @@ if page=="Bültenler":
     # Check if the user selects February 2025
     if tab == "Mart 2025":
         pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfemart25.pdf"
+        response = requests.get(pdf_url)
+        if response.status_code == 200:
+            st.download_button(
+                label="📥 PDF'yi İndir",
+                data=response.content,
+                file_name="WebTÜFE_Mart25.pdf",
+                mime="application/pdf"
+            )
+        else:
+            st.warning("PDF indirilemedi. Lütfen bağlantıyı kontrol edin.")
         viewer_url = f"https://mozilla.github.io/pdf.js/web/viewer.html?file={pdf_url}"
 
         st.markdown(

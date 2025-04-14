@@ -153,79 +153,41 @@ if page=="Bültenler":
     import streamlit as st
     from PIL import Image
 
+    import streamlit as st
+    import base64
+
+    # PDF dosyasını yükle
+    
+
+
 
     # Tab for selecting the bulletin
     tab = st.selectbox("Bülten Seçin", ["Mart 2025","Şubat 2025"])
 
     # Check if the user selects February 2025
     if tab == "Mart 2025":
+        with open("webtüfemart25.pdf", "rb") as f:
+            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+        # PDF’yi tam ekran iframe olarak göster
+        pdf_display = f'''
+        <iframe src="data:application/pdf;base64,{base64_pdf}" 
+                width="100%" 
+                height="1000px" 
+                style="border: none;">
+        </iframe>
+        '''
+        st.markdown(pdf_display, unsafe_allow_html=True)
         # Title
-        st.markdown("<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Mart 2025 Bülteni</h2>", unsafe_allow_html=True)
-        st.markdown("<h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Martta %3,23 arttı</h3>", unsafe_allow_html=True)
-
-        # First image
-        image1 = Image.open("anagruplar_mart.png")
-        st.image(image1, caption="En çok artış ve düşüş yaşanan maddeler")
-
-        # Paragraphs and next images
-        st.write("Web-Tüketici Fiyat Endeksi Martta %3,23 artış kaydederken mevsimsellikten arındırılmış artış %2,89 oldu.")
-        st.write("En çok artış ve düşüş yaşanan maddeler:")
-        image2 = Image.open("maddeler_mart.png")
-        st.image(image2, caption="En çok artış ve düşüş yaşanan temel başlıklar")
-
-        st.write("En çok artış ve düşüş yaşanan temel başlıklar:")
-        image3 = Image.open("temelbaşlıklar_mart.png")
-        st.image(image3, caption="Özel Kapsamlı TÜFE Göstergeleri")
-
         
-
-        st.write("Özel Kapsamlı Göstergeler aylık artış oranları:")
-        image5 = Image.open("özelgöstergelermart.png")
-        st.image(image5, caption="Ana gruplara ait artış oranları")
-
-        # Display remaining images
-        images = [
-            ("Ev eşyasımart.png", "Ev Eşyası"),
-            ("Eğitimmart.png", "Eğitim"),
-            ("Eğlence ve kültürmart.png", "Eğlence"),
-            ("Giyim ve ayakkabımart.png", "Giyim ve Ayakkabı"),
-            ("Gıda ve alkolsüz içeceklermart.png", "Gıda ve Alkolsüz İçecekler"),
-            ("Haberleşmemart.png", "Haberleşme"),
-            ("Konutmart.png", "Konut"),
-            ("Lokanta ve otellermart.png", "Lokanta ve Oteller"),
-            ("Ulaştırmamart.png", "Ulaştırma"),
-            ("Çeşitli mal ve hizmetlermart.png", "Çeşitli Mal ve Hizmetler")
-        ]
-
-        for image_path, caption in images:
-            image = Image.open(image_path)
-            st.image(image, caption=caption)
-
-        #
-        
-        st.write("Ham ve mevsimsellikten arındırılmış göstergelerin aylık artışları:")
-        image18 = Image.open("maözelgöstergelermart.png")
-        st.image(image18, caption="Ham ve mevsimsellikten arındırılmış göstergelerin aylık artışları")
-        # Final section with trend and link
-        st.write("Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,23 olmuştur.")
-        st.write("SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,26 artmıştır.")
-        image18 = Image.open("eğilimmart.png")
-        st.image(image18, caption="Mevsimsellikten Arındırılmış Eğilim")
-
-
-        # Footer
-        st.markdown("<hr>", unsafe_allow_html=True)
-        st.markdown("""
-            <small>
-                *Bu bültenin bir sonraki yayınlanma tarihi 24 Nisan 2025'tir. Burada yer alan bilgi ve analizler tamamen kişisel çalışma olup kesin bir doğruluk içermemekte ve yatırım tavsiyesi içermemektedir.*<br>
-                *TÜİK’in hesaplamasıyla uyumlu olması açısından ayın ilk 24 günündeki veriler dikkate alınmıştır.*
-            </small>
-        """, unsafe_allow_html=True)
 
         st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)
         st.markdown("<p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>", unsafe_allow_html=True)
         st.markdown("<p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>", unsafe_allow_html=True)
     if tab == "Şubat 2025":
+
+# PDF dosyasını oku
+        
         # Title
         st.markdown("<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni</h2>", unsafe_allow_html=True)
         st.markdown("<h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubatta %3,83 arttı</h3>", unsafe_allow_html=True)

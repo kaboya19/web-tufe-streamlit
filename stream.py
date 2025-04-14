@@ -425,27 +425,34 @@ if page=="Tüketici Fiyat Endeksi":
     import streamlit as st
     import gspread
     from oauth2client.service_account import ServiceAccountCredentials
-    import json
+    from datetime import datetime
+
+    # --- Google Sheets bağlantısı ---
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
-    # secrets'ten JSON'u oku
-    json_data = st.secrets["gspread"]
-    creds_dict = json.loads(json.dumps(json_data))  # nested Dict'i düz JSON haline getir
+    # Streamlit secrets üzerinden service account bilgilerini al
+    creds_dict = dict(st.secrets["gspread"])
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-
     client = gspread.authorize(creds)
-    sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1Y3SpFSsASfCzrM7iM-j_x5XR5pYv__8etC4ptaA9dio/edit#gid=0")
-    worksheet = sheet.sheet1
 
-    # Streamlit arayüzü
-    st.title("📬 Bülten Aboneliği")
-    email = st.text_input("E-posta adresinizi girin:")
-    if st.button("Abone Ol"):
-        if email:
-            worksheet.append_row([email])
-            st.success("Aboneliğiniz alınmıştır. Teşekkürler!")
+    # Google Sheet bağlantısı
+    sheet_url = "https://docs.google.com/spreadsheets/d/1Y3SpFSsASfCzrM7iM-j_x5XR5pYv__8etC4ptaA9dio/edit?gid=0#gid=0"
+    worksheet = client.open_by_url(sheet_url).sheet1  # İlk sayfa
+
+    # --- Streamlit Arayüzü ---
+    st.title("📩 Bülten Aboneliği")
+    st.write("Bültenlere olmak için e-posta adresinizi bırakın:")
+
+    email = st.text_input("E-posta adresiniz")
+    submit = st.button("Kaydol")
+
+    if submit:
+        if "@" not in email or "." not in email:
+            st.error("Lütfen geçerli bir e-posta adresi girin.")
         else:
-            st.warning("Lütfen geçerli bir e-posta adresi girin.")
+            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            worksheet.append_row([email, now])
+            st.success("Teşekkürler! Başarıyla kaydoldunuz.")
 
         
     

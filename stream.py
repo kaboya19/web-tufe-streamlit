@@ -166,18 +166,13 @@ if page=="Bültenler":
 
     # Check if the user selects February 2025
     if tab == "Mart 2025":
-        with open("webtüfemart25.pdf", "rb") as f:
-            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfemart25.pdf"
 
-        # PDF’yi tam ekran iframe olarak göster
-        pdf_display = f'''
-        <iframe src="data:application/pdf;base64,{base64_pdf}" 
-                width="100%" 
-                height="1000px" 
-                style="border: none;">
-        </iframe>
-        '''
-        st.markdown(pdf_display, unsafe_allow_html=True)
+        # PDF'yi iframe ile tam ekran görüntüle
+        st.markdown(
+            f'<iframe src="{pdf_url}" width="100%" height="1000px" style="border:none;"></iframe>',
+            unsafe_allow_html=True
+        )
         # Title
         
 

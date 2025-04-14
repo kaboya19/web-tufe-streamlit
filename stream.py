@@ -427,32 +427,42 @@ if page=="Tüketici Fiyat Endeksi":
     from oauth2client.service_account import ServiceAccountCredentials
     from datetime import datetime
 
-    # --- Google Sheets bağlantısı ---
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-
-    # Streamlit secrets üzerinden service account bilgilerini al
     creds_dict = dict(st.secrets["gspread"])
     creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
     client = gspread.authorize(creds)
 
-    # Google Sheet bağlantısı
-    sheet_url = "https://docs.google.com/spreadsheets/d/1Y3SpFSsASfCzrM7iM-j_x5XR5pYv__8etC4ptaA9dio/edit?gid=0#gid=0"
-    worksheet = client.open_by_url(sheet_url).sheet1  # İlk sayfa
+    sheet_url = "https://docs.google.com/spreadsheets/d/1Y3SpFSsASfCzrM7iM-j_x5XR5pYv__8etC4ptaA9dio"
+    worksheet = client.open_by_url(sheet_url).sheet1
 
-    # --- Streamlit Arayüzü ---
-    st.title("📩 Bülten Aboneliği")
-    st.write("Bültenlere olmak için e-posta adresinizi bırakın:")
+    # --- Streamlit Sidebar: Abonelik Kutusu ---
+    st.sidebar.title("📬 Bülten Aboneliği")
 
-    email = st.text_input("E-posta adresiniz")
-    submit = st.button("Kaydol")
+    email = st.sidebar.text_input("E-posta adresiniz")
+    action = st.sidebar.radio("Ne yapmak istersiniz?", ["Abone ol", "Çık"])
 
-    if submit:
+    if st.sidebar.button("Gönder"):
         if "@" not in email or "." not in email:
-            st.error("Lütfen geçerli bir e-posta adresi girin.")
+            st.sidebar.error("Lütfen geçerli bir e-posta adresi girin.")
         else:
-            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            worksheet.append_row([email, now])
-            st.success("Teşekkürler! Başarıyla kaydoldunuz.")
+            # Tüm e-postaları oku
+            emails = worksheet.col_values(1)
+
+            if action == "Abone ol":
+                if email in emails:
+                    st.sidebar.info("Bu e-posta zaten abone.")
+                else:
+                    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    worksheet.append_row([email, now])
+                    st.sidebar.success("Aboneliğiniz başarıyla eklendi 🎉")
+
+            elif action == "Çık":
+                if email in emails:
+                    cell = worksheet.find(email)
+                    worksheet.delete_rows(cell.row)
+                    st.sidebar.success("Aboneliğiniz iptal edildi.")
+                else:
+                    st.sidebar.info("Bu e-posta zaten abone değil.")
 
         
     

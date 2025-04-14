@@ -168,12 +168,18 @@ if page=="Bültenler":
     if tab == "Mart 2025":
         pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfemart25.pdf"
 
-        # PDF'yi iframe ile tam ekran görüntüle
-        st.markdown(
-            f'<iframe src="{pdf_url}" width="100%" height="1000px" style="border:none;"></iframe>',
-            unsafe_allow_html=True
-        )
-        # Title
+        # PDF'yi indir
+        response = requests.get(pdf_url)
+        if response.status_code == 200:
+            base64_pdf = base64.b64encode(response.content).decode('utf-8')
+            pdf_display = f'''
+            <iframe src="data:application/pdf;base64,{base64_pdf}" 
+                    width="100%" height="1000px" style="border:none;">
+            </iframe>
+            '''
+            st.markdown(pdf_display, unsafe_allow_html=True)
+        else:
+            st.error("PDF dosyası indirilemedi. Lütfen bağlantıyı kontrol edin.")
         
 
         st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)

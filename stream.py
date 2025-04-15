@@ -595,7 +595,8 @@ if page=="Tüketici Fiyat Endeksi":
             xaxis=dict(
                 tickvals=selected_group_data.index,  # Original datetime index
                 ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
-                tickfont=dict(size=14, family="Arial Black", color="black")
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")

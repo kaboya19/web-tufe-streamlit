@@ -610,6 +610,8 @@ if page=="Tüketici Fiyat Endeksi":
 
         # Grafiği çizme
     figgalt = go.Figure()
+    tickvals = selected_group_data.index[::5]  # Her 3 birimde bir tarih
+    ticktext = tickvals.strftime("%d.%m.%Y")  # Tarih formatını özelleştir
     if selected_group!="TÜFE":
         figgalt.add_trace(go.Scatter(
                 x=selected_group_data.index[0:],
@@ -632,8 +634,8 @@ if page=="Tüketici Fiyat Endeksi":
         # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
     figgalt.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index,  # Original datetime index
-                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickvals=tickvals,  # Original datetime index
+                ticktext=ticktext,  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black")
             ),
             yaxis=dict(
@@ -658,6 +660,8 @@ if page=="Tüketici Fiyat Endeksi":
 
    
     if selected_group!="TÜFE":
+        tickvals = selected_group_data.index[::5]  # Her 3 birimde bir tarih
+        ticktext = tickvals.strftime("%d.%m.%Y")  # Tarih formatını özelleştir
 
         aylikdegisim=((hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-24"])-1)*100
         

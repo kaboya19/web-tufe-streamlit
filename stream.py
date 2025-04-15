@@ -1695,6 +1695,7 @@ if page=="Ana Gruplar":
                 tickvals=selected_group_data.index[::5],  # Original datetime index
                 ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")

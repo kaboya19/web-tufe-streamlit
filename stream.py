@@ -1956,9 +1956,10 @@ if page=="Harcama Grupları":
         # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
     figgharcama.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index,  # Original datetime index
-                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
-                tickfont=dict(size=14, family="Arial Black", color="black")
+                tickvals=selected_group_data.index[::5],  # Original datetime index
+                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")
@@ -1989,6 +1990,7 @@ if page=="Harcama Grupları":
                 tickvals=selected_group_data.index[::5],  # Original datetime index
                 ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")
@@ -2211,9 +2213,10 @@ if page=="Özel Kapsamlı Göstergeler":
         # X ekseninde özelleştirilmiş tarih etiketlerini ayarlıyoruz
     figgösterge.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index,  # Original datetime index
-                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
-                tickfont=dict(size=14, family="Arial Black", color="black")
+                tickvals=selected_group_data.index[::5],  # Original datetime index
+                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")
@@ -2246,7 +2249,8 @@ if page=="Özel Kapsamlı Göstergeler":
             xaxis=dict(
                 tickvals=selected_group_data.index,  # Original datetime index
                 ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
-                tickfont=dict(size=14, family="Arial Black", color="black")
+                tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")
@@ -2281,6 +2285,7 @@ if page=="Özel Kapsamlı Göstergeler":
                 tickvals=selected_group_data.index[::5],  # Original datetime index
                 ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black"),
+                tickangle=45
             ),
             yaxis=dict(
                 tickfont=dict(size=14, family="Arial Black", color="black")

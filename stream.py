@@ -593,8 +593,9 @@ if page=="Tüketici Fiyat Endeksi":
     
     figgartıs.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index[::5],  # Original datetime index
-                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                rotation=45,
+                tickvals=selected_group_data.index,  # Original datetime index
+                ticktext=selected_group_data.index.strftime("%d.%m.%Y"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black")
             ),
             yaxis=dict(

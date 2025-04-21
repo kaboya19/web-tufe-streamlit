@@ -672,6 +672,11 @@ if page=="Tüketici Fiyat Endeksi":
                 Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
+        st.markdown("""
+    <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+        Not: Nihai veriler ayın 24.günü oluşmaktadır.
+    </div>
+""", unsafe_allow_html=True)
 
   
 

@@ -760,7 +760,7 @@ if page=="Tüketici Fiyat Endeksi":
         if günüm==21:
             st.markdown(f"""
             <h3 style='text-align:left;'>
-                 <span style='color:red;'>Web TÜFE Nisanda %{change_percent} arttı</span><br>
+                 <span style='color:red;'>Web TÜFE Nisanda %{aylikdegisim} arttı</span><br>
             </h3>
             """, unsafe_allow_html=True)
 

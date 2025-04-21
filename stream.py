@@ -757,7 +757,7 @@ if page=="Tüketici Fiyat Endeksi":
             st.markdown(f"""
                 <h3 style='text-align:left; color:black;'>
                         01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                     <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{change_percent} arttı.</span><br>
+                     <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{aylikdegisim} arttı.</span><br>
                 </h3>
                 """, unsafe_allow_html=True)
         st.markdown("""

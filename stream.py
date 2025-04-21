@@ -745,24 +745,26 @@ if page=="Tüketici Fiyat Endeksi":
         
         aylikdegisim=((hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-24"])-1)*100
         aylikdegisim=aylikdegisim.round(2)
-        st.markdown(f"""
-            <h3 style='text-align:left; color:black;'>
-                01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
-            </h3>
-            """, unsafe_allow_html=True)
+        günüm=datetime.now().day
+        if günüm<20:
+            st.markdown(f"""
+                <h3 style='text-align:left; color:black;'>
+                    01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+                    Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+                </h3>
+                """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <h3 style='text-align:left;'>
+                     <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{change_percent} arttı.</span><br>
+                </h3>
+                """, unsafe_allow_html=True)
         st.markdown("""
     <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
         Not: Nihai veriler ayın 24.günü oluşmaktadır.
     </div>
 """, unsafe_allow_html=True)
-        günüm=datetime.now().day
-        if günüm==21:
-            st.markdown(f"""
-            <h3 style='text-align:left;'>
-                 <span style='color:red;'>Web TÜFE Nisanda %{aylikdegisim} arttı</span><br>
-            </h3>
-            """, unsafe_allow_html=True)
+        
 
         st.plotly_chart(figgalt)
 

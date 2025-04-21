@@ -746,7 +746,7 @@ if page=="Tüketici Fiyat Endeksi":
         aylikdegisim=((hareketlima.iloc[-1]/hareketlima.loc[f"{onceki}-24"])-1)*100
         aylikdegisim=aylikdegisim.round(2)
         günüm=datetime.now().day
-        if günüm<20:
+        if günüm<24:
             st.markdown(f"""
                 <h3 style='text-align:left; color:black;'>
                     01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>

@@ -756,6 +756,10 @@ if page=="Tüketici Fiyat Endeksi":
         Not: Nihai veriler ayın 24.günü oluşmaktadır.
     </div>
 """, unsafe_allow_html=True)
+        günüm=datetime.now().day
+        if günüm==21:
+            st.markdown("""<span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{aylikdegisim} arttı </span><br>""", unsafe_allow_html=True)
+
         st.plotly_chart(figgalt)
 
         

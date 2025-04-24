@@ -4,10 +4,9 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
+from email.mime.application import MIMEApplication
 from datetime import datetime
 import time
-
-
 
 # SMTP Ayarları
 SMTP_SERVER = "smtp.gmail.com"
@@ -16,10 +15,10 @@ SENDER_EMAIL = "borakaya8@gmail.com"
 SENDER_PASSWORD = "dqpp vgar wujr vhei"
 
 # Abone listesi
-SUBSCRIBERS_FILE = "subscribers.csv"
+SUBSCRIBERS_FILE = "subscribers1.csv"
 
 # E-Posta Gönderim Fonksiyonu
-def send_email_with_images(to_email, subject, body, images):
+def send_email_with_images_and_pdf(to_email, subject, body, images, pdf_paths):
     msg = MIMEMultipart()
     msg['From'] = SENDER_EMAIL
     msg['To'] = to_email
@@ -36,6 +35,14 @@ def send_email_with_images(to_email, subject, body, images):
                 img.add_header('Content-ID', f'<{img_id}>')
                 msg.attach(img)
 
+    # PDF Ekleri
+    for pdf_path in pdf_paths:
+        if os.path.exists(pdf_path):
+            with open(pdf_path, 'rb') as f:
+                pdf = MIMEApplication(f.read(), _subtype='pdf')
+                pdf.add_header('Content-Disposition', 'attachment', filename=os.path.basename(pdf_path))
+                msg.attach(pdf)
+
     try:
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
         server.starttls()
@@ -49,13 +56,13 @@ def send_email_with_images(to_email, subject, body, images):
         return False
 
 # Toplu E-Posta Gönderimi
-def send_bulk_email_with_images(subject, body, images):
+def send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths):
     if os.path.exists(SUBSCRIBERS_FILE) and os.path.getsize(SUBSCRIBERS_FILE) > 0:
         df = pd.read_csv(SUBSCRIBERS_FILE)
         success_count = 0
         fail_count = 0
         for email in df["email"]:
-            if send_email_with_images(email, subject, body, images):
+            if send_email_with_images_and_pdf(email, subject, body, images, pdf_paths):
                 success_count += 1
                 time.sleep(2)
             else:
@@ -66,77 +73,35 @@ def send_bulk_email_with_images(subject, body, images):
 
 # Ana E-Posta İçeriği ve Gönderimi
 if __name__ == "__main__":
-    subject = f"Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni"
-    body = f"""
-    <h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubat 2025 Bülteni</h2>
-    <h3 style='color:red; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Şubatta %3,56 arttı</h3>
-    <br>
-    <img src="cid:image1" style="max-width:600px; margin: 10px 0;"/>
-    <p>Web-Tüketici Fiyat Endeksi Şubatta %3,56 artış kaydederken mevsimsellikten arındırılmış artış %2,91 oldu.</p>
-    <br>
-    <p>En çok artış ve düşüş yaşanan maddeler:</p>
-    <img src="cid:image2" style="max-width:600px; margin: 10px 0;"/>
-    <p>En çok artış ve düşüş yaşanan temel başlıklar:</p>
-    <img src="cid:image3" style="max-width:600px; margin: 10px 0;"/>
-    <p>Özel Kapsamlı TÜFE Göstergeleri:</p>
-    <img src="cid:image4" style="max-width:600px; margin: 10px 0;"/>
-    <p>Özel Kapsamlı Göstergeler aylık artış oranları: </p>
-    <img src="cid:image5" style="max-width:600px; margin: 10px 0;"/>
-    <p>Ana gruplara ait artış oranları:  </p>
-    <img src="cid:image6" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image7" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image8" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image9" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image10" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image11" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image12" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image13" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image14" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image15" style="max-width:600px; margin: 10px 0;"/>
-    <img src="cid:image16" style="max-width:600px; margin: 10px 0;"/>
-    <br>
-    <p>Seçilmiş maddelere ait ortalama fiyatlar:</p>
-    <img src="cid:image17" style="max-width:600px; margin: 10px 0;"/>
-    <br>
-    <p>Mevsimsellikten arındırılmış ana eğilimlere bakıldığında medyan artış %3,20 olmuştur.</p>
-    <p>SATRIM(Mevsimsel Düzeltilmiş Budanmış Enflasyon) göstergesi ise %3,29 artmıştır.</p>
-    <br>
-    <img src="cid:image18" style="max-width:600px; margin: 10px 0;"/>
-    <p><a href='https://web-tufe.streamlit.app/'>Web-Tüketici Fiyat Endeksi ile ilgili tüm verilere buradan ulaşabilirsiniz.</a></p>
-    <hr>
-    <small>
-        *Bu bültenin bir sonraki yayınlanma tarihi 24 Mart 2025'tir. Burada yer alan bilgi ve analizler tamamen kişisel çalışma olup kesin bir doğruluk içermemekte ve yatırım tavsiyesi içermemektedir.*<br>
-        *TÜİK’in hesaplamasıyla uyumlu olması açısından ayın ilk 24 günündeki veriler dikkate alınmıştır.*
-    </small>
-    <br>
-    <p><strong>Hazırlayan:Bora Kaya</strong><br>
-    <p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>
-    <p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>
-   
+    subject = f"Web-Tüketici Fiyat Endeksi Nisan 2025 Bülteni"
+    body = body = f"""
+<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Nisan 2025 Bülteni</h2>
+<p>Ekli PDF dosyasında bülteni bulabilirsiniz.</p>
 
-    """
+<h3 style='color:black;'>Özet</h3>
+<p>
+Web Tüketici Fiyat Endeksi nisan ayında yüzde 2,54 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 12,32 olmuştur. 
+Aylık enflasyon lokanta-oteller ve konut gruplarında hızlanırken diğer gruplarda yavaşlamıştır. 
+Nisan ayında konut grubu öne çıkmış, elektrik fiyatlarında yapılan artış grubu önemli ölçüde yükseltmiştir. 
+Geçen ay ılımlı artan lokanta ve oteller grubunda bu ay oteller ve yemek hizmetleri fiyatları güçlü artış göstermiştir.
+</p>
+<p>
+Enerji grubunda,elektrik fiyatlarına yapılan zam ile birlikte fiyatlar yüzde 4,1 oranında artmıştır.
+</p>
+<p>
+Temel mal grubunda, giyim ve ayakkabıda sezon indirimleriyle fiyatların ılımlı arttığı,mart ayındaki kur artışı sebebiyle dayanıklı mallarda fiyatların yüzde 2,51 arttığı diğer temel mallarda ise daha ılımlı bir artış olduğu gözlenmiştir.
+</p>
+<p>
+Hizmetler sektöründe aylık enflasyonun yatay seyrettiği görülmüştür.
+</p>
+<p>
+Bu görünüm altında, mevsimsel düzeltilmiş veriler, B,C,Medyan ve SATRIM göstergelerinin tamamında yavaşlamaya işaret etmiştir.
+Tüm göstergeler birlikte değerlendirildiğinde, Nisan ayında enflasyonun ana eğiliminin yavaşladığı gözlenmiştir.
+</p>
+"""
 
-    # Görsellerin Yolları
-    images = {
-        "image1": "anagruplar.png",
-        "image2": "maddeler.png",
-        "image3": "temelbaşlıklar.png",
-        "image4": "özelgöstergeler.png",
-        "image5": "özelgöstergelerartış.png",
-        "image6": "eveşyası.png",
-        "image7": "eğitim.png",
-        "image8": "eğlence.png",
-        "image9": "Giyim ve ayakkabı.png",
-        "image10": "Gıda ve alkolsüz içecekler.png",
-        "image11": "Haberleşme.png",
-        "image12": "Konut.png",
-        "image13": "Lokanta ve oteller.png",
-        "image14": "Ulaştırma.png",
-        "image15": "Çeşitli mal ve hizmetler.png",
-        "image16": "Giyim ve ayakkabı.png",
-        "image17": "fiyatlar.png",
-        "image18": "eğilim.png"
-    }
 
-    # Toplu E-Posta Gönderimi
-    send_bulk_email_with_images(subject, body, images)
+    images = {}  # İstersen görsel yollarını buraya ekle örn: {"chart1": "path/to/image1.png"}
+    pdf_paths = ["webtüfenisan25.pdf"]  # PDF dosya yolları
+
+    send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths)

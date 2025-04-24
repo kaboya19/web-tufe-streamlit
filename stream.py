@@ -640,7 +640,7 @@ if page=="Tüketici Fiyat Endeksi":
         figgalt.add_trace(go.Scatter(
                 x=selected_group_data.index[0:],
                 y=selected_group_data.iloc[0:,0].values,
-                mode='lines+markers',
+                mode='lines',
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),

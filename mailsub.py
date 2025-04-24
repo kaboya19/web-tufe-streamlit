@@ -78,18 +78,18 @@ if __name__ == "__main__":
 <h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Nisan 2025 Bülteni</h2>
 <p>Ekli PDF dosyasında bülteni bulabilirsiniz.</p>
 
-<h3 style='color:black;'>Özet</h3>
+<h3 style='color:black;'>Özet:</h3>
 <p>
-Web Tüketici Fiyat Endeksi nisan ayında yüzde 2,54 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 12,32 olmuştur. 
+Web Tüketici Fiyat Endeksi nisan ayında yüzde 2,57 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 12,45 olmuştur. 
 Aylık enflasyon lokanta-oteller ve konut gruplarında hızlanırken diğer gruplarda yavaşlamıştır. 
 Nisan ayında konut grubu öne çıkmış, elektrik fiyatlarında yapılan artış grubu önemli ölçüde yükseltmiştir. 
 Geçen ay ılımlı artan lokanta ve oteller grubunda bu ay oteller ve yemek hizmetleri fiyatları güçlü artış göstermiştir.
 </p>
 <p>
-Enerji grubunda,elektrik fiyatlarına yapılan zam ile birlikte fiyatlar yüzde 4,1 oranında artmıştır.
+Enerji grubunda,elektrik fiyatlarına yapılan zam ile birlikte fiyatlar yüzde 4,23 oranında artmıştır.
 </p>
 <p>
-Temel mal grubunda, giyim ve ayakkabıda sezon indirimleriyle fiyatların ılımlı arttığı,mart ayındaki kur artışı sebebiyle dayanıklı mallarda fiyatların yüzde 2,51 arttığı diğer temel mallarda ise daha ılımlı bir artış olduğu gözlenmiştir.
+Temel mal grubunda, giyim ve ayakkabıda sezon indirimleriyle fiyatların ılımlı arttığı,mart ayındaki kur artışı sebebiyle dayanıklı mallarda fiyatların yüzde 2,53 arttığı diğer temel mallarda ise daha ılımlı bir artış olduğu gözlenmiştir.
 </p>
 <p>
 Hizmetler sektöründe aylık enflasyonun yatay seyrettiği görülmüştür.

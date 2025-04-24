@@ -779,11 +779,14 @@ if page=="Tüketici Fiyat Endeksi":
                 """, unsafe_allow_html=True)
         else:
             st.markdown(f"""
-                <h3 style='text-align:left; color:black;'>
-                        01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                     <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{aylikdegisim} arttı.</span><br>
-                </h3>
-                """, unsafe_allow_html=True)
+    <h3 style='text-align:left; color:black;'>
+        01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
+        <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{aylikdegisim} arttı.</span><br>
+        <span style='color:red;'>Nisan 2025 bülteni yayınlandı: <a href='http://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfenisan25.pdf' target='_blank'>Link</a></span>
+    </h3>
+    """, unsafe_allow_html=True)
+
+            
         st.markdown("""
     <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
         Not: Nihai veriler ayın 24.günü oluşmaktadır.

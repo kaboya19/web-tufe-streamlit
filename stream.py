@@ -161,8 +161,32 @@ if page=="Bültenler":
 
 
     # Tab for selecting the bulletin
-    tab = st.selectbox("Bülten Seçin", ["Mart 2025","Şubat 2025"])
+    tab = st.selectbox("Bülten Seçin", ["Nisan 2025","Mart 2025","Şubat 2025"])
     import requests
+
+    if tab == "Nisan 2025":
+        pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webtüfenisan25.pdf"
+        response = requests.get(pdf_url)
+        if response.status_code == 200:
+            st.download_button(
+                label="📥 PDF'yi İndir",
+                data=response.content,
+                file_name="WebTÜFE_Nisan25.pdf",
+                mime="application/pdf"
+            )
+        else:
+            st.warning("PDF indirilemedi. Lütfen bağlantıyı kontrol edin.")
+        viewer_url = f"https://mozilla.github.io/pdf.js/web/viewer.html?file={pdf_url}"
+
+        st.markdown(
+            f'<iframe src="{viewer_url}" width="90%" height="800px" style="border:none;"></iframe>',
+            unsafe_allow_html=True
+        )
+                
+
+        st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)
+        st.markdown("<p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>", unsafe_allow_html=True)
+        st.markdown("<p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>", unsafe_allow_html=True)
     # Check if the user selects February 2025
     if tab == "Mart 2025":
         pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfemart25.pdf"

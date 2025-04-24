@@ -746,7 +746,7 @@ if page=="Tüketici Fiyat Endeksi":
         figgalt.add_trace(go.Scatter(
                 x=tüfem.index,
                 y=tüfem["TÜFE"].values,
-                mode='lines+markers',
+                mode='lines',
                 name="Web-TÜFE",
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),

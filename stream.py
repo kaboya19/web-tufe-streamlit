@@ -782,7 +782,7 @@ if page=="Tüketici Fiyat Endeksi":
     <h3 style='text-align:left; color:black;'>
         01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
         <span style='color:red;'>Web Tüketici Fiyat Endeksi Nisanda %{aylikdegisim} arttı.</span><br>
-        <span style='color:red;'>Nisan 2025 bülteni yayınlandı: <a href='http://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webt%C3%BCfenisan25.pdf' target='_blank'>Link</a></span>
+        <span style='color:red;'>Nisan 2025 bülteni yayınlandı: <a href='https://github.com/kaboya19/web-tufe-streamlit/raw/main/webtüfenisan25.pdf' target='_blank'>Link</a></span>
     </h3>
     """, unsafe_allow_html=True)
 

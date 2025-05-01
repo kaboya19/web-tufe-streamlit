@@ -122,7 +122,7 @@ if tarihim<10:
 
 from datetime import datetime,timedelta
 tarih=datetime.now().strftime("%Y-%m")
-onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
 
 degisimler2 = (((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean()).sort_values(ascending=False))-1)*100
 
@@ -588,7 +588,7 @@ if page=="Tüketici Fiyat Endeksi":
     hareketlima = hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill")
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
     hareketliartıs=cari.values/hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
     hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
@@ -693,7 +693,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+                Mayıs Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
         
@@ -774,7 +774,7 @@ if page=="Tüketici Fiyat Endeksi":
             st.markdown(f"""
                 <h3 style='text-align:left; color:black;'>
                     01.01.2025 - {last_date} Değişimi: <span style='color:red;'>%{change_percent}</span><br>
-                    Nisan Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
+                    Mayıs Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
                 </h3>
                 """, unsafe_allow_html=True)
         else:
@@ -1491,7 +1491,7 @@ if page=="Ana Gruplar":
 
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
 
     
 
@@ -1562,7 +1562,7 @@ if page=="Ana Gruplar":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Mayıs Değişimi: <span style='color:red;'>% {aylık}</span><br>
                 
 
             </h3>
@@ -1941,7 +1941,7 @@ if page=="Harcama Grupları":
 
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
     harcama_grupları=pd.read_csv("harcama_grupları.csv",index_col=0)
 
     harcama_grupları.index=pd.to_datetime(harcama_grupları.index)
@@ -1970,7 +1970,7 @@ if page=="Harcama Grupları":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 31.12.2024 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Mayıs Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)
@@ -2194,7 +2194,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
 
     tüfe=pd.read_csv("gruplar_int.csv",index_col=0)
     tüfe.index=pd.to_datetime(tüfe.index)
@@ -2225,7 +2225,7 @@ if page=="Özel Kapsamlı Göstergeler":
     st.markdown(f"""
             <h3 style='text-align:left; color:black;'>
                 01.01.2025 - {last_date} Değişimi: <span style='color:red;'>% {change_percent}</span><br>
-                Nisan Değişimi: <span style='color:red;'>% {aylık}</span><br>
+                Mayıs Değişimi: <span style='color:red;'>% {aylık}</span><br>
 
             </h3>
             """, unsafe_allow_html=True)
@@ -2272,7 +2272,7 @@ if page=="Özel Kapsamlı Göstergeler":
 
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
     hareketliartıs=cari.values/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-24"]
     hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
@@ -2718,7 +2718,7 @@ if page=="Madde Endeksleri":
 
     from datetime import datetime,timedelta
     tarih=datetime.now().strftime("%Y-%m")
-    onceki=(datetime.now()-timedelta(days=31)).strftime("%Y-%m")
+    onceki=(datetime.now()-timedelta(days=32)).strftime("%Y-%m")
     ürüngrupları=pd.read_csv("harcamaürünleri1.csv",index_col=0)
 
     endeksler=pd.read_csv("endeksler_int.csv",index_col=0)

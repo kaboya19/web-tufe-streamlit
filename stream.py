@@ -696,6 +696,7 @@ if page=="Tüketici Fiyat Endeksi":
                 Mayıs Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
+        st.markdown(onceki)
         
 
   

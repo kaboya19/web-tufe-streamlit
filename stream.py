@@ -124,7 +124,7 @@ from datetime import datetime,timedelta
 tarih=datetime.now().strftime("%Y-%m")
 onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
 
-degisimler2 = (((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-24"].mean()).sort_values(ascending=False))-1)*100
+degisimler2 = (((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-{tarihim}"].mean()).sort_values(ascending=False))-1)*100
 
 
 # ---------------- Kayan Yazıyı Oluştur ----------------

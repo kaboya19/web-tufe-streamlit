@@ -115,7 +115,7 @@ degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) -
 degisimler2 = degisimler2.round(2)
 degisimler2 = degisimler2[degisimler2 != 0]
 
-def olustur_kayan_yazi_html(baslik, degisimler, sure, class_suffix):
+def olustur_kayan_yazi_html(degisimler, sure, class_suffix):
     parcalar = []
     for madde, degisim in degisimler.items():
         renk = "red" if degisim > 0 else "green"
@@ -123,21 +123,25 @@ def olustur_kayan_yazi_html(baslik, degisimler, sure, class_suffix):
         parcalar.append(madde_html)
 
     bosluk = "&nbsp;" * 10
-    icerik = f"<b>{baslik}</b>{bosluk}" + bosluk.join(10 * parcalar)
+    icerik = bosluk.join(10 * parcalar)
 
     html = f"""
     <style>
     .scrolling-wrapper-{class_suffix} {{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         overflow: hidden;
-        white-space: nowrap;
         box-sizing: border-box;
         background-color: #f0f0f0;
         padding: 10px;
+        margin-top: 0; /* Başlık ile kayan yazı arasındaki boşluğu kaldır */
     }}
     .scrolling-content-{class_suffix} {{
         display: inline-block;
         white-space: nowrap;
         animation: scroll-left-{class_suffix} {sure}s linear infinite;
+        padding-left: 20px;
     }}
     @keyframes scroll-left-{class_suffix} {{
         0%   {{ transform: translateX(0%); }}
@@ -152,9 +156,19 @@ def olustur_kayan_yazi_html(baslik, degisimler, sure, class_suffix):
     """
     return html
 
+
+
+
 # ---------------- Göster ----------------
-st.markdown(olustur_kayan_yazi_html("Günlük Değişimler", gunluk_degisimler, kayma_suresi, "daily"), unsafe_allow_html=True)
-st.markdown(olustur_kayan_yazi_html("Aylık Değişimler", degisimler2, kayma_suresi, "monthly"), unsafe_allow_html=True)
+# ---------------- Göster ----------------
+st.markdown("<b>Günlük Değişimler</b>", unsafe_allow_html=True)
+st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily"), unsafe_allow_html=True)
+
+st.markdown("<b>Aylık Değişimler</b>", unsafe_allow_html=True)
+st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly"), unsafe_allow_html=True)
+
+
+
 
 
 

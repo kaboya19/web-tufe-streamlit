@@ -115,7 +115,7 @@ degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) -
 degisimler2 = degisimler2.round(2)
 degisimler2 = degisimler2[degisimler2 != 0]
 
-def olustur_kayan_yazi_html(degisimler, sure, class_suffix):
+def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
     parcalar = []
     for madde, degisim in degisimler.items():
         renk = "red" if degisim > 0 else "green"
@@ -124,6 +124,10 @@ def olustur_kayan_yazi_html(degisimler, sure, class_suffix):
 
     bosluk = "&nbsp;" * 10
     icerik = bosluk.join(10 * parcalar)
+
+    if bosluk_ekle:
+        # Yazının başına 1 seferlik boşluk ekliyoruz
+        icerik = f"{bosluk*5}{icerik}"
 
     html = f"""
     <style>
@@ -156,16 +160,16 @@ def olustur_kayan_yazi_html(degisimler, sure, class_suffix):
     """
     return html
 
-
-
-
 # ---------------- Göster ----------------
-# ---------------- Göster ----------------
+
+# 3 saniye bekleme ekliyoruz
+time.sleep(3)
+
 st.markdown("<b>Günlük Değişimler</b>", unsafe_allow_html=True)
-st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily"), unsafe_allow_html=True)
+st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily", bosluk_ekle=True), unsafe_allow_html=True)
 
 st.markdown("<b>Aylık Değişimler</b>", unsafe_allow_html=True)
-st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly"), unsafe_allow_html=True)
+st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly", bosluk_ekle=True), unsafe_allow_html=True)
 
 
 

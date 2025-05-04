@@ -89,7 +89,7 @@ from datetime import timedelta
 
 # ---------------- Ayar ----------------
 secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
-hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 10)", min_value=1, max_value=3, value=2)
+hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 3)", min_value=1, max_value=3, value=2)
 kayma_suresi = hiz_slider * 2000  # Hızı kayma süresiyle ilişkilendiriyoruz
 
 # ---------------- Veri Yükleme ----------------
@@ -773,7 +773,6 @@ if page=="Tüketici Fiyat Endeksi":
                 Mayıs Değişimi: <span style='color:red;'>%{aylikdegisim}</span><br>
             </h3>
             """, unsafe_allow_html=True)
-        st.markdown(onceki)
         
 
   

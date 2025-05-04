@@ -82,10 +82,15 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 
+import time
+import streamlit as st
+import pandas as pd
+from datetime import timedelta
+
 # ---------------- Ayar ----------------
 secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
-hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 10)", min_value=1, max_value=10, value=4)
-kayma_suresi = hiz_slider *500
+hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 10)", min_value=1, max_value=3, value=2)
+kayma_suresi = hiz_slider * 2000  # Hızı kayma süresiyle ilişkilendiriyoruz
 
 # ---------------- Veri Yükleme ----------------
 if secim == "Madde":
@@ -100,16 +105,16 @@ gunluk_degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=Fals
 gunluk_degisimler = gunluk_degisimler.round(2)
 gunluk_degisimler = gunluk_degisimler[gunluk_degisimler != 0]
 
-tarihim=pd.to_datetime(df.index[-1]).day
-if tarihim>24:
-    tarihim=24
-if tarihim<10:
-    tarihim="0"+str(tarihim)
+tarihim = pd.to_datetime(df.index[-1]).day
+if tarihim > 24:
+    tarihim = 24
+if tarihim < 10:
+    tarihim = "0" + str(tarihim)
 tarih = df.index[-1]
 onceki_tarih = tarih - timedelta(days=30)
 
 ortalama_son = df.loc[tarih.strftime("%Y-%m"):tarih.strftime(f"%Y-%m-{tarihim}")].mean()
-ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
+ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m-%d"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
 
 degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) - 1) * 100
 degisimler2 = degisimler2.round(2)
@@ -127,7 +132,7 @@ def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
 
     if bosluk_ekle:
         # Yazının başına 1 seferlik boşluk ekliyoruz
-        icerik = f"{bosluk*10}{icerik}"
+        icerik = f"{bosluk*5}{icerik}"
 
     html = f"""
     <style>
@@ -149,7 +154,7 @@ def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
     }}
     @keyframes scroll-left-{class_suffix} {{
         0%   {{ transform: translateX(0%); }}
-        100% {{ transform: translateX(-50%); }}
+        100% {{ transform: translateX(-100%); }}  /* Yazı tamamen sola kayacak şekilde */
     }}
     </style>
     <div class="scrolling-wrapper-{class_suffix}">
@@ -170,6 +175,7 @@ st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily", bo
 
 st.markdown("<b>Aylık Değişimler</b>", unsafe_allow_html=True)
 st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly", bosluk_ekle=True), unsafe_allow_html=True)
+
 
 
 

@@ -127,7 +127,7 @@ def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
 
     if bosluk_ekle:
         # Yazının başına 1 seferlik boşluk ekliyoruz
-        icerik = f"{bosluk*5}{icerik}"
+        icerik = f"{bosluk*10}{icerik}"
 
     html = f"""
     <style>

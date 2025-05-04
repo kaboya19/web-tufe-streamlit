@@ -109,7 +109,7 @@ tarih = df.index[-1]
 onceki_tarih = tarih - timedelta(days=30)
 
 ortalama_son = df.loc[tarih.strftime("%Y-%m"):tarih.strftime(f"%Y-%m-{tarihim}")].mean()
-ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m-%d"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
+ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
 
 degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) - 1) * 100
 degisimler2 = degisimler2.round(2)

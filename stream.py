@@ -89,12 +89,12 @@ for madde, degisim in degisimler.items():
 bosluk = "&nbsp;" * 10
 parcalar=10*parcalar
 kayan_metin = f"<b>Günlük Değişimler</b>{bosluk}" + bosluk.join(parcalar)
+kayma_hizi = st.slider("Kayma hızını ayarlayın", min_value=1, max_value=100, value=30)
 
 # ---------------- Kayan Yazıyı Göster ----------------
 st.markdown(f"""
-    <div style="background-color:
-#f0f0f0;padding:10px;">
-        <marquee behavior="scroll" direction="left" scrollamount="30" loop="infinite" style="font-size:18px;">
+    <div style="background-color:#f0f0f0;padding:10px;">
+        <marquee behavior="scroll" direction="left" scrollamount="{kayma_hizi}" loop="infinite" style="font-size:18px;">
             {kayan_metin}
         </marquee>
     </div>

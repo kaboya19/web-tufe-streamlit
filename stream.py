@@ -1921,7 +1921,7 @@ if page=="Ana Gruplar":
         cari=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill")
         selected_harcamagruplarıartıs[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_harcamagrupları[col])
 
         selected_harcamagruplarıartıs[col].iloc[-1]=hareketliartıs.iloc[-1]
         selected_harcamagruplarıartıs=pd.DataFrame(selected_harcamagruplarıartıs)

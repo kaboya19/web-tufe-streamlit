@@ -683,7 +683,7 @@ if page=="Tüketici Fiyat Endeksi":
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
-                    aylik_degisim.append(oran)
+                    aylik_degisim.append(oran*100)
                 else:
                     aylik_degisim.append(None)
             else:
@@ -1582,24 +1582,25 @@ if page=="Tüketici Fiyat Endeksi":
     
         
 if page=="Ana Gruplar":
-    def aylik_degisim_serisi(df):
+    def aylik_degisim_serisi(ts: pd.Series) -> pd.Series:
+        ts = ts.sort_index()
         aylik_degisim = []
 
-        for tarih in df.index:
+        for tarih in ts.index:
             gun = tarih.day
             ay = tarih.month
             yil = tarih.year
 
-            # Bu ay ve geçen ay için veri filtrele
-            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            # Bu ay ve geçen ay için veri
+            bu_ay = ts[(ts.index.year == yil) & (ts.index.month == ay)]
             if ay == 1:
-                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+                onceki_ay = ts[(ts.index.year == yil - 1) & (ts.index.month == 12)]
             else:
-                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+                onceki_ay = ts[(ts.index.year == yil) & (ts.index.month == ay - 1)]
 
             if gun <= 24:
-                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
-                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+                ort_bu = bu_ay.iloc[:gun].mean()
+                ort_onceki = onceki_ay.iloc[:gun].mean()
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
@@ -1607,15 +1608,14 @@ if page=="Ana Gruplar":
                 else:
                     aylik_degisim.append(None)
             else:
-                # 24. günün indeksini bul ve onun değerini al
                 try:
-                    tarih_24 = bu_ay.index[23]  # 0-based indexing
-                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    tarih_24 = bu_ay.index[23]
+                    oran_24 = aylik_degisim[ts.index.get_loc(tarih_24)]
                     aylik_degisim.append(oran_24)
                 except:
                     aylik_degisim.append(None)
 
-        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
+        return pd.Series(aylik_degisim[-gun:], index=ts.index[-gun:])
     from datetime import datetime,timedelta
     import pytz
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
@@ -2064,24 +2064,25 @@ if page=="Ana Gruplar":
 
 
 if page=="Harcama Grupları":
-    def aylik_degisim_serisi(df):
+    def aylik_degisim_serisi(ts: pd.Series) -> pd.Series:
+        ts = ts.sort_index()
         aylik_degisim = []
 
-        for tarih in df.index:
+        for tarih in ts.index:
             gun = tarih.day
             ay = tarih.month
             yil = tarih.year
 
-            # Bu ay ve geçen ay için veri filtrele
-            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            # Bu ay ve geçen ay için veri
+            bu_ay = ts[(ts.index.year == yil) & (ts.index.month == ay)]
             if ay == 1:
-                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+                onceki_ay = ts[(ts.index.year == yil - 1) & (ts.index.month == 12)]
             else:
-                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+                onceki_ay = ts[(ts.index.year == yil) & (ts.index.month == ay - 1)]
 
             if gun <= 24:
-                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
-                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+                ort_bu = bu_ay.iloc[:gun].mean()
+                ort_onceki = onceki_ay.iloc[:gun].mean()
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
@@ -2089,15 +2090,14 @@ if page=="Harcama Grupları":
                 else:
                     aylik_degisim.append(None)
             else:
-                # 24. günün indeksini bul ve onun değerini al
                 try:
-                    tarih_24 = bu_ay.index[23]  # 0-based indexing
-                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    tarih_24 = bu_ay.index[23]
+                    oran_24 = aylik_degisim[ts.index.get_loc(tarih_24)]
                     aylik_degisim.append(oran_24)
                 except:
                     aylik_degisim.append(None)
 
-        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
+        return pd.Series(aylik_degisim[-gun:], index=ts.index[-gun:])
     from datetime import datetime,timedelta
     import pytz
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
@@ -2349,24 +2349,25 @@ if page=="Harcama Grupları":
     st.plotly_chart(figartıs)
 
 if page=="Özel Kapsamlı Göstergeler":
-    def aylik_degisim_serisi(df):
+    def aylik_degisim_serisi(ts: pd.Series) -> pd.Series:
+        ts = ts.sort_index()
         aylik_degisim = []
 
-        for tarih in df.index:
+        for tarih in ts.index:
             gun = tarih.day
             ay = tarih.month
             yil = tarih.year
 
-            # Bu ay ve geçen ay için veri filtrele
-            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            # Bu ay ve geçen ay için veri
+            bu_ay = ts[(ts.index.year == yil) & (ts.index.month == ay)]
             if ay == 1:
-                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+                onceki_ay = ts[(ts.index.year == yil - 1) & (ts.index.month == 12)]
             else:
-                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+                onceki_ay = ts[(ts.index.year == yil) & (ts.index.month == ay - 1)]
 
             if gun <= 24:
-                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
-                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+                ort_bu = bu_ay.iloc[:gun].mean()
+                ort_onceki = onceki_ay.iloc[:gun].mean()
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
@@ -2374,15 +2375,14 @@ if page=="Özel Kapsamlı Göstergeler":
                 else:
                     aylik_degisim.append(None)
             else:
-                # 24. günün indeksini bul ve onun değerini al
                 try:
-                    tarih_24 = bu_ay.index[23]  # 0-based indexing
-                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    tarih_24 = bu_ay.index[23]
+                    oran_24 = aylik_degisim[ts.index.get_loc(tarih_24)]
                     aylik_degisim.append(oran_24)
                 except:
                     aylik_degisim.append(None)
 
-        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
+        return pd.Series(aylik_degisim[-gun:], index=ts.index[-gun:])
 
     from datetime import datetime,timedelta
     import pytz
@@ -2905,24 +2905,25 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         
 
 if page=="Madde Endeksleri":
-    def aylik_degisim_serisi(df):
+    def aylik_degisim_serisi(ts: pd.Series) -> pd.Series:
+        ts = ts.sort_index()
         aylik_degisim = []
 
-        for tarih in df.index:
+        for tarih in ts.index:
             gun = tarih.day
             ay = tarih.month
             yil = tarih.year
 
-            # Bu ay ve geçen ay için veri filtrele
-            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            # Bu ay ve geçen ay için veri
+            bu_ay = ts[(ts.index.year == yil) & (ts.index.month == ay)]
             if ay == 1:
-                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+                onceki_ay = ts[(ts.index.year == yil - 1) & (ts.index.month == 12)]
             else:
-                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+                onceki_ay = ts[(ts.index.year == yil) & (ts.index.month == ay - 1)]
 
             if gun <= 24:
-                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
-                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+                ort_bu = bu_ay.iloc[:gun].mean()
+                ort_onceki = onceki_ay.iloc[:gun].mean()
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
@@ -2930,15 +2931,14 @@ if page=="Madde Endeksleri":
                 else:
                     aylik_degisim.append(None)
             else:
-                # 24. günün indeksini bul ve onun değerini al
                 try:
-                    tarih_24 = bu_ay.index[23]  # 0-based indexing
-                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    tarih_24 = bu_ay.index[23]
+                    oran_24 = aylik_degisim[ts.index.get_loc(tarih_24)]
                     aylik_degisim.append(oran_24)
                 except:
                     aylik_degisim.append(None)
 
-        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
+        return pd.Series(aylik_degisim[-gun:], index=ts.index[-gun:])
 
     from datetime import datetime,timedelta
     import pytz

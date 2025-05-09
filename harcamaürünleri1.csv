@@ -1,328 +1,328 @@
 ,Ürün,Grup,Ağırlık,Group_Number,Ana Grup
-0,Ampul,"Çeşitli küçük aksesuarlar (pil, ampul vb.)",0.0007973640266859134,75,Ev eşyası
-1,Ankastre Fırın,"Fırın, ocak ve fırınlı ocak",0.00032547627076990547,67,Ev eşyası
-2,Ankastre Mikrodalga Fırın,"Fırın, ocak ve fırınlı ocak",0.0008735126437044148,67,Ev eşyası
-3,Ankastre Ocak (Set Üstü) ,"Fırın, ocak ve fırınlı ocak",0.0006201988868345105,67,Ev eşyası
-4,Antep Fıstığı,Kuru meyve ve sert kabuklu yemişler,0.0005581092150536095,22,Gıda ve alkolsüz içecekler
-5,Araba Kiralama Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0007617387157305129,96,Ulaştırma
-6,Araçların  Tamirine ve Bakımına Ödenen Ücretler (İşçilik),Kişisel ulaştırma araçlarının bakım ve onarımı,0.001604125419237327,95,Ulaştırma
-7,Armut,Taze meyveler,0.0007467296140152126,21,Gıda ve alkolsüz içecekler
-8,Ay Çekirdeği,Kuru meyve ve sert kabuklu yemişler,0.002049945862355635,22,Gıda ve alkolsüz içecekler
-9,Ayakkabı (Erkek için),Erkek ayakkabısı,0.0026986473424840457,49,Giyim ve ayakkabı
-10,Ayakkabı (Kadın için),Kadın ayakkabısı,0.0023330877037831396,50,Giyim ve ayakkabı
-11,Ayakkabı (Çocuk için),Çocuk ve bebek ayakkabısı,0.0005709770573762097,51,Giyim ve ayakkabı
-12,Ayakkabı Tamiri (Erkek),Ayakkabı bakım ve tamiri,6.104722912053677e-05,52,Giyim ve ayakkabı
-13,Ayran,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0004994422959914085,36,Gıda ve alkolsüz içecekler
-14,Ayran (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.0014829099113785249,129,Lokanta ve oteller
-15,Ayva,Taze meyveler,0.0002770379488352047,21,Gıda ve alkolsüz içecekler
-16,Ayçiçek Yağı,"Sıvı yağlar (zeytinyağı, ayçiçek yağı)",0.01006752897261327,20,Gıda ve alkolsüz içecekler
-17,Ağız ve Diş Bakımı Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0015498652388390263,135,Çeşitli mal ve hizmetler
-18,Badana ve Boya Malzemeleri,Konutun bakım ve onarımı için malzemeler,0.004014131655780568,54,Konut
-19,Badem İçi,Kuru meyve ve sert kabuklu yemişler,0.0005009809610706084,22,Gıda ve alkolsüz içecekler
-20,Baharat,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0016088070064734271,31,Gıda ve alkolsüz içecekler
-21,Baklava,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.004250886381032072,4,Gıda ve alkolsüz içecekler
-22,Bal,"Reçel, marmelat, bal vb. ürünler",0.001472709946412625,28,Gıda ve alkolsüz içecekler
-23,Balık,Taze balık,0.004104635208987569,12,Gıda ve alkolsüz içecekler
-24,Banka ile Para Havale Ücreti,Başka yerde sınıflandırılmayan diğer mali hizmetler (para havale ücreti vb.),5.924485049674013e-05,143,Çeşitli mal ve hizmetler
-25,Battaniye,Ev tekstili,0.0002012723767052034,64,Ev eşyası
-26,Bebek Arabası,Başka yerde sınıflandırılmamış diğer kişisel aksesuarlar,0.0014290141628638241,138,Çeşitli mal ve hizmetler
-27,Bebek Bezi,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.004478289972997675,135,Çeşitli mal ve hizmetler
-28,Bebek Pijaması,Bebek giyim,0.00038921676042010656,46,Giyim ve ayakkabı
-29,Bebek Sütü (Toz Karışım),Un ve diğer tahıllar,0.0010967088022246184,2,Gıda ve alkolsüz içecekler
-30,Bebek Tulumu,Bebek giyim,0.0003975571011451067,46,Giyim ve ayakkabı
-31,Bebek İç Çamaşırı,Bebek giyim,0.0005763979897315097,46,Giyim ve ayakkabı
-32,Belediye Otobüs Ücreti,Otobüs ile şehir içi yolcu taşımacılığı,0.002051175101093835,99,Ulaştırma
-33,Benzin,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.011993458363176203,94,Ulaştırma
-34,Beyaz Lahana,Taze sebzeler (patates hariç),0.0005770178875136098,23,Gıda ve alkolsüz içecekler
-35,Beyaz Peynir,Peynir,0.008552818866879645,16,Gıda ve alkolsüz içecekler
-36,Bilgisayar,Bilgisayar ve ekipmanları,0.0017298861836223293,109,Eğlence ve kültür
-37,Bilgisayar Ekipmanları,Bilgisayar ve ekipmanları,0.0009562767421010162,109,Eğlence ve kültür
-38,Bisiklet,Bisikletler,0.0006773719790350113,92,Ulaştırma
-39,Bisküvi,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0034210381201547576,4,Gıda ve alkolsüz içecekler
-40,Bitki ve Meyve Çayı (Poşet),Çay ve bitki çayları,0.00011808372608260199,33,Gıda ve alkolsüz içecekler
-41,Bot (Erkek için),Erkek ayakkabısı,0.0007596282634388128,49,Giyim ve ayakkabı
-42,Bot (Kadın için),Kadın ayakkabısı,0.0014090575622907238,50,Giyim ve ayakkabı
-43,Bot (Çocuk için),Çocuk ve bebek ayakkabısı,0.0006098294714669103,51,Giyim ve ayakkabı
-44,Bulaşık Bezleri,"Ev ile ilgili diğer temizlik malzemeleri (bulaşık süngeri, çöp torbası vb.)",0.00016676766324380283,78,Ev eşyası
-45,Bulaşık Makinesi,Çamaşır ve bulaşık makineleri,0.002790390739409447,66,Ev eşyası
-46,Bulaşık İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.003950683687766567,77,Ev eşyası
-47,Bulgur,Un ve diğer tahıllar,0.001303793114486422,2,Gıda ve alkolsüz içecekler
-48,Burgerler,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.011506918977310595,128,Lokanta ve oteller
-49,Buğday Unu,Un ve diğer tahıllar,0.004458241732734076,2,Gıda ve alkolsüz içecekler
-50,Cam Ev Eşyası,"Cam, porselen, seramik vb. mutfak eşyaları",0.0012619958082846212,72,Ev eşyası
-51,Ceket (Erkek için),Erkek giyim,0.000951681580041216,43,Giyim ve ayakkabı
-52,Ceket (Kadın için),Kadın giyim,0.0009034567318941153,44,Giyim ve ayakkabı
-53,Cep Telefonu Görüşme Ücreti,Telefon (mobil ve sabit hat) ve internet ücretleri,0.02308252151951569,107,Haberleşme
-54,Ceviz İçi,Kuru meyve ve sert kabuklu yemişler,0.0022956481526105387,22,Gıda ve alkolsüz içecekler
-55,Cilt ve Vücut Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0020716690196227352,135,Çeşitli mal ve hizmetler
-56,Cipsler,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.0017122665926492288,26,Gıda ve alkolsüz içecekler
-57,Dana Eti,Dana eti,0.025315073468589827,7,Gıda ve alkolsüz içecekler
-58,Davlumbaz,Klima ve ısıtıcılar,0.0002592023111853044,68,Ev eşyası
-59,Deodorant,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0005974753875574101,135,Çeşitli mal ve hizmetler
-60,Dereotu,Taze sebzeler (patates hariç),0.00018628473585350315,23,Gıda ve alkolsüz içecekler
-61,Derin Dondurucu,"Buzdolabı, derin dondurucu",0.0030097508413153506,65,Ev eşyası
-62,Diğer Kitaplar,Kitaplar,0.0019258350401454324,120,Eğlence ve kültür
-63,Dolmalık Biber,Taze sebzeler (patates hariç),0.0007045208328822119,23,Gıda ve alkolsüz içecekler
-64,Domates,Taze sebzeler (patates hariç),0.010874985170114385,23,Gıda ve alkolsüz içecekler
-65,Dondurma,Dondurma,0.0017942475241635304,30,Gıda ve alkolsüz içecekler
-66,Doğalgaz Ücreti,Doğalgaz ve ilgili abonelik ücretleri,0.022529503461674583,57,Konut
-67,Ekmek,Ekmek,0.026373599497724044,3,Gıda ve alkolsüz içecekler
-68,Ekmek Hamuru (Yufka),"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0012452756325786211,4,Gıda ve alkolsüz içecekler
-69,Ekmekarası Yiyecekler (Döner),"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.012374959106774108,128,Lokanta ve oteller
-70,Elbise (Kadın için),Kadın giyim,0.004918347759219983,44,Giyim ve ayakkabı
-71,Elbise (Çocuk için),Çocuk giyim,0.0007697864547065131,45,Giyim ve ayakkabı
-72,Elektrik Ücreti,Elektrik,0.021600365785798364,56,Konut
-73,Elektrikli Kesici Aletler (Blender),Elektrikli küçük ev aletleri,0.0007262982246756122,70,Ev eşyası
-74,Elektrikli Küçük Ev Aletleri (Tost Makinası),Elektrikli küçük ev aletleri,0.0004585886577183078,70,Ev eşyası
-75,Elektrikli Saç Bakım Aletleri,Kişisel bakımda kullanılan elektrikli aletler,0.0005642209233220095,134,Çeşitli mal ve hizmetler
-76,Elektrikli Süpürge,Diğer büyük ev aletleri (elektrikli süpürge vb.),0.0029604502804817497,69,Ev eşyası
-77,Elma,Taze meyveler,0.0031221669359970524,21,Gıda ve alkolsüz içecekler
-78,Erkek Berberi,Erkekler için kuaförlük hizmetleri,0.003589166660373561,132,Çeşitli mal ve hizmetler
-79,Erkek Mont,Erkek giyim,0.0015960604814138268,43,Giyim ve ayakkabı
-80,Etek,Kadın giyim,0.0015282378624455258,44,Giyim ve ayakkabı
-81,Evcil Hayvanlar İçin Gıda Harcamaları,Evcil hayvanlar ile ilgili ürünler,0.0023841796014136404,114,Eğlence ve kültür
-82,Eşarp,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.0012200236356245207,47,Giyim ve ayakkabı
-83,Eşofman (Erkek için),Erkek giyim,0.0009749533282701165,43,Giyim ve ayakkabı
-84,Eşofman (Kadın için),Kadın giyim,0.0011994773950507202,44,Giyim ve ayakkabı
-85,Eşofman (Çocuk için),Çocuk giyim,0.0017396398829763293,45,Giyim ve ayakkabı
-86,Fındık Ezmesi,"Reçel, marmelat, bal vb. ürünler",0.00014501905583410245,28,Gıda ve alkolsüz içecekler
-87,Fındık İçi,Kuru meyve ve sert kabuklu yemişler,0.000835671014919514,22,Gıda ve alkolsüz içecekler
-88,Gazoz Meyveli,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0006418797898875108,36,Gıda ve alkolsüz içecekler
-89,Genç Odası Takımı,Yatak odası mobilyaları,0.0008879640041919149,61,Ev eşyası
-90,Gofret,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0018277741392490308,4,Gıda ve alkolsüz içecekler
-91,Gömlek (Erkek için),Erkek giyim,0.002907024515994149,43,Giyim ve ayakkabı
-92,Gömlek (Kadın için),Kadın giyim,0.0015071361452409255,44,Giyim ve ayakkabı
-93,Gömlek (Çocuk için),Çocuk giyim,0.00038919380146430657,45,Giyim ve ayakkabı
-94,Gündelikçi Ücreti,Ev içi hizmetler (gündelikçi ücreti),0.004997566830284584,79,Ev eşyası
-95,Halı,Halı,0.001657181073948228,63,Ev eşyası
-96,Halı Temizleme,Ev eşyalarının yıkanması ve temizlenmesi hizmetleri,0.0012306421115541209,80,Ev eşyası
-97,Havlu,Ev tekstili,0.00059386252903181,64,Ev eşyası
-98,Havuç,Taze sebzeler (patates hariç),0.0010731671795373183,23,Gıda ve alkolsüz içecekler
-99,Hazır Et Yemekleri,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0012017966385588204,11,Gıda ve alkolsüz içecekler
-100,Hazır Kahve,Kahve,0.0008640373996355146,32,Gıda ve alkolsüz içecekler
-101,Hazır Pakette Toz Tatlılar (Puding),"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0002724214600245046,31,Gıda ve alkolsüz içecekler
-102,Hazır Sütlü Tatlılar,"Diğer süt ürünleri (yoğurt, hazır sütlü tatlı vb.)",0.0002693682597832046,15,Gıda ve alkolsüz içecekler
-103,"Hazır Yemekler (Pilav, Kuru Fasulye)","Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.01417198421433504,128,Lokanta ve oteller
-104,Hazır Çorbalar,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.00042473645693150716,31,Gıda ve alkolsüz içecekler
-105,Hijyenik Kadın Bağı,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0009452171840577159,135,Çeşitli mal ve hizmetler
-106,Hijyenik Zeminler İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.001243376533801721,77,Ev eşyası
-107,Hırka (Kadın için),Kadın giyim,0.0009042721439825153,44,Giyim ve ayakkabı
-108,Ispanak,Taze sebzeler (patates hariç),0.0009865537280060166,23,Gıda ve alkolsüz içecekler
-109,Kabak,Taze sebzeler (patates hariç),0.0008209966121203139,23,Gıda ve alkolsüz içecekler
-110,Kabak Çekirdeği,Kuru meyve ve sert kabuklu yemişler,0.0003878413544781066,22,Gıda ve alkolsüz içecekler
-111,Kaban (Erkek için),Erkek giyim,0.000354584792771606,43,Giyim ve ayakkabı
-112,Kaban (Kadın için),Kadın giyim,0.001304121242033222,44,Giyim ve ayakkabı
-113,Kaban Anorak (Çocuk için),Çocuk giyim,0.00011751716768570197,45,Giyim ve ayakkabı
-114,Kabartma Maddeleri,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0002537109306419043,31,Gıda ve alkolsüz içecekler
-115,Kadın Berberi,Kadınlar için kuaförlük hizmetleri,0.0031189649018734523,133,Çeşitli mal ve hizmetler
-116,Kahve,Kahve,0.0012817989345868218,32,Gıda ve alkolsüz içecekler
-117,Kakao,Toz kakao,5.8529703873677925e-05,34,Gıda ve alkolsüz içecekler
-118,Kakaolu Toz İçecekler,Toz kakao,1.7049986624405448e-05,34,Gıda ve alkolsüz içecekler
-119,Kalem,Kırtasiye malzemeleri,0.0003861298344367065,122,Eğlence ve kültür
-120,"Kapı Aksesuarları (Anahtar, Kilit)",Evle ilgili küçük bakım-tamir mal ve hizmetleri,0.0004489515391276076,76,Ev eşyası
-121,Kargo Gönderme Ücreti,"Diğer satın alınan ulaştırma hizmetleri (nakliye, kargo vb.)",0.00024126527355070406,104,Ulaştırma
-122,Karnabahar,Taze sebzeler (patates hariç),0.000650149513877611,23,Gıda ve alkolsüz içecekler
-123,Karpuz,Taze meyveler,0.003207804581010254,21,Gıda ve alkolsüz içecekler
-124,Kavun,Taze meyveler,0.001474505372023925,21,Gıda ve alkolsüz içecekler
-125,Kazak (Erkek için),Erkek giyim,0.0013897687394129235,43,Giyim ve ayakkabı
-126,Kazak (Kadın için),Kadın giyim,0.003486581833077259,44,Giyim ve ayakkabı
-127,Kazak (Çocuk için),Çocuk giyim,0.0007922849368840134,45,Giyim ve ayakkabı
-128,Kağıtlı Şeker,Çikolata ve şekerlemeler,0.002001594491688534,29,Gıda ve alkolsüz içecekler
-129,Kaşar Peyniri,Peynir,0.004007425758769968,16,Gıda ve alkolsüz içecekler
-130,"Kaşık, Çatal, Bıçak Takımı (Çelik)",Çatal-bıçak takımı,0.0004687269801002079,73,Ev eşyası
-131,Kebaplar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.01068222829543658,128,Lokanta ve oteller
-132,Kek,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0009585024727755162,4,Gıda ve alkolsüz içecekler
-133,Kemer,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.0004495880219914076,47,Giyim ve ayakkabı
-134,Kesme Şeker,Şeker,0.0005472808118725092,27,Gıda ve alkolsüz içecekler
-135,Ketçap,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.00030495343441590516,31,Gıda ve alkolsüz içecekler
-136,Kiracı Tarafından Ödenen Gerçek Kira,Gerçek kira,0.08189940310407659,53,Konut
-137,Kivi,Taze meyveler,0.00022154729472060374,21,Gıda ve alkolsüz içecekler
-138,Klima,Klima ve ısıtıcılar,0.0015848275596464267,68,Ev eşyası
-139,Kola,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0023367243374736394,36,Gıda ve alkolsüz içecekler
-140,Kolonya,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0005777294733129097,135,Çeşitli mal ve hizmetler
-141,Kombi,Klima ve ısıtıcılar,0.0019686969920837336,68,Ev eşyası
-142,Konserve Balık,Konserve edilmiş veya işlenmiş balık,0.00029914351810380506,13,Gıda ve alkolsüz içecekler
-143,Konserveler,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.0003127690155268053,26,Gıda ve alkolsüz içecekler
-144,Kraker,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0007022211658667118,4,Gıda ve alkolsüz içecekler
-145,Kravat,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.00012890195603440218,47,Giyim ve ayakkabı
-146,Krem Peynir,Peynir,0.0006445609967926109,16,Gıda ve alkolsüz içecekler
-147,Kuru Fasulye,Kuru baklagiller,0.0011069236737325187,25,Gıda ve alkolsüz içecekler
-148,Kuru Kayısı,Kuru meyve ve sert kabuklu yemişler,0.00040077872449960676,22,Gıda ve alkolsüz içecekler
-149,Kuru Soğan,Taze sebzeler (patates hariç),0.0036488014802600614,23,Gıda ve alkolsüz içecekler
-150,Kuru Temizleme Ücreti,Giyim eşyalarının temizlenmesi ve tadilatı,0.0004365959797319074,48,Giyim ve ayakkabı
-151,Kuru Üzüm,Kuru meyve ve sert kabuklu yemişler,0.00040629228557450685,22,Gıda ve alkolsüz içecekler
-152,Kuzu Eti,Kuzu eti,0.010467240464630477,8,Gıda ve alkolsüz içecekler
-153,Kömür Ücreti,"Katı yakıtlar (odun, kömür)",0.007042723209986919,59,Konut
-154,Köprü Geçiş Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),5.6821376728175494e-05,96,Ulaştırma
-155,Kırmızı Lahana,Taze sebzeler (patates hariç),0.0002249427805407038,23,Gıda ve alkolsüz içecekler
-156,Kırmızı Turp,Taze sebzeler (patates hariç),0.00023554705478200398,23,Gıda ve alkolsüz içecekler
-157,Kıvırcık,Taze sebzeler (patates hariç),0.001071739049274018,23,Gıda ve alkolsüz içecekler
-158,LPG (Araba Tüpü Dolum)  Ücreti,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.011279395783478391,94,Ulaştırma
-159,Leblebi,Kuru meyve ve sert kabuklu yemişler,0.00045286250881990765,22,Gıda ve alkolsüz içecekler
-160,Limon,Taze meyveler,0.0015655710978456265,21,Gıda ve alkolsüz içecekler
-161,Lokum,Çikolata ve şekerlemeler,0.0008706657468703148,29,Gıda ve alkolsüz içecekler
-162,Maden Suyu ve Sodası,Su ve maden suyu,0.0008382830560892141,35,Gıda ve alkolsüz içecekler
-163,Makarna,Makarna çeşitleri,0.0030038827554059507,5,Gıda ve alkolsüz içecekler
-164,Makyaj Malzemeleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0011094157149114186,135,Çeşitli mal ve hizmetler
-165,Mandalina,Taze meyveler,0.0021632163428675364,21,Gıda ve alkolsüz içecekler
-166,Mantar,Taze sebzeler (patates hariç),0.0008048335087941135,23,Gıda ve alkolsüz içecekler
-167,Margarin,Margarin,0.0008346130900786141,19,Gıda ve alkolsüz içecekler
-168,Maydanoz,Taze sebzeler (patates hariç),0.000825701019793714,23,Gıda ve alkolsüz içecekler
-169,Mayonez,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0002269262814666038,31,Gıda ve alkolsüz içecekler
-170,Mendil,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.00117779077532992,135,Çeşitli mal ve hizmetler
-171,Mercimek,Kuru baklagiller,0.0012993683260137218,25,Gıda ve alkolsüz içecekler
-172,Metro Ücreti,Demiryolu ile şehir içi yolcu taşımacılığı,3.5537839061712006e-05,97,Ulaştırma
-173,Meyve Suyu,Meyve ve sebze suları,0.001250255433978621,37,Gıda ve alkolsüz içecekler
-174,Motor Yağları,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.00036496549517160617,94,Ulaştırma
-175,Motorin,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.016427054512820477,94,Ulaştırma
-176,Motorsiklet,Motosikletler,0.0048571267062959824,91,Ulaştırma
-177,Muz,Taze meyveler,0.004281302120837872,21,Gıda ve alkolsüz içecekler
-178,Mücevher (Altın),"Mücevheratlar, saat ve kol saatleri",0.0048582202066438825,136,Çeşitli mal ve hizmetler
-179,Müzik Aletleri ,Müzik enstrümanları,0.000896185963377715,111,Eğlence ve kültür
-180,Nane,Taze sebzeler (patates hariç),0.00012648280893790215,23,Gıda ve alkolsüz içecekler
-181,Nar,Taze meyveler,0.00038183035765210644,21,Gıda ve alkolsüz içecekler
-182,Nevresim Takımı,Ev tekstili,0.0014165931822123239,64,Ev eşyası
-183,No-Frost Buzdolabı,"Buzdolabı, derin dondurucu",0.005991788614364802,65,Ev eşyası
-184,Nohut,Kuru baklagiller,0.0007010423775224118,25,Gıda ve alkolsüz içecekler
-185,Odun Ücreti,"Katı yakıtlar (odun, kömür)",0.002310586332300839,59,Konut
-186,Okul Defteri,Kırtasiye malzemeleri,0.00045932600669930775,122,Eğlence ve kültür
-187,Okul Çantası,Seyahat malzemeleri ve diğer kişisel aksesuarlar,0.0006449665791488108,137,Çeşitli mal ve hizmetler
-188,Otel Ücreti,"Otel, pansyion vb. yerlerde konaklama hizmetleri",0.006018590220562501,130,Lokanta ve oteller
-189,Otoban Geçiş Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0001229824940556021,96,Ulaştırma
-190,Otomobil (Benzinli),Benzinli ve elektrikli otomobiller (sıfır km),0.06431574132438178,90,Ulaştırma
-191,Otomobil (Dizel),Dizel otomobiller (sıfır km),0.007884859673934333,89,Ulaştırma
-192,Otomobil (Elektrikli),Benzinli ve elektrikli otomobiller (sıfır km),0.011450556275721793,90,Ulaştırma
-193,Otopark Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.00040154376676190676,96,Ulaştırma
-194,Oturma Odası Takımı,Yemek odası ve oturma odası mobilyaları,0.00821456146377984,62,Ev eşyası
-195,Oyuncak,"Oyunlar, oyuncaklar ve hobiler",0.0011394225559728194,112,Eğlence ve kültür
-196,Pantolon (Erkek için),Erkek giyim,0.006599851329773811,43,Giyim ve ayakkabı
-197,Pantolon (Kadın için),Kadın giyim,0.005007774041714384,44,Giyim ve ayakkabı
-198,Pantolon (Çocuk için),Çocuk giyim,0.00238437060531414,45,Giyim ve ayakkabı
-199,Pardösü (Kadın için),Kadın giyim,0.0005173561743850088,44,Giyim ve ayakkabı
-200,Parfüm,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0014645871719103248,135,Çeşitli mal ve hizmetler
-201,Pasta,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0034132211402935577,4,Gıda ve alkolsüz içecekler
-202,Pastane Ürünleri,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.004079184375637268,128,Lokanta ve oteller
-203,Patates,Patates,0.0020594610000901348,24,Gıda ve alkolsüz içecekler
-204,Patlıcan,Taze sebzeler (patates hariç),0.00235823714691364,23,Gıda ve alkolsüz içecekler
-205,Pekmez,"Reçel, marmelat, bal vb. ürünler",0.0005148502588342087,28,Gıda ve alkolsüz içecekler
-206,Perde,Ev tekstili,0.0006414234893200108,64,Ev eşyası
-207,Pideler,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.008027920391394935,128,Lokanta ve oteller
-208,Pijama (Erkek için),Erkek giyim,0.00025186496338130423,43,Giyim ve ayakkabı
-209,Pijama (Kadın için),Kadın giyim,0.0010106779200485172,44,Giyim ve ayakkabı
-210,Pijama (Çocuk için),Çocuk giyim,0.00045201374448470763,45,Giyim ve ayakkabı
-211,Pike Takımı,Ev tekstili,0.0005236369069014089,64,Ev eşyası
-212,Pil,"Çeşitli küçük aksesuarlar (pil, ampul vb.)",0.0003996294309727067,75,Ev eşyası
-213,Pirinç,Pirinç,0.003360160988670357,1,Gıda ve alkolsüz içecekler
-214,Pizzalar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.0034276653436808575,128,Lokanta ve oteller
-215,Plastik Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.0009789987756075164,74,Ev eşyası
-216,Porselen Ev Eşyası,"Cam, porselen, seramik vb. mutfak eşyaları",0.0016219441766086274,72,Ev eşyası
-217,Portakal,Taze meyveler,0.0022843008367486387,21,Gıda ve alkolsüz içecekler
-218,Pırasa,Taze sebzeler (patates hariç),0.0005800951419726098,23,Gıda ve alkolsüz içecekler
-219,Resim Boyaları,Kırtasiye malzemeleri,0.00024257463770810408,122,Eğlence ve kültür
-220,Reçel,"Reçel, marmelat, bal vb. ürünler",0.00034210995935270573,28,Gıda ve alkolsüz içecekler
-221,Roka,Taze sebzeler (patates hariç),0.00023448618723400397,23,Gıda ve alkolsüz içecekler
-222,Saat,"Mücevheratlar, saat ve kol saatleri",0.0006761354071575114,136,Çeşitli mal ve hizmetler
-223,Sabun,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0004566087757367077,135,Çeşitli mal ve hizmetler
-224,Sakatat,Diğer etler ve yenilebilir sakatatlar,0.0007231994225327123,10,Gıda ve alkolsüz içecekler
-225,Sakız,Çikolata ve şekerlemeler,0.0005202711878772088,29,Gıda ve alkolsüz içecekler
-226,Salam,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0009879508620494167,11,Gıda ve alkolsüz içecekler
-227,Salatalık,Taze sebzeler (patates hariç),0.0043315261291947725,23,Gıda ve alkolsüz içecekler
-228,Salça,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.002145203650149436,26,Gıda ve alkolsüz içecekler
-229,Sarımsak,Taze sebzeler (patates hariç),0.0008247934306328139,23,Gıda ve alkolsüz içecekler
-230,Saç Bakım Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0037960007759566643,135,Çeşitli mal ve hizmetler
-231,Scooter (Çocuk),"Oyunlar, oyuncaklar ve hobiler",0.0012182260173268205,112,Eğlence ve kültür
-232,Sehpa,Yemek odası ve oturma odası mobilyaları,0.0002470252822691042,62,Ev eşyası
-233,Sirke,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0003432199168783058,31,Gıda ve alkolsüz içecekler
-234,Sivri Biber,Taze sebzeler (patates hariç),0.002491753864227542,23,Gıda ve alkolsüz içecekler
-235,Soba,Klima ve ısıtıcılar,0.000353019681766506,68,Ev eşyası
-236,Sosis,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0005590674520397094,11,Gıda ve alkolsüz içecekler
-237,Soğuk Çay,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.000294575564241105,36,Gıda ve alkolsüz içecekler
-238,Soğuk İçecekler (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.000835093662760014,129,Lokanta ve oteller
-239,Spor Ayakkabısı (Erkek için),Erkek ayakkabısı,0.003494856574451259,49,Giyim ve ayakkabı
-240,Spor Ayakkabısı (Kadın için),Kadın ayakkabısı,0.002495934181386942,50,Giyim ve ayakkabı
-241,Spor Ayakkabısı (Çocuk için),Çocuk ve bebek ayakkabısı,0.0017790923490471299,51,Giyim ve ayakkabı
-242,Sporla İlgili Aletler (Futbol Topu),"Spor, kamp ve açık hava eğlence malzemeleri",0.0012077191696123204,113,Eğlence ve kültür
-243,Stor Perde,Ev tekstili,0.0009777864038074166,64,Ev eşyası
-244,Su,Su ve maden suyu,0.0034971320410411588,35,Gıda ve alkolsüz içecekler
-245,Su Faturası,Su (şebeke suyu),0.0236667666496274,55,Konut
-246,Sucuk,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0051114413021614855,11,Gıda ve alkolsüz içecekler
-247,Sweatshirt (Erkek için),Erkek giyim,0.0006913553943272117,43,Giyim ve ayakkabı
-248,Sweatshirt (Kadın için),Kadın giyim,0.0009020274205391152,44,Giyim ve ayakkabı
-249,Sweatshirt (Çocuk için),Çocuk giyim,0.0006840910249612115,45,Giyim ve ayakkabı
-250,Sürücü Eğitim Kurs Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0010014167592084168,96,Ulaştırma
-251,Süt,Süt,0.007023023405824319,14,Gıda ve alkolsüz içecekler
-252,Sıcak İçecek Makinaları,Elektrikli küçük ev aletleri,0.0011472479236438193,70,Ev eşyası
-253,Sıcak İçecekler (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.01304150961337632,129,Lokanta ve oteller
-254,Tablet (Bilgisayar),Bilgisayar ve ekipmanları,0.00019883512395130337,109,Eğlence ve kültür
-255,Tahin,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0005770825335658097,31,Gıda ve alkolsüz içecekler
-256,Tahin Helvası,"Reçel, marmelat, bal vb. ürünler",0.0005634385780902096,28,Gıda ve alkolsüz içecekler
-257,Tahıl Gevreği,Kahvaltılık tahıl ürünleri,0.0005265916446689089,6,Gıda ve alkolsüz içecekler
-258,Takım Elbise (Erkek için),Erkek giyim,0.0017896322813840302,43,Giyim ve ayakkabı
-259,Tavuk Eti,Tavuk eti,0.015663735248243063,9,Gıda ve alkolsüz içecekler
-260,Tayt (Çocuk için),Çocuk giyim,0.00047185831406090794,45,Giyim ve ayakkabı
-261,Taze Fasulye,Taze sebzeler (patates hariç),0.001663124788355528,23,Gıda ve alkolsüz içecekler
-262,Teflon Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.0004701549653055079,74,Ev eşyası
-263,Tek Masa,Mutfak mobilyaları,0.001959483351062833,60,Ev eşyası
-264,Tek Sandalye,Mutfak mobilyaları,0.002063109679182035,60,Ev eşyası
-265,Telefon Ekipmanları (Cep Telefonu),"Mobil telefon, ekipman ve aksesuarları",0.011935082759257401,106,Haberleşme
-266,Telefon Onarım Ücreti,"Mobil telefon, ekipman ve aksesuarları",0.0008033684466917135,106,Haberleşme
-267,Televizyon,Televizyonlar,0.00654690573119161,108,Eğlence ve kültür
-268,Tereyağı (Kahvaltılık),Tereyağı,0.0038407777473435647,18,Gıda ve alkolsüz içecekler
-269,Terlik (Kadın için),Kadın ayakkabısı,0.0010314815918182174,50,Giyim ve ayakkabı
-270,Test Kitapları,Kitaplar,0.0018612399784295314,120,Eğlence ve kültür
-271,Tişört (Erkek için),Erkek giyim,0.0027762942216307466,43,Giyim ve ayakkabı
-272,Tişört (Kadın için),Kadın giyim,0.003418545448640858,44,Giyim ve ayakkabı
-273,Tişört (Çocuk için),Çocuk giyim,0.0024044980926327406,45,Giyim ve ayakkabı
-274,Toz Şeker,Şeker,0.0035167412547877593,27,Gıda ve alkolsüz içecekler
-275,Tramvay Ücreti,Demiryolu ile şehir içi yolcu taşımacılığı,2.7228165262754556e-05,97,Ulaştırma
-276,Tulum Peyniri,Peynir,0.001652859779379028,16,Gıda ve alkolsüz içecekler
-277,Turşu,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.00036667630310090616,26,Gıda ve alkolsüz içecekler
-278,Tuvalet Kağıdı,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0027386304355489464,135,Çeşitli mal ve hizmetler
-279,Tuvalet ve Güzellik Sabunu,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0014353028994487243,135,Çeşitli mal ve hizmetler
-280,Tuz,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0004471645523260075,31,Gıda ve alkolsüz içecekler
-281,Tül,Ev tekstili,0.0005837531298216098,64,Ev eşyası
-282,Tüp Gaz Ücreti,Tüpgaz (ev tüpü),0.005508230801469093,58,Konut
-283,Tıraş Malzemeleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0006231204873982106,135,Çeşitli mal ve hizmetler
-284,Veteriner Ücreti,Evcil hayvanlarla ilgili veterinerlik ve diğer hizmetler,0.00033913052844520577,115,Eğlence ve kültür
-285,Yastık,Ev tekstili,0.0002814585440923048,64,Ev eşyası
-286,Yatak (Tek Kişilik),Yatak odası mobilyaları,0.0005956813031768101,61,Ev eşyası
-287,Yatak (Çift Kişilik),Yatak odası mobilyaları,0.0011736007276132198,61,Ev eşyası
-288,Yatak Bazası,Yatak odası mobilyaları,0.001119800264578819,61,Ev eşyası
-289,Yatak Odası Takımı,Yatak odası mobilyaları,0.0036162595020230613,61,Ev eşyası
-290,Yatak Örtüsü,Ev tekstili,0.00046430152171650786,64,Ev eşyası
-291,Yemek Odası Takımı,Yemek odası ve oturma odası mobilyaları,0.0016858684052663284,62,Ev eşyası
-292,Yer Fıstığı,Kuru meyve ve sert kabuklu yemişler,0.0010853428814031182,22,Gıda ve alkolsüz içecekler
-293,Yer ve Duvar Döşemesi,Konutun bakım ve onarımı için malzemeler,0.002560305376006243,54,Konut
-294,Yorgan,Ev tekstili,0.0003015649549127051,64,Ev eşyası
-295,Yoğurt,"Diğer süt ürünleri (yoğurt, hazır sütlü tatlı vb.)",0.005567456785381594,15,Gıda ve alkolsüz içecekler
-296,Yumurta,Yumurta,0.008019546134230336,17,Gıda ve alkolsüz içecekler
-297,Zeytin,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.004905860199263583,26,Gıda ve alkolsüz içecekler
-298,Zeytinyağı,"Sıvı yağlar (zeytinyağı, ayçiçek yağı)",0.004861885376282282,20,Gıda ve alkolsüz içecekler
-299,Çamaşır Makinesi,Çamaşır ve bulaşık makineleri,0.0059870283853812,66,Ev eşyası
-300,Çamaşır İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.008704337262626748,77,Ev eşyası
-301,Çanta (Kadın İçin),Seyahat malzemeleri ve diğer kişisel aksesuarlar,0.0012033925059007204,137,Çeşitli mal ve hizmetler
-302,Çarliston Biber,Taze sebzeler (patates hariç),0.0007441433032595126,23,Gıda ve alkolsüz içecekler
-303,Çay,Çay ve bitki çayları,0.00711246813612932,33,Gıda ve alkolsüz içecekler
-304,Çelik Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.001480854069467625,74,Ev eşyası
-305,Çikolata Krem,Çikolata ve şekerlemeler,0.002073379135567835,29,Gıda ve alkolsüz içecekler
-306,Çikolata Tablet,Çikolata ve şekerlemeler,0.003444177868664158,29,Gıda ve alkolsüz içecekler
-307,Çilek,Taze meyveler,0.0010337244712486174,21,Gıda ve alkolsüz içecekler
-308,Çiğ Köfte,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.004304343340223573,128,Lokanta ve oteller
-309,Çocuk Kitapları,Kitaplar,0.0003814725945038065,120,Eğlence ve kültür
-310,Çorap (Erkek için),Erkek giyim,0.0007841047466821133,43,Giyim ve ayakkabı
-311,Çorap (Kadın için),Kadın giyim,0.001018275502367417,44,Giyim ve ayakkabı
-312,Çorap (Çocuk için),Çocuk giyim,0.0006659957182283113,45,Giyim ve ayakkabı
-313,Çorbalar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.0035671103099800604,128,Lokanta ve oteller
-314,Örgü Yünü,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.0007814225193771132,47,Giyim ve ayakkabı
-315,Özel Lise Ücreti,Orta öğretim,0.009516261101881862,125,Eğitim
-316,Özel Üniversite Ücreti,Üniversite eğitimi,0.008394939985871243,126,Eğitim
-317,Özel İlköğretim Ücreti,Okul öncesi eğitim ve ilköğretim,0.006234041877245405,124,Eğitim
-318,Ütü,Elektrikli küçük ev aletleri,0.0005232275801453088,70,Ev eşyası
-319,Üzüm,Taze meyveler,0.0019419546804688328,21,Gıda ve alkolsüz içecekler
-320,İnternet Ücreti,Telefon (mobil ve sabit hat) ve internet ücretleri,0.005688334188663096,107,Haberleşme
-321,İç Çamaşırı (Erkek için),Erkek giyim,0.0011648597749189197,43,Giyim ve ayakkabı
-322,İç Çamaşırı (Kadın için),Kadın giyim,0.00235738298769514,44,Giyim ve ayakkabı
-323,İç çamaşırı (Çocuk için),Çocuk giyim,0.0005172001946329087,45,Giyim ve ayakkabı
-324,Şeftali,Taze meyveler,0.001019885755582317,21,Gıda ve alkolsüz içecekler
-325,Şehriye,Makarna çeşitleri,0.0004214998782390071,5,Gıda ve alkolsüz içecekler
-326,Şemsiye,Başka yerde sınıflandırılmamış diğer kişisel aksesuarlar,0.0003060683134839052,138,Çeşitli mal ve hizmetler
+0,Ampul,"Çeşitli küçük aksesuarlar (pil, ampul vb.)",0.0007973640266859403,75,Ev eşyası
+1,Ankastre Fırın,"Fırın, ocak ve fırınlı ocak",0.0003254762707699869,67,Ev eşyası
+2,Ankastre Mikrodalga Fırın,"Fırın, ocak ve fırınlı ocak",0.0008735126437044884,67,Ev eşyası
+3,Ankastre Ocak (Set Üstü) ,"Fırın, ocak ve fırınlı ocak",0.0006201988868345527,67,Ev eşyası
+4,Antep Fıstığı,Kuru meyve ve sert kabuklu yemişler,0.0005581092150536159,22,Gıda ve alkolsüz içecekler
+5,Araba Kiralama Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0007617387157305745,96,Ulaştırma
+6,Araçların  Tamirine ve Bakımına Ödenen Ücretler (İşçilik),Kişisel ulaştırma araçlarının bakım ve onarımı,0.0016041254192373166,95,Ulaştırma
+7,Armut,Taze meyveler,0.0007467296140152876,21,Gıda ve alkolsüz içecekler
+8,Ay Çekirdeği,Kuru meyve ve sert kabuklu yemişler,0.0020499458623556683,22,Gıda ve alkolsüz içecekler
+9,Ayakkabı (Erkek için),Erkek ayakkabısı,0.0026986473424840765,49,Giyim ve ayakkabı
+10,Ayakkabı (Kadın için),Kadın ayakkabısı,0.0023330877037831075,50,Giyim ve ayakkabı
+11,Ayakkabı (Çocuk için),Çocuk ve bebek ayakkabısı,0.0005709770573762763,51,Giyim ve ayakkabı
+12,Ayakkabı Tamiri (Erkek),Ayakkabı bakım ve tamiri,6.104722912053572e-05,52,Giyim ve ayakkabı
+13,Ayran,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0004994422959914086,36,Gıda ve alkolsüz içecekler
+14,Ayran (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.001482909911378544,129,Lokanta ve oteller
+15,Ayva,Taze meyveler,0.000277037948835214,21,Gıda ve alkolsüz içecekler
+16,Ayçiçek Yağı,"Sıvı yağlar (zeytinyağı, ayçiçek yağı)",0.010067528972613126,20,Gıda ve alkolsüz içecekler
+17,Ağız ve Diş Bakımı Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0015498652388390302,135,Çeşitli mal ve hizmetler
+18,Badana ve Boya Malzemeleri,Konutun bakım ve onarımı için malzemeler,0.004014131655780534,54,Konut
+19,Badem İçi,Kuru meyve ve sert kabuklu yemişler,0.0005009809610706653,22,Gıda ve alkolsüz içecekler
+20,Baharat,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0016088070064734054,31,Gıda ve alkolsüz içecekler
+21,Baklava,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.004250886381032047,4,Gıda ve alkolsüz içecekler
+22,Bal,"Reçel, marmelat, bal vb. ürünler",0.0014727099464126637,28,Gıda ve alkolsüz içecekler
+23,Balık,Taze balık,0.004104635208987555,12,Gıda ve alkolsüz içecekler
+24,Banka ile Para Havale Ücreti,Başka yerde sınıflandırılmayan diğer mali hizmetler (para havale ücreti vb.),5.924485049673911e-05,143,Çeşitli mal ve hizmetler
+25,Battaniye,Ev tekstili,0.00020127237670527012,64,Ev eşyası
+26,Bebek Arabası,Başka yerde sınıflandırılmamış diğer kişisel aksesuarlar,0.0014290141628638942,138,Çeşitli mal ve hizmetler
+27,Bebek Bezi,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.004478289972997644,135,Çeşitli mal ve hizmetler
+28,Bebek Pijaması,Bebek giyim,0.0003892167604201236,46,Giyim ve ayakkabı
+29,Bebek Sütü (Toz Karışım),Un ve diğer tahıllar,0.0010967088022246494,2,Gıda ve alkolsüz içecekler
+30,Bebek Tulumu,Bebek giyim,0.00039755710114511425,46,Giyim ve ayakkabı
+31,Bebek İç Çamaşırı,Bebek giyim,0.0005763979897315186,46,Giyim ve ayakkabı
+32,Belediye Otobüs Ücreti,Otobüs ile şehir içi yolcu taşımacılığı,0.0020511751010938873,99,Ulaştırma
+33,Benzin,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.011993458363176059,94,Ulaştırma
+34,Beyaz Lahana,Taze sebzeler (patates hariç),0.0005770178875136633,23,Gıda ve alkolsüz içecekler
+35,Beyaz Peynir,Peynir,0.00855281886687955,16,Gıda ve alkolsüz içecekler
+36,Bilgisayar,Bilgisayar ve ekipmanları,0.001729886183622378,109,Eğlence ve kültür
+37,Bilgisayar Ekipmanları,Bilgisayar ve ekipmanları,0.0009562767421010851,109,Eğlence ve kültür
+38,Bisiklet,Bisikletler,0.0006773719790350931,92,Ulaştırma
+39,Bisküvi,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0034210381201547294,4,Gıda ve alkolsüz içecekler
+40,Bitki ve Meyve Çayı (Poşet),Çay ve bitki çayları,0.00011808372608267187,33,Gıda ve alkolsüz içecekler
+41,Bot (Erkek için),Erkek ayakkabısı,0.0007596282634388331,49,Giyim ve ayakkabı
+42,Bot (Kadın için),Kadın ayakkabısı,0.0014090575622907405,50,Giyim ve ayakkabı
+43,Bot (Çocuk için),Çocuk ve bebek ayakkabısı,0.0006098294714669167,51,Giyim ve ayakkabı
+44,Bulaşık Bezleri,"Ev ile ilgili diğer temizlik malzemeleri (bulaşık süngeri, çöp torbası vb.)",0.000166767663243892,78,Ev eşyası
+45,Bulaşık Makinesi,Çamaşır ve bulaşık makineleri,0.002790390739409468,66,Ev eşyası
+46,Bulaşık İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.00395068368776657,77,Ev eşyası
+47,Bulgur,Un ve diğer tahıllar,0.001303793114486496,2,Gıda ve alkolsüz içecekler
+48,Burgerler,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.011506918977310406,128,Lokanta ve oteller
+49,Buğday Unu,Un ve diğer tahıllar,0.0044582417327340826,2,Gıda ve alkolsüz içecekler
+50,Cam Ev Eşyası,"Cam, porselen, seramik vb. mutfak eşyaları",0.0012619958082846754,72,Ev eşyası
+51,Ceket (Erkek için),Erkek giyim,0.0009516815800412648,43,Giyim ve ayakkabı
+52,Ceket (Kadın için),Kadın giyim,0.0009034567318941474,44,Giyim ve ayakkabı
+53,Cep Telefonu Görüşme Ücreti,Telefon (mobil ve sabit hat) ve internet ücretleri,0.02308252151951539,107,Haberleşme
+54,Ceviz İçi,Kuru meyve ve sert kabuklu yemişler,0.002295648152610509,22,Gıda ve alkolsüz içecekler
+55,Cilt ve Vücut Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0020716690196227157,135,Çeşitli mal ve hizmetler
+56,Cipsler,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.0017122665926492826,26,Gıda ve alkolsüz içecekler
+57,Dana Eti,Dana eti,0.025315073468589445,7,Gıda ve alkolsüz içecekler
+58,Davlumbaz,Klima ve ısıtıcılar,0.00025920231118539233,68,Ev eşyası
+59,Deodorant,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.000597475387557401,135,Çeşitli mal ve hizmetler
+60,Dereotu,Taze sebzeler (patates hariç),0.00018628473585354508,23,Gıda ve alkolsüz içecekler
+61,Derin Dondurucu,"Buzdolabı, derin dondurucu",0.0030097508413153584,65,Ev eşyası
+62,Diğer Kitaplar,Kitaplar,0.0019258350401454094,120,Eğlence ve kültür
+63,Dolmalık Biber,Taze sebzeler (patates hariç),0.0007045208328822748,23,Gıda ve alkolsüz içecekler
+64,Domates,Taze sebzeler (patates hariç),0.010874985170114286,23,Gıda ve alkolsüz içecekler
+65,Dondurma,Dondurma,0.0017942475241635217,30,Gıda ve alkolsüz içecekler
+66,Doğalgaz Ücreti,Doğalgaz ve ilgili abonelik ücretleri,0.022529503461674264,57,Konut
+67,Ekmek,Ekmek,0.026373599497723655,3,Gıda ve alkolsüz içecekler
+68,Ekmek Hamuru (Yufka),"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0012452756325786146,4,Gıda ve alkolsüz içecekler
+69,Ekmekarası Yiyecekler (Döner),"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.012374959106773949,128,Lokanta ve oteller
+70,Elbise (Kadın için),Kadın giyim,0.004918347759219922,44,Giyim ve ayakkabı
+71,Elbise (Çocuk için),Çocuk giyim,0.0007697864547065323,45,Giyim ve ayakkabı
+72,Elektrik Ücreti,Elektrik,0.021600365785798083,56,Konut
+73,Elektrikli Kesici Aletler (Blender),Elektrikli küçük ev aletleri,0.0007262982246756907,70,Ev eşyası
+74,Elektrikli Küçük Ev Aletleri (Tost Makinası),Elektrikli küçük ev aletleri,0.0004585886577183503,70,Ev eşyası
+75,Elektrikli Saç Bakım Aletleri,Kişisel bakımda kullanılan elektrikli aletler,0.0005642209233220718,134,Çeşitli mal ve hizmetler
+76,Elektrikli Süpürge,Diğer büyük ev aletleri (elektrikli süpürge vb.),0.002960450280481758,69,Ev eşyası
+77,Elma,Taze meyveler,0.0031221669359970507,21,Gıda ve alkolsüz içecekler
+78,Erkek Berberi,Erkekler için kuaförlük hizmetleri,0.003589166660373529,132,Çeşitli mal ve hizmetler
+79,Erkek Mont,Erkek giyim,0.001596060481413817,43,Giyim ve ayakkabı
+80,Etek,Kadın giyim,0.0015282378624455759,44,Giyim ve ayakkabı
+81,Evcil Hayvanlar İçin Gıda Harcamaları,Evcil hayvanlar ile ilgili ürünler,0.0023841796014136157,114,Eğlence ve kültür
+82,Eşarp,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.001220023635624544,47,Giyim ve ayakkabı
+83,Eşofman (Erkek için),Erkek giyim,0.0009749533282701798,43,Giyim ve ayakkabı
+84,Eşofman (Kadın için),Kadın giyim,0.0011994773950507046,44,Giyim ve ayakkabı
+85,Eşofman (Çocuk için),Çocuk giyim,0.0017396398829763566,45,Giyim ve ayakkabı
+86,Fındık Ezmesi,"Reçel, marmelat, bal vb. ürünler",0.00014501905583413024,28,Gıda ve alkolsüz içecekler
+87,Fındık İçi,Kuru meyve ve sert kabuklu yemişler,0.0008356710149195023,22,Gıda ve alkolsüz içecekler
+88,Gazoz Meyveli,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0006418797898875454,36,Gıda ve alkolsüz içecekler
+89,Genç Odası Takımı,Yatak odası mobilyaları,0.000887964004191988,61,Ev eşyası
+90,Gofret,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0018277741392490904,4,Gıda ve alkolsüz içecekler
+91,Gömlek (Erkek için),Erkek giyim,0.002907024515994148,43,Giyim ve ayakkabı
+92,Gömlek (Kadın için),Kadın giyim,0.0015071361452409977,44,Giyim ve ayakkabı
+93,Gömlek (Çocuk için),Çocuk giyim,0.00038919380146434056,45,Giyim ve ayakkabı
+94,Gündelikçi Ücreti,Ev içi hizmetler (gündelikçi ücreti),0.004997566830284581,79,Ev eşyası
+95,Halı,Halı,0.0016571810739482952,63,Ev eşyası
+96,Halı Temizleme,Ev eşyalarının yıkanması ve temizlenmesi hizmetleri,0.001230642111554146,80,Ev eşyası
+97,Havlu,Ev tekstili,0.0005938625290318655,64,Ev eşyası
+98,Havuç,Taze sebzeler (patates hariç),0.0010731671795373543,23,Gıda ve alkolsüz içecekler
+99,Hazır Et Yemekleri,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0012017966385588423,11,Gıda ve alkolsüz içecekler
+100,Hazır Kahve,Kahve,0.0008640373996355914,32,Gıda ve alkolsüz içecekler
+101,Hazır Pakette Toz Tatlılar (Puding),"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.00027242146002451985,31,Gıda ve alkolsüz içecekler
+102,Hazır Sütlü Tatlılar,"Diğer süt ürünleri (yoğurt, hazır sütlü tatlı vb.)",0.0002693682597832687,15,Gıda ve alkolsüz içecekler
+103,"Hazır Yemekler (Pilav, Kuru Fasulye)","Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.014171984214334821,128,Lokanta ve oteller
+104,Hazır Çorbalar,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0004247364569315267,31,Gıda ve alkolsüz içecekler
+105,Hijyenik Kadın Bağı,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0009452171840577956,135,Çeşitli mal ve hizmetler
+106,Hijyenik Zeminler İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.0012433765338017455,77,Ev eşyası
+107,Hırka (Kadın için),Kadın giyim,0.0009042721439825255,44,Giyim ve ayakkabı
+108,Ispanak,Taze sebzeler (patates hariç),0.0009865537280060786,23,Gıda ve alkolsüz içecekler
+109,Kabak,Taze sebzeler (patates hariç),0.0008209966121203991,23,Gıda ve alkolsüz içecekler
+110,Kabak Çekirdeği,Kuru meyve ve sert kabuklu yemişler,0.0003878413544781267,22,Gıda ve alkolsüz içecekler
+111,Kaban (Erkek için),Erkek giyim,0.00035458479277162544,43,Giyim ve ayakkabı
+112,Kaban (Kadın için),Kadın giyim,0.0013041212420332924,44,Giyim ve ayakkabı
+113,Kaban Anorak (Çocuk için),Çocuk giyim,0.00011751716768578978,45,Giyim ve ayakkabı
+114,Kabartma Maddeleri,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0002537109306419227,31,Gıda ve alkolsüz içecekler
+115,Kadın Berberi,Kadınlar için kuaförlük hizmetleri,0.0031189649018734927,133,Çeşitli mal ve hizmetler
+116,Kahve,Kahve,0.0012817989345868788,32,Gıda ve alkolsüz içecekler
+117,Kakao,Toz kakao,5.852970387367692e-05,34,Gıda ve alkolsüz içecekler
+118,Kakaolu Toz İçecekler,Toz kakao,1.7049986624405156e-05,34,Gıda ve alkolsüz içecekler
+119,Kalem,Kırtasiye malzemeleri,0.0003861298344367237,122,Eğlence ve kültür
+120,"Kapı Aksesuarları (Anahtar, Kilit)",Evle ilgili küçük bakım-tamir mal ve hizmetleri,0.0004489515391276556,76,Ev eşyası
+121,Kargo Gönderme Ücreti,"Diğer satın alınan ulaştırma hizmetleri (nakliye, kargo vb.)",0.00024126527355073136,104,Ulaştırma
+122,Karnabahar,Taze sebzeler (patates hariç),0.0006501495138776887,23,Gıda ve alkolsüz içecekler
+123,Karpuz,Taze meyveler,0.003207804581010222,21,Gıda ve alkolsüz içecekler
+124,Kavun,Taze meyveler,0.0014745053720239707,21,Gıda ve alkolsüz içecekler
+125,Kazak (Erkek için),Erkek giyim,0.0013897687394129885,43,Giyim ve ayakkabı
+126,Kazak (Kadın için),Kadın giyim,0.0034865818330772893,44,Giyim ve ayakkabı
+127,Kazak (Çocuk için),Çocuk giyim,0.0007922849368840615,45,Giyim ve ayakkabı
+128,Kağıtlı Şeker,Çikolata ve şekerlemeler,0.002001594491688548,29,Gıda ve alkolsüz içecekler
+129,Kaşar Peyniri,Peynir,0.004007425758769927,16,Gıda ve alkolsüz içecekler
+130,"Kaşık, Çatal, Bıçak Takımı (Çelik)",Çatal-bıçak takımı,0.0004687269801002495,73,Ev eşyası
+131,Kebaplar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.010682228295436464,128,Lokanta ve oteller
+132,Kek,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0009585024727755164,4,Gıda ve alkolsüz içecekler
+133,Kemer,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.0004495880219914882,47,Giyim ve ayakkabı
+134,Kesme Şeker,Şeker,0.0005472808118725037,27,Gıda ve alkolsüz içecekler
+135,Ketçap,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0003049534344159712,31,Gıda ve alkolsüz içecekler
+136,Kiracı Tarafından Ödenen Gerçek Kira,Gerçek kira,0.08189940310407519,53,Konut
+137,Kivi,Taze meyveler,0.00022154729472067365,21,Gıda ve alkolsüz içecekler
+138,Klima,Klima ve ısıtıcılar,0.0015848275596464872,68,Ev eşyası
+139,Kola,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.0023367243374736286,36,Gıda ve alkolsüz içecekler
+140,Kolonya,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0005777294733129146,135,Çeşitli mal ve hizmetler
+141,Kombi,Klima ve ısıtıcılar,0.0019686969920837813,68,Ev eşyası
+142,Konserve Balık,Konserve edilmiş veya işlenmiş balık,0.0002991435181038683,13,Gıda ve alkolsüz içecekler
+143,Konserveler,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.00031276901552682534,26,Gıda ve alkolsüz içecekler
+144,Kraker,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.0007022211658667475,4,Gıda ve alkolsüz içecekler
+145,Kravat,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.00012890195603444234,47,Giyim ve ayakkabı
+146,Krem Peynir,Peynir,0.0006445609967926152,16,Gıda ve alkolsüz içecekler
+147,Kuru Fasulye,Kuru baklagiller,0.0011069236737325152,25,Gıda ve alkolsüz içecekler
+148,Kuru Kayısı,Kuru meyve ve sert kabuklu yemişler,0.0004007787244996271,22,Gıda ve alkolsüz içecekler
+149,Kuru Soğan,Taze sebzeler (patates hariç),0.00364880148026006,23,Gıda ve alkolsüz içecekler
+150,Kuru Temizleme Ücreti,Giyim eşyalarının temizlenmesi ve tadilatı,0.0004365959797319691,48,Giyim ve ayakkabı
+151,Kuru Üzüm,Kuru meyve ve sert kabuklu yemişler,0.00040629228557458367,22,Gıda ve alkolsüz içecekler
+152,Kuzu Eti,Kuzu eti,0.010467240464630358,8,Gıda ve alkolsüz içecekler
+153,Kömür Ücreti,"Katı yakıtlar (odun, kömür)",0.0070427232099868385,59,Konut
+154,Köprü Geçiş Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),5.682137672817452e-05,96,Ulaştırma
+155,Kırmızı Lahana,Taze sebzeler (patates hariç),0.0002249427805407693,23,Gıda ve alkolsüz içecekler
+156,Kırmızı Turp,Taze sebzeler (patates hariç),0.00023554705478206648,23,Gıda ve alkolsüz içecekler
+157,Kıvırcık,Taze sebzeler (patates hariç),0.0010717390492740373,23,Gıda ve alkolsüz içecekler
+158,LPG (Araba Tüpü Dolum)  Ücreti,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.011279395783478273,94,Ulaştırma
+159,Leblebi,Kuru meyve ve sert kabuklu yemişler,0.0004528625088199256,22,Gıda ve alkolsüz içecekler
+160,Limon,Taze meyveler,0.001565571097845649,21,Gıda ve alkolsüz içecekler
+161,Lokum,Çikolata ve şekerlemeler,0.0008706657468703249,29,Gıda ve alkolsüz içecekler
+162,Maden Suyu ve Sodası,Su ve maden suyu,0.0008382830560892123,35,Gıda ve alkolsüz içecekler
+163,Makarna,Makarna çeşitleri,0.0030038827554059186,5,Gıda ve alkolsüz içecekler
+164,Makyaj Malzemeleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0011094157149114164,135,Çeşitli mal ve hizmetler
+165,Mandalina,Taze meyveler,0.002163216342867572,21,Gıda ve alkolsüz içecekler
+166,Mantar,Taze sebzeler (patates hariç),0.00080483350879419,23,Gıda ve alkolsüz içecekler
+167,Margarin,Margarin,0.0008346130900786399,19,Gıda ve alkolsüz içecekler
+168,Maydanoz,Taze sebzeler (patates hariç),0.0008257010197937876,23,Gıda ve alkolsüz içecekler
+169,Mayonez,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.00022692628146666285,31,Gıda ve alkolsüz içecekler
+170,Mendil,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0011777907753299643,135,Çeşitli mal ve hizmetler
+171,Mercimek,Kuru baklagiller,0.0012993683260137637,25,Gıda ve alkolsüz içecekler
+172,Metro Ücreti,Demiryolu ile şehir içi yolcu taşımacılığı,3.5537839061711396e-05,97,Ulaştırma
+173,Meyve Suyu,Meyve ve sebze suları,0.0012502554339786497,37,Gıda ve alkolsüz içecekler
+174,Motor Yağları,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.0003649654951716897,94,Ulaştırma
+175,Motorin,"Kişisel ulaştırma araçlarının yakıt ve yağları (benzin, motorin, motor yağı)",0.016427054512820234,94,Ulaştırma
+176,Motorsiklet,Motosikletler,0.004857126706295959,91,Ulaştırma
+177,Muz,Taze meyveler,0.004281302120837807,21,Gıda ve alkolsüz içecekler
+178,Mücevher (Altın),"Mücevheratlar, saat ve kol saatleri",0.004858220206643889,136,Çeşitli mal ve hizmetler
+179,Müzik Aletleri ,Müzik enstrümanları,0.0008961859633777014,111,Eğlence ve kültür
+180,Nane,Taze sebzeler (patates hariç),0.00012648280893793714,23,Gıda ve alkolsüz içecekler
+181,Nar,Taze meyveler,0.000381830357652137,21,Gıda ve alkolsüz içecekler
+182,Nevresim Takımı,Ev tekstili,0.0014165931822123954,64,Ev eşyası
+183,No-Frost Buzdolabı,"Buzdolabı, derin dondurucu",0.005991788614364754,65,Ev eşyası
+184,Nohut,Kuru baklagiller,0.0007010423775224368,25,Gıda ve alkolsüz içecekler
+185,Odun Ücreti,"Katı yakıtlar (odun, kömür)",0.0023105863323008543,59,Konut
+186,Okul Defteri,Kırtasiye malzemeleri,0.0004593260066993323,122,Eğlence ve kültür
+187,Okul Çantası,Seyahat malzemeleri ve diğer kişisel aksesuarlar,0.0006449665791488026,137,Çeşitli mal ve hizmetler
+188,Otel Ücreti,"Otel, pansyion vb. yerlerde konaklama hizmetleri",0.006018590220562489,130,Lokanta ve oteller
+189,Otoban Geçiş Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0001229824940556768,96,Ulaştırma
+190,Otomobil (Benzinli),Benzinli ve elektrikli otomobiller (sıfır km),0.06431574132438068,90,Ulaştırma
+191,Otomobil (Dizel),Dizel otomobiller (sıfır km),0.007884859673934253,89,Ulaştırma
+192,Otomobil (Elektrikli),Benzinli ve elektrikli otomobiller (sıfır km),0.01145055627572169,90,Ulaştırma
+193,Otopark Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.0004015437667619238,96,Ulaştırma
+194,Oturma Odası Takımı,Yemek odası ve oturma odası mobilyaları,0.008214561463779795,62,Ev eşyası
+195,Oyuncak,"Oyunlar, oyuncaklar ve hobiler",0.0011394225559728795,112,Eğlence ve kültür
+196,Pantolon (Erkek için),Erkek giyim,0.006599851329773713,43,Giyim ve ayakkabı
+197,Pantolon (Kadın için),Kadın giyim,0.00500777404171436,44,Giyim ve ayakkabı
+198,Pantolon (Çocuk için),Çocuk giyim,0.002384370605314131,45,Giyim ve ayakkabı
+199,Pardösü (Kadın için),Kadın giyim,0.0005173561743850193,44,Giyim ve ayakkabı
+200,Parfüm,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0014645871719103306,135,Çeşitli mal ve hizmetler
+201,Pasta,"Diğer fırıncılık ürünleri (bisküvi, kek, kraker, yufka, baklava vb.)",0.003413221140293559,4,Gıda ve alkolsüz içecekler
+202,Pastane Ürünleri,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.004079184375637292,128,Lokanta ve oteller
+203,Patates,Patates,0.0020594610000901127,24,Gıda ve alkolsüz içecekler
+204,Patlıcan,Taze sebzeler (patates hariç),0.002358237146913628,23,Gıda ve alkolsüz içecekler
+205,Pekmez,"Reçel, marmelat, bal vb. ürünler",0.0005148502588342292,28,Gıda ve alkolsüz içecekler
+206,Perde,Ev tekstili,0.0006414234893200645,64,Ev eşyası
+207,Pideler,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.008027920391394841,128,Lokanta ve oteller
+208,Pijama (Erkek için),Erkek giyim,0.000251864963381328,43,Giyim ve ayakkabı
+209,Pijama (Kadın için),Kadın giyim,0.0010106779200485523,44,Giyim ve ayakkabı
+210,Pijama (Çocuk için),Çocuk giyim,0.0004520137444847488,45,Giyim ve ayakkabı
+211,Pike Takımı,Ev tekstili,0.0005236369069014419,64,Ev eşyası
+212,Pil,"Çeşitli küçük aksesuarlar (pil, ampul vb.)",0.00039962943097276814,75,Ev eşyası
+213,Pirinç,Pirinç,0.0033601609886703553,1,Gıda ve alkolsüz içecekler
+214,Pizzalar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.0034276653436808376,128,Lokanta ve oteller
+215,Plastik Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.00097899877560758,74,Ev eşyası
+216,Porselen Ev Eşyası,"Cam, porselen, seramik vb. mutfak eşyaları",0.001621944176608607,72,Ev eşyası
+217,Portakal,Taze meyveler,0.0022843008367486217,21,Gıda ve alkolsüz içecekler
+218,Pırasa,Taze sebzeler (patates hariç),0.0005800951419726333,23,Gıda ve alkolsüz içecekler
+219,Resim Boyaları,Kırtasiye malzemeleri,0.00024257463770811284,122,Eğlence ve kültür
+220,Reçel,"Reçel, marmelat, bal vb. ürünler",0.00034210995935279886,28,Gıda ve alkolsüz içecekler
+221,Roka,Taze sebzeler (patates hariç),0.00023448618723407842,23,Gıda ve alkolsüz içecekler
+222,Saat,"Mücevheratlar, saat ve kol saatleri",0.0006761354071575076,136,Çeşitli mal ve hizmetler
+223,Sabun,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.00045660877573679663,135,Çeşitli mal ve hizmetler
+224,Sakatat,Diğer etler ve yenilebilir sakatatlar,0.0007231994225327914,10,Gıda ve alkolsüz içecekler
+225,Sakız,Çikolata ve şekerlemeler,0.0005202711878772182,29,Gıda ve alkolsüz içecekler
+226,Salam,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0009879508620494258,11,Gıda ve alkolsüz içecekler
+227,Salatalık,Taze sebzeler (patates hariç),0.004331526129194711,23,Gıda ve alkolsüz içecekler
+228,Salça,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.0021452036501494014,26,Gıda ve alkolsüz içecekler
+229,Sarımsak,Taze sebzeler (patates hariç),0.0008247934306328671,23,Gıda ve alkolsüz içecekler
+230,Saç Bakım Ürünleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.00379600077595662,135,Çeşitli mal ve hizmetler
+231,Scooter (Çocuk),"Oyunlar, oyuncaklar ve hobiler",0.001218226017326895,112,Eğlence ve kültür
+232,Sehpa,Yemek odası ve oturma odası mobilyaları,0.00024702528226914567,62,Ev eşyası
+233,Sirke,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0003432199168783394,31,Gıda ve alkolsüz içecekler
+234,Sivri Biber,Taze sebzeler (patates hariç),0.002491753864227589,23,Gıda ve alkolsüz içecekler
+235,Soba,Klima ve ısıtıcılar,0.00035301968176654094,68,Ev eşyası
+236,Sosis,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.0005590674520397433,11,Gıda ve alkolsüz içecekler
+237,Soğuk Çay,"Alkolsüz içecekler (meşrubat, ayran vb.)",0.00029457556424114186,36,Gıda ve alkolsüz içecekler
+238,Soğuk İçecekler (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.0008350936627600884,129,Lokanta ve oteller
+239,Spor Ayakkabısı (Erkek için),Erkek ayakkabısı,0.003494856574451216,49,Giyim ve ayakkabı
+240,Spor Ayakkabısı (Kadın için),Kadın ayakkabısı,0.002495934181386978,50,Giyim ve ayakkabı
+241,Spor Ayakkabısı (Çocuk için),Çocuk ve bebek ayakkabısı,0.0017790923490471871,51,Giyim ve ayakkabı
+242,Sporla İlgili Aletler (Futbol Topu),"Spor, kamp ve açık hava eğlence malzemeleri",0.0012077191696123412,113,Eğlence ve kültür
+243,Stor Perde,Ev tekstili,0.000977786403807483,64,Ev eşyası
+244,Su,Su ve maden suyu,0.0034971320410411397,35,Gıda ve alkolsüz içecekler
+245,Su Faturası,Su (şebeke suyu),0.023666766649626997,55,Konut
+246,Sucuk,"Şarküteri ürünleri (sucuk, sosis, salam vb.)",0.005111441302161484,11,Gıda ve alkolsüz içecekler
+247,Sweatshirt (Erkek için),Erkek giyim,0.0006913553943272782,43,Giyim ve ayakkabı
+248,Sweatshirt (Kadın için),Kadın giyim,0.0009020274205391752,44,Giyim ve ayakkabı
+249,Sweatshirt (Çocuk için),Çocuk giyim,0.0006840910249612184,45,Giyim ve ayakkabı
+250,Sürücü Eğitim Kurs Ücreti,Kişisel ulaştırma araçları ile ilgili diğer hizmetler (köprü ve otoban geçiş ücretleri dahil),0.001001416759208476,96,Ulaştırma
+251,Süt,Süt,0.007023023405824286,14,Gıda ve alkolsüz içecekler
+252,Sıcak İçecek Makinaları,Elektrikli küçük ev aletleri,0.001147247923643885,70,Ev eşyası
+253,Sıcak İçecekler (Servis edilen),"Lokanta, pastane, kafe vb. yerlerde içilen içecekler",0.013041509613376107,129,Lokanta ve oteller
+254,Tablet (Bilgisayar),Bilgisayar ve ekipmanları,0.0001988351239513938,109,Eğlence ve kültür
+255,Tahin,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0005770825335658148,31,Gıda ve alkolsüz içecekler
+256,Tahin Helvası,"Reçel, marmelat, bal vb. ürünler",0.0005634385780902712,28,Gıda ve alkolsüz içecekler
+257,Tahıl Gevreği,Kahvaltılık tahıl ürünleri,0.0005265916446689681,6,Gıda ve alkolsüz içecekler
+258,Takım Elbise (Erkek için),Erkek giyim,0.001789632281384013,43,Giyim ve ayakkabı
+259,Tavuk Eti,Tavuk eti,0.01566373524824284,9,Gıda ve alkolsüz içecekler
+260,Tayt (Çocuk için),Çocuk giyim,0.0004718583140609137,45,Giyim ve ayakkabı
+261,Taze Fasulye,Taze sebzeler (patates hariç),0.0016631247883555139,23,Gıda ve alkolsüz içecekler
+262,Teflon Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.0004701549653055711,74,Ev eşyası
+263,Tek Masa,Mutfak mobilyaları,0.0019594833510628365,60,Ev eşyası
+264,Tek Sandalye,Mutfak mobilyaları,0.0020631096791820965,60,Ev eşyası
+265,Telefon Ekipmanları (Cep Telefonu),"Mobil telefon, ekipman ve aksesuarları",0.011935082759257235,106,Haberleşme
+266,Telefon Onarım Ücreti,"Mobil telefon, ekipman ve aksesuarları",0.000803368446691767,106,Haberleşme
+267,Televizyon,Televizyonlar,0.0065469057311915305,108,Eğlence ve kültür
+268,Tereyağı (Kahvaltılık),Tereyağı,0.00384077774734359,18,Gıda ve alkolsüz içecekler
+269,Terlik (Kadın için),Kadın ayakkabısı,0.001031481591818233,50,Giyim ve ayakkabı
+270,Test Kitapları,Kitaplar,0.0018612399784295448,120,Eğlence ve kültür
+271,Tişört (Erkek için),Erkek giyim,0.002776294221630737,43,Giyim ve ayakkabı
+272,Tişört (Kadın için),Kadın giyim,0.0034185454486408804,44,Giyim ve ayakkabı
+273,Tişört (Çocuk için),Çocuk giyim,0.0024044980926327276,45,Giyim ve ayakkabı
+274,Toz Şeker,Şeker,0.003516741254787699,27,Gıda ve alkolsüz içecekler
+275,Tramvay Ücreti,Demiryolu ile şehir içi yolcu taşımacılığı,2.722816526275409e-05,97,Ulaştırma
+276,Tulum Peyniri,Peynir,0.0016528597793790444,16,Gıda ve alkolsüz içecekler
+277,Turşu,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.00036667630310097837,26,Gıda ve alkolsüz içecekler
+278,Tuvalet Kağıdı,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0027386304355489347,135,Çeşitli mal ve hizmetler
+279,Tuvalet ve Güzellik Sabunu,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0014353028994487636,135,Çeşitli mal ve hizmetler
+280,Tuz,"Başka yerde sınıflandırılamayan diğer gıda ürünleri (tuz, sirke, ketçap, mayonez vb.)",0.0004471645523260763,31,Gıda ve alkolsüz içecekler
+281,Tül,Ev tekstili,0.0005837531298216571,64,Ev eşyası
+282,Tüp Gaz Ücreti,Tüpgaz (ev tüpü),0.005508230801469087,58,Konut
+283,Tıraş Malzemeleri,"Kişisel hijyen ve bakım için kullanılan ürünler, kozmetikler",0.0006231204873982056,135,Çeşitli mal ve hizmetler
+284,Veteriner Ücreti,Evcil hayvanlarla ilgili veterinerlik ve diğer hizmetler,0.00033913052844526453,115,Eğlence ve kültür
+285,Yastık,Ev tekstili,0.00028145854409233857,64,Ev eşyası
+286,Yatak (Tek Kişilik),Yatak odası mobilyaları,0.000595681303176833,61,Ev eşyası
+287,Yatak (Çift Kişilik),Yatak odası mobilyaları,0.0011736007276132974,61,Ev eşyası
+288,Yatak Bazası,Yatak odası mobilyaları,0.0011198002645788241,61,Ev eşyası
+289,Yatak Odası Takımı,Yatak odası mobilyaları,0.0036162595020230283,61,Ev eşyası
+290,Yatak Örtüsü,Ev tekstili,0.0004643015217165766,64,Ev eşyası
+291,Yemek Odası Takımı,Yemek odası ve oturma odası mobilyaları,0.0016858684052663958,62,Ev eşyası
+292,Yer Fıstığı,Kuru meyve ve sert kabuklu yemişler,0.0010853428814031193,22,Gıda ve alkolsüz içecekler
+293,Yer ve Duvar Döşemesi,Konutun bakım ve onarımı için malzemeler,0.0025603053760062597,54,Konut
+294,Yorgan,Ev tekstili,0.0003015649549127791,64,Ev eşyası
+295,Yoğurt,"Diğer süt ürünleri (yoğurt, hazır sütlü tatlı vb.)",0.00556745678538159,15,Gıda ve alkolsüz içecekler
+296,Yumurta,Yumurta,0.008019546134230256,17,Gıda ve alkolsüz içecekler
+297,Zeytin,"Konserve edilmiş veya işlenmiş sebze içerikli ürünler (salça, turşu, zeytin vb. dahil)",0.00490586019926357,26,Gıda ve alkolsüz içecekler
+298,Zeytinyağı,"Sıvı yağlar (zeytinyağı, ayçiçek yağı)",0.004861885376282291,20,Gıda ve alkolsüz içecekler
+299,Çamaşır Makinesi,Çamaşır ve bulaşık makineleri,0.005987028385381138,66,Ev eşyası
+300,Çamaşır İçin Temizlik ve Bakım Ürünleri,"Ev ile ilgili temizlik malzemeleri (deterjan, yumuşatıcı vb.)",0.008704337262626625,77,Ev eşyası
+301,Çanta (Kadın İçin),Seyahat malzemeleri ve diğer kişisel aksesuarlar,0.001203392505900718,137,Çeşitli mal ve hizmetler
+302,Çarliston Biber,Taze sebzeler (patates hariç),0.0007441433032595493,23,Gıda ve alkolsüz içecekler
+303,Çay,Çay ve bitki çayları,0.007112468136129219,33,Gıda ve alkolsüz içecekler
+304,Çelik Mutfak Eşyaları,"Elektriksiz mutfak eşyaları ve ev gereçleri (tencere, tava, çaydanlık vb.)",0.0014808540694676122,74,Ev eşyası
+305,Çikolata Krem,Çikolata ve şekerlemeler,0.002073379135567856,29,Gıda ve alkolsüz içecekler
+306,Çikolata Tablet,Çikolata ve şekerlemeler,0.0034441778686641793,29,Gıda ve alkolsüz içecekler
+307,Çilek,Taze meyveler,0.001033724471248607,21,Gıda ve alkolsüz içecekler
+308,Çiğ Köfte,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.004304343340223516,128,Lokanta ve oteller
+309,Çocuk Kitapları,Kitaplar,0.0003814725945038821,120,Eğlence ve kültür
+310,Çorap (Erkek için),Erkek giyim,0.0007841047466821112,43,Giyim ve ayakkabı
+311,Çorap (Kadın için),Kadın giyim,0.0010182755023674765,44,Giyim ve ayakkabı
+312,Çorap (Çocuk için),Çocuk giyim,0.0006659957182283035,45,Giyim ve ayakkabı
+313,Çorbalar,"Lokanta, pastane, kafe vb. yerlerde yenen yemekler",0.003567110309980001,128,Lokanta ve oteller
+314,Örgü Yünü,"Diğer giyim eşyaları ve aksesuarları (kravat, kemer, eşarp vb.)",0.0007814225193771199,47,Giyim ve ayakkabı
+315,Özel Lise Ücreti,Orta öğretim,0.00951626110188177,125,Eğitim
+316,Özel Üniversite Ücreti,Üniversite eğitimi,0.00839493998587111,126,Eğitim
+317,Özel İlköğretim Ücreti,Okul öncesi eğitim ve ilköğretim,0.0062340418772453545,124,Eğitim
+318,Ütü,Elektrikli küçük ev aletleri,0.0005232275801453924,70,Ev eşyası
+319,Üzüm,Taze meyveler,0.0019419546804688873,21,Gıda ve alkolsüz içecekler
+320,İnternet Ücreti,Telefon (mobil ve sabit hat) ve internet ücretleri,0.00568833418866307,107,Haberleşme
+321,İç Çamaşırı (Erkek için),Erkek giyim,0.0011648597749189676,43,Giyim ve ayakkabı
+322,İç Çamaşırı (Kadın için),Kadın giyim,0.0023573829876951903,44,Giyim ve ayakkabı
+323,İç çamaşırı (Çocuk için),Çocuk giyim,0.0005172001946329394,45,Giyim ve ayakkabı
+324,Şeftali,Taze meyveler,0.0010198857555823759,21,Gıda ve alkolsüz içecekler
+325,Şehriye,Makarna çeşitleri,0.000421499878239068,5,Gıda ve alkolsüz içecekler
+326,Şemsiye,Başka yerde sınıflandırılmamış diğer kişisel aksesuarlar,0.00030606831348395895,138,Çeşitli mal ve hizmetler

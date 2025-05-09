@@ -2989,10 +2989,11 @@ if page=="Madde Endeksleri":
     gruplar=pd.read_csv("gruplar_int.csv",index_col=0)
     gruplar.index=pd.to_datetime(gruplar.index)
     endeksler[selected_anagrup]=gruplar[selected_anagrup]
-    selected_group_data=endeksler[selected_anagrup]
+    
     
     maddeler_aylık=pd.DataFrame(columns=endeksler.columns)
     for col in endeksler.columns:
+        selected_group_data=endeksler[col]
         cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
         maddeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]

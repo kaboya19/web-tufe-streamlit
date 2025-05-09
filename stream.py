@@ -1719,7 +1719,7 @@ if page=="Ana Gruplar":
     figgana.add_trace(go.Scatter(
                 x=selected_group_data.index,
                 y=selected_group_data.values,
-                mode='lines+markers',
+                mode='lines',
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),
@@ -2158,7 +2158,7 @@ if page=="Harcama Grupları":
     figgharcama.add_trace(go.Scatter(
                 x=selected_group_data.index,
                 y=selected_group_data.values,
-                mode='lines+markers',
+                mode='lines',
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),
@@ -2448,7 +2448,7 @@ if page=="Özel Kapsamlı Göstergeler":
     figgösterge.add_trace(go.Scatter(
                 x=selected_group_data.index,
                 y=selected_group_data.values,
-                mode='lines+markers',
+                mode='lines',
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),

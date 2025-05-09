@@ -659,6 +659,42 @@ if page=="Tüketici Fiyat Endeksi":
             df['Aylık Ortalama'] = df.groupby(df['Tarih'].dt.to_period('M'))[değer].expanding().mean().reset_index(level=0, drop=True)
             df.index=pd.to_datetime(df.index)
             return df
+    
+
+    def aylik_degisim_serisi(df):
+        aylik_degisim = []
+
+        for tarih in df.index:
+            gun = tarih.day
+            ay = tarih.month
+            yil = tarih.year
+
+            # Bu ay ve geçen ay için veri filtrele
+            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            if ay == 1:
+                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+            else:
+                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+
+            if gun <= 24:
+                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
+                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+
+                if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
+                    oran = (ort_bu / ort_onceki) - 1
+                    aylik_degisim.append(oran*100)
+                else:
+                    aylik_degisim.append(None)
+            else:
+                # 24. günün indeksini bul ve onun değerini al
+                try:
+                    tarih_24 = bu_ay.index[23]  # 0-based indexing
+                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    aylik_degisim.append(oran_24)
+                except:
+                    aylik_degisim.append(None)
+
+        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
 
 
     
@@ -667,9 +703,8 @@ if page=="Tüketici Fiyat Endeksi":
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-    hareketliartıs=cari.values/hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
-    hareketliartıs=(hareketliartıs-1)*100
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
 
 
 
@@ -1157,9 +1192,8 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
             endeksler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=carim.values/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-            hareketliartıs=(hareketliartıs-1)*100
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
             endeksler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             endeksler_aylık=pd.DataFrame(endeksler_aylık)
         endeksler_aylık["Tarih"]=(endeksler_aylık.index.strftime("%Y-%m"))
@@ -1176,9 +1210,8 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
             harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=carim.values/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-            hareketliartıs=(hareketliartıs-1)*100
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
             harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
         harcama_grupları_aylık["Tarih"]=(harcama_grupları_aylık.index.strftime("%Y-%m"))
@@ -1195,9 +1228,8 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
             gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=carim.values/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-            hareketliartıs=(hareketliartıs-1)*100
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
             gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             gruplar_aylık=pd.DataFrame(gruplar_aylık)
         gruplar_aylık=np.round(gruplar_aylık,2)
@@ -1219,9 +1251,8 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
             özelgöstergeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=carim.values/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-            hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-            hareketliartıs=(hareketliartıs-1)*100
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
             özelgöstergeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             özelgöstergeler_aylık=pd.DataFrame(özelgöstergeler_aylık)
         özelgöstergeler_aylık=np.round(özelgöstergeler_aylık,2)
@@ -1550,6 +1581,40 @@ if page=="Tüketici Fiyat Endeksi":
     
         
 if page=="Ana Gruplar":
+    def aylik_degisim_serisi(df):
+        aylik_degisim = []
+
+        for tarih in df.index:
+            gun = tarih.day
+            ay = tarih.month
+            yil = tarih.year
+
+            # Bu ay ve geçen ay için veri filtrele
+            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            if ay == 1:
+                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+            else:
+                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+
+            if gun <= 24:
+                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
+                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+
+                if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
+                    oran = (ort_bu / ort_onceki) - 1
+                    aylik_degisim.append(oran*100)
+                else:
+                    aylik_degisim.append(None)
+            else:
+                # 24. günün indeksini bul ve onun değerini al
+                try:
+                    tarih_24 = bu_ay.index[23]  # 0-based indexing
+                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    aylik_degisim.append(oran_24)
+                except:
+                    aylik_degisim.append(None)
+
+        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
     from datetime import datetime,timedelta
     import pytz
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
@@ -1596,8 +1661,8 @@ if page=="Ana Gruplar":
    
 
     
-    hareketliartıs=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].loc[tarih:]/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-    hareketliartıs=(hareketliartıs-1)*100
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
 
     figgartıs = go.Figure()
     figgartıs.add_trace(go.Scatter(
@@ -1710,9 +1775,8 @@ if page=="Ana Gruplar":
         cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
         gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=carim.values/hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-        hareketliartıs=(hareketliartıs-1)*100
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
         gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         gruplar_aylık=pd.DataFrame(gruplar_aylık)
     gruplar_aylık=np.round(gruplar_aylık,2)
@@ -1856,9 +1920,8 @@ if page=="Ana Gruplar":
         cari=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill")
         selected_harcamagruplarıartıs[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=carim.values/hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-        hareketliartıs=(hareketliartıs-1)*100
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
         selected_harcamagruplarıartıs[col].iloc[-1]=hareketliartıs.iloc[-1]
         selected_harcamagruplarıartıs=pd.DataFrame(selected_harcamagruplarıartıs)
     selected_harcamagruplarıartıs["Tarih"]=(selected_harcamagruplarıartıs.index.strftime("%Y-%m"))
@@ -2000,6 +2063,40 @@ if page=="Ana Gruplar":
 
 
 if page=="Harcama Grupları":
+    def aylik_degisim_serisi(df):
+        aylik_degisim = []
+
+        for tarih in df.index:
+            gun = tarih.day
+            ay = tarih.month
+            yil = tarih.year
+
+            # Bu ay ve geçen ay için veri filtrele
+            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            if ay == 1:
+                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+            else:
+                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+
+            if gun <= 24:
+                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
+                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+
+                if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
+                    oran = (ort_bu / ort_onceki) - 1
+                    aylik_degisim.append(oran*100)
+                else:
+                    aylik_degisim.append(None)
+            else:
+                # 24. günün indeksini bul ve onun değerini al
+                try:
+                    tarih_24 = bu_ay.index[23]  # 0-based indexing
+                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    aylik_degisim.append(oran_24)
+                except:
+                    aylik_degisim.append(None)
+
+        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
     from datetime import datetime,timedelta
     import pytz
     tüfe=pd.read_csv("tüfe.csv",index_col=0)
@@ -2135,9 +2232,8 @@ if page=="Harcama Grupları":
         cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
         harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=carim.values/hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-        hareketliartıs=(hareketliartıs-1)*100
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
         harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
     harcama_grupları_aylık["Tarih"]=(harcama_grupları_aylık.index.strftime("%Y-%m"))
@@ -2252,6 +2348,40 @@ if page=="Harcama Grupları":
     st.plotly_chart(figartıs)
 
 if page=="Özel Kapsamlı Göstergeler":
+    def aylik_degisim_serisi(df):
+        aylik_degisim = []
+
+        for tarih in df.index:
+            gun = tarih.day
+            ay = tarih.month
+            yil = tarih.year
+
+            # Bu ay ve geçen ay için veri filtrele
+            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            if ay == 1:
+                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+            else:
+                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+
+            if gun <= 24:
+                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
+                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+
+                if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
+                    oran = (ort_bu / ort_onceki) - 1
+                    aylik_degisim.append(oran*100)
+                else:
+                    aylik_degisim.append(None)
+            else:
+                # 24. günün indeksini bul ve onun değerini al
+                try:
+                    tarih_24 = bu_ay.index[23]  # 0-based indexing
+                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    aylik_degisim.append(oran_24)
+                except:
+                    aylik_degisim.append(None)
+
+        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
 
     from datetime import datetime,timedelta
     import pytz
@@ -2352,9 +2482,8 @@ if page=="Özel Kapsamlı Göstergeler":
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-    hareketliartıs=cari.values/hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-    hareketliartıs=pd.Series(hareketliartıs,index=cari.index)
-    hareketliartıs=(hareketliartıs-1)*100
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
 
     figgartıs = go.Figure()
     figgartıs.add_trace(go.Scatter(
@@ -2443,9 +2572,8 @@ if page=="Özel Kapsamlı Göstergeler":
         cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
         gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=carim.values/hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-        hareketliartıs=(hareketliartıs-1)*100
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
         gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         gruplar_aylık=pd.DataFrame(gruplar_aylık)
     gruplar_aylık=np.round(gruplar_aylık,2)
@@ -2776,6 +2904,40 @@ if page=="Mevsimsellikten Arındırılmış Göstergeler":
         
 
 if page=="Madde Endeksleri":
+    def aylik_degisim_serisi(df):
+        aylik_degisim = []
+
+        for tarih in df.index:
+            gun = tarih.day
+            ay = tarih.month
+            yil = tarih.year
+
+            # Bu ay ve geçen ay için veri filtrele
+            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            if ay == 1:
+                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+            else:
+                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+
+            if gun <= 24:
+                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
+                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+
+                if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
+                    oran = (ort_bu / ort_onceki) - 1
+                    aylik_degisim.append(oran*100)
+                else:
+                    aylik_degisim.append(None)
+            else:
+                # 24. günün indeksini bul ve onun değerini al
+                try:
+                    tarih_24 = bu_ay.index[23]  # 0-based indexing
+                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    aylik_degisim.append(oran_24)
+                except:
+                    aylik_degisim.append(None)
+
+        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
 
     from datetime import datetime,timedelta
     import pytz
@@ -2833,9 +2995,8 @@ if page=="Madde Endeksleri":
         cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
         maddeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=carim.values/hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[f"{onceki}-{tarihim}"]
-        hareketliartıs=pd.Series(hareketliartıs,index=carim.index)
-        hareketliartıs=(hareketliartıs-1)*100
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
+
         maddeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         maddeler_aylık=pd.DataFrame(maddeler_aylık)
     maddeler_aylık["Tarih"]=(maddeler_aylık.index.strftime("%Y-%m"))

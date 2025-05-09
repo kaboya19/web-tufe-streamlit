@@ -661,40 +661,41 @@ if page=="Tüketici Fiyat Endeksi":
             return df
     
 
-    def aylik_degisim_serisi(df):
+    def aylik_degisim_serisi(ts: pd.Series) -> pd.Series:
+        ts = ts.sort_index()
         aylik_degisim = []
 
-        for tarih in df.index:
+        for tarih in ts.index:
             gun = tarih.day
             ay = tarih.month
             yil = tarih.year
 
-            # Bu ay ve geçen ay için veri filtrele
-            bu_ay = df[(df.index.month == ay) & (df.index.year == yil)]
+            # Bu ay ve geçen ay için veri
+            bu_ay = ts[(ts.index.year == yil) & (ts.index.month == ay)]
             if ay == 1:
-                onceki_ay = df[(df.index.month == 12) & (df.index.year == yil - 1)]
+                onceki_ay = ts[(ts.index.year == yil - 1) & (ts.index.month == 12)]
             else:
-                onceki_ay = df[(df.index.month == ay - 1) & (df.index.year == yil)]
+                onceki_ay = ts[(ts.index.year == yil) & (ts.index.month == ay - 1)]
 
             if gun <= 24:
-                ort_bu = bu_ay.iloc[:gun]['TÜFE'].mean()
-                ort_onceki = onceki_ay.iloc[:gun]['TÜFE'].mean()
+                ort_bu = bu_ay.iloc[:gun].mean()
+                ort_onceki = onceki_ay.iloc[:gun].mean()
 
                 if pd.notna(ort_bu) and pd.notna(ort_onceki) and ort_onceki != 0:
                     oran = (ort_bu / ort_onceki) - 1
-                    aylik_degisim.append(oran*100)
+                    aylik_degisim.append(oran)
                 else:
                     aylik_degisim.append(None)
             else:
-                # 24. günün indeksini bul ve onun değerini al
                 try:
-                    tarih_24 = bu_ay.index[23]  # 0-based indexing
-                    oran_24 = aylik_degisim[df.index.get_loc(tarih_24)]
+                    tarih_24 = bu_ay.index[23]
+                    oran_24 = aylik_degisim[ts.index.get_loc(tarih_24)]
                     aylik_degisim.append(oran_24)
                 except:
                     aylik_degisim.append(None)
 
-        return pd.Series(aylik_degisim[-gun:], index=df.index[-gun:], name="Aylık_Değişim")
+        return pd.Series(aylik_degisim[-gun:], index=ts.index[-gun:])
+
 
 
     
@@ -703,7 +704,7 @@ if page=="Tüketici Fiyat Endeksi":
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-    hareketliartıs=aylik_degisim_serisi(selected_group_data)
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
 
 
@@ -1192,7 +1193,7 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
             endeksler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=aylik_degisim_serisi(selected_group_data)
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
             endeksler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             endeksler_aylık=pd.DataFrame(endeksler_aylık)
@@ -1210,7 +1211,7 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
             harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=aylik_degisim_serisi(selected_group_data)
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
             harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
@@ -1228,7 +1229,7 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
             gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=aylik_degisim_serisi(selected_group_data)
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
             gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             gruplar_aylık=pd.DataFrame(gruplar_aylık)
@@ -1251,7 +1252,7 @@ if page=="Tüketici Fiyat Endeksi":
             cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
             özelgöstergeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
             carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-            hareketliartıs=aylik_degisim_serisi(selected_group_data)
+            hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
             özelgöstergeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
             özelgöstergeler_aylık=pd.DataFrame(özelgöstergeler_aylık)
@@ -1661,7 +1662,7 @@ if page=="Ana Gruplar":
    
 
     
-    hareketliartıs=aylik_degisim_serisi(selected_group_data)
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
 
     figgartıs = go.Figure()
@@ -1775,7 +1776,7 @@ if page=="Ana Gruplar":
         cari=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill")
         gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(gruplar[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
         gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         gruplar_aylık=pd.DataFrame(gruplar_aylık)
@@ -1920,7 +1921,7 @@ if page=="Ana Gruplar":
         cari=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill")
         selected_harcamagruplarıartıs[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(selected_harcamagrupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
         selected_harcamagruplarıartıs[col].iloc[-1]=hareketliartıs.iloc[-1]
         selected_harcamagruplarıartıs=pd.DataFrame(selected_harcamagruplarıartıs)
@@ -2232,7 +2233,7 @@ if page=="Harcama Grupları":
         cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
         harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
         harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)
@@ -2482,7 +2483,7 @@ if page=="Özel Kapsamlı Göstergeler":
     tarih=datetime.now().strftime("%Y-%m")
     onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
     cari=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-    hareketliartıs=aylik_degisim_serisi(selected_group_data)
+    hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
 
     figgartıs = go.Figure()
@@ -2572,7 +2573,7 @@ if page=="Özel Kapsamlı Göstergeler":
         cari=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill")
         gruplar_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(özelgöstergeler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
         gruplar_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         gruplar_aylık=pd.DataFrame(gruplar_aylık)
@@ -2995,7 +2996,7 @@ if page=="Madde Endeksleri":
         cari=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill")
         maddeler_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(endeksler[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(selected_group_data.iloc[:,0])
 
         maddeler_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         maddeler_aylık=pd.DataFrame(maddeler_aylık)

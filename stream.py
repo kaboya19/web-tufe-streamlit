@@ -421,15 +421,15 @@ if page=="Metodoloji Notu":
     cols = st.columns(4)
 
     with cols[0]:
-        st.image(logo1, use_column_width=True)
+        st.image(logo1, use_container_width=True)
 
     with cols[1]:
-        st.image(logo2, use_column_width=True)
+        st.image(logo2, use_container_width=True)
 
     with cols[2]:
-        st.image(logo3, use_column_width=True)
+        st.image(logo3, use_container_width=True)
     with cols[3]:
-        st.image(logo4, use_column_width=True)
+        st.image(logo4, use_container_width=True)
     
     
     

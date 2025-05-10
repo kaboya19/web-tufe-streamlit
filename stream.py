@@ -429,7 +429,7 @@ if page=="Metodoloji Notu":
     logo14 = Image.open("Logo_of_Mavi.png")
     logo15 = Image.open("Gratis-logo-big.svg.png")
     logo16 = Image.open("images.png")
-    logo17 = Image.open("csa-logo.png")
+    logo17 = Image.open("csa-logo.jpg")
     logo18 = Image.open("beymen-logo-png_seeklogo-18935.png")
     logo19 = Image.open("349_karaca_logo_ikon_ust.jpg")
     logo20 = Image.open("20200401091456!D&R_logo.jpg")

@@ -410,6 +410,32 @@ if page=="Metodoloji Notu":
     st.write("Endeksin veri kaynakları seçilirken mal fiyatları için online sipariş özelliğinin bulunması,seçilen sitenin Türkiye'nin tamamına hizmetinin bulunması,pazar payının yüksek olması ve örneklem"
     "gücünün yüksek olması gibi kriterler dikkate alınmıştır.")
 
+    from PIL import Image
+
+    # Logoları yükle
+    logo1 = Image.open("Teknosa_logo.svg (1).png")
+    logo2 = Image.open("yemeksepeti-yeni-20219991.jpg")
+    logo3 = Image.open("png-transparent-arcelik-hd-logo-thumbnail.png")
+
+    # Kolonlara yerleştir (yan yana)
+    cols = st.columns(3)
+
+    with cols[0]:
+        st.image(logo1, use_column_width=True)
+
+    with cols[1]:
+        st.image(logo2, use_column_width=True)
+
+    with cols[2]:
+        st.image(logo3, use_column_width=True)
+    
+    
+    
+    
+    
+    st.image("ağırlıklar.png")
+
+
     st.markdown(f"<h2 style='text-align:left; color:black;'>Ana Grup Ağırlıkları</h2>", unsafe_allow_html=True)
     st.image("ağırlıklar.png")
 

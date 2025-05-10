@@ -438,6 +438,19 @@ if page=="Metodoloji Notu":
     logo23 = Image.open("Bauhaus_logo.svg.png")
     logo24 = Image.open("1280px-Boyner_Logo.jpg")
     logo25 = Image.open("793_defacto.jpg")
+    logo26 = Image.open("pttavm.webp")
+    logo27 = Image.open("N11_logo.svg.png")
+    logo28 = Image.open("dc8e9a5099cd06581951bd48511afb3f-642e71cbd9cf4.webp")
+    logo29 = Image.open("resim-yok.jpg")
+    logo30 = Image.open("madame-coco6296.logowik.com.webp")
+    logo31 = Image.open("sehzade_logo.svg")
+    logo32 = Image.open("mopas_web_logo.webp")
+    logo33 = Image.open("Tarimkredilogo.jpg")
+    logo34 = Image.open("A101_logo.svg.png")
+    logo35 = Image.open("bim-logo-png_seeklogo-516849.png")
+    logo36 = Image.open("hakmar_logo_transperent.png")
+    logo37 = Image.open("ŞOK_Market_logo.svg.png")
+    logo38 = Image.open("migros_logo.png")
     # Kolonlara yerleştir (yan yana)    
     cols = st.columns(4)
 
@@ -445,9 +458,13 @@ if page=="Metodoloji Notu":
         st.image(logo1, use_container_width=True)
         st.image(logo5, use_container_width=True)
         st.image(logo9, use_container_width=True)
-        st.image(logo14, use_container_width=True)
-        st.image(logo19, use_container_width=True)
-        st.image(logo24, use_container_width=True)
+        st.image(logo13, use_container_width=True)
+        st.image(logo17, use_container_width=True)
+        st.image(logo21, use_container_width=True)
+        st.image(logo25, use_container_width=True)
+        st.image(logo29, use_container_width=True)
+        st.image(logo33, use_container_width=True)
+        st.image(logo37, use_container_width=True)
 
     with cols[1]:
         st.image(logo2, use_container_width=True)
@@ -456,6 +473,10 @@ if page=="Metodoloji Notu":
         st.image(logo14, use_container_width=True)
         st.image(logo18, use_container_width=True)
         st.image(logo22, use_container_width=True)
+        st.image(logo26, use_container_width=True)
+        st.image(logo30, use_container_width=True)
+        st.image(logo34, use_container_width=True)
+        st.image(logo38, use_container_width=True)
 
     with cols[2]:
         st.image(logo3, use_container_width=True)
@@ -464,15 +485,19 @@ if page=="Metodoloji Notu":
         st.image(logo15, use_container_width=True)
         st.image(logo19, use_container_width=True)
         st.image(logo23, use_container_width=True)
+        st.image(logo27, use_container_width=True)
+        st.image(logo31, use_container_width=True)
+        st.image(logo35, use_container_width=True)
     with cols[3]:
         st.image(logo4, use_container_width=True)
         st.image(logo8, use_container_width=True)
         st.image(logo12, use_container_width=True)
         st.image(logo16, use_container_width=True)
         st.image(logo20, use_container_width=True)
-        st.image(logo25, use_container_width=True)
-    
-    
+        st.image(logo24, use_container_width=True)
+        st.image(logo28, use_container_width=True)
+        st.image(logo32, use_container_width=True)
+        st.image(logo36, use_container_width=True)
     
     
     st.image("ağırlıklar.png")

@@ -416,9 +416,9 @@ if page=="Metodoloji Notu":
     logo1 = Image.open("Teknosa_logo.svg (1).png")
     logo2 = Image.open("yemeksepeti-yeni-20219991.jpg")
     logo3 = Image.open("png-transparent-arcelik-hd-logo-thumbnail.png")
-
+    logo4 = Image.open("trendyol_logo-freelogovectors.net_.png")
     # Kolonlara yerleştir (yan yana)
-    cols = st.columns(3)
+    cols = st.columns(4)
 
     with cols[0]:
         st.image(logo1, use_column_width=True)
@@ -428,7 +428,8 @@ if page=="Metodoloji Notu":
 
     with cols[2]:
         st.image(logo3, use_column_width=True)
-    
+    with cols[3]:
+        st.image(logo4, use_column_width=True)
     
     
     

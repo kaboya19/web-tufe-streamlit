@@ -415,7 +415,7 @@ if page=="Metodoloji Notu":
     # Logoları yükle
     logo1 = Image.open("Teknosa_logo.svg (1).png")
     logo2 = Image.open("yemeksepeti-yeni-20219991.jpg")
-    logo3 = Image.open("png-transparent-arcelik-hd-logo-thumbnail.png")
+    logo3 = Image.open("855_arcelik.jpg")
     logo4 = Image.open("trendyol_logo-freelogovectors.net_.png")
     # Kolonlara yerleştir (yan yana)
     cols = st.columns(4)

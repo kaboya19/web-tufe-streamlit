@@ -433,7 +433,7 @@ if page=="Metodoloji Notu":
     logo18 = Image.open("beymen-logo-png_seeklogo-18935.png")
     logo19 = Image.open("349_karaca_logo_ikon_ust.jpg")
     logo20 = Image.open("20200401091456!D&R_logo.jpg")
-    logo21 = Image.open("Koctas_logo.jpg")
+    logo21 = Image.open("Koctas_logo.png")
     logo22 = Image.open("Hepsiburada_logo_official.svg.jpg")
     logo23 = Image.open("Bauhaus_logo.svg.jpg")
     logo24 = Image.open("1280px-Boyner_Logo.jpg")

@@ -443,7 +443,7 @@ if page=="Metodoloji Notu":
     logo28 = Image.open("dc8e9a5099cd06581951bd48511afb3f-642e71cbd9cf4.webp")
     logo29 = Image.open("resim-yok.jpg")
     logo30 = Image.open("madame-coco6296.logowik.com.webp")
-    logo31 = Image.open("sehzade_logo.svg")
+    logo31 = Image.open("sehzade_logo.png")
     logo32 = Image.open("mopas_web_logo.webp")
     logo33 = Image.open("Tarimkredilogo.jpg")
     logo34 = Image.open("A101_logo.svg.png")

@@ -417,7 +417,7 @@ if page=="Metodoloji Notu":
     logo2 = Image.open("yemeksepeti-yeni-20219991.jpg")
     logo3 = Image.open("855_arcelik.jpg")
     logo4 = Image.open("trendyol_logo-freelogovectors.net_.png")
-    logo5 = Image.open("images (1).jpg")
+    logo5 = Image.open("images (1).png")
     logo6 = Image.open("9_2_guncel-logo-kullanimimiz.jpg")
     logo7 = Image.open("resim-yok.jpg")
     logo8 = Image.open("unnamed (2).png")

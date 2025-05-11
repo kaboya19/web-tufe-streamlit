@@ -2313,7 +2313,7 @@ if page=="Harcama Grupları":
         cari=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill")
         harcama_grupları_aylık[col]=cari.resample('M').last().pct_change().loc["2025-02":]*100
         carim=hareketli_aylik_ortalama(harcama_grupları[col])["Aylık Ortalama"].fillna(method="ffill").loc[tarih:]
-        hareketliartıs=aylik_degisim_serisi(selected_group_data)
+        hareketliartıs=aylik_degisim_serisi(harcama_grupları[col])
 
         harcama_grupları_aylık[col].iloc[-1]=hareketliartıs.iloc[-1]
         harcama_grupları_aylık=pd.DataFrame(harcama_grupları_aylık)

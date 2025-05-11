@@ -2593,7 +2593,7 @@ if page=="Özel Kapsamlı Göstergeler":
     st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artış Oranı</h2>", unsafe_allow_html=True)
     st.markdown("""
     <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
-        Not: Aylık artış oranı mevcut ayın ortalamasının önceki ayın 24 günlük ortalamasına göre değişimi ile hazırlanmıştır.
+        Not: Aylık artış oranı mevcut ayın ortalamasının önceki ayın aynı dönemdeki ortalamasına göre değişimi ile hazırlanmıştır.
     </div>
 """, unsafe_allow_html=True)
     st.plotly_chart(figgartıs)

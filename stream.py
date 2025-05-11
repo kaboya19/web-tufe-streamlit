@@ -87,94 +87,6 @@ import streamlit as st
 import pandas as pd
 from datetime import timedelta
 
-# ---------------- Ayar ----------------
-secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
-hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 3)", min_value=1, max_value=3, value=2)
-kayma_suresi = hiz_slider * 2000  # Hızı kayma süresiyle ilişkilendiriyoruz
-
-# ---------------- Veri Yükleme ----------------
-if secim == "Madde":
-    df = pd.read_csv("endeksler.csv", index_col=0)
-    df.index = pd.to_datetime(df.index)
-else:
-    df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
-    df.index = pd.to_datetime(df.index)
-
-# ---------------- Günlük Değişim ----------------
-gunluk_degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
-gunluk_degisimler = gunluk_degisimler.round(2)
-gunluk_degisimler = gunluk_degisimler[gunluk_degisimler != 0]
-
-tarihim = pd.to_datetime(df.index[-1]).day
-if tarihim > 24:
-    tarihim = 24
-if tarihim < 10:
-    tarihim = "0" + str(tarihim)
-tarih = df.index[-1]
-onceki_tarih = tarih - timedelta(days=30)
-
-ortalama_son = df.loc[tarih.strftime("%Y-%m"):tarih.strftime(f"%Y-%m-{tarihim}")].mean()
-ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m-%d"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
-
-degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) - 1) * 100
-degisimler2 = degisimler2.round(2)
-degisimler2 = degisimler2[degisimler2 != 0]
-
-def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
-    parcalar = []
-    for madde, degisim in degisimler.items():
-        renk = "red" if degisim > 0 else "green"
-        madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
-        parcalar.append(madde_html)
-
-    bosluk = "&nbsp;" * 10
-    icerik = bosluk.join(10 * parcalar)
-
-    if bosluk_ekle:
-        # Yazının başına 1 seferlik boşluk ekliyoruz
-        icerik = f"{bosluk*5}{icerik}"
-
-    html = f"""
-    <style>
-    .scrolling-wrapper-{class_suffix} {{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        overflow: hidden;
-        box-sizing: border-box;
-        background-color: #f0f0f0;
-        padding: 10px;
-        margin-top: 0; /* Başlık ile kayan yazı arasındaki boşluğu kaldır */
-    }}
-    .scrolling-content-{class_suffix} {{
-        display: inline-block;
-        white-space: nowrap;
-        animation: scroll-left-{class_suffix} {sure}s linear infinite;
-        padding-left: 20px;
-    }}
-    @keyframes scroll-left-{class_suffix} {{
-        0%   {{ transform: translateX(0%); }}
-        100% {{ transform: translateX(-100%); }}  /* Yazı tamamen sola kayacak şekilde */
-    }}
-    </style>
-    <div class="scrolling-wrapper-{class_suffix}">
-        <div class="scrolling-content-{class_suffix}">
-            {icerik} {bosluk*5} {icerik}
-        </div>
-    </div>
-    """
-    return html
-
-# ---------------- Göster ----------------
-
-# 3 saniye bekleme ekliyoruz
-time.sleep(3)
-
-st.markdown("<b>Günlük Değişimler</b>", unsafe_allow_html=True)
-st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily", bosluk_ekle=True), unsafe_allow_html=True)
-
-st.markdown("<b>Aylık Değişimler</b>", unsafe_allow_html=True)
-st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly", bosluk_ekle=True), unsafe_allow_html=True)
 
 
 
@@ -555,6 +467,95 @@ if page=="Metodoloji Notu":
 if page=="Tüketici Fiyat Endeksi":
 
     import streamlit as st
+
+        # ---------------- Ayar ----------------
+    secim = st.selectbox("Veri türünü seçin:", ["Madde", "Harcama Grubu"])
+    hiz_slider = st.slider("Yazı kayma hızı (hızlı: 1, yavaş: 3)", min_value=1, max_value=3, value=2)
+    kayma_suresi = hiz_slider * 2000  # Hızı kayma süresiyle ilişkilendiriyoruz
+
+    # ---------------- Veri Yükleme ----------------
+    if secim == "Madde":
+        df = pd.read_csv("endeksler.csv", index_col=0)
+        df.index = pd.to_datetime(df.index)
+    else:
+        df = pd.read_csv("harcama_grupları.csv", index_col=0).sort_index()
+        df.index = pd.to_datetime(df.index)
+
+    # ---------------- Günlük Değişim ----------------
+    gunluk_degisimler = df.pct_change().dropna().iloc[-1].sort_values(ascending=False) * 100
+    gunluk_degisimler = gunluk_degisimler.round(2)
+    gunluk_degisimler = gunluk_degisimler[gunluk_degisimler != 0]
+
+    tarihim = pd.to_datetime(df.index[-1]).day
+    if tarihim > 24:
+        tarihim = 24
+    if tarihim < 10:
+        tarihim = "0" + str(tarihim)
+    tarih = df.index[-1]
+    onceki_tarih = tarih - timedelta(days=30)
+
+    ortalama_son = df.loc[tarih.strftime("%Y-%m"):tarih.strftime(f"%Y-%m-{tarihim}")].mean()
+    ortalama_onceki = df.loc[onceki_tarih.strftime("%Y-%m-%d"):onceki_tarih.strftime(f"%Y-%m-{tarihim}")].mean()
+
+    degisimler2 = (((ortalama_son / ortalama_onceki).sort_values(ascending=False)) - 1) * 100
+    degisimler2 = degisimler2.round(2)
+    degisimler2 = degisimler2[degisimler2 != 0]
+
+    def olustur_kayan_yazi_html(degisimler, sure, class_suffix, bosluk_ekle=False):
+        parcalar = []
+        for madde, degisim in degisimler.items():
+            renk = "red" if degisim > 0 else "green"
+            madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
+            parcalar.append(madde_html)
+
+        bosluk = "&nbsp;" * 10
+        icerik = bosluk.join(10 * parcalar)
+
+        if bosluk_ekle:
+            # Yazının başına 1 seferlik boşluk ekliyoruz
+            icerik = f"{bosluk*5}{icerik}"
+
+        html = f"""
+        <style>
+        .scrolling-wrapper-{class_suffix} {{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow: hidden;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-top: 0; /* Başlık ile kayan yazı arasındaki boşluğu kaldır */
+        }}
+        .scrolling-content-{class_suffix} {{
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left-{class_suffix} {sure}s linear infinite;
+            padding-left: 20px;
+        }}
+        @keyframes scroll-left-{class_suffix} {{
+            0%   {{ transform: translateX(0%); }}
+            100% {{ transform: translateX(-100%); }}  /* Yazı tamamen sola kayacak şekilde */
+        }}
+        </style>
+        <div class="scrolling-wrapper-{class_suffix}">
+            <div class="scrolling-content-{class_suffix}">
+                {icerik} {bosluk*5} {icerik}
+            </div>
+        </div>
+        """
+        return html
+
+    # ---------------- Göster ----------------
+
+    # 3 saniye bekleme ekliyoruz
+    time.sleep(3)
+
+    st.markdown("<b>Günlük Değişimler</b>", unsafe_allow_html=True)
+    st.markdown(olustur_kayan_yazi_html(gunluk_degisimler, kayma_suresi, "daily", bosluk_ekle=True), unsafe_allow_html=True)
+
+    st.markdown("<b>Aylık Değişimler</b>", unsafe_allow_html=True)
+    st.markdown(olustur_kayan_yazi_html(degisimler2, kayma_suresi, "monthly", bosluk_ekle=True), unsafe_allow_html=True)
 
    
 

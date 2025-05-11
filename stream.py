@@ -121,19 +121,6 @@ from datetime import datetime,timedelta
 tarih=datetime.now().strftime("%Y-%m")
 onceki=(datetime.now()-timedelta(days=30)).strftime("%Y-%m")
 
-degisimler2 = (((df.loc[f"{tarih}":f"{tarih}-24"].mean()/df.loc[f"{onceki}":f"{onceki}-{tarihim}"].mean()).sort_values(ascending=False))-1)*100
-
-
-# ---------------- Kayan Yazıyı Oluştur ----------------
-parcalar2 = []
-for madde, degisim in degisimler2.items():
-    renk = "red" if degisim > 0 else "green"
-    madde_html = f"<b style='color:black'>{madde}:</b> <span style='color:{renk}'>%{degisim:+.2f}</span>"
-    parcalar2.append(madde_html)
-
-bosluk2 = "&nbsp;" * 10
-kayan_metin2 = f"<b>Aylık Değişimler</b>{bosluk2}" + bosluk2.join(parcalar2)
-parcalar2=10*parcalar2
 
 
 

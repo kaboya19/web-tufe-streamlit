@@ -500,7 +500,6 @@ if page=="Metodoloji Notu":
         st.image(logo36, use_container_width=True)
     
     
-    st.image("ağırlıklar.png")
 
 
     st.markdown(f"<h2 style='text-align:left; color:black;'>Ana Grup Ağırlıkları</h2>", unsafe_allow_html=True)

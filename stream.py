@@ -2490,6 +2490,7 @@ if page=="Özel Kapsamlı Göstergeler":
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
     özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
+    özelgöstergeler=özelgöstergeler.rename(columns={"İşlenmemiş Gıda":"İşlenmemiş gıda"})
     gösterge=özelgöstergeler.columns.values
 
     selected_group = st.sidebar.selectbox("Özel Kapsamlı Gösterge Seçin:", gösterge)

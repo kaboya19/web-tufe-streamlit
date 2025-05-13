@@ -277,7 +277,7 @@ def hareketli_aylik_ortalama(df):
 
 if page=="Metodoloji Notu":
     import streamlit as st
-
+    import requests
     
     
      

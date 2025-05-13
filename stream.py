@@ -291,7 +291,7 @@ if page=="Metodoloji Notu":
         st.download_button(
             label="📥 PDF'yi İndir",
             data=response.content,
-            file_name="WebTÜFE_Metodoloji.pdf",
+            file_name="WEB TÜKETİCİ FİYAT ENDEKSİ.pdf",
             mime="application/pdf"
         )
     else:

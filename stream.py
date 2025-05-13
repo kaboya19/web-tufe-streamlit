@@ -285,29 +285,30 @@ if page=="Metodoloji Notu":
     # Başlık
     st.title("Web Tüketici Fiyat Endeksi (Web-TÜFE) Metodoloji Açıklaması")
 
-    # Analitik Çerçeve ve Kapsam
-    st.subheader("Analitik Çerçeve ve Kapsam")
-    st.write("""
-    Web Tüketici Fiyat Endeksinin amacı, TÜFE'de yer alan Alkollü içecekler ve Sağlık grubu dışında kalan ürünlerin günlük değişimini ölçerek enflasyon oranını hesaplamaktır. 
-    Alkollü içecekler ve Sağlık grubunun ölçümü web üzerinden yapılamamaktadır.Bu bağlamda bu gruplar dışında yer alan 385 maddenin 327 adedi derlenmektedir.
-    TÜİK sepetinin ağırlık bazında %82,6'sı ölçülebilmiştir.
-    Bu çerçevede, 31 Aralık 2024 endeksi baz olarak "100" seçilmiştir.
+    pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webtüfenisan25.pdf"
+    response = requests.get(pdf_url)
+    if response.status_code == 200:
+        st.download_button(
+            label="📥 PDF'yi İndir",
+            data=response.content,
+            file_name="WebTÜFE_Nisan25.pdf",
+            mime="application/pdf"
+        )
+    else:
+        st.warning("PDF indirilemedi. Lütfen bağlantıyı kontrol edin.")
+    viewer_url = f"https://mozilla.github.io/pdf.js/web/viewer.html?file={pdf_url}"
 
-    """)
+    st.markdown(
+        f'<iframe src="{viewer_url}" width="90%" height="800px" style="border:none;"></iframe>',
+        unsafe_allow_html=True
+    )
+                
 
-    st.write(
-    "Web-TÜFE 50'den fazla veri kaynağından günlük 1 milyonun üzerinde fiyat toplayarak hesaplanmaktadır."
-    "Verilerin oluşturulma aşaması şu şekildedir;"
-             "1-Sepetin ve madde ağırlıklarının oluşturulması"
-             "2-Sepetteki tüm ürünler için fiyat verilerinin toplanması"
-             "3-Her bir ürün için günlük ortalama fiyat değişiminin hesaplanması"
-             "4-Ürünlerin endeks verilerinin oluşturulması ve endekslerin normalize edilmesi"
-             "5-Endeks verilerinden bir üst kırılım olan harcama gruplarının oluşturulması"
-             "6-Ağırlıklandırma yapılarak Web-TÜFE verisinin oluşturulması"
-             "7-Özel Kapsamlı Gösterge endekslerinin oluşturulması")
+    st.markdown("<p><strong>Hazırlayan: Bora Kaya</strong></p>", unsafe_allow_html=True)
+    st.markdown("<p>Web-TÜFE Twitter: <a href='https://x.com/webtufe'>https://x.com/webtufe</a></p>", unsafe_allow_html=True)
+    st.markdown("<p>Linkedin: <a href='https://www.linkedin.com/in/bora-kaya/'>https://www.linkedin.com/in/bora-kaya/</a></p>", unsafe_allow_html=True)
 
-    st.write("Endeksin veri kaynakları seçilirken mal fiyatları için online sipariş özelliğinin bulunması,seçilen sitenin Türkiye'nin tamamına hizmetinin bulunması,pazar payının yüksek olması ve örneklem"
-    "gücünün yüksek olması gibi kriterler dikkate alınmıştır.")
+   
 
     from PIL import Image
 
@@ -401,50 +402,7 @@ if page=="Metodoloji Notu":
     
 
 
-    st.markdown(f"<h2 style='text-align:left; color:black;'>Ana Grup Ağırlıkları</h2>", unsafe_allow_html=True)
-    st.image("ağırlıklar.png")
-
-    ağırlıklar=pd.read_csv("ağırlıklartüfe.csv",index_col=0)
-    ağırlıklar=ağırlıklar["Ağırlık"]*100
-    ağırlıklar=ağırlıklar.sort_values(ascending=False)
-    st.subheader("Madde Ağırlıkları")
-    st.dataframe(ağırlıklar)
-
-
-
-    # Hesaplama Kuralları
-    st.subheader("Hesaplama Kuralları")
-    st.image("1.png")
-    st.image("2.png")
-    st.image("3.png")
-
-
-    # Mevsimsel Düzeltme
-    st.subheader("Mevsimsel Düzeltme")
-    st.write("""
-    İlk aşamada verilerde mevsimsel düzeltme yapılmayacaktır. Ancak verilerin birikmesiyle ilerleyen dönemlerde, TÜİK’in açıklamış olduğu metodolojiye uygun olarak mevsimsel düzeltme yapılacaktır. 
-    Bu sonuçlar web sitesinde ve e-posta aboneliği olan kullanıcılara ayrıca yeni bir endeks olarak bildirilecektir.
-    """)
-
-    # Veri Derleme
-    st.subheader("Veri Derleme")
-    st.write("""
-    Toplanan veriler web scraping yöntemiyle Python üzerinden derlenmektedir. Şu an itibariyle her gün yaklaşık 1 milyon adet fiyat toplanmaktadır. 
-
-    """)
-
-    # Sonuçların Açıklanması
-    st.subheader("Sonuçların Açıklanması")
-    st.write("""
-    Her ayın 24'inde aylık enflasyon oranları duyurulacaktır. 
-    """)
-
-    # İmza
-    st.write("""
-    ---
-    Hazırlayan
-    Bora Kaya  
-    """)
+    
 
 
 

@@ -285,13 +285,13 @@ if page=="Metodoloji Notu":
     # Başlık
     st.title("Web Tüketici Fiyat Endeksi (Web-TÜFE) Metodoloji Açıklaması")
 
-    pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/webtüfenisan25.pdf"
+    pdf_url = "https://raw.githubusercontent.com/kaboya19/web-tufe-streamlit/main/WEB%20TÜKETİCİ%20FİYAT%20ENDEKSİ.pdf"
     response = requests.get(pdf_url)
     if response.status_code == 200:
         st.download_button(
             label="📥 PDF'yi İndir",
             data=response.content,
-            file_name="WebTÜFE_Nisan25.pdf",
+            file_name="WebTÜFE_Metodoloji.pdf",
             mime="application/pdf"
         )
     else:

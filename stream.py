@@ -1269,6 +1269,42 @@ if page=="Tüketici Fiyat Endeksi":
         """, unsafe_allow_html=True)
 
 
+        code=f"""
+        <style>
+        .custom-button {{
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            color: black;
+            padding: 12px 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+            transition: background-color 0.3s ease;
+            margin-bottom: 15px;
+        }}
+        .custom-button:hover {{
+            background-color: rgba(231, 76, 60, 0.15);
+        }}
+        .custom-button img {{
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+        }}
+        </style>
+
+        <a href="{pdf_url}" target="_blank" class="custom-button" rel="noopener noreferrer">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
+            Nisan 2025 Bülteni
+        </a>
+        """
+
+        st.sidebar.markdown(html_code, unsafe_allow_html=True)
+
+
                 
 
       

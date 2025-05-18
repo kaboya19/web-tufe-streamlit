@@ -1233,13 +1233,11 @@ if page=="Tüketici Fiyat Endeksi":
 
         import streamlit as st
 
-        # PDF URL (static klasöründeki)
         pdf_url = "https://web-tufe.streamlit.app/static/webtufenisan25.pdf"
 
-        # CSS ve HTML ile buton
-        st.markdown("""
+        st.markdown(f"""
         <style>
-        .custom-button {
+        .custom-button {{
             display: inline-flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.85);
@@ -1253,25 +1251,25 @@ if page=="Tüketici Fiyat Endeksi":
             box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
             transition: background-color 0.3s ease;
             margin-bottom: 15px;
-        }
-        .custom-button:hover {
+        }}
+        .custom-button:hover {{
             background-color: rgba(231, 76, 60, 0.15);
-        }
-        .custom-button img {
+        }}
+        .custom-button img {{
             width: 28px;
             height: 28px;
             margin-right: 10px;
-        }
+        }}
         </style>
 
-        <a href="{0}" target="_blank" class="custom-button" rel="noopener noreferrer">
+        <a href="{pdf_url}" target="_blank" class="custom-button" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
-            PDF'yi Yeni Sekmede Aç
+            Bülteni PDF Olarak Aç
         </a>
-        """.format(pdf_url), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
 
-        
+                
 
       
 

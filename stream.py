@@ -521,7 +521,11 @@ if page=="Tüketici Fiyat Endeksi":
         st.markdown("""
         - **Şubat ayında elektrikte yapılan sübvansiyon düzenlemesi sebebiyle 
             TÜİK tarafından ortalama fiyatların yayınlanmasının ardından endeksin Şubat verisi revize olmuştur. (%3,5>>%3,83)
-        - **: Gündelikçi ücretinde veri kaynağından kaynaklı geriye dönük fiyat güncellemesi yapılmış ve endeksin Mart verisi revize olmuştur. (%4,1>>%3,23) 🛠️  
+        - **: Gündelikçi ücretinde veri kaynağından kaynaklı geriye dönük fiyat güncellemesi yapılmış ve endeksin Mart verisi revize olmuştur. (%4,1>>%3,23) 🛠️ 
+        - **Uçak bileti,Vapur bileti ve Şehirlerarası otobüs bileti ürünleri sepete eklenmiştir.
+            Mart %3,23>>%3,16
+            Nisan %2,57>>%2,66
+                    olarak revize olmuştur.
         """)
 
 

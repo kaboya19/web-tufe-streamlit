@@ -1231,45 +1231,17 @@ if page=="Tüketici Fiyat Endeksi":
         st.sidebar.markdown(html_code, unsafe_allow_html=True)
 
 
-        import streamlit as st
+        github_pdf_url = "https://drive.google.com/file/d/1uKx66rKsF1KqWLsyEU-0ysS0tRBCye-r/preview"
 
-        pdf_url = "https://web-tufe.streamlit.app/static/webtufenisan25.pdf"
-
-        st.markdown(f"""
-        <style>
-        .custom-button {{
-            display: inline-flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.85);
-            color: black;
-            padding: 12px 20px;
-            border: 2px solid #e74c3c;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-            transition: background-color 0.3s ease;
-            margin-bottom: 15px;
-        }}
-        .custom-button:hover {{
-            background-color: rgba(231, 76, 60, 0.15);
-        }}
-        .custom-button img {{
-            width: 28px;
-            height: 28px;
-            margin-right: 10px;
-        }}
-        </style>
-
-        <a href="{pdf_url}" target="_blank" class="custom-button" rel="noopener noreferrer">
-            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
-            Bülteni PDF Olarak Aç
+        st.markdown(f'''
+        <a href="{github_pdf_url}" target="_blank" class="custom-button">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" style="vertical-align: middle; margin-right: 8px;">
+            Nisan 2025 Bülteni
         </a>
-        """, unsafe_allow_html=True)
+        ''', unsafe_allow_html=True)
 
 
-                
+                        
 
       
 

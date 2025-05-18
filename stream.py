@@ -1197,6 +1197,39 @@ if page=="Tüketici Fiyat Endeksi":
     </a>
 """, unsafe_allow_html=True)
         
+        html_code = f"""
+    <style>
+    .excel-button {{
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(40, 167, 69, 0.2);
+        color: black;
+        padding: 12px 18px;
+        border: 2px solid #28a745;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }}
+    .excel-button:hover {{
+        background-color: rgba(40, 167, 69, 0.4);
+        color: black;
+    }}
+    .excel-icon {{
+        margin-right: 10px;
+    }}
+    </style>
+
+    <a href="{sheet_url}" target="_blank" class="excel-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="24" height="24" class="excel-icon"/>
+        Web TÜFE Veriseti
+    </a>
+"""
+        
+        st.sidebar.markdown(html_code, unsafe_allow_html=True)
+        
         
         
 

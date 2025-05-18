@@ -573,7 +573,7 @@ if page=="Tüketici Fiyat Endeksi":
     gruplar = endeksler.columns
 
 
-    selected_group = st.sidebar.selectbox("Ürün Seçin:", gruplar)
+    selected_group = st.selectbox("Ürün Seçin:", gruplar)
     formatted_dates = endeksler.index.strftime("%d.%m.%Y")  # "06.10.2024" formatında
 
     import streamlit as st

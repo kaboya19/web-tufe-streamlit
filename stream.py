@@ -1232,18 +1232,21 @@ if page=="Tüketici Fiyat Endeksi":
 
 
         import streamlit as st
+        import base64
 
-        with open(".streamlit/static/webtufenisan25.pdf", "rb") as f:
+        pdf_path = ".stramlit/static/webtufenisan25.pdf"  # PDF dosyan burada (uygulamanın rootunda veya yolunu belirt)
+
+        with open(pdf_path, "rb") as f:
             pdf_bytes = f.read()
 
-        # İndir butonu
-        st.download_button(label="PDF'yi indir", data=pdf_bytes, file_name="webtufenisan25.pdf", mime="application/pdf")
+        # PDF'yi base64 encode et
+        b64_pdf = base64.b64encode(pdf_bytes).decode()
 
-        # PDF açma butonu (renkli, simgeli)
-        pdf_path = "/static/webtufenisan25.pdf"
-        st.markdown(f"""
+        pdf_data_url = f"data:application/pdf;base64,{b64_pdf}"
+
+        st.markdown("""
         <style>
-        .pdf-button {{
+        .pdf-button {
             display: inline-flex;
             align-items: center;
             background-color: rgba(255, 0, 0, 0.2);
@@ -1258,27 +1261,26 @@ if page=="Tüketici Fiyat Endeksi":
             cursor: pointer;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.3s, color 0.3s;
-        }}
-        .pdf-button:hover {{
+        }
+        .pdf-button:hover {
             background-color: rgba(255, 0, 0, 0.4);
             color: black;
-        }}
-        .button-icon {{
+        }
+        .button-icon {
             margin-right: 10px;
-        }}
+        }
         </style>
+        """, unsafe_allow_html=True)
 
-        <a href="{pdf_path}" target="_blank" class="pdf-button" rel="noopener noreferrer">
+        st.markdown(f'''
+        <a href="{pdf_data_url}" target="_blank" class="pdf-button" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
             Bülteni PDF Olarak Aç
         </a>
-        """, unsafe_allow_html=True)
+        ''', unsafe_allow_html=True)
 
-        # PDF iframe gömme
-        st.write("PDF aşağıda:")
-        st.markdown(f'<iframe src="{pdf_path}" width="700" height="900" type="application/pdf"></iframe>', unsafe_allow_html=True)
 
-                
+        
 
       
 

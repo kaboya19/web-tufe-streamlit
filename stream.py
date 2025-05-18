@@ -1171,7 +1171,7 @@ if page=="Tüketici Fiyat Endeksi":
     .excel-button {{
         display: inline-flex;
         align-items: center;
-        background-color: #1D6F42;
+        background-color: #28a745;
         color: white;
         padding: 10px 16px;
         border: none;

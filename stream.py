@@ -1302,7 +1302,7 @@ if page=="Tüketici Fiyat Endeksi":
         </a>
         """
 
-        st.sidebar.markdown(html_code, unsafe_allow_html=True)
+        st.sidebar.markdown(code, unsafe_allow_html=True)
 
 
                 

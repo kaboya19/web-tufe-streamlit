@@ -1233,7 +1233,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         import streamlit as st
 
-        pdf_relative_path = "/static/webtüfenisan25.pdf"  # bu dosya .streamlit/static klasöründe olmalı
+        pdf_relative_path = "/static/webtufenisan25.pdf"  # bu dosya .streamlit/static klasöründe olmalı
         pdf_full_url = f"{pdf_relative_path}"
 
         st.markdown(f"""

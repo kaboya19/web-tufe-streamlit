@@ -517,7 +517,7 @@ if page=="Tüketici Fiyat Endeksi":
     """, 
     unsafe_allow_html=True)
 
-    with st.expander("📌 Yapılan Revizyonlar"):
+    with st.expander("📌 Yapılan Revizyonlar (Son Revizyon:18.05.2025)"):
         st.markdown("""
         - **Şubat ayında elektrikte yapılan sübvansiyon düzenlemesi sebebiyle 
             TÜİK tarafından ortalama fiyatların yayınlanmasının ardından endeksin Şubat verisi revize olmuştur. (%3,5>>%3,83)

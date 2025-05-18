@@ -1234,7 +1234,7 @@ if page=="Tüketici Fiyat Endeksi":
         import streamlit as st
         import base64
 
-        pdf_path = ".stramlit/static/webtufenisan25.pdf"  # PDF dosyan burada (uygulamanın rootunda veya yolunu belirt)
+        pdf_path = ".streamlit/static/webtufenisan25.pdf"  # PDF dosyan burada (uygulamanın rootunda veya yolunu belirt)
 
         with open(pdf_path, "rb") as f:
             pdf_bytes = f.read()

@@ -1166,12 +1166,34 @@ if page=="Tüketici Fiyat Endeksi":
 
         sheet_url = "https://docs.google.com/spreadsheets/d/14iiu_MQwtMxHTFt6ceyFhkk6v0OL-wuoQS1IGPzSpNE"
 
-        # Başlık veya açıklama
+        st.markdown("""
+            <style>
+            .excel-button {
+                display: inline-flex;
+                align-items: center;
+                background-color: #1D6F42;
+                color: white;
+                padding: 10px 16px;
+                border: none;
+                border-radius: 8px;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 500;
+                transition: background-color 0.3s;
+            }
+            .excel-button:hover {
+                background-color: #145c35;
+            }
+            .excel-icon {
+                margin-right: 8px;
+            }
+            </style>
 
-        # Tıklanabilir buton
-        if st.button("Web TÜFE Veriseti"):
-            st.markdown(f"[Google Sheet'e Git]({sheet_url})", unsafe_allow_html=True)
-
+            <a href="{0}" target="_blank" class="excel-button">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="24" height="24" class="excel-icon"/>
+                Web TÜFE Veriseti
+            </a>
+""".format(sheet_url), unsafe_allow_html=True)
         
         
         

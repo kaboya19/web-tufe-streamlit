@@ -1192,8 +1192,7 @@ if page=="Tüketici Fiyat Endeksi":
             <a href="{0}" target="_blank" class="excel-button">
                 <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="24" height="24" class="excel-icon"/>
                 Web TÜFE Veriseti
-            </a>
-""".format(sheet_url), unsafe_allow_html=True)
+            </a>""".format(sheet_url), unsafe_allow_html=True)
         
         
         

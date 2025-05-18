@@ -887,6 +887,8 @@ if page=="Tüketici Fiyat Endeksi":
         st.plotly_chart(fig30)
 
 
+
+
         
     elif selected_group=="TÜFE":
 
@@ -1161,6 +1163,14 @@ if page=="Tüketici Fiyat Endeksi":
         # Streamlit ile grafiği görüntüleme
         st.markdown(f"<h2 style='text-align:left; color:black;'>Web-TÜFE Ana Gruplar Artış Oranları</h2>", unsafe_allow_html=True)
         st.plotly_chart(figartıs)
+
+        sheet_url = "https://docs.google.com/spreadsheets/d/14iiu_MQwtMxHTFt6ceyFhkk6v0OL-wuoQS1IGPzSpNE"
+
+        # Başlık veya açıklama
+
+        # Tıklanabilir buton
+        if st.button("Web TÜFE Veriseti"):
+            st.markdown(f"[Google Sheet'e Git]({sheet_url})", unsafe_allow_html=True)
 
         
         

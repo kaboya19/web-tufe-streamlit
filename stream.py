@@ -1233,41 +1233,41 @@ if page=="Tüketici Fiyat Endeksi":
 
         import streamlit as st
         st.markdown("""
-        <style>
-        .pdf-button {
-            display: inline-flex;
-            align-items: center;
-            background-color: rgba(255, 0, 0, 0.2);
-            color: black;
-            padding: 12px 18px;
-            border: 2px solid #dc3545;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            cursor: pointer;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .pdf-button:hover {
-            background-color: rgba(255, 0, 0, 0.4);
-            color: black;
-        }
-        .button-icon {
-            margin-right: 10px;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+    <style>
+    .pdf-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(255, 0, 0, 0.2);
+        color: black;
+        padding: 12px 18px;
+        border: 2px solid #dc3545;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .pdf-button:hover {
+        background-color: rgba(255, 0, 0, 0.4);
+        color: black;
+    }
+    .button-icon {
+        margin-right: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-        pdf_url = "/static/webtufenisan25.pdf"  # Veya tam URL: "https://web-tufe.streamlit.app/static/webtufenisan25.pdf"
+    pdf_url = "/static/webtufenisan25.pdf"  # Veya tam URL: "https://web-tufe.streamlit.app/static/webtufenisan25.pdf"
 
-        st.markdown(f'''
-        <a href="{pdf_url}" target="_blank" class="pdf-button" rel="noopener noreferrer">
-            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
-            Nisan 2025 Bülteni
-        </a>
-        ''', unsafe_allow_html=True)
+    st.markdown(f'''
+    <a href="{pdf_url}" target="_blank" class="pdf-button" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
+        Bülteni PDF Olarak Aç
+    </a>
+    ''', unsafe_allow_html=True)
 
 
 

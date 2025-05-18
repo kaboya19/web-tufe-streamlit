@@ -1232,18 +1232,6 @@ if page=="Tüketici Fiyat Endeksi":
 
 
         import streamlit as st
-        import base64
-
-        pdf_path = ".streamlit/static/webtufenisan25.pdf"  # PDF dosyan burada (uygulamanın rootunda veya yolunu belirt)
-
-        with open(pdf_path, "rb") as f:
-            pdf_bytes = f.read()
-
-        # PDF'yi base64 encode et
-        b64_pdf = base64.b64encode(pdf_bytes).decode()
-
-        pdf_data_url = f"data:application/pdf;base64,{b64_pdf}"
-
         st.markdown("""
         <style>
         .pdf-button {
@@ -1272,12 +1260,15 @@ if page=="Tüketici Fiyat Endeksi":
         </style>
         """, unsafe_allow_html=True)
 
+        pdf_url = "/static/webtufenisan25.pdf"  # Veya tam URL: "https://web-tufe.streamlit.app/static/webtufenisan25.pdf"
+
         st.markdown(f'''
-        <a href="{pdf_data_url}" target="_blank" class="pdf-button" rel="noopener noreferrer">
+        <a href="{pdf_url}" target="_blank" class="pdf-button" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
-            Bülteni PDF Olarak Aç
+            Nisan 2025 Bülteni
         </a>
         ''', unsafe_allow_html=True)
+
 
 
         

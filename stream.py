@@ -1180,6 +1180,7 @@ if page=="Tüketici Fiyat Endeksi":
         font-size: 16px;
         font-weight: 500;
         transition: background-color 0.3s;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }}
     .excel-button:hover {{
         background-color: #145c35;

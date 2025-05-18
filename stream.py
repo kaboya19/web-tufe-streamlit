@@ -1233,42 +1233,52 @@ if page=="Tüketici Fiyat Endeksi":
 
         import streamlit as st
 
-        pdf_relative_path = "/static/webtufenisan25.pdf"  # bu dosya .streamlit/static klasöründe olmalı
-        pdf_full_url = f"{pdf_relative_path}"
+        with open(".streamlit/static/webtufenisan25.pdf", "rb") as f:
+            pdf_bytes = f.read()
 
+        # İndir butonu
+        st.download_button(label="PDF'yi indir", data=pdf_bytes, file_name="webtufenisan25.pdf", mime="application/pdf")
+
+        # PDF açma butonu (renkli, simgeli)
+        pdf_path = "/static/webtufenisan25.pdf"
         st.markdown(f"""
-            <style>
-            .pdf-button {{
-                display: inline-flex;
-                align-items: center;
-                background-color: rgba(255, 0, 0, 0.2);
-                color: black;
-                padding: 12px 18px;
-                border: 2px solid #dc3545;
-                border-radius: 8px;
-                text-decoration: none;
-                font-size: 17px;
-                font-weight: bold;
-                margin-bottom: 10px;
-                transition: background-color 0.3s, color 0.3s;
-                box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            }}
-            .pdf-button:hover {{
-                background-color: rgba(255, 0, 0, 0.4);
-                color: black;
-            }}
-            .button-icon {{
-                margin-right: 10px;
-            }}
-            </style>
+        <style>
+        .pdf-button {{
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 0, 0, 0.2);
+            color: black;
+            padding: 12px 18px;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }}
+        .pdf-button:hover {{
+            background-color: rgba(255, 0, 0, 0.4);
+            color: black;
+        }}
+        .button-icon {{
+            margin-right: 10px;
+        }}
+        </style>
 
-            <a href="{pdf_full_url}" target="_blank" class="pdf-button">
-                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
-                Nisan 2025 Bülteni
-            </a>
+        <a href="{pdf_path}" target="_blank" class="pdf-button" rel="noopener noreferrer">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="24" height="24" class="button-icon"/>
+            Bülteni PDF Olarak Aç
+        </a>
         """, unsafe_allow_html=True)
 
-        
+        # PDF iframe gömme
+        st.write("PDF aşağıda:")
+        st.markdown(f'<iframe src="{pdf_path}" width="700" height="900" type="application/pdf"></iframe>', unsafe_allow_html=True)
+
+                
 
       
 

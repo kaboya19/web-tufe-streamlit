@@ -1257,7 +1257,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         import streamlit as st
 
-        pdf_url = "https://drive.google.com/file/d/1uKx66rKsF1KqWLsyEU-0ysS0tRBCye-r/preview"
+        pdf_url = "https://drive.google.com/file/d/15LeMYC2HlyoSoTU6gHCbkHX70c4FD4p_/preview"
 
         st.markdown(f"""
         <style>
@@ -1288,7 +1288,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         <a href="{pdf_url}" target="_blank" class="custom-button" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
-            Nisan 2025 Bülteni
+            Mayıs 2025 Bülteni
         </a>
         """, unsafe_allow_html=True)
 

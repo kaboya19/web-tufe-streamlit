@@ -1322,7 +1322,7 @@ if page=="Tüketici Fiyat Endeksi":
 
         <a href="{pdf_url}" target="_blank" class="custom-button" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" />
-            Nisan 2025 Bülteni
+            Mayıs 2025 Bülteni
         </a>
         """
 

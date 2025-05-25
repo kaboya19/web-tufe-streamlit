@@ -15,7 +15,7 @@ SENDER_EMAIL = "borakaya8@gmail.com"
 SENDER_PASSWORD = "dqpp vgar wujr vhei"
 
 # Abone listesi
-SUBSCRIBERS_FILE = "subscribers1.csv"
+SUBSCRIBERS_FILE = "subscribers.csv"
 
 # E-Posta Gönderim Fonksiyonu
 def send_email_with_images_and_pdf(to_email, subject, body, images, pdf_paths):
@@ -73,35 +73,41 @@ def send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths):
 
 # Ana E-Posta İçeriği ve Gönderimi
 if __name__ == "__main__":
-    subject = f"Web-Tüketici Fiyat Endeksi Nisan 2025 Bülteni"
-    body = body = f"""
-<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Nisan 2025 Bülteni</h2>
+    subject = f"Web-Tüketici Fiyat Endeksi Mayıs 2025 Bülteni"
+    body = body = body = f"""
+<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Mayıs 2025 Bülteni</h2>
 <p>Ekli PDF dosyasında bülteni bulabilirsiniz.</p>
 
 <h3 style='color:black;'>Özet:</h3>
 <p>
-Web Tüketici Fiyat Endeksi nisan ayında yüzde 2,57 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 12,45 olmuştur. 
-Aylık enflasyon lokanta-oteller ve konut gruplarında hızlanırken diğer gruplarda yavaşlamıştır. 
-Nisan ayında konut grubu öne çıkmış, elektrik fiyatlarında yapılan artış grubu önemli ölçüde yükseltmiştir. 
-Geçen ay ılımlı artan lokanta ve oteller grubunda bu ay oteller ve yemek hizmetleri fiyatları güçlü artış göstermiştir.
+Web Tüketici Fiyat Endeksi mayıs ayında yüzde 1,78 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 14,37 olmuştur. 
+Aylık enflasyon lokanta-oteller, ev eşyası, eğlence kültür ve haberleşme gruplarında hızlanırken diğer gruplarda yavaşlamıştır. 
+Mayıs ayında lokanta oteller grubu öne çıkmış, otel fiyatlarında görülen artış grubu önemli ölçüde yükseltmiştir. 
+Gıda enflasyonu aylık yüzde 1,16 ile bu yılın en düşük seviyesine yavaşlamıştır.
 </p>
 <p>
-Enerji grubunda,elektrik fiyatlarına yapılan zam ile birlikte fiyatlar yüzde 4,23 oranında artmıştır.
+Enerji grubunda,elektrik fiyatlarının gecikmeli etkisi ile fiyatlar yüzde 2,09 arttı.
 </p>
 <p>
-Temel mal grubunda, giyim ve ayakkabıda sezon indirimleriyle fiyatların ılımlı arttığı,mart ayındaki kur artışı sebebiyle dayanıklı mallarda fiyatların yüzde 2,53 arttığı diğer temel mallarda ise daha ılımlı bir artış olduğu gözlenmiştir.
+Temel mal grubunda, giyim ve ayakkabıda fiyatların gerilediği, mart ayındaki kur artışının gecikmeli etkileriyle dayanıklı mallarda fiyatların yüzde 2,62 arttığı diğer temel mallarda ise 2,03 artış ile geçen aya göre hızlandığı görüldü.
 </p>
 <p>
-Hizmetler sektöründe aylık enflasyonun yatay seyrettiği görülmüştür.
+Hizmetler grubunda aylık enflasyon yüzde 2,30 ile bu yılın en düşük seviyesine yavaşlamıştır.
 </p>
 <p>
-Bu görünüm altında, mevsimsel düzeltilmiş veriler, B,C,Medyan ve SATRIM göstergelerinin tamamında yavaşlamaya işaret etmiştir.
-Tüm göstergeler birlikte değerlendirildiğinde, Nisan ayında enflasyonun ana eğiliminin yavaşladığı gözlenmiştir.
+Bu görünüm altında, mevsimsel düzeltilmiş veriler, B,C,Medyan ve SATRIM göstergeleri ile ana eğilim yatay seyretmiştir.
+</p>
+<p>
+Web-TÜFE web sitesi için: <a href="https://web-tufe.streamlit.app">buraya tıklayın</a>.
+</p>
+<p>
+Verisetine erişmek için: <a href="https://docs.google.com/spreadsheets/d/14iiu_MQwtMxHTFt6ceyFhkk6v0OL-wuoQS1IGPzSpNE">buraya tıklayın</a>.
 </p>
 """
 
 
+
     images = {}  # İstersen görsel yollarını buraya ekle örn: {"chart1": "path/to/image1.png"}
-    pdf_paths = ["webtüfenisan25.pdf"]  # PDF dosya yolları
+    pdf_paths = ["webtüfemayıs25.pdf"]  # PDF dosya yolları
 
     send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths)

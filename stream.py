@@ -1587,7 +1587,6 @@ if page=="Ana Gruplar":
 
     data=data.iloc[:,1:13]
     data=data.rename(columns={"Konut, su, elektrik, gaz ve diğer yakıtlar":"Konut","Mobilya, ev aletleri ve ev bakım hizmetleri":"Ev eşyası"})
-    data=data.drop(["Sağlık","Alkollü içecekler ve tütün"],axis=1)
     data=data[[selected_group]]
     data=data.pct_change().dropna().loc["2025-02":]*100
     

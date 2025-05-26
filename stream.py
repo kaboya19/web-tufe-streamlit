@@ -2233,7 +2233,6 @@ if page=="Özel Kapsamlı Göstergeler":
     tüfe.index=pd.to_datetime(tüfe.index)
     özelgöstergeler=pd.read_csv("özelgöstergeler.csv",index_col=0)
     özelgöstergeler.index=pd.to_datetime(özelgöstergeler.index)
-    özelgöstergeler=özelgöstergeler.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
     özelgöstergeler=özelgöstergeler.rename(columns={"İşlenmemiş Gıda":"İşlenmemiş gıda"})
     gösterge=özelgöstergeler.columns.values
 
@@ -2418,14 +2417,8 @@ if page=="Özel Kapsamlı Göstergeler":
     tüikdata["Web-TÜFE"]=gruplar_aylık[selected_group]
     tüikdata["TÜİK"]=data[selected_group]
     tüikdata=tüikdata.round(2)
-    if selected_group=="Altın":
-        st.markdown("""
-    <div style="font-size: 18px; color: black; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
-        Not: Altın endeksi Web-TÜFE'de sadece altını kapsarken TÜİK verisi Mücevherler, saat ve kol saatleri endeksi olarak verilmektedir.
-    </div>
-""", unsafe_allow_html=True)
-        tüikdata["TÜİK"]=data2["Mücevherler, saat ve kol saatleri"]
-        tüikdata=tüikdata.round(2)
+    
+    tüikdata=tüikdata.round(2)
 
     figcompana=go.Figure()
     figcompana.add_trace(go.Bar(
@@ -2506,7 +2499,6 @@ if page=="Özel Kapsamlı Göstergeler":
    
     gösterge_artıs=pd.read_csv("özelgöstergeler.csv",index_col=0)
     gösterge_artıs.index=pd.to_datetime(gösterge_artıs.index)
-    gösterge_artıs=gösterge_artıs.rename(columns={"Alkollü içecekler, tütün ve altın":"Altın"})
     gösterge_artıs=gösterge_artıs.rename(columns={"İşlenmemiş Gıda":"İşlenmemiş gıda"})
     gösterge_artıs1=pd.Series(index=gösterge_artıs.columns.values)
     for col in gösterge_artıs.columns:

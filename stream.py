@@ -2027,7 +2027,7 @@ if page=="Harcama Grupları":
     tüfe=tüfe.sort_index()
     harcama_grupları["TÜFE"]=tüfe["TÜFE"]
 
-    maddeaylik=hareketli_aylik_ortalama(selected_group_data.iloc)["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
+    maddeaylik=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
     maddeaylik.iloc[-1]=aylık
 
     fig30 = go.Figure()

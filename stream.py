@@ -887,7 +887,7 @@ if page=="Tüketici Fiyat Endeksi":
         #st.plotly_chart(figgartıs)
 
         maddeaylik=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
-
+        maddeaylik.iloc[-1]=aylikdegisim
         fig30 = go.Figure()
         fig30.add_trace(go.Scatter(
                     x=maddeaylik.index,
@@ -995,7 +995,7 @@ if page=="Tüketici Fiyat Endeksi":
         st.plotly_chart(figgartıs)
 
         tüfeaylik=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
-
+        tüfeaylik.iloc[-1]=aylikdegisim
 
         fig30 = go.Figure()
         fig30.add_trace(go.Scatter(
@@ -1697,6 +1697,7 @@ if page=="Ana Gruplar":
     st.plotly_chart(figgartıs)
 
     tüfeaylik=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
+    tüfeaylik.iloc[-1]=aylık
 
     fig30 = go.Figure()
     fig30.add_trace(go.Scatter(

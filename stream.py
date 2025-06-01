@@ -1694,7 +1694,7 @@ if page=="Ana Gruplar":
 
     st.plotly_chart(figgartıs)
 
-    tüfeaylik=hareketli_aylik_ortalama(selected_group_data.iloc[:,0])["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
+    tüfeaylik=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
 
     fig30 = go.Figure()
     fig30.add_trace(go.Scatter(

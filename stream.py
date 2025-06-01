@@ -901,8 +901,8 @@ if page=="Tüketici Fiyat Endeksi":
         
         fig30.update_layout(
                 xaxis=dict(
-                    tickvals=selected_group_data.index,  # Original datetime index
-                    ticktext=selected_group_data.index.strftime("%Y-%m"),  # Custom formatted labels
+                    tickvals=maddeaylik.index,  # Original datetime index
+                    ticktext=maddeaylik.index.strftime("%Y-%m"),  # Custom formatted labels
                     tickfont=dict(size=14, family="Arial Black", color="black"),
                 ),
                 yaxis=dict(

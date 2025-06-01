@@ -1707,7 +1707,7 @@ if page=="Ana Gruplar":
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+                hovertemplate='%{x|%Y-%m}<br>%{y:.2f}<extra></extra>'
             ))
     
     fig30.update_layout(

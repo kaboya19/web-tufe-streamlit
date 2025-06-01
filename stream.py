@@ -2354,24 +2354,27 @@ if page=="Özel Kapsamlı Göstergeler":
 """, unsafe_allow_html=True)
     st.plotly_chart(figgartıs)
 
+    maddeaylik=hareketli_aylik_ortalama(selected_group_data)["Aylık Ortalama"].fillna(method="ffill").resample("M").last().pct_change().dropna().loc["2025-02":]*100
+    maddeaylik.iloc[-1]=aylık
+
 
 
 
     fig30 = go.Figure()
     fig30.add_trace(go.Scatter(
-                x=selected_group_data.pct_change(30).dropna().index,
-                y=(selected_group_data.pct_change(30).dropna()*100).values,
+                x=maddeaylik.index,
+                y=maddeaylik.values,
                 mode='lines+markers',
                 name=selected_group,
                 line=dict(color='blue', width=4),
                 marker=dict(size=8, color="black"),
-                hovertemplate='%{x|%d.%m.%Y}<br>%{y:.2f}<extra></extra>'
+                hovertemplate='%{x|%Y-%m}<br>%{y:.2f}<extra></extra>'
             ))
     
     fig30.update_layout(
             xaxis=dict(
-                tickvals=selected_group_data.index[::5],  # Original datetime index
-                ticktext=selected_group_data.index[::5].strftime("%d.%m.%Y"),  # Custom formatted labels
+                tickvals=maddeaylik.index,  # Original datetime index
+                ticktext=maddeaylik.index.strftime("%Y-%m"),  # Custom formatted labels
                 tickfont=dict(size=14, family="Arial Black", color="black"),
                 tickangle=45
             ),
@@ -2381,7 +2384,7 @@ if page=="Özel Kapsamlı Göstergeler":
             font=dict(family="Arial", size=14, color="black")
         )
     
-    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} 30 Günlük Artış Hızı (%)</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Aylık Artışlar</h2>", unsafe_allow_html=True)
   
     st.plotly_chart(fig30)
 

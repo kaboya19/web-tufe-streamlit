@@ -1692,7 +1692,7 @@ if page=="Ana Gruplar":
     
     st.plotly_chart(figcompana)
 
-    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Grubu Aylık Artışı</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align:left; color:black;'>{selected_group} Grubu Haziran Artışı</h2>", unsafe_allow_html=True)
 
     st.plotly_chart(figgartıs)
 

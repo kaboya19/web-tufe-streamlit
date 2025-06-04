@@ -1,5 +1,7 @@
 import streamlit as st
 
-st.markdown("""
-    <meta http-equiv="refresh" content="0; url='https://receiver-five.vercel.app/'" />
+st.write("""
+<script>
+window.location.href = "https://www.webtufe.com";
+</script>
 """, unsafe_allow_html=True)

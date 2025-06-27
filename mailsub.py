@@ -73,32 +73,32 @@ def send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths):
 
 # Ana E-Posta İçeriği ve Gönderimi
 if __name__ == "__main__":
-    subject = f"Web-Tüketici Fiyat Endeksi Mayıs 2025 Bülteni"
+    subject = f"Web-Tüketici Fiyat Endeksi Haziran 2025 Bülteni"
     body = body = body = f"""
-<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Mayıs 2025 Bülteni</h2>
+<h2 style='color:black; font-weight:bold;'>Web-Tüketici Fiyat Endeksi Haziran 2025 Bülteni</h2>
 <p>Ekli PDF dosyasında bülteni bulabilirsiniz.</p>
 
 <h3 style='color:black;'>Özet:</h3>
 <p>
-Web Tüketici Fiyat Endeksi mayıs ayında yüzde 1,78 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 14,37 olmuştur. 
-Aylık enflasyon lokanta-oteller, ev eşyası, eğlence kültür ve haberleşme gruplarında hızlanırken diğer gruplarda yavaşlamıştır. 
-Mayıs ayında lokanta oteller grubu öne çıkmış, otel fiyatlarında görülen artış grubu önemli ölçüde yükseltmiştir. 
-Gıda enflasyonu aylık yüzde 1,16 ile bu yılın en düşük seviyesine yavaşlamıştır.
+Web Tüketici Fiyat Endeksi Haziran ayında yüzde 1,30 oranında yükselmiş, yılbaşından itibaren ölçülen artış yüzde 15,69 olmuştur. 
+Aylık enflasyon lokanta-oteller, ev eşyası, eğlence kültür ve konut gruplarında yavaşlamış, gıda,ulaştırma ve çeşitli mal hizmetler gruplarında hızlanmıştır. 
+Haziran ayında lokanta oteller grubu öne çıkmış, otel fiyatlarında görülen artış grubu önemli ölçüde yükseltmiştir. 
+Gıda fiyatları aylık yüzde -0,21 ile gerileme kaydetmiştir.
 </p>
 <p>
-Enerji grubunda,elektrik fiyatlarının gecikmeli etkisi ile fiyatlar yüzde 2,09 arttı.
+Enerji grubunda,akaryakıt fiyatlarındaki yüksek artış ile yüzde 2,11 artış görüldü.
 </p>
 <p>
-Temel mal grubunda, giyim ve ayakkabıda fiyatların gerilediği, mart ayındaki kur artışının gecikmeli etkileriyle dayanıklı mallarda fiyatların yüzde 2,62 arttığı diğer temel mallarda ise 2,03 artış ile geçen aya göre hızlandığı görüldü.
+Temel mal grubunda, giyim ve ayakkabıda fiyatların ılımlı arttığı, Dayanıklı mal ile diğer temel mal grubunda kur artışının etkilerinin bitmesiyle fiyat artışlarının belirgin yavaşladığı görüldü.
 </p>
 <p>
-Hizmetler grubunda aylık enflasyon yüzde 2,30 ile bu yılın en düşük seviyesine yavaşlamıştır.
+Hizmetler grubunda aylık enflasyon yüzde 3,52 ile bu yılın en yüksek seviyesine hızlanmıştır.Bu gelişmede bayram etkisiyle sert yükselen ulaştırma hizmetleri etkili oldu.
 </p>
 <p>
 Bu görünüm altında, mevsimsel düzeltilmiş veriler, B,C,Medyan ve SATRIM göstergeleri ile ana eğilim yatay seyretmiştir.
 </p>
 <p>
-Web-TÜFE web sitesi için: <a href="https://web-tufe.streamlit.app">buraya tıklayın</a>.
+Web-TÜFE web sitesi için: <a href="https://www.webtufe.com">buraya tıklayın</a>.
 </p>
 <p>
 Verisetine erişmek için: <a href="https://docs.google.com/spreadsheets/d/14iiu_MQwtMxHTFt6ceyFhkk6v0OL-wuoQS1IGPzSpNE">buraya tıklayın</a>.
@@ -108,6 +108,6 @@ Verisetine erişmek için: <a href="https://docs.google.com/spreadsheets/d/14iiu
 
 
     images = {}  # İstersen görsel yollarını buraya ekle örn: {"chart1": "path/to/image1.png"}
-    pdf_paths = ["webtüfemayıs25.pdf"]  # PDF dosya yolları
+    pdf_paths = ["Haziran 2025.pdf"]  # PDF dosya yolları
 
     send_bulk_email_with_images_and_pdf(subject, body, images, pdf_paths)

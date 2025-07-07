@@ -1,0 +1,4 @@
+﻿name,address,stars,phone,price,currency,rating,review_count,facilities,images,location,cancellation_policy,breakfast_included
+CVK Park Bosphorus Hotel Istanbul,"Gümüşsuyu Mah. İnönü Cad. No:8, Taksim, İstanbul",4,+90 212 361 5140,1250,TL,8.2,1847,"['WiFi', 'Spa', 'Fitness Center', 'Restaurant', 'Bar']",[],"{'lat': 41.0369, 'lng': 28.9871}",Ücretsiz iptal,True
+Swissotel The Bosphorus Istanbul,"Visnezade Mah. Acisu Sok. No:19, Besiktas, İstanbul",5,+90 212 326 1100,2800,TL,9.1,2156,"['WiFi', 'Spa', 'Pool', 'Fitness Center', 'Restaurant']",[],"{'lat': 41.0431, 'lng': 29.0003}",Ücretsiz iptal,True
+The Ritz-Carlton Istanbul,"Suzer Plaza, Askerocagi Cad. No:6, Besiktas, İstanbul",5,+90 212 334 4444,4200,TL,9.3,1654,"['WiFi', 'Spa', 'Pool', 'Fitness Center', 'Restaurant', 'Concierge']",[],"{'lat': 41.0425, 'lng': 29.0058}",Ücretsiz iptal,True
